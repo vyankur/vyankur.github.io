@@ -1068,7 +1068,7 @@
       grid-template-columns: 2.3fr 1fr;
       gap: 1.5rem;
       margin-top: 3rem;
-      height: 700px;
+      height: 660px;
     }
 
     .tableau-viewer {
@@ -1081,6 +1081,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      min-height: 0;
     }
 
     .tableau-viewer-header {
@@ -1117,6 +1118,7 @@
       border-radius: 6px;
       overflow: hidden;
       background: #00000008;
+      min-height: 0;
     }
 
     .tableau-iframe-container iframe {
@@ -1176,6 +1178,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      min-height: 0;
     }
 
     .tableau-search-box {
@@ -1257,6 +1260,7 @@
       flex-direction: column;
       gap: 0.65rem;
       padding-right: 0.25rem;
+      min-height: 0;
     }
 
     .tableau-list::-webkit-scrollbar {
@@ -1324,7 +1328,7 @@
       gap: 0.2rem;
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: 1024px) {
       .tableau-layout {
         grid-template-columns: 1fr;
         height: auto;
@@ -3886,7 +3890,18 @@ EDUCATION
       aws: 'Ankur has engineered robust cloud analytics pipelines using AWS. He stores high-volume transaction databases as columnar Parquet files on S3, catalogs them with Glue, and connects Tableau live using Athena as a virtualized SQL engine, decreasing load times by 35% and saving USD 50K.',
       ge: 'At GE Power (under TCS), Ankur automated defect reporting and CAS compliance dashboarding, saving 95% manual effort. He designed a Python fuzzy deduplication script to clean supplier databases and optimized lead-time dashboards, lowering latency by 35%.',
       relocate: 'Ankur is currently based in Gurugram, India, and is open to global relocation opportunities, specifically in Singapore, Hong Kong, UAE, UK, and Germany.',
-      summary: 'Ankur Varshney has 11+ years of experience delivering BI architectures, cloud data pipelines, and analytics platforms. He has worked for Sun Life Financial, HCL Technologies, and Tata Consultancy Services, serving VPs and CXOs across finance and insurance.'
+      summary: 'Ankur Varshney has 11+ years of experience delivering BI architectures, cloud data pipelines, and analytics platforms. He has worked for Sun Life Financial, HCL Technologies, and Tata Consultancy Services, serving VPs and CXOs across finance and insurance.',
+      education: 'Ankur holds a B.Tech. in Electronics & Communications from Krishna Institute of Engineering and Technology (KIET), Ghaziabad (UPTU, Noida), graduated in 2015.',
+      hcl: 'At HCL Technologies (2021-2023) in Pune, Ankur served as Tableau & Data Viz Lead. He led a team of 2 developers to design a 5-year financial planning and budgeting dashboard suite for Deutsche Bank (CXO-level decision makers), integrated SAP HANA, and managed PySpark/Databricks pipelines.',
+      tcs: 'At Tata Consultancy Services (2015-2021) as an IT Analyst/Senior BI Developer, Ankur led a team of 5 developers. He built HR analytics with dynamic RLS for First Abu Dhabi Bank (FAB), and led defect tracking, data deduplication, and supply chain lead-time dashboards for GE Power.',
+      sunlife: 'At Sun Life Financial (2023-Present) in Gurugram, Ankur works as a Senior BI Developer/Data Analyst. He manages Tableau Server/Cloud administration, built LangChain/Bedrock AI conversational extensions, designed Qualtrics/Salesforce CSAT integrations, and drove a 30% increase in platform adoption.',
+      rls: 'Ankur has deep expertise in Row-Level Security (RLS) and Level of Detail (LOD) calculations. At First Abu Dhabi Bank (FAB), he implemented entitlement-based RLS logic using dynamic entitlement tables via SQL joins, securing compensation dashboards for 80+ HR managers.',
+      certifications: "Ankur's credentials include: (1) 2025 AWS Cloud Quest Winner for hands-on cloud labs, (2) Accredited Certified Tableau Desktop Specialist, and (3) Accredited Certified Tableau Data Scientist.",
+      databases: 'Ankur has 11+ years of database engineering experience, specializing in Oracle (SQL, PL/SQL stored procedures, views, custom functions), PostgreSQL, Greenplum (GPDB), SAP HANA, and Aurora DB.',
+      python: 'Ankur uses Python for data deduplication (fuzzy matching), Tableau REST API/TSC CLI automations, and LLM orchestration (LangChain, OpenAI, Bedrock API).',
+      salary: 'Ankur is open to discussing competitive compensation and salary packages depending on the relocation city, cost of living, and total benefits. Please contact him at vyankur@gmail.com to discuss specifics.',
+      start: 'Ankur is available for interviews and can join within standard notice periods. For exact timeline negotiations, please reach out to him directly at vyankur@gmail.com or +91 8452893918.',
+      contact: 'You can contact Ankur Varshney directly via: Email: vyankur@gmail.com | Phone/WhatsApp: +91 8452893918 | LinkedIn: linkedin.com/in/vyankur | Tableau Public: public.tableau.com/profile/ankur.varshney'
     };
 
     function toggleBotChat(show) {
@@ -3933,22 +3948,41 @@ EDUCATION
       const q = query.toLowerCase();
       let response = "I'm not fully sure about that detail. You can ask me about his Tableau/AWS skills, the Conversational AI extension, GE Power defect automation, or his relocation preferences.";
 
-      if (q.includes('skill') || q.includes('tool') || q.includes('stack')) {
+      if (q.includes('skill') || q.includes('tool') || q.includes('stack') || q.includes('power bi')) {
         response = botKnowledge.skills;
-      } else if (q.includes('ai') || q.includes('extension') || q.includes('langchain') || q.includes('bedrock')) {
+      } else if (q.includes('ai') || q.includes('langchain') || q.includes('bedrock') || q.includes('openai') || q.includes('conversational') || q.includes('bmad') || q.includes('extension')) {
         response = botKnowledge.ai;
-      } else if (q.includes('aws') || q.includes('athena') || q.includes('s3') || q.includes('lake') || q.includes('glue')) {
+      } else if (q.includes('aws') || q.includes('athena') || q.includes('s3') || q.includes('glue') || q.includes('sagemaker') || q.includes('lake')) {
         response = botKnowledge.aws;
-      } else if (q.includes('ge') || q.includes('power') || q.includes('defect') || q.includes('dedup') || q.includes('fuzzy') || q.includes('50k')) {
+      } else if (q.includes('ge ') || q.includes('ge-') || q.includes('gepower') || q.includes('defect') || q.includes('dedup') || q.includes('fuzzy') || q.includes('50k') || q.includes('power')) {
         response = botKnowledge.ge;
-      } else if (q.includes('reloc') || q.includes('sponsor') || q.includes('vis') || q.includes('countr')) {
+      } else if (q.includes('reloc') || q.includes('sponsor') || q.includes('vis') || q.includes('singapore') || q.includes('germany') || q.includes('uk') || q.includes('uae') || q.includes('dubai') || q.includes('london') || q.includes('munich') || q.includes('hong kong') || q.includes('countr')) {
         response = botKnowledge.relocate;
-      } else if (q.includes('summary') || q.includes('experience') || q.includes('who is') || q.includes('ankur')) {
+      } else if (q.includes('sun life') || q.includes('sunlife') || q.includes('qualtrics') || q.includes('adoption') || q.includes('satisfaction') || q.includes('insurance')) {
+        response = botKnowledge.sunlife;
+      } else if (q.includes('hcl') || q.includes('deutsche') || q.includes('hana') || q.includes('databricks') || q.includes('pyspark') || q.includes('esg') || q.includes('db')) {
+        response = botKnowledge.hcl;
+      } else if (q.includes('tcs') || q.includes('tata')) {
+        response = botKnowledge.tcs;
+      } else if (q.includes('security') || q.includes('rls') || q.includes('entitlement') || q.includes('access') || q.includes('lod') || q.includes('fab') || q.includes('abu dhabi') || q.includes('compensation')) {
+        response = botKnowledge.rls;
+      } else if (q.includes('cert') || q.includes('credential') || q.includes('badge') || q.includes('winner') || q.includes('quest') || q.includes('award') || q.includes('specialist')) {
+        response = botKnowledge.certifications;
+      } else if (q.includes('oracle') || q.includes('postgres') || q.includes('database') || q.includes('sql') || q.includes('pl/sql') || q.includes('procedure') || q.includes('greenplum')) {
+        response = botKnowledge.databases;
+      } else if (q.includes('python') || q.includes('script') || q.includes('automation') || q.includes('cli') || q.includes('tsc')) {
+        response = botKnowledge.python;
+      } else if (q.includes('educat') || q.includes('degree') || q.includes('kiet') || q.includes('college') || q.includes('university') || q.includes('study') || q.includes('studied') || q.includes('btech') || q.includes('noida') || q.includes('ghaziabad')) {
+        response = botKnowledge.education;
+      } else if (q.includes('salary') || q.includes('expect') || q.includes('compensat') || q.includes('money')) {
+        response = botKnowledge.salary;
+      } else if (q.includes('start') || q.includes('avail') || q.includes('join') || q.includes('notice') || q.includes('interview')) {
+        response = botKnowledge.start;
+      } else if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone') || q.includes('call') || q.includes('address') || q.includes('whatsapp') || q.includes('hire') || q.includes('mail')) {
+        response = botKnowledge.contact;
+      } else if (q.includes('summary') || q.includes('experience') || q.includes('who is') || q.includes('ankur') || q.includes('profile')) {
         response = botKnowledge.summary;
-      } else if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone') || q.includes('hire')) {
-        response = "You can reach Ankur Varshney at vyankur@gmail.com or call him at +91 8452893918. His LinkedIn profile is linkedin.com/in/vyankur.";
       }
-
       showTypingAndRespond(response);
     }
 
