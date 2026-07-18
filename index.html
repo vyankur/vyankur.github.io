@@ -1062,6 +1062,288 @@
       margin-top: 0.1rem;
     }
 
+    
+    /* Knowledge Hub Section Styles */
+    .knowledge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .knowledge-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .knowledge-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px var(--shadow);
+      border-color: var(--primary);
+    }
+
+    .knowledge-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .knowledge-card-category {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+    }
+
+    .knowledge-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+
+    .knowledge-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .knowledge-card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .knowledge-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .knowledge-card-tag {
+      font-size: 0.65rem;
+      background: var(--shadow);
+      color: var(--text);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .knowledge-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .status-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .status-badge.planned {
+      background: #fef3c7;
+      color: #d97706;
+      border: 1px solid #fde68a;
+    }
+    [data-theme="dark"] .status-badge.planned {
+      background: #451a03;
+      color: #fbbf24;
+      border: 1px solid #78350f;
+    }
+
+    .status-badge.draft {
+      background: #e0f2fe;
+      color: #0284c7;
+      border: 1px solid #bae6fd;
+    }
+    [data-theme="dark"] .status-badge.draft {
+      background: #0c4a6e;
+      color: #38bdf8;
+      border: 1px solid #075985;
+    }
+
+    .status-badge.review {
+      background: #f3e8ff;
+      color: #9333ea;
+      border: 1px solid #e9d5ff;
+    }
+    [data-theme="dark"] .status-badge.review {
+      background: #3b0764;
+      color: #c084fc;
+      border: 1px solid #581c87;
+    }
+
+    .status-badge.published {
+      background: #dcfce7;
+      color: #16a34a;
+      border: 1px solid #bbf7d0;
+    }
+    [data-theme="dark"] .status-badge.published {
+      background: #064e3b;
+      color: #34d399;
+      border: 1px solid #065f46;
+    }
+
+    .difficulty-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      background: var(--border);
+      color: var(--text);
+    }
+
+    .knowledge-cta {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: gap 0.2s;
+    }
+
+    .knowledge-card:hover .knowledge-cta {
+      gap: 0.5rem;
+    }
+
+    /* Modal Article Styles */
+    .article-modal-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-modal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .article-modal-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    .article-main-content {
+      line-height: 1.6;
+    }
+
+    .article-main-content p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .article-main-content h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.75rem 0;
+      color: var(--text);
+    }
+
+    .article-main-content h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1.25rem 0 0.5rem 0;
+      color: var(--text);
+    }
+
+    .topics-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .checked-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .check-icon {
+      color: #16a34a;
+      font-weight: 700;
+    }
+
+    .article-sidebar {
+      background: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      border-radius: 8px;
+      height: fit-content;
+    }
+
+    .related-articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .related-article-item {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .related-article-item:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1024px) {
+      .knowledge-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .article-modal-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .knowledge-grid {
+        grid-template-columns: 1fr;
+      }
+      .topics-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Interactive Dashboards - Tableau Public Showcase */
     .tableau-layout {
       display: grid;
@@ -1211,6 +1493,7 @@
     .tableau-search-box {
       margin-bottom: 1rem;
       position: relative;
+      flex-shrink: 0;
     }
 
     .tableau-search-box input {
@@ -1244,6 +1527,7 @@
       overflow-x: auto;
       white-space: nowrap;
       padding-bottom: 0.25rem;
+      flex-shrink: 0;
     }
 
     .tableau-filter-wrapper::-webkit-scrollbar {
@@ -2079,8 +2363,9 @@
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#impact">Impact</a></li>
-          <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#knowledge-hub">Knowledge Hub</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#resume">Resume</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -2257,140 +2542,6 @@
     </section>
 
     <!-- Experience Timeline Section -->
-    <section class="section" id="experience">
-      <div class="shell">
-        <div class="section-head">
-          <div class="eyebrow">Experience</div>
-          <h2 class="section-title">Proven history of <em>leadership.</em></h2>
-        </div>
-
-        <div class="timeline-container">
-          <div class="timeline-tabs">
-            <button class="timeline-tab active" data-company="sunlife">Sun Life Financial</button>
-            <button class="timeline-tab" data-company="hcl">HCL Technologies</button>
-            <button class="timeline-tab" data-company="tcs">TCS</button>
-          </div>
-
-          <!-- Sun Life Panel -->
-          <div class="timeline-panel active" id="panel-sunlife">
-            <div class="timeline-header">
-              <div class="timeline-company-info">
-                <h3>Sun Life Financial</h3>
-                <h4>Senior BI Developer / Data Analyst</h4>
-              </div>
-              <div class="timeline-meta-info">
-                <div class="timeline-date">Apr 2023 – Present</div>
-                <div class="timeline-loc">Gurugram, India</div>
-                <div class="timeline-tags">
-                  <span class="timeline-tag">Tableau Cloud</span>
-                  <span class="timeline-tag">AWS Athena</span>
-                  <span class="timeline-tag">Python</span>
-                  <span class="timeline-tag">LangChain</span>
-                  <span class="timeline-tag">TabPy</span>
-                </div>
-              </div>
-            </div>
-            <h5 class="timeline-section-title">Key Responsibilities</h5>
-            <ul class="timeline-responsibilities">
-              <li>Manage Tableau Cloud permissions, schedule automations, and release pipelines.</li>
-              <li>Develop analytical models for Insurance, HNW, Attrition, and Product Performance dashboards.</li>
-              <li>Integrate AWS S3 and Athena data lakes to live-connected Tableau views.</li>
-              <li>Build Tableau dashboard extensions using LangChain and OpenAI models for Conversational BI.</li>
-            </ul>
-            <h5 class="timeline-section-title">Achievements</h5>
-            <div class="timeline-achievements">
-              <div class="timeline-ach-card">
-                <div class="timeline-ach-title">30% Adoption Increase</div>
-                <div class="timeline-ach-desc">Designed an enterprise insurance analytics adoption suite used by VPs and POs.</div>
-              </div>
-              <div class="timeline-ach-card">
-                <div class="timeline-ach-title">20% CSAT Growth</div>
-                <div class="timeline-ach-desc">Modeled client feedback loops by combining Qualtrics, Salesforce, and social data streams.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- HCL Panel -->
-          <div class="timeline-panel" id="panel-hcl">
-            <div class="timeline-header">
-              <div class="timeline-company-info">
-                <h3>HCL Technologies</h3>
-                <h4>Tableau &amp; Data Viz Lead / Developer</h4>
-              </div>
-              <div class="timeline-meta-info">
-                <div class="timeline-date">May 2021 – Apr 2023</div>
-                <div class="timeline-loc">Pune, India</div>
-                <div class="timeline-tags">
-                  <span class="timeline-tag">Tableau Desktop</span>
-                  <span class="timeline-tag">Databricks</span>
-                  <span class="timeline-tag">SAP HANA</span>
-                  <span class="timeline-tag">PySpark</span>
-                  <span class="timeline-tag">SQL</span>
-                </div>
-              </div>
-            </div>
-            <h5 class="timeline-section-title">Key Responsibilities</h5>
-            <ul class="timeline-responsibilities">
-              <li>Led a team of 2 developers delivering compliance and budget analysis dashboards for Deutsche Bank.</li>
-              <li>Engineered Databricks/PySpark ETL workflows to prepare massive reporting tables.</li>
-              <li>Connected Tableau live to SAP HANA views for high-frequency analytical queries.</li>
-              <li>Applied dynamic row-level security to restrict sensitive ESG investment records.</li>
-            </ul>
-            <h5 class="timeline-section-title">Achievements</h5>
-            <div class="timeline-achievements">
-              <div class="timeline-ach-card">
-                <div class="timeline-ach-title">Deutsche Bank Spend Suite</div>
-                <div class="timeline-ach-desc">Delivered a 5-year financial planning and budgeting dashboard suite for senior leadership.</div>
-              </div>
-              <div class="timeline-ach-card">
-                <div class="timeline-ach-title">High-Performance Live Connection</div>
-                <div class="timeline-ach-desc">Configured sub-second queries by connecting Tableau live to optimized SAP HANA views.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- TCS Panel -->
-          <div class="timeline-panel" id="panel-tcs">
-            <div class="timeline-header">
-              <div class="timeline-company-info">
-                <h3>Tata Consultancy Services</h3>
-                <h4>IT Analyst (Senior BI Developer)</h4>
-              </div>
-              <div class="timeline-meta-info">
-                <div class="timeline-date">Oct 2015 – Apr 2021</div>
-                <div class="timeline-loc">Mumbai &amp; Middle East</div>
-                <div class="timeline-tags">
-                  <span class="timeline-tag">Tableau</span>
-                  <span class="timeline-tag">Oracle SQL</span>
-                  <span class="timeline-tag">Talend</span>
-                  <span class="timeline-tag">Greenplum</span>
-                  <span class="timeline-tag">PL/SQL</span>
-                </div>
-              </div>
-            </div>
-            <h5 class="timeline-section-title">Key Responsibilities</h5>
-            <ul class="timeline-responsibilities">
-              <li>Led a team of 5 BI developers delivering analytics across Banking, Aviation, and Supply Chain clients.</li>
-              <li>Built Oracle SQL PL/SQL procedures, Talend ETL snapshots, and Greenplum query structures.</li>
-              <li>Designed compensation analytics for First Abu Dhabi Bank (FAB) featuring dynamic user-entitlements row security.</li>
-            </ul>
-            <h5 class="timeline-section-title">Achievements</h5>
-            <div class="timeline-achievements">
-              <div class="timeline-ach-card">
-                <div class="timeline-ach-title">95% Effort Saved (GE Power)</div>
-                <div class="timeline-ach-desc">Automated defect tracking queries during legacy-to-AWS cloud migration.</div>
-              </div>
-              <div class="timeline-ach-card">
-                <div class="timeline-ach-title">35% Load Speedup (GE Power)</div>
-                <div class="timeline-ach-desc">Optimized supply chain lead-time dashboards via SQL refactoring and parameter tuning.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Grid Section -->
     <section class="section light" id="projects">
       <div class="shell">
         <div class="section-head">
@@ -2645,6 +2796,164 @@
     </section>
 
     <!-- Skills Section -->
+        <!-- Knowledge Hub Section -->
+    <section class="section" id="knowledge-hub">
+      <div class="shell">
+        <div class="section-head">
+          <div class="eyebrow">Knowledge Hub</div>
+          <h2 class="section-title">Things I've <em>learned.</em></h2>
+          <p class="section-copy">Sharing practical lessons from building enterprise analytics platforms, Tableau solutions, cloud pipelines, SQL optimization and AI-powered analytics.</p>
+        </div>
+
+        <div class="knowledge-filters" style="margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <button class="filter-btn active" data-category="all">All Articles</button>
+          <button class="filter-btn" data-category="Tableau">Tableau</button>
+          <button class="filter-btn" data-category="SQL">SQL</button>
+          <button class="filter-btn" data-category="AWS">AWS</button>
+          <button class="filter-btn" data-category="AI">AI</button>
+          <button class="filter-btn" data-category="Architecture">Architecture</button>
+        </div>
+
+        <div class="knowledge-grid" id="knowledgeGrid">
+          <!-- Populated dynamically via JS from markdown registry -->
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="experience">
+      <div class="shell">
+        <div class="section-head">
+          <div class="eyebrow">Experience</div>
+          <h2 class="section-title">Proven history of <em>leadership.</em></h2>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-tabs">
+            <button class="timeline-tab active" data-company="sunlife">Sun Life Financial</button>
+            <button class="timeline-tab" data-company="hcl">HCL Technologies</button>
+            <button class="timeline-tab" data-company="tcs">TCS</button>
+          </div>
+
+          <!-- Sun Life Panel -->
+          <div class="timeline-panel active" id="panel-sunlife">
+            <div class="timeline-header">
+              <div class="timeline-company-info">
+                <h3>Sun Life Financial</h3>
+                <h4>Senior BI Developer / Data Analyst</h4>
+              </div>
+              <div class="timeline-meta-info">
+                <div class="timeline-date">Apr 2023 – Present</div>
+                <div class="timeline-loc">Gurugram, India</div>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">Tableau Cloud</span>
+                  <span class="timeline-tag">AWS Athena</span>
+                  <span class="timeline-tag">Python</span>
+                  <span class="timeline-tag">LangChain</span>
+                  <span class="timeline-tag">TabPy</span>
+                </div>
+              </div>
+            </div>
+            <h5 class="timeline-section-title">Key Responsibilities</h5>
+            <ul class="timeline-responsibilities">
+              <li>Manage Tableau Cloud permissions, schedule automations, and release pipelines.</li>
+              <li>Develop analytical models for Insurance, HNW, Attrition, and Product Performance dashboards.</li>
+              <li>Integrate AWS S3 and Athena data lakes to live-connected Tableau views.</li>
+              <li>Build Tableau dashboard extensions using LangChain and OpenAI models for Conversational BI.</li>
+            </ul>
+            <h5 class="timeline-section-title">Achievements</h5>
+            <div class="timeline-achievements">
+              <div class="timeline-ach-card">
+                <div class="timeline-ach-title">30% Adoption Increase</div>
+                <div class="timeline-ach-desc">Designed an enterprise insurance analytics adoption suite used by VPs and POs.</div>
+              </div>
+              <div class="timeline-ach-card">
+                <div class="timeline-ach-title">20% CSAT Growth</div>
+                <div class="timeline-ach-desc">Modeled client feedback loops by combining Qualtrics, Salesforce, and social data streams.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HCL Panel -->
+          <div class="timeline-panel" id="panel-hcl">
+            <div class="timeline-header">
+              <div class="timeline-company-info">
+                <h3>HCL Technologies</h3>
+                <h4>Tableau &amp; Data Viz Lead / Developer</h4>
+              </div>
+              <div class="timeline-meta-info">
+                <div class="timeline-date">May 2021 – Apr 2023</div>
+                <div class="timeline-loc">Pune, India</div>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">Tableau Desktop</span>
+                  <span class="timeline-tag">Databricks</span>
+                  <span class="timeline-tag">SAP HANA</span>
+                  <span class="timeline-tag">PySpark</span>
+                  <span class="timeline-tag">SQL</span>
+                </div>
+              </div>
+            </div>
+            <h5 class="timeline-section-title">Key Responsibilities</h5>
+            <ul class="timeline-responsibilities">
+              <li>Led a team of 2 developers delivering compliance and budget analysis dashboards for Deutsche Bank.</li>
+              <li>Engineered Databricks/PySpark ETL workflows to prepare massive reporting tables.</li>
+              <li>Connected Tableau live to SAP HANA views for high-frequency analytical queries.</li>
+              <li>Applied dynamic row-level security to restrict sensitive ESG investment records.</li>
+            </ul>
+            <h5 class="timeline-section-title">Achievements</h5>
+            <div class="timeline-achievements">
+              <div class="timeline-ach-card">
+                <div class="timeline-ach-title">Deutsche Bank Spend Suite</div>
+                <div class="timeline-ach-desc">Delivered a 5-year financial planning and budgeting dashboard suite for senior leadership.</div>
+              </div>
+              <div class="timeline-ach-card">
+                <div class="timeline-ach-title">High-Performance Live Connection</div>
+                <div class="timeline-ach-desc">Configured sub-second queries by connecting Tableau live to optimized SAP HANA views.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TCS Panel -->
+          <div class="timeline-panel" id="panel-tcs">
+            <div class="timeline-header">
+              <div class="timeline-company-info">
+                <h3>Tata Consultancy Services</h3>
+                <h4>IT Analyst (Senior BI Developer)</h4>
+              </div>
+              <div class="timeline-meta-info">
+                <div class="timeline-date">Oct 2015 – Apr 2021</div>
+                <div class="timeline-loc">Mumbai &amp; Middle East</div>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">Tableau</span>
+                  <span class="timeline-tag">Oracle SQL</span>
+                  <span class="timeline-tag">Talend</span>
+                  <span class="timeline-tag">Greenplum</span>
+                  <span class="timeline-tag">PL/SQL</span>
+                </div>
+              </div>
+            </div>
+            <h5 class="timeline-section-title">Key Responsibilities</h5>
+            <ul class="timeline-responsibilities">
+              <li>Led a team of 5 BI developers delivering analytics across Banking, Aviation, and Supply Chain clients.</li>
+              <li>Built Oracle SQL PL/SQL procedures, Talend ETL snapshots, and Greenplum query structures.</li>
+              <li>Designed compensation analytics for First Abu Dhabi Bank (FAB) featuring dynamic user-entitlements row security.</li>
+            </ul>
+            <h5 class="timeline-section-title">Achievements</h5>
+            <div class="timeline-achievements">
+              <div class="timeline-ach-card">
+                <div class="timeline-ach-title">95% Effort Saved (GE Power)</div>
+                <div class="timeline-ach-desc">Automated defect tracking queries during legacy-to-AWS cloud migration.</div>
+              </div>
+              <div class="timeline-ach-card">
+                <div class="timeline-ach-title">35% Load Speedup (GE Power)</div>
+                <div class="timeline-ach-desc">Optimized supply chain lead-time dashboards via SQL refactoring and parameter tuning.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid Section -->
     <section class="section" id="skills">
       <div class="shell skills-layout">
         <div class="skills-intro">
@@ -2737,19 +3046,90 @@
           <!-- Architecture Card 1 -->
           <div class="gallery-card">
             <div class="gallery-svg-container">
-              <svg width="220" height="120" viewBox="0 0 220 120">
-                <rect x="10" y="45" width="40" height="30" rx="3" fill="#6366f1" opacity="0.85"/>
-                <text x="30" y="64" font-size="8" text-anchor="middle" fill="#FFF">AWS S3</text>
-                <path d="M50 60 L80 60" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3,3"/>
-                <rect x="80" y="45" width="50" height="30" rx="3" fill="#fb7185" opacity="0.85"/>
-                <text x="105" y="64" font-size="8" text-anchor="middle" fill="#FFF">Athena</text>
-                <path d="M130 60 L160 60" stroke="#64748b" stroke-width="1.5"/>
-                <rect x="160" y="45" width="50" height="30" rx="3" fill="#111827" opacity="0.85"/>
-                <text x="185" y="64" font-size="8" text-anchor="middle" fill="#FFF">Tableau</text>
+              <svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
+                <!-- Grid Background -->
+                <defs>
+                  <pattern id="arch-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="var(--border)" stroke-width="0.5" opacity="0.25"/>
+                  </pattern>
+                  <marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--muted)" />
+                  </marker>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#arch-grid)" />
+
+                <!-- Node 1: S3 Transactions -->
+                <g transform="translate(10, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <path d="M14 20 L24 15 L34 20 L24 25 Z" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+                  <path d="M14 20 L14 28 L24 33 L24 25 Z" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+                  <path d="M24 25 L24 33 L34 28 L34 20 Z" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">Amazon S3</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">Transactions</text>
+                  <text x="24" y="78" font-size="6" fill="var(--muted)" text-anchor="middle">data (JSON)</text>
+                </g>
+
+                <!-- Arrow 1 -> 2 -->
+                <line x1="63" y1="39" x2="94" y2="39" stroke="var(--muted)" stroke-width="1" marker-end="url(#arrowhead)" />
+                <text x="78" y="33" font-size="5" font-weight="600" fill="var(--muted)" text-anchor="middle">Event Trigger</text>
+
+                <!-- Node 2: Lambda -->
+                <g transform="translate(100, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <path d="M17 32 L22 20 L26 20 L31 32" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                  <path d="M21 24 L27 32" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">AWS Lambda</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">Flatten the</text>
+                  <text x="24" y="78" font-size="6" fill="var(--muted)" text-anchor="middle">JSON data</text>
+                </g>
+
+                <!-- Arrow 2 -> 3 -->
+                <line x1="153" y1="39" x2="184" y2="39" stroke="var(--muted)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+                <!-- Node 3: S3 Parquet Lake -->
+                <g transform="translate(190, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <path d="M14 20 L24 15 L34 20 L24 25 Z" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+                  <path d="M14 20 L14 28 L24 33 L24 25 Z" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+                  <path d="M24 25 L24 33 L34 28 L34 20 Z" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">Amazon S3</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">PARQUET format</text>
+                  <text x="24" y="78" font-size="6" font-weight="700" fill="var(--primary)" text-anchor="middle">DATA LAKE</text>
+                </g>
+
+                <!-- Arrow 3 -> 4 -->
+                <line x1="243" y1="39" x2="274" y2="39" stroke="var(--muted)" stroke-width="1" marker-end="url(#arrowhead)" />
+                <text x="258" y="33" font-size="5" font-weight="600" fill="var(--muted)" text-anchor="middle">Event Trigger</text>
+
+                <!-- Node 4: Glue Crawler -->
+                <g transform="translate(280, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <path d="M16 18 L32 18 L28 26 L28 32 L20 32 L20 26 Z" stroke="#fbbf24" stroke-width="1.5" fill="none" />
+                  <circle cx="24" cy="22" r="2" fill="#fbbf24" />
+                  <circle cx="21" cy="27" r="1.2" fill="#fbbf24" />
+                  <circle cx="27" cy="27" r="1.2" fill="#fbbf24" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">AWS Glue</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">Crawler</text>
+                  <text x="24" y="78" font-size="6" fill="var(--muted)" text-anchor="middle">(Data Catalog)</text>
+                </g>
+
+                <!-- Arrow 4 -> 5 -->
+                <line x1="333" y1="39" x2="364" y2="39" stroke="var(--muted)" stroke-width="1" marker-end="url(#arrowhead)" />
+
+                <!-- Node 5: Athena Analysis -->
+                <g transform="translate(370, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <ellipse cx="24" cy="18" rx="8" ry="3" stroke="#22c55e" stroke-width="1.5" fill="none" />
+                  <path d="M16 18 L16 26 C16 29, 32 29, 32 26 L32 18" stroke="#22c55e" stroke-width="1.5" fill="none" />
+                  <circle cx="24" cy="26" r="4" stroke="#e11d48" stroke-width="1.2" fill="none" />
+                  <line x1="27" y1="29" x2="30" y2="32" stroke="#e11d48" stroke-width="1.2" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">Amazon Athena</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">(Data Analysis)</text>
+                </g>
               </svg>
             </div>
-            <h3 class="gallery-title">AWS Cloud Analytics Pipeline</h3>
-            <p class="gallery-desc">Data lake querying layer structured with AWS S3 folders, virtualized Athena SQL tables, and live connectors in Tableau.</p>
+            <h3 class="gallery-title">AWS Serverless Event ETL Pipeline</h3>
+            <p class="gallery-desc">Complete event-driven data pipeline starting from S3 JSON ingestion, AWS Lambda flattening, S3 Parquet Data Lake conversion, Glue cataloging, and Athena SQL queries.</p>
           </div>
 
           <!-- Architecture Card 2 -->
@@ -3186,7 +3566,7 @@ EDUCATION
               <div class="roadmap-dot">5</div>
               <div class="roadmap-step-info">
                 <div class="roadmap-year">Q4 2026</div>
-                <div class="roadmap-name">Tableau Data Analyst</div>
+                <div class="roadmap-name">Data Governance, Databricks & Microsoft Fabric</div>
                 <div class="roadmap-status">Scheduled</div>
               </div>
             </div>
@@ -3349,12 +3729,61 @@ EDUCATION
     </div>
   </div>
 
+    <!-- Knowledge Hub Article Modal Overlay -->
+  <div class="project-modal" id="articleModal">
+    <div class="project-modal-content" style="max-width: 800px;">
+      <button class="project-modal-close" id="articleModalCloseBtn">&times;</button>
+      <div class="project-modal-body">
+        <div class="article-modal-header">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <h3 class="project-modal-title" id="articleTitle" style="margin: 0; font-size: 1.5rem;">Article Title</h3>
+            <span class="status-badge" id="articleStatusBadge">📝 Planned</span>
+          </div>
+          <div class="article-modal-meta">
+            <span class="difficulty-badge" id="articleDifficulty">Intermediate</span>
+            <span id="articleReadTime">⏱️ 15 min read</span>
+            <span id="articleCategory" style="color: var(--primary); font-weight: 700; font-size: 0.75rem; text-transform: uppercase;">Tableau</span>
+          </div>
+          <div class="knowledge-card-tags" id="articleTags" style="margin-top: 0.75rem; margin-bottom: 0;"></div>
+        </div>
+
+        <div class="article-modal-grid">
+          <div class="article-main-content">
+            <h4 class="project-modal-section-title" style="margin-top: 0;">Overview</h4>
+            <p class="project-modal-text" id="articleOverview">Overview text...</p>
+
+            <h4 class="project-modal-section-title">Topics Covered</h4>
+            <div id="articleTopicsCanvas">
+              <!-- Dynamically populated checkboxes -->
+            </div>
+          </div>
+
+          <div class="article-sidebar">
+            <h4 style="margin-top: 0; font-size: 0.9rem; font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Expected Publication</h4>
+            <p style="font-size: 0.85rem; font-weight: 600; color: var(--primary); margin: 0.5rem 0 1.5rem 0;">Q3 2026</p>
+
+            <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">Related Articles</h4>
+            <div class="related-articles-list" id="articleRelatedList">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions-row" style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+          <button class="btn secondary" id="articleBackBtn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">← Back to Knowledge Hub</button>
+          <span style="font-size: 0.7rem; color: var(--muted);">ankuranalytics.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="shell">
       <ul class="footer-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#knowledge-hub">Knowledge Hub</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -3907,6 +4336,7 @@ EDUCATION
       { label: 'Go to Business Impact', action: () => scrollToSection('#impact') },
       { label: 'Go to Experience History', action: () => scrollToSection('#experience') },
       { label: 'Go to Case Studies & Projects', action: () => scrollToSection('#projects') },
+      { label: 'Go to Knowledge Hub', action: () => scrollToSection('#knowledge-hub') },
       { label: 'Go to Technical Toolkit Skills', action: () => scrollToSection('#skills') },
       { label: 'Go to Technical Architectures', action: () => scrollToSection('#architecture') },
       { label: 'Go to Client Recommendations', action: () => scrollToSection('#testimonials') },
@@ -3985,6 +4415,7 @@ EDUCATION
       if (e.key === 'Escape') {
         closeCmdPalette();
         closeModal();
+        closeArticleModal();
         toggleBotChat(false);
       }
 
@@ -4421,8 +4852,413 @@ EDUCATION
       renderVizzes();
     });
 
+
+    // Knowledge Hub Article Database
+    const knowledgeArticles = [
+      {
+        slug: 'tableau-performance',
+        title: 'Tableau Performance Tuning',
+        category: 'Tableau',
+        difficulty: 'Advanced',
+        readingTime: '15 min',
+        status: 'Planned',
+        tags: ['Tableau', 'Optimization', 'BI'],
+        summary: 'Learn enterprise techniques for improving dashboard performance, query pruning, extract optimizations, and workbook layout tuning.',
+        overview: 'This article covers the principles of diagnosing and fixing slow Tableau workbooks. You will learn to use Tableau Performance Recording to isolate rendering vs. query bottlenecks and apply concrete design adjustments to load dashboards under 2 seconds.',
+        topics: ['Worksheet Rendering Pipeline', 'Performance Recording Analysis', 'Data Source Extract vs Live Strategies', 'Custom SQL vs Semantic Layer Calculations', 'Context Filters & LOD Optimization']
+      },
+      {
+        slug: 'dashboard-design',
+        title: 'Dashboard Design Best Practices',
+        category: 'Visualization',
+        difficulty: 'Intermediate',
+        readingTime: '10 min',
+        status: 'In Draft',
+        tags: ['Visualization', 'UX', 'Tableau'],
+        summary: 'Master visual hierarchy, color theory, spacing, and cognitive load reduction principles for enterprise business dashboards.',
+        overview: 'This guide outlines the UX principles required to build business dashboards that CXOs can read in under 5 seconds. We cover grid layouts, layout container hierarchy, and intentional color mapping for actionable reporting.',
+        topics: ['Grid layouts and layout containers', 'Visual hierarchy and reading patterns', 'Cognitive load reduction', 'Color theory and theme harmonization', 'Typography and chart formatting spacing']
+      },
+      {
+        slug: 'tableau-admin',
+        title: 'Tableau Server Administration',
+        category: 'Tableau',
+        difficulty: 'Advanced',
+        readingTime: '20 min',
+        status: 'Under Review',
+        tags: ['Tableau Server', 'Governance', 'Systems'],
+        summary: 'Configure, secure, monitor, and scale enterprise Tableau Server environments, workgroup databases, and backgrounder schedules.',
+        overview: 'An in-depth manual on configuring and scaling a multi-node Tableau Server topology. We cover permission mapping, licensing optimizations, backup procedures, and backgrounder process scheduling to ensure high uptime.',
+        topics: ['Multi-node Server Topology', 'Postgres Workgroup DB Access', 'Permission mapping and user security profiles', 'Backgrounder process optimization', 'Backup, recovery, and server upgrades']
+      },
+      {
+        slug: 'athena-optimization',
+        title: 'Athena Query Optimization',
+        category: 'SQL',
+        difficulty: 'Advanced',
+        readingTime: '12 min',
+        status: 'Published',
+        tags: ['AWS Athena', 'SQL', 'Cloud BI'],
+        summary: 'Optimize serverless queries over AWS S3 data lakes using partition pruning, columnar Parquet formats, and cost-reduction techniques.',
+        overview: 'This article demonstrates how to optimize Amazon Athena queries to achieve sub-second dashboard rendering times. It explains the mechanics of partition pruning, file merging, and query caching to save up to 90% in query costs.',
+        topics: ['Athena Serverless Mechanics', 'S3 Partitioning Strategies', 'Columnar File Formats (Parquet/ORC)', 'Query Tuning & Execution Plans', 'Cost Management and Scan Limits']
+      },
+      {
+        slug: 'sql-performance',
+        title: 'SQL Performance Optimization',
+        category: 'SQL',
+        difficulty: 'Advanced',
+        readingTime: '18 min',
+        status: 'Published',
+        tags: ['SQL', 'Databases', 'Optimization'],
+        summary: 'Tuning stored procedures, window functions, indices, and execution plans for large scale Oracle and PostgreSQL transaction tables.',
+        overview: 'A developer handbook on identifying database bottlenecks and refactoring queries. Learn to read execution plans, build indexing strategies, write efficient stored procedures, and configure materialized views.',
+        topics: ['Execution Plan Analysis', 'Indexing Strategies (B-Tree, Bitmap, GIN)', 'Stored Procedures vs CTEs', 'Temporary Tables & Database Views', 'Database Locks and Transaction Isolations']
+      },
+      {
+        slug: 'window-functions',
+        title: 'Window Functions Deep Dive',
+        category: 'SQL',
+        difficulty: 'Intermediate',
+        readingTime: '8 min',
+        status: 'Planned',
+        tags: ['SQL', 'Analytics Engineering'],
+        summary: 'Master complex analytical SQL window functions for cohort analysis, running totals, rankings, and lead/lag calculations.',
+        overview: 'This guide provides practical examples of SQL window functions. You will learn to use PARTITION BY, ORDER BY, and frame clauses (ROWS BETWEEN) to compute complex rolling metrics and historical trends without self-joins.',
+        topics: ['PARTITION BY and ORDER BY syntax', 'Ranking functions (ROW_NUMBER, DENSE_RANK)', 'Lead and Lag offsets', 'Frame clauses (ROWS/RANGE BETWEEN)', 'Running totals and moving averages']
+      },
+      {
+        slug: 'enterprise-rls',
+        title: 'Enterprise Row Level Security',
+        category: 'Architecture',
+        difficulty: 'Advanced',
+        readingTime: '14 min',
+        status: 'In Draft',
+        tags: ['Security', 'Governance', 'Tableau'],
+        summary: 'Implement secure dynamic row level security (RLS) configurations using database entitlement joins and Active Directory mapping.',
+        overview: 'Learn how to enforce data entitlements at scale. This article outlines the architecture of dynamic RLS in BI, detailing how to join transaction tables to security mapping tables and apply filters using system usernames.',
+        topics: ['Dynamic USERNAME() calculated filters', 'Entitlements Mapping Tables', 'Database Join Optimization for RLS', 'Active Directory User Sync', 'Performance considerations of RLS joins']
+      },
+      {
+        slug: 'aws-architecture',
+        title: 'AWS Analytics Architecture',
+        category: 'AWS',
+        difficulty: 'Advanced',
+        readingTime: '16 min',
+        status: 'Under Review',
+        tags: ['AWS', 'Architecture', 'Data Lake'],
+        summary: 'Architect modern data lake solutions using S3, Glue, Athena, Bedrock, and Tableau Cloud to process and visualize petabyte scale data.',
+        overview: 'A blueprint for building a secure and cost-efficient cloud analytics platform. We explore ingestion patterns, ETL automation with Glue and Step Functions, security settings, and live BI querying.',
+        topics: ['Cloud Ingestion Patterns', 'ETL Orchestration with AWS Glue', 'S3 Data Lake Landing, Raw, and Curated layers', 'Data Cataloging & Permissions (Lake Formation)', 'Athena Serverless BI connectivity']
+      },
+      {
+        slug: 'ai-in-tableau',
+        title: 'AI in Tableau',
+        category: 'AI',
+        difficulty: 'Advanced',
+        readingTime: '12 min',
+        status: 'Planned',
+        tags: ['Tableau', 'Generative AI', 'TabPy'],
+        summary: 'Integrate LLMs, vector database APIs, and python models natively into Tableau worksheets and dashboards using TabPy.',
+        overview: 'This case study details how to embed Large Language Models into Tableau dashboards. You will learn to deploy custom Python web services, load TabPy on the server, and write dashboard expressions to call generative API endpoints on user actions.',
+        topics: ['TabPy Server Installation & Security', 'Writing Tableau calculated scripts using TabPy', 'LLM API Integration (OpenAI/Bedrock)', 'Natural Language Query Interpretation', 'Caching TabPy returns for quick loading']
+      },
+      {
+        slug: 'prompt-engineering',
+        title: 'Prompt Engineering for BI',
+        category: 'AI',
+        difficulty: 'Intermediate',
+        readingTime: '10 min',
+        status: 'In Draft',
+        tags: ['Prompt Engineering', 'AI', 'BI'],
+        summary: 'Master prompt engineering templates and context injection styles to build AI-assisted SQL query generators and BI chatbots.',
+        overview: 'A guide on formatting prompts to generate clean database queries and analytics. We explore few-shot learning templates, schema injection, formatting constraints, and self-correction loops.',
+        topics: ['Few-shot learning prompt structures', 'Schema metadata context injection', 'SQL generation safety and formatting constraints', 'Self-correction prompt feedback loops', 'Prompt templates for conversational analytics']
+      },
+      {
+        slug: 'tableau-extensions',
+        title: 'Building Tableau Extensions',
+        category: 'Visualization',
+        difficulty: 'Advanced',
+        readingTime: '15 min',
+        status: 'Planned',
+        tags: ['JavaScript', 'Extensions API', 'Tableau'],
+        summary: 'Create custom interactive dashboard components, date selectors, and write-back forms using HTML5 and the Tableau Extensions API.',
+        overview: 'Learn how to write custom dashboard widgets. This tutorial walks through setting up the manifest (.trex) file, listening to workbook filter events, and writing back parameter adjustments to Tableau via JavaScript.',
+        topics: ['Tableau Extensions API SDK', 'Manifest (.trex) configuration', 'Event listeners for filter changes', 'Parameter write-back methods', 'UI styling with CSS and grid alignment']
+      },
+      {
+        slug: 'dashboard-governance',
+        title: 'Enterprise Dashboard Governance',
+        category: 'Architecture',
+        difficulty: 'Intermediate',
+        readingTime: '12 min',
+        status: 'Under Review',
+        tags: ['Governance', 'BI Management', 'Standardization'],
+        summary: 'Implement dashboard lifecycle management, automated QA checks, certification badges, and metadata audits at scale.',
+        overview: 'This article outlines a framework for dashboard governance in enterprise business units. We cover QA check-lists, peer-review cycles, certification indicators, and catalog indexing.',
+        topics: ['Dashboard Lifecycle Management (Dev -> Prod)', 'Automated QA and data validation check-lists', 'Certification indicators and branding standards', 'Metadata Auditing using Tableau REST API', 'Orphaned workbook clean-up procedures']
+      },
+      {
+        slug: 'analytics-engineering',
+        title: 'Analytics Engineering Best Practices',
+        category: 'Analytics Engineering',
+        difficulty: 'Intermediate',
+        readingTime: '14 min',
+        status: 'Planned',
+        tags: ['dbt', 'Analytics Engineering', 'SQL'],
+        summary: 'Implement software engineering practices in analytics: version control, dbt modeling, testing, documentation, and CI/CD.',
+        overview: 'A look into analytics engineering best practices. We explore how to manage SQL transformations using version control, build structured staging and core models in dbt, write automated tests, and run deployment pipelines.',
+        topics: ['dbt modeling layouts (Staging, Marts)', 'Version Control strategies (Git branches)', 'Automated testing for nulls and uniques', 'SQL coding style and guidelines', 'CI/CD deployment for data models']
+      },
+      {
+        slug: 'modern-bi',
+        title: 'Modern BI Architecture',
+        category: 'Architecture',
+        difficulty: 'Advanced',
+        readingTime: '16 min',
+        status: 'Planned',
+        tags: ['Architecture', 'Modern Data Stack', 'BI'],
+        summary: 'Design scalable BI stacks combining cloud warehouses, semantic layers, semantic models, and visual engines for self-service.',
+        overview: 'This article details how to architect a modern self-service BI system. We analyze the roles of cloud warehouses (BigQuery/Snowflake), semantic definition layers, data transformation tools, and Tableau/Power BI.',
+        topics: ['Cloud Data Warehouse configurations', 'Semantic layers and metric definitions', 'Data orchestration and pipeline flows', 'Self-service reporting access roles', 'Semantic modeling structures for rapid queries']
+      },
+      {
+        slug: 'databricks-etl',
+        title: 'Databricks ETL Pipelines',
+        category: 'Databricks',
+        difficulty: 'Advanced',
+        readingTime: '15 min',
+        status: 'In Draft',
+        tags: ['Databricks', 'PySpark', 'ETL'],
+        summary: 'Build high performance batch and streaming ETL pipelines inside Databricks using PySpark, Delta Lake, and Auto Loader.',
+        overview: 'Learn how to write scalable ETL workflows in PySpark. We cover reading files with Auto Loader, applying schema validation, writing to Delta tables with ACID guarantees, and scheduling workflows.',
+        topics: ['PySpark Dataframe API transformation', 'Delta Lake ACID transaction logs', 'Auto Loader directory file stream', 'Databricks Workflows orchestration', 'Performance tuning (Shuffling and Partitioning)']
+      }
+    ];
+
+    let currentKnowledgeFilter = 'all';
+
+    const knowledgeGrid = document.getElementById('knowledgeGrid');
+    const articleModal = document.getElementById('articleModal');
+    const articleModalCloseBtn = document.getElementById('articleModalCloseBtn');
+    const articleTitle = document.getElementById('articleTitle');
+    const articleStatusBadge = document.getElementById('articleStatusBadge');
+    const articleDifficulty = document.getElementById('articleDifficulty');
+    const articleReadTime = document.getElementById('articleReadTime');
+    const articleCategory = document.getElementById('articleCategory');
+    const articleTags = document.getElementById('articleTags');
+    const articleOverview = document.getElementById('articleOverview');
+    const articleTopicsCanvas = document.getElementById('articleTopicsCanvas');
+    const articleRelatedList = document.getElementById('articleRelatedList');
+    const articleBackBtn = document.getElementById('articleBackBtn');
+
+    function renderKnowledgeHub() {
+      if (!knowledgeGrid) return;
+      knowledgeGrid.innerHTML = '';
+
+      const filtered = knowledgeArticles.filter(art => {
+        return currentKnowledgeFilter === 'all' || art.category === currentKnowledgeFilter;
+      });
+
+      filtered.forEach(art => {
+        const card = document.createElement('div');
+        card.className = 'knowledge-card';
+        
+        let badgeClass = 'planned';
+        if (art.status === 'In Draft') badgeClass = 'draft';
+        else if (art.status === 'Under Review') badgeClass = 'review';
+        else if (art.status === 'Published') badgeClass = 'published';
+
+        let statusText = '📝 ' + art.status;
+        if (art.status === 'In Draft') statusText = '✍️ ' + art.status;
+        else if (art.status === 'Under Review') statusText = '👀 ' + art.status;
+        else if (art.status === 'Published') statusText = '✅ ' + art.status;
+
+        card.innerHTML = `
+          <div>
+            <div class="knowledge-card-header">
+              <span class="knowledge-card-category">${art.category}</span>
+              <span class="status-badge ${badgeClass}">${statusText}</span>
+            </div>
+            <h3 class="knowledge-card-title">${art.title}</h3>
+            <p class="knowledge-card-desc">${art.summary}</p>
+            <div class="knowledge-card-tags">
+              ${art.tags.map(t => `<span class="knowledge-card-tag">${t}</span>`).join('')}
+            </div>
+          </div>
+          <div class="knowledge-card-footer">
+            <div class="knowledge-card-meta">
+              <span class="difficulty-badge">${art.difficulty}</span>
+              <span>⏱️ ${art.readingTime}</span>
+            </div>
+            <span class="knowledge-cta">Read Preview →</span>
+          </div>
+        `;
+
+        card.addEventListener('click', () => openArticle(art.slug));
+        knowledgeGrid.appendChild(card);
+      });
+    }
+
+    // Markdown Parser Helper
+    function parseMarkdown(mdText) {
+      // Remove frontmatter
+      let cleanMd = mdText;
+      const frontmatterMatch = mdText.match(/^---([\s\S]*?)---/);
+      if (frontmatterMatch) {
+        cleanMd = mdText.substring(frontmatterMatch[0].length).trim();
+      }
+
+      // Convert Markdown carriage returns safely
+      const lines = cleanMd.split('\n');
+      let html = '';
+      let inList = false;
+
+      for (let i = 0; i < lines.length; i++) {
+        let line = lines[i].trim();
+        if (!line) {
+          if (inList) { html += '</ul>'; inList = false; }
+          continue;
+        }
+
+        // Headers
+        if (line.startsWith('### ')) {
+          if (inList) { html += '</ul>'; inList = false; }
+          html += `<h3>${line.substring(4)}</h3>`;
+        } else if (line.startsWith('## ')) {
+          if (inList) { html += '</ul>'; inList = false; }
+          html += `<h2>${line.substring(3)}</h2>`;
+        } else if (line.startsWith('# ')) {
+          if (inList) { html += '</ul>'; inList = false; }
+          html += `<h1>${line.substring(2)}</h1>`;
+        }
+        // Checkboxes / List Items
+        else if (line.startsWith('- [x] ') || line.startsWith('- [ ] ')) {
+          if (!inList) { html += '<ul class="topics-list">'; inList = true; }
+          const text = line.substring(6);
+          html += `<li class="checked-item"><span class="check-icon">✓</span> ${text}</li>`;
+        } else if (line.startsWith('- ') || line.startsWith('* ')) {
+          if (!inList) { html += '<ul>'; inList = true; }
+          html += `<li>${line.substring(2)}</li>`;
+        }
+        // Paragraphs
+        else {
+          if (inList) { html += '</ul>'; inList = false; }
+          line = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+          line = line.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
+          html += `<p>${line}</p>`;
+        }
+      }
+
+      if (inList) { html += '</ul>'; }
+      return html;
+    }
+
+    function openArticle(slug) {
+      const art = knowledgeArticles.find(a => a.slug === slug);
+      if (!art) return;
+
+      articleTitle.textContent = art.title;
+      articleDifficulty.textContent = art.difficulty;
+      articleReadTime.textContent = '⏱️ ' + art.readingTime + ' read';
+      articleCategory.textContent = art.category;
+
+      let badgeClass = 'planned';
+      if (art.status === 'In Draft') badgeClass = 'draft';
+      else if (art.status === 'Under Review') badgeClass = 'review';
+      else if (art.status === 'Published') badgeClass = 'published';
+
+      let statusText = '📝 ' + art.status;
+      if (art.status === 'In Draft') statusText = '✍️ ' + art.status;
+      else if (art.status === 'Under Review') statusText = '👀 ' + art.status;
+      else if (art.status === 'Published') statusText = '✅ ' + art.status;
+
+      articleStatusBadge.className = 'status-badge ' + badgeClass;
+      articleStatusBadge.textContent = statusText;
+
+      articleTags.innerHTML = art.tags.map(t => `<span class="knowledge-card-tag">${t}</span>`).join('');
+
+      // Populate Related Articles (3-5 recommendations)
+      articleRelatedList.innerHTML = '';
+      const related = knowledgeArticles.filter(a => a.slug !== slug && (a.category === art.category || a.difficulty === art.difficulty)).slice(0, 4);
+      related.forEach(rel => {
+        const item = document.createElement('a');
+        item.href = '#';
+        item.className = 'related-article-item';
+        item.textContent = rel.title;
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          openArticle(rel.slug);
+        });
+        articleRelatedList.appendChild(item);
+      });
+
+      // Loading layout
+      articleOverview.textContent = 'Loading article content...';
+      articleTopicsCanvas.innerHTML = '';
+
+      // Fetch the actual markdown file dynamically (Future Ready architecture!)
+      fetch('./content/knowledge/' + slug + '.md')
+        .then(res => {
+          if (!res.ok) throw new Error('Markdown file not found');
+          return res.text();
+        })
+        .then(mdText => {
+          // Parse frontmatter and render HTML dynamically
+          const parsedHtml = parseMarkdown(mdText);
+          
+          // Render parsed HTML inside the article Modal
+          articleOverview.innerHTML = parsedHtml;
+          articleTopicsCanvas.innerHTML = ''; // Topics list is inside the parsed HTML!
+        })
+        .catch(err => {
+          console.warn('Fallback to local registry: ', err);
+          // Fallback static template rendering if local directory fetching fails
+          articleOverview.textContent = art.overview;
+          articleTopicsCanvas.innerHTML = `<ul class="topics-list">
+            ${art.topics.map(t => `<li class="checked-item"><span class="check-icon">✓</span> ${t}</li>`).join('')}
+          </ul>`;
+        });
+
+      articleModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeArticleModal() {
+      if (articleModal) {
+        articleModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (articleModalCloseBtn) articleModalCloseBtn.addEventListener('click', closeArticleModal);
+    if (articleBackBtn) articleBackBtn.addEventListener('click', closeArticleModal);
+    if (articleModal) {
+      articleModal.addEventListener('click', (e) => {
+        if (e.target === articleModal) closeArticleModal();
+      });
+    }
+
+    // Filter Buttons logic for Knowledge Hub
+    const kFilters = document.querySelectorAll('.knowledge-filters .filter-btn');
+    if (kFilters) {
+      kFilters.forEach(btn => {
+        btn.addEventListener('click', () => {
+          kFilters.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentKnowledgeFilter = btn.getAttribute('data-category');
+          renderKnowledgeHub();
+        });
+      });
+    }
+
+    // Initialize Knowledge Hub Grid
+    renderKnowledgeHub();
+
     // Initial load
     renderVizzes();
+
   </script>
 
   <!-- JSON-LD Structured Data for SEO -->
