@@ -3988,41 +3988,7 @@ EDUCATION
       });
     });
 
-    // Testimonial Carousel
-    const slides = document.querySelectorAll('.rec-slide');
-    const prevBtn = document.getElementById('prevRecBtn');
-    const nextBtn = document.getElementById('nextRecBtn');
-    let currentSlideIdx = 0;
-
-    function showSlide(idx) {
-      slides.forEach(s => s.classList.remove('active'));
-      slides[idx].classList.add('active');
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentSlideIdx = (currentSlideIdx - 1 + slides.length) % slides.length;
-      showSlide(currentSlideIdx);
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentSlideIdx = (currentSlideIdx + 1) % slides.length;
-      showSlide(currentSlideIdx);
-    });
-
-    // Auto-slide Testimonials every 10s
-    let autoSlideInterval = setInterval(() => {
-      currentSlideIdx = (currentSlideIdx + 1) % slides.length;
-      showSlide(currentSlideIdx);
-    }, 10000);
-
-    // Stop auto-slide on user click
-    [prevBtn, nextBtn].forEach(btn => {
-      btn.addEventListener('click', () => {
-        clearInterval(autoSlideInterval);
-      });
-    });
-
-    // Project Cards Filtering Logic
+        // Project Cards Filtering Logic
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -4462,6 +4428,11 @@ EDUCATION
           top: offsetPosition,
           behavior: 'smooth'
         });
+
+        // Close command palette if open
+        if (typeof closeCmdPalette === 'function') {
+          closeCmdPalette();
+        }
       }
     }
 
@@ -5000,6 +4971,531 @@ EDUCATION
       "telephone": "+91 8452893918",
       "description": "Senior BI Developer & Analytics Consultant with 11+ years experience in Tableau, SQL, AWS S3, Athena, Databricks, and Conversational AI Extensions."
     }
+
+    // ==========================================
+    // Restored Features: Command Palette, Chatbot & Tableau Event Listeners
+    // ==========================================
+    
+    // Command Palette Logic
+    const cmdPaletteBackdrop = document.getElementById('cmdPaletteBackdrop');
+    const searchTriggerBtn = document.getElementById('searchTriggerBtn');
+    const cmdInput = document.getElementById('cmdInput');
+    const cmdList = document.getElementById('cmdList');
+
+    const commands = [
+      { label: 'Go to Home', action: () => scrollToSection('#home') },
+      { label: 'Go to Business Impact', action: () => scrollToSection('#impact') },
+      { label: 'Go to Experience History', action: () => scrollToSection('#experience') },
+      { label: 'Go to Case Studies & Projects', action: () => scrollToSection('#projects') },
+      { label: 'Go to Insights', action: () => scrollToSection('#insights') },
+      { label: 'Go to Technical Toolkit Skills', action: () => scrollToSection('#skills') },
+      { label: 'Go to Technical Architectures', action: () => scrollToSection('#architecture') },
+      { label: 'Go to Client Recommendations', action: () => scrollToSection('#testimonials') },
+      { label: 'Go to Interactive Tableau Dashboards', action: () => scrollToSection('#tableau-embeds') },
+      { label: 'Go to Certifications & Badges', action: () => scrollToSection('#certifications') },
+      { label: 'Go to Contact', action: () => scrollToSection('#contact') },
+      { label: 'Download Resume PDF', action: () => {
+        const link = document.createElement('a');
+        link.href = './assets/Ankur_Varshney_Resume.pdf';
+        link.download = 'Ankur_Varshney_Resume.pdf';
+        link.click();
+      }},
+      { label: 'Toggle Light/Dark Theme', action: () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        htmlEl.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+      }},
+      { label: 'Open AI Resume Assistant', action: () => toggleBotChat(true) }
+    ];
+
+    function openCmdPalette() {
+      cmdPaletteBackdrop.classList.add('active');
+      cmdInput.value = '';
+      renderCommands(commands);
+      setTimeout(() => cmdInput.focus(), 50);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCmdPalette() {
+      cmdPaletteBackdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function renderCommands(filteredCmds) {
+      cmdList.innerHTML = '';
+      filteredCmds.forEach((cmd, idx) => {
+        const li = document.createElement('li');
+        li.className = 'cmd-item' + (idx === 0 ? ' selected' : '');
+        li.innerHTML = `<span class="cmd-item-label">${cmd.label}</span>`;
+        li.addEventListener('click', () => {
+          cmd.action();
+        });
+        cmdList.appendChild(li);
+      });
+    }
+
+    searchTriggerBtn.addEventListener('click', openCmdPalette);
+    cmdPaletteBackdrop.addEventListener('click', (e) => {
+      if (e.target === cmdPaletteBackdrop) closeCmdPalette();
+    });
+
+    cmdInput.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      const filtered = commands.filter(c => c.label.toLowerCase().includes(q));
+      renderCommands(filtered);
+    });
+
+    // Keyboard controls for palette
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        if (cmdPaletteBackdrop.classList.contains('active')) {
+          closeCmdPalette();
+        } else {
+          openCmdPalette();
+        }
+      }
+      
+      if (e.key === 'Escape') {
+        closeCmdPalette();
+        closeModal();
+        closeArticleModal();
+        toggleBotChat(false);
+      }
+
+      if (cmdPaletteBackdrop.classList.contains('active')) {
+        const items = cmdList.querySelectorAll('.cmd-item');
+        let selectedIdx = Array.from(items).findIndex(item => item.classList.contains('selected'));
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (items.length > 0) {
+            items[selectedIdx].classList.remove('selected');
+            selectedIdx = (selectedIdx + 1) % items.length;
+            items[selectedIdx].classList.add('selected');
+            items[selectedIdx].scrollIntoView({ block: 'nearest' });
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (items.length > 0) {
+            items[selectedIdx].classList.remove('selected');
+            selectedIdx = (selectedIdx - 1 + items.length) % items.length;
+            items[selectedIdx].classList.add('selected');
+            items[selectedIdx].scrollIntoView({ block: 'nearest' });
+          }
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (items.length > 0 && selectedIdx !== -1) {
+            const label = items[selectedIdx].querySelector('.cmd-item-label').textContent;
+            const targetCmd = commands.find(c => c.label === label);
+            if (targetCmd) targetCmd.action();
+          }
+        }
+      }
+    });
+
+    // AI Chatbot Logic
+    const botTriggerBtn = document.getElementById('botTriggerBtn');
+    const botChatContainer = document.getElementById('botChatContainer');
+    const botChatCloseBtn = document.getElementById('botChatCloseBtn');
+    const botMessagesArea = document.getElementById('botMessagesArea');
+    const botInput = document.getElementById('botInput');
+    const botSendBtn = document.getElementById('botSendBtn');
+    const botChips = document.querySelectorAll('.bot-chip');
+
+    const botKnowledge = {
+      skills: 'Ankur is an expert in Tableau (Desktop, Server, Prep) and Power BI. On the database layer, he specializes in Oracle SQL/PL-SQL stored procedures, PostgreSQL, SAP HANA, and Greenplum. He also writes Python scripts for automation, uses PySpark inside Databricks, and builds Generative AI extensions using LangChain and AWS Bedrock APIs.',
+      ai: 'Ankur developed an Agentic Conversational BI Extension using LangChain, OpenAI/Bedrock, and TabPy. This allows dashboard users to ask natural-language questions (e.g. "show sales trend by region") and updates calculations and worksheets in real time.',
+      aws: 'Ankur has engineered robust cloud analytics pipelines using AWS. He stores high-volume transaction databases as columnar Parquet files on S3, catalogs them with Glue, and connects Tableau live using Athena as a virtualized SQL engine, decreasing load times by 35% and saving USD 50K.',
+      ge: 'At GE Power (under TCS), Ankur automated defect reporting and CAS compliance dashboarding, saving 95% manual effort. He designed a Python fuzzy deduplication script to clean supplier databases and optimized lead-time dashboards, lowering latency by 35%.',
+      relocate: 'Ankur is currently based in Gurugram, India, and is open to global relocation opportunities, specifically in Singapore, Hong Kong, UAE, UK, and Germany.',
+      summary: 'Ankur Varshney has 11+ years of experience delivering BI architectures, cloud data pipelines, and analytics platforms. He has worked for Sun Life Financial, HCL Technologies, and Tata Consultancy Services, serving VPs and CXOs across finance and insurance.',
+      education: 'Ankur holds a B.Tech. in Electronics & Communications from Krishna Institute of Engineering and Technology (KIET), Ghaziabad (UPTU, Noida), graduated in 2015.',
+      hcl: 'At HCL Technologies (2021-2023) in Pune, Ankur served as Tableau & Data Viz Lead. He led a team of 2 developers to design a 5-year financial planning and budgeting dashboard suite for Deutsche Bank (CXO-level decision makers), integrated SAP HANA, and managed PySpark/Databricks pipelines.',
+      tcs: 'At Tata Consultancy Services (2015-2021) as an IT Analyst/Senior BI Developer, Ankur led a team of 5 developers. He built HR analytics with dynamic RLS for First Abu Dhabi Bank (FAB), and led defect tracking, data deduplication, and supply chain lead-time dashboards for GE Power.',
+      sunlife: 'At Sun Life Financial (2023-Present) in Gurugram, Ankur works as a Senior BI Developer/Data Analyst. He manages Tableau Server/Cloud administration, built LangChain/Bedrock AI conversational extensions, designed Qualtrics/Salesforce CSAT integrations, and drove a 30% increase in platform adoption.',
+      rls: 'Ankur has deep expertise in Row-Level Security (RLS) and Level of Detail (LOD) calculations. At First Abu Dhabi Bank (FAB), he implemented entitlement-based RLS logic using dynamic entitlement tables via SQL joins, securing compensation dashboards for 80+ HR managers.',
+      certifications: "Ankur's credentials include: (1) 2025 AWS Cloud Quest Winner for hands-on cloud labs, (2) Accredited Certified Tableau Desktop Specialist, and (3) Accredited Certified Tableau Data Scientist.",
+      databases: 'Ankur has 11+ years of database engineering experience, specializing in Oracle (SQL, PL/SQL stored procedures, views, custom functions), PostgreSQL, Greenplum (GPDB), SAP HANA, and Aurora DB.',
+      python: 'Ankur uses Python for data deduplication (fuzzy matching), Tableau REST API/TSC CLI automations, and LLM orchestration (LangChain, OpenAI, Bedrock API).',
+      salary: 'Ankur is open to discussing competitive compensation and salary packages depending on the relocation city, cost of living, and total benefits. Please contact him at vyankur@gmail.com to discuss specifics.',
+      start: 'Ankur is available for interviews and can join within standard notice periods. For exact timeline negotiations, please reach out to him directly at vyankur@gmail.com or +91 8452893918.',
+      contact: 'You can contact Ankur Varshney directly via: Email: vyankur@gmail.com | Phone/WhatsApp: +91 8452893918 | LinkedIn: linkedin.com/in/vyankur | Tableau Public: public.tableau.com/profile/ankur.varshney'
+    };
+
+    function toggleBotChat(show) {
+      if (show) {
+        botChatContainer.classList.add('active');
+        setTimeout(() => botInput.focus(), 150);
+      } else {
+        botChatContainer.classList.remove('active');
+      }
+    }
+
+    botTriggerBtn.addEventListener('click', () => {
+      const active = botChatContainer.classList.contains('active');
+      toggleBotChat(!active);
+    });
+
+    botChatCloseBtn.addEventListener('click', () => {
+      toggleBotChat(false);
+    });
+
+    function appendMessage(text, sender) {
+      const div = document.createElement('div');
+      div.className = `bot-msg ${sender}`;
+      div.textContent = text;
+      botMessagesArea.appendChild(div);
+      botMessagesArea.scrollTop = botMessagesArea.scrollHeight;
+    }
+
+    function showTypingAndRespond(responseText) {
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'bot-msg bot';
+      typingDiv.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+      botMessagesArea.appendChild(typingDiv);
+      botMessagesArea.scrollTop = botMessagesArea.scrollHeight;
+
+      setTimeout(() => {
+        typingDiv.remove();
+        appendMessage(responseText, 'bot');
+      }, 700);
+    }
+
+    function processUserMessage(query) {
+      appendMessage(query, 'user');
+      const q = query.toLowerCase();
+      let response = "I'm not fully sure about that detail. You can ask me about his Tableau/AWS skills, the Conversational AI extension, GE Power defect automation, or his relocation preferences.";
+
+      if (q.includes('skill') || q.includes('tool') || q.includes('stack') || q.includes('power bi')) {
+        response = botKnowledge.skills;
+      } else if (q.includes('ai') || q.includes('langchain') || q.includes('bedrock') || q.includes('openai') || q.includes('conversational') || q.includes('bmad') || q.includes('extension')) {
+        response = botKnowledge.ai;
+      } else if (q.includes('aws') || q.includes('athena') || q.includes('s3') || q.includes('glue') || q.includes('sagemaker') || q.includes('lake')) {
+        response = botKnowledge.aws;
+      } else if (q.includes('ge ') || q.includes('ge-') || q.includes('gepower') || q.includes('defect') || q.includes('dedup') || q.includes('fuzzy') || q.includes('50k') || q.includes('power')) {
+        response = botKnowledge.ge;
+      } else if (q.includes('reloc') || q.includes('sponsor') || q.includes('vis') || q.includes('singapore') || q.includes('germany') || q.includes('uk') || q.includes('uae') || q.includes('dubai') || q.includes('london') || q.includes('munich') || q.includes('hong kong') || q.includes('countr')) {
+        response = botKnowledge.relocate;
+      } else if (q.includes('sun life') || q.includes('sunlife') || q.includes('qualtrics') || q.includes('adoption') || q.includes('satisfaction') || q.includes('insurance')) {
+        response = botKnowledge.sunlife;
+      } else if (q.includes('hcl') || q.includes('deutsche') || q.includes('hana') || q.includes('databricks') || q.includes('pyspark') || q.includes('esg') || q.includes('db')) {
+        response = botKnowledge.hcl;
+      } else if (q.includes('tcs') || q.includes('tata')) {
+        response = botKnowledge.tcs;
+      } else if (q.includes('security') || q.includes('rls') || q.includes('entitlement') || q.includes('access') || q.includes('lod') || q.includes('fab') || q.includes('abu dhabi') || q.includes('compensation')) {
+        response = botKnowledge.rls;
+      } else if (q.includes('cert') || q.includes('credential') || q.includes('badge') || q.includes('winner') || q.includes('quest') || q.includes('award') || q.includes('specialist')) {
+        response = botKnowledge.certifications;
+      } else if (q.includes('oracle') || q.includes('postgres') || q.includes('database') || q.includes('sql') || q.includes('pl/sql') || q.includes('procedure') || q.includes('greenplum')) {
+        response = botKnowledge.databases;
+      } else if (q.includes('python') || q.includes('script') || q.includes('automation') || q.includes('cli') || q.includes('tsc')) {
+        response = botKnowledge.python;
+      } else if (q.includes('educat') || q.includes('degree') || q.includes('kiet') || q.includes('college') || q.includes('university') || q.includes('study') || q.includes('studied') || q.includes('btech') || q.includes('noida') || q.includes('ghaziabad')) {
+        response = botKnowledge.education;
+      } else if (q.includes('salary') || q.includes('expect') || q.includes('compensat') || q.includes('money')) {
+        response = botKnowledge.salary;
+      } else if (q.includes('start') || q.includes('avail') || q.includes('join') || q.includes('notice') || q.includes('interview')) {
+        response = botKnowledge.start;
+      } else if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone') || q.includes('call') || q.includes('address') || q.includes('whatsapp') || q.includes('hire') || q.includes('mail')) {
+        response = botKnowledge.contact;
+      } else if (q.includes('summary') || q.includes('experience') || q.includes('who is') || q.includes('ankur') || q.includes('profile')) {
+        response = botKnowledge.summary;
+      }
+      showTypingAndRespond(response);
+    }
+
+    botSendBtn.addEventListener('click', () => {
+      const text = botInput.value.trim();
+      if (text) {
+        processUserMessage(text);
+        botInput.value = '';
+      }
+    });
+
+    botInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const text = botInput.value.trim();
+        if (text) {
+          processUserMessage(text);
+          botInput.value = '';
+        }
+      }
+    });
+
+    botChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const query = chip.getAttribute('data-query');
+        processUserMessage(query);
+      });
+    });
+
+    // Tableau Public Showcase Dynamic Generator
+    const tableauVizzes = [
+      {
+        title: "Sunburst Chart",
+        repo: "SunburstChart_15824893645210",
+        sheet: "SunburstChart",
+        views: 923,
+        category: "Advanced Charts",
+        desc: "A custom multi-layered sunburst visualization showing hierarchical sales structures."
+      },
+      {
+        title: "Ankur Varshney Interactive Resume",
+        repo: "Resume_AnkurVarshney_1",
+        sheet: "Ankur",
+        views: 425,
+        category: "Interactive Resumes",
+        desc: "A comprehensive BI-based resume detailing work history, tools, and timelines."
+      },
+      {
+        title: "Boston Crime Rate Monitoring",
+        repo: "BostonCrimeRateMonitoringDashboard",
+        sheet: "BostonCrimeRateMonitoringDashboard",
+        views: 355,
+        category: "Public Safety",
+        desc: "Interactive dashboard analyzing crime trends, times, and districts in Boston."
+      },
+      {
+        title: "HYPERMART Retail Case Study",
+        repo: "HYPERMART-RetailCaseStudy",
+        sheet: "LoyalCustomers",
+        views: 293,
+        category: "Retail BI",
+        desc: "Sales efficiency, loyal customer analysis, and profitability breakdown."
+      },
+      {
+        title: "Netflix Data Analysis",
+        repo: "EY-Assignment_AnkurV",
+        sheet: "AssignmentNetflixData",
+        views: 193,
+        category: "Entertainment",
+        desc: "Analysis of Netflix releases, categories, and country metrics over years."
+      },
+      {
+        title: "A Bird's-Eye View of Clinical Trials",
+        repo: "Abirds-eyeviewofclinicaltrials_15891361781530",
+        sheet: "BirdsEyeViewofPharmaceuticalResearchandDevelopment",
+        views: 171,
+        category: "Healthcare",
+        desc: "Clinical trials analysis focusing on phases, enrollments, and status."
+      },
+      {
+        title: "UK Gender Pay Gap Data",
+        repo: "UKGenderPayGapData",
+        sheet: "UKGenderPayGap",
+        views: 147,
+        category: "Social Analytics",
+        desc: "Analysis of pay differences across genders, industries, and organizational sizes."
+      },
+      {
+        title: "Deaths in Game of Thrones",
+        repo: "Resume_15625053051110",
+        sheet: "DeathsinGOT",
+        views: 144,
+        category: "Entertainment",
+        desc: "Visual analysis of characters' deaths and seasons data in Game of Thrones."
+      },
+      {
+        title: "Indian States Race against COVID-19",
+        repo: "Book1_15884137801770",
+        sheet: "Covid-19RacingBarChart",
+        views: 139,
+        category: "Healthcare",
+        desc: "Dynamic racing bar chart tracking infection timelines across Indian states."
+      },
+      {
+        title: "Roles in Analytics (Dynamic Design)",
+        repo: "Dynamic_Design_wip",
+        sheet: "RolesinAnalytics",
+        views: 139,
+        category: "Career Insights",
+        desc: "Exploration of analytics roles, skill demands, and salary curves."
+      },
+      {
+        title: "COVID-19 India Tracker",
+        repo: "COVID-19India__16171936486620",
+        sheet: "Covid19inINDIA",
+        views: 128,
+        category: "Healthcare",
+        desc: "Statistical charts tracking active cases, recoveries, and testing rates in India."
+      },
+      {
+        title: "Avg High Temperatures (#WOW)",
+        repo: "AvgHighTemperatures",
+        sheet: "Dashboard1",
+        views: 127,
+        category: "Weather",
+        desc: "WorkOutWednesday challenge plotting historical temperature anomalies."
+      },
+      {
+        title: "Case Study - Generico",
+        repo: "CaseStudy-Generico",
+        sheet: "CaseStudy-Generico",
+        views: 121,
+        category: "Retail BI",
+        desc: "Business study analyzing retail expansion metrics and supply chains."
+      },
+      {
+        title: "Dynamically Display Top N vs Other",
+        repo: "DynamicallyDisplaytheTopNvsOther-tute",
+        sheet: "DynamicallyDisplaytheTopNvsOther",
+        views: 104,
+        category: "Tableau Tutorials",
+        desc: "A tutorial dashboard demonstrating dynamic parameter sorting for Top N values."
+      },
+      {
+        title: "Sub-Categories vs Sales (Region Wise)",
+        repo: "Assignment_15646584186800",
+        sheet: "Dashboard2",
+        views: 97,
+        category: "Retail BI",
+        desc: "Geographical sales distribution and subcategory product breakdowns."
+      },
+      {
+        title: "Case Study - WebMD",
+        repo: "CaseStudy-WebMD",
+        sheet: "WebMD",
+        views: 96,
+        category: "Healthcare",
+        desc: "Visualizing health queries, medical views, and symptom search statistics."
+      },
+      {
+        title: "1/30 Day's Challenge",
+        repo: "130DaysChallenge",
+        sheet: "130DaysChallenge",
+        views: 91,
+        category: "Career Insights",
+        desc: "Daily visualization challenge submissions focusing on global statistics."
+      },
+      {
+        title: "Customer Scatter Plot",
+        repo: "CustomerScatterPlot_15702716139670",
+        sheet: "Dashboard1",
+        views: 74,
+        category: "Retail BI",
+        desc: "Customer segment distribution plotting purchase counts against sales value."
+      },
+      {
+        title: "Table Formatting: Highlight Subcategories",
+        repo: "TableFormattingHighlightLowestHighestSubcategories",
+        sheet: "TableFormatting",
+        views: 8,
+        category: "Tableau Tutorials",
+        desc: "Calculations highlighting maximum and minimum fields inside text tables."
+      },
+      {
+        title: "Table Formatting: LOOKUP() and ZN()",
+        repo: "TableFormattingHandlingMissingValueswithLOOKUPandZN",
+        sheet: "HandlingMissingValues",
+        views: 6,
+        category: "Tableau Tutorials",
+        desc: "Solving table cell sparseness using LOOKUP and zero-null replacement."
+      },
+      {
+        title: "Calendar Extension Sheet",
+        repo: "SheetVizCalendarDashboardUsingaTableauExtension",
+        sheet: "SheetExtesnion-Calander",
+        views: 5,
+        category: "Extensions",
+        desc: "Testing date range hooks with Tableau dashboard extensions."
+      },
+      {
+        title: "Calendar Extension Dashboard",
+        repo: "CalendarDashboardUsingaTableauExtension",
+        sheet: "CalendarDashboardUsingaTableauExtension",
+        views: 4,
+        category: "Extensions",
+        desc: "Custom interactive date-picker extension integrated on a dashboard."
+      }
+    ];
+
+    const tableauListContainer = document.getElementById('tableauListContainer');
+    const tableauIframe = document.getElementById('tableauIframe');
+    const tableauLoader = document.getElementById('tableauLoader');
+    const activeVizTitle = document.getElementById('activeVizTitle');
+    const activeVizCategory = document.getElementById('activeVizCategory');
+    const activeVizViews = document.getElementById('activeVizViews');
+    const vizSearchInput = document.getElementById('vizSearchInput');
+    const tabFilterBtns = document.querySelectorAll('.tableau-filter-btn');
+
+    let currentVizFilter = 'all';
+    let vizSearchQuery = '';
+
+    // Handle iframe loading events to hide loader
+    tableauIframe.addEventListener('load', () => {
+      tableauLoader.classList.add('hidden');
+    });
+
+    function loadViz(viz) {
+      tableauLoader.classList.remove('hidden');
+      const url = `https://public.tableau.com/views/${viz.repo}/${viz.sheet}?:showVizHome=no&:embed=true`;
+      tableauIframe.src = url;
+      activeVizTitle.textContent = viz.title;
+      activeVizCategory.textContent = viz.category;
+      activeVizViews.textContent = `👁️ ${viz.views} views`;
+      
+      // Update active state in sidebar list
+      document.querySelectorAll('.tableau-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-repo') === viz.repo) {
+          item.classList.add('active');
+        }
+      });
+    }
+
+    function renderVizzes() {
+      tableauListContainer.innerHTML = '';
+      
+      const filtered = tableauVizzes.filter(viz => {
+        const matchesCategory = currentVizFilter === 'all' || viz.category === currentVizFilter;
+        const matchesSearch = viz.title.toLowerCase().includes(vizSearchQuery) || 
+                              viz.desc.toLowerCase().includes(vizSearchQuery) ||
+                              viz.category.toLowerCase().includes(vizSearchQuery);
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        tableauListContainer.innerHTML = '<div class="no-results" style="padding: 1.5rem; text-align: center; color: var(--muted); font-size: 0.8rem;">No matching dashboards found.</div>';
+        return;
+      }
+
+      filtered.forEach((viz) => {
+        const item = document.createElement('div');
+        // If it matches the active iframe src, make it active
+        const isActive = tableauIframe.src.includes(viz.repo);
+        item.className = 'tableau-item' + (isActive ? ' active' : '');
+        item.setAttribute('data-repo', viz.repo);
+        
+        item.innerHTML = `
+          <div class="tableau-item-title">${viz.title}</div>
+          <div class="tableau-item-meta">
+            <span class="tableau-item-badge">${viz.category}</span>
+            <span class="tableau-item-views">👁️ ${viz.views}</span>
+          </div>
+        `;
+        
+        item.addEventListener('click', () => loadViz(viz));
+        tableauListContainer.appendChild(item);
+      });
+    }
+
+    // Filter Buttons Click
+    tabFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentVizFilter = btn.getAttribute('data-category');
+        renderVizzes();
+      });
+    });
+
+    // Search Input Event
+    vizSearchInput.addEventListener('input', (e) => {
+      vizSearchQuery = e.target.value.toLowerCase();
+      renderVizzes();
+    });
+    
+    // ==========================================
   </script>
 </body>
 </html>
