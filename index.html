@@ -1062,31 +1062,281 @@
       margin-top: 0.1rem;
     }
 
-    /* Interactive Dashboards */
-    .dashboard-container {
+    /* Interactive Dashboards - Tableau Public Showcase */
+    .tableau-layout {
+      display: grid;
+      grid-template-columns: 2.3fr 1fr;
+      gap: 1.5rem;
       margin-top: 3rem;
+      height: 700px;
+    }
+
+    .tableau-viewer {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.5rem;
+      padding: 1rem;
       box-shadow: 0 12px 36px var(--shadow);
-      overflow: hidden;
-    }
-
-    .dashboard-iframe-wrapper {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 ratio */
-      height: 0;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
-    .dashboard-iframe-wrapper iframe {
+    .tableau-viewer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tableau-viewer-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .tableau-viewer-meta {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .tableau-viewer-meta span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .tableau-iframe-container {
+      position: relative;
+      flex-grow: 1;
+      height: calc(100% - 45px);
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #00000008;
+    }
+
+    .tableau-iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .tableau-loader {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border: 0;
+      background: var(--card-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
+
+    .tableau-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .tableau-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--border);
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .tableau-loader p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .tableau-sidebar {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 12px 36px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .tableau-search-box {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .tableau-search-box input {
+      width: 100%;
+      padding: 0.65rem 0.75rem 0.65rem 2rem;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .tableau-search-box input:focus {
+      border-color: var(--primary);
+    }
+
+    .tableau-search-box svg {
+      position: absolute;
+      left: 0.65rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      fill: var(--muted);
+    }
+
+    .tableau-filter-wrapper {
+      margin-bottom: 1rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 0.25rem;
+    }
+
+    .tableau-filter-wrapper::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    .tableau-filter-wrapper::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    .tableau-filter-btn {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      cursor: pointer;
+      margin-right: 0.35rem;
+      transition: all 0.2s;
+    }
+
+    .tableau-filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--text);
+    }
+
+    .tableau-filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #FFF;
+    }
+
+    .tableau-list {
+      flex-grow: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding-right: 0.25rem;
+    }
+
+    .tableau-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .tableau-list::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    .tableau-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 0.75rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .tableau-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .tableau-item.active {
+      border-color: var(--primary);
+      background: var(--shadow);
+      box-shadow: inset 3px 0 0 var(--primary);
+    }
+
+    .tableau-item-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .tableau-item-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.1rem;
+    }
+
+    .tableau-item-badge {
+      display: inline-block;
+      padding: 0.15rem 0.4rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: var(--border);
+      color: var(--text);
+    }
+
+    .tableau-item-views {
+      font-size: 0.68rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    @media (max-width: 992px) {
+      .tableau-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      
+      .tableau-viewer {
+        height: 500px;
+      }
+
+      .tableau-sidebar {
+        height: 450px;
+      }
     }
 
     /* AI Portfolio / GitHub Grid */
@@ -2505,9 +2755,45 @@
           <p class="section-copy">Interactive visualizations hosted on Tableau Public.</p>
         </div>
 
-        <div class="dashboard-container">
-          <div class="dashboard-iframe-wrapper">
-            <iframe src="https://public.tableau.com/views/Superstore_24/Overview?:showVizHome=no&:embed=true" title="Tableau Public Dashboard Showcase"></iframe>
+        <div class="tableau-layout">
+          <!-- Left Panel: Large Dashboard Player -->
+          <div class="tableau-viewer">
+            <div class="tableau-viewer-header">
+              <div class="tableau-viewer-title" id="activeVizTitle">Sunburst Chart</div>
+              <div class="tableau-viewer-meta">
+                <span id="activeVizCategory">Advanced Charts</span>
+                <span id="activeVizViews">👁️ 923 views</span>
+              </div>
+            </div>
+            <div class="tableau-iframe-container">
+              <!-- Loading Spinner Overlay -->
+              <div class="tableau-loader" id="tableauLoader">
+                <div class="tableau-spinner"></div>
+                <p>Loading Tableau dashboard dynamically...</p>
+              </div>
+              <iframe id="tableauIframe" src="https://public.tableau.com/views/SunburstChart_15824893645210/SunburstChart?:showVizHome=no&:embed=true" title="Tableau Public Dashboard Showcase" loading="lazy"></iframe>
+            </div>
+          </div>
+
+          <!-- Right Panel: Search, Category Filters, and Sidebar Selector -->
+          <div class="tableau-sidebar">
+            <div class="tableau-search-box">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <input type="text" placeholder="Search dashboards..." id="vizSearchInput">
+            </div>
+            
+            <div class="tableau-filter-wrapper">
+              <button class="tableau-filter-btn active" data-category="all">All</button>
+              <button class="tableau-filter-btn" data-category="Advanced Charts">Charts</button>
+              <button class="tableau-filter-btn" data-category="Retail BI">Retail</button>
+              <button class="tableau-filter-btn" data-category="Healthcare">Health</button>
+              <button class="tableau-filter-btn" data-category="Extensions">Extensions</button>
+              <button class="tableau-filter-btn" data-category="Entertainment">Media</button>
+            </div>
+
+            <div class="tableau-list" id="tableauListContainer">
+              <!-- Dashboard items will be generated dynamically here -->
+            </div>
           </div>
         </div>
       </div>
@@ -3476,6 +3762,7 @@ EDUCATION
       { label: 'Go to Technical Toolkit Skills', action: () => scrollToSection('#skills') },
       { label: 'Go to Technical Architectures', action: () => scrollToSection('#architecture') },
       { label: 'Go to Client Recommendations', action: () => scrollToSection('#testimonials') },
+      { label: 'Go to Embedded Dashboards', action: () => scrollToSection('#tableau-embeds') },
       { label: 'Go to Certifications & Badges', action: () => scrollToSection('#certifications') },
       { label: 'Go to Contact', action: () => scrollToSection('#contact') },
       { label: 'Download Resume PDF', action: () => {
@@ -3689,6 +3976,275 @@ EDUCATION
         processUserMessage(query);
       });
     });
+
+    // Tableau Public Showcase Dynamic Generator
+    const tableauVizzes = [
+      {
+        title: "Sunburst Chart",
+        repo: "SunburstChart_15824893645210",
+        sheet: "SunburstChart",
+        views: 923,
+        category: "Advanced Charts",
+        desc: "A custom multi-layered sunburst visualization showing hierarchical sales structures."
+      },
+      {
+        title: "Ankur Varshney Interactive Resume",
+        repo: "Resume_AnkurVarshney_1",
+        sheet: "Ankur",
+        views: 425,
+        category: "Interactive Resumes",
+        desc: "A comprehensive BI-based resume detailing work history, tools, and timelines."
+      },
+      {
+        title: "Boston Crime Rate Monitoring",
+        repo: "BostonCrimeRateMonitoringDashboard",
+        sheet: "BostonCrimeRateMonitoringDashboard",
+        views: 355,
+        category: "Public Safety",
+        desc: "Interactive dashboard analyzing crime trends, times, and districts in Boston."
+      },
+      {
+        title: "HYPERMART Retail Case Study",
+        repo: "HYPERMART-RetailCaseStudy",
+        sheet: "LoyalCustomers",
+        views: 293,
+        category: "Retail BI",
+        desc: "Sales efficiency, loyal customer analysis, and profitability breakdown."
+      },
+      {
+        title: "Netflix Data Analysis",
+        repo: "EY-Assignment_AnkurV",
+        sheet: "AssignmentNetflixData",
+        views: 193,
+        category: "Entertainment",
+        desc: "Analysis of Netflix releases, categories, and country metrics over years."
+      },
+      {
+        title: "A Bird's-Eye View of Clinical Trials",
+        repo: "Abirds-eyeviewofclinicaltrials_15891361781530",
+        sheet: "BirdsEyeViewofPharmaceuticalResearchandDevelopment",
+        views: 171,
+        category: "Healthcare",
+        desc: "Clinical trials analysis focusing on phases, enrollments, and status."
+      },
+      {
+        title: "UK Gender Pay Gap Data",
+        repo: "UKGenderPayGapData",
+        sheet: "UKGenderPayGap",
+        views: 147,
+        category: "Social Analytics",
+        desc: "Analysis of pay differences across genders, industries, and organizational sizes."
+      },
+      {
+        title: "Deaths in Game of Thrones",
+        repo: "Resume_15625053051110",
+        sheet: "DeathsinGOT",
+        views: 144,
+        category: "Entertainment",
+        desc: "Visual analysis of characters' deaths and seasons data in Game of Thrones."
+      },
+      {
+        title: "Indian States Race against COVID-19",
+        repo: "Book1_15884137801770",
+        sheet: "Covid-19RacingBarChart",
+        views: 139,
+        category: "Healthcare",
+        desc: "Dynamic racing bar chart tracking infection timelines across Indian states."
+      },
+      {
+        title: "Roles in Analytics (Dynamic Design)",
+        repo: "Dynamic_Design_wip",
+        sheet: "RolesinAnalytics",
+        views: 139,
+        category: "Career Insights",
+        desc: "Exploration of analytics roles, skill demands, and salary curves."
+      },
+      {
+        title: "COVID-19 India Tracker",
+        repo: "COVID-19India__16171936486620",
+        sheet: "Covid19inINDIA",
+        views: 128,
+        category: "Healthcare",
+        desc: "Statistical charts tracking active cases, recoveries, and testing rates in India."
+      },
+      {
+        title: "Avg High Temperatures (#WOW)",
+        repo: "AvgHighTemperatures",
+        sheet: "Dashboard1",
+        views: 127,
+        category: "Weather",
+        desc: "WorkOutWednesday challenge plotting historical temperature anomalies."
+      },
+      {
+        title: "Case Study - Generico",
+        repo: "CaseStudy-Generico",
+        sheet: "CaseStudy-Generico",
+        views: 121,
+        category: "Retail BI",
+        desc: "Business study analyzing retail expansion metrics and supply chains."
+      },
+      {
+        title: "Dynamically Display Top N vs Other",
+        repo: "DynamicallyDisplaytheTopNvsOther-tute",
+        sheet: "DynamicallyDisplaytheTopNvsOther",
+        views: 104,
+        category: "Tableau Tutorials",
+        desc: "A tutorial dashboard demonstrating dynamic parameter sorting for Top N values."
+      },
+      {
+        title: "Sub-Categories vs Sales (Region Wise)",
+        repo: "Assignment_15646584186800",
+        sheet: "Dashboard2",
+        views: 97,
+        category: "Retail BI",
+        desc: "Geographical sales distribution and subcategory product breakdowns."
+      },
+      {
+        title: "Case Study - WebMD",
+        repo: "CaseStudy-WebMD",
+        sheet: "WebMD",
+        views: 96,
+        category: "Healthcare",
+        desc: "Visualizing health queries, medical views, and symptom search statistics."
+      },
+      {
+        title: "1/30 Day's Challenge",
+        repo: "130DaysChallenge",
+        sheet: "130DaysChallenge",
+        views: 91,
+        category: "Career Insights",
+        desc: "Daily visualization challenge submissions focusing on global statistics."
+      },
+      {
+        title: "Customer Scatter Plot",
+        repo: "CustomerScatterPlot_15702716139670",
+        sheet: "Dashboard1",
+        views: 74,
+        category: "Retail BI",
+        desc: "Customer segment distribution plotting purchase counts against sales value."
+      },
+      {
+        title: "Table Formatting: Highlight Subcategories",
+        repo: "TableFormattingHighlightLowestHighestSubcategories",
+        sheet: "TableFormatting",
+        views: 8,
+        category: "Tableau Tutorials",
+        desc: "Calculations highlighting maximum and minimum fields inside text tables."
+      },
+      {
+        title: "Table Formatting: LOOKUP() and ZN()",
+        repo: "TableFormattingHandlingMissingValueswithLOOKUPandZN",
+        sheet: "HandlingMissingValues",
+        views: 6,
+        category: "Tableau Tutorials",
+        desc: "Solving table cell sparseness using LOOKUP and zero-null replacement."
+      },
+      {
+        title: "Calendar Extension Sheet",
+        repo: "SheetVizCalendarDashboardUsingaTableauExtension",
+        sheet: "SheetExtesnion-Calander",
+        views: 5,
+        category: "Extensions",
+        desc: "Testing date range hooks with Tableau dashboard extensions."
+      },
+      {
+        title: "Calendar Extension Dashboard",
+        repo: "CalendarDashboardUsingaTableauExtension",
+        sheet: "CalendarDashboardUsingaTableauExtension",
+        views: 4,
+        category: "Extensions",
+        desc: "Custom interactive date-picker extension integrated on a dashboard."
+      }
+    ];
+
+    const tableauListContainer = document.getElementById('tableauListContainer');
+    const tableauIframe = document.getElementById('tableauIframe');
+    const tableauLoader = document.getElementById('tableauLoader');
+    const activeVizTitle = document.getElementById('activeVizTitle');
+    const activeVizCategory = document.getElementById('activeVizCategory');
+    const activeVizViews = document.getElementById('activeVizViews');
+    const vizSearchInput = document.getElementById('vizSearchInput');
+    const tabFilterBtns = document.querySelectorAll('.tableau-filter-btn');
+
+    let currentVizFilter = 'all';
+    let vizSearchQuery = '';
+
+    // Handle iframe loading events to hide loader
+    tableauIframe.addEventListener('load', () => {
+      tableauLoader.classList.add('hidden');
+    });
+
+    function loadViz(viz) {
+      tableauLoader.classList.remove('hidden');
+      const url = `https://public.tableau.com/views/${viz.repo}/${viz.sheet}?:showVizHome=no&:embed=true`;
+      tableauIframe.src = url;
+      activeVizTitle.textContent = viz.title;
+      activeVizCategory.textContent = viz.category;
+      activeVizViews.textContent = `👁️ ${viz.views} views`;
+      
+      // Update active state in sidebar list
+      document.querySelectorAll('.tableau-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-repo') === viz.repo) {
+          item.classList.add('active');
+        }
+      });
+    }
+
+    function renderVizzes() {
+      tableauListContainer.innerHTML = '';
+      
+      const filtered = tableauVizzes.filter(viz => {
+        const matchesCategory = currentVizFilter === 'all' || viz.category === currentVizFilter;
+        const matchesSearch = viz.title.toLowerCase().includes(vizSearchQuery) || 
+                              viz.desc.toLowerCase().includes(vizSearchQuery) ||
+                              viz.category.toLowerCase().includes(vizSearchQuery);
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        tableauListContainer.innerHTML = '<div class="no-results" style="padding: 1.5rem; text-align: center; color: var(--muted); font-size: 0.8rem;">No matching dashboards found.</div>';
+        return;
+      }
+
+      filtered.forEach((viz) => {
+        const item = document.createElement('div');
+        // If it matches the active iframe src, make it active
+        const isActive = tableauIframe.src.includes(viz.repo);
+        item.className = 'tableau-item' + (isActive ? ' active' : '');
+        item.setAttribute('data-repo', viz.repo);
+        
+        item.innerHTML = `
+          <div class="tableau-item-title">${viz.title}</div>
+          <div class="tableau-item-meta">
+            <span class="tableau-item-badge">${viz.category}</span>
+            <span class="tableau-item-views">👁️ ${viz.views}</span>
+          </div>
+        `;
+        
+        item.addEventListener('click', () => loadViz(viz));
+        tableauListContainer.appendChild(item);
+      });
+    }
+
+    // Filter Buttons Click
+    tabFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentVizFilter = btn.getAttribute('data-category');
+        renderVizzes();
+      });
+    });
+
+    // Search Input Event
+    vizSearchInput.addEventListener('input', (e) => {
+      vizSearchQuery = e.target.value.toLowerCase();
+      renderVizzes();
+    });
+
+    // Initial load
+    renderVizzes();
   </script>
 
   <!-- JSON-LD Structured Data for SEO -->
