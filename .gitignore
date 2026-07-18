@@ -1,0 +1,11 @@
+# Exclude temporary resumes and docs
+Ankur_V_Resume.pdf
+IMPLEMENTATION_PLAN.md
+
+# Logs and system files
+*.log
+.gemini/
+.agents/
+.vscode/
+node_modules/
+.DS_Store
