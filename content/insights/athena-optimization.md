@@ -7,9 +7,9 @@ category: "SQL"
 difficulty: "Advanced"
 readingTime: "12 min"
 tags: ['AWS Athena', 'SQL', 'Cloud BI']
+featured: True
 publishedDate: "2026-07-18"
 lastUpdated: "2026-07-18"
-featured: false
 ---
 
 # Athena Query Optimization
@@ -25,5 +25,5 @@ This article demonstrates how to optimize Amazon Athena queries to achieve sub-s
 ## Expected Publication
 The complete version of this article is scheduled to be published in the **Knowledge Hub** by **Q3 2026**.
 
-## Back to Portfolio
-[Return to Knowledge Hub](#knowledge-hub)
+## Back to Insights
+[Return to Insights](#/insights)

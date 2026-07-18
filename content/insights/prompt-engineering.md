@@ -7,9 +7,9 @@ category: "AI"
 difficulty: "Intermediate"
 readingTime: "10 min"
 tags: ['Prompt Engineering', 'AI', 'BI']
+featured: False
 publishedDate: "2026-07-18"
 lastUpdated: "2026-07-18"
-featured: false
 ---
 
 # Prompt Engineering for BI
@@ -25,5 +25,5 @@ A guide on formatting prompts to generate clean database queries and analytics. 
 ## Expected Publication
 The complete version of this article is scheduled to be published in the **Knowledge Hub** by **Q3 2026**.
 
-## Back to Portfolio
-[Return to Knowledge Hub](#knowledge-hub)
+## Back to Insights
+[Return to Insights](#/insights)

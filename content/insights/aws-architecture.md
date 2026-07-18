@@ -7,9 +7,9 @@ category: "AWS"
 difficulty: "Advanced"
 readingTime: "16 min"
 tags: ['AWS', 'Architecture', 'Data Lake']
+featured: False
 publishedDate: "2026-07-18"
 lastUpdated: "2026-07-18"
-featured: false
 ---
 
 # AWS Analytics Architecture
@@ -25,5 +25,5 @@ A blueprint for building a secure and cost-efficient cloud analytics platform. W
 ## Expected Publication
 The complete version of this article is scheduled to be published in the **Knowledge Hub** by **Q3 2026**.
 
-## Back to Portfolio
-[Return to Knowledge Hub](#knowledge-hub)
+## Back to Insights
+[Return to Insights](#/insights)

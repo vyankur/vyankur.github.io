@@ -860,74 +860,63 @@
       line-height: 1.6;
     }
 
-    /* Recommendations / Testimonials */
-    .rec-carousel {
-      position: relative;
+    /* Recommendations Testimonials Grid Styles */
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
       margin-top: 3rem;
+    }
+
+    .rec-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 3rem;
-      box-shadow: 0 12px 36px var(--shadow);
+      padding: 2rem;
+      box-shadow: 0 10px 30px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
     }
 
-    .rec-slide {
-      display: none;
-      animation: panelIn 0.4s ease both;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .rec-slide.active {
-      display: block;
+    .rec-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: 0 15px 35px var(--shadow);
     }
 
     .rec-quote {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
       font-style: italic;
-      line-height: 1.5;
-      margin-bottom: 2rem;
-      position: relative;
-      font-weight: 300;
+      margin-bottom: 1.5rem;
+      font-family: 'Outfit', sans-serif;
     }
 
     .rec-author {
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      font-weight: 700;
       color: var(--primary);
     }
 
     .rec-author-title {
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       color: var(--muted);
-      margin-top: 0.2rem;
+      margin-top: 0.25rem;
     }
 
-    .rec-controls {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
+    @media (max-width: 1024px) {
+      .rec-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    .rec-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text);
-      transition: background 0.3s;
-    }
-
-    .rec-btn:hover {
-      background: var(--border);
+    @media (max-width: 768px) {
+      .rec-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Certifications Grid & Roadmap */
@@ -2347,6 +2336,67 @@
         right: 2rem;
       }
     }
+
+    /* Print Media Queries for Professional Resume Output */
+    @media print {
+      body {
+        background: #FFF !important;
+        color: #000 !important;
+        font-family: Arial, sans-serif !important;
+      }
+      .nav, .theme-toggle, .search-trigger, #botTriggerBtn, #botChatContainer,
+      .cmd-palette-backdrop, #tableau-embeds, #github, .rec-controls,
+      .knowledge-filters, .project-modal, #article-view-content, #project-view-content,
+      .contact-layout form, .btn, .tableau-layout, .gallery-svg-container,
+      .certifications-container, .roadmap-dot, .chatbot-trigger, #viewRoadmapBtn,
+      #roadmapSection, .project-card-footer {
+        display: none !important;
+      }
+      #main-page-content {
+        display: block !important;
+      }
+      .section {
+        padding: 1rem 0 !important;
+        background: #FFF !important;
+        page-break-inside: avoid;
+        border: none !important;
+      }
+      .shell {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+      }
+      .section-title {
+        color: #000 !important;
+        font-size: 1.4rem !important;
+      }
+      .section-head {
+        margin-bottom: 0.75rem !important;
+      }
+      .projects-grid, .rec-grid, .knowledge-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+      }
+      .project-card, .rec-card, .knowledge-card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        page-break-inside: avoid;
+        padding: 0.75rem !important;
+        background: #FFF !important;
+      }
+      .timeline-panel {
+        display: block !important;
+        opacity: 1 !important;
+        position: static !important;
+        background: #FFF !important;
+        border: 1px solid #ddd !important;
+        margin-bottom: 1rem !important;
+        padding: 0.75rem !important;
+      }
+      .timeline-tabs {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2364,7 +2414,7 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#impact">Impact</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#knowledge-hub">Knowledge Hub</a></li>
+          <li><a href="#insights">Insights</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#resume">Resume</a></li>
@@ -2380,7 +2430,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main-page-content">
     <!-- Hero Section -->
     <section class="section hero" id="home">
       <div class="shell">
@@ -2796,26 +2846,30 @@
     </section>
 
     <!-- Skills Section -->
-        <!-- Knowledge Hub Section -->
-    <section class="section" id="knowledge-hub">
+        <!-- Insights Section -->
+    <section class="section" id="insights">
       <div class="shell">
         <div class="section-head">
           <div class="eyebrow">Knowledge Hub</div>
-          <h2 class="section-title">Things I've <em>learned.</em></h2>
-          <p class="section-copy">Sharing practical lessons from building enterprise analytics platforms, Tableau solutions, cloud pipelines, SQL optimization and AI-powered analytics.</p>
-        </div>
-
-        <div class="knowledge-filters" style="margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
-          <button class="filter-btn active" data-category="all">All Articles</button>
-          <button class="filter-btn" data-category="Tableau">Tableau</button>
-          <button class="filter-btn" data-category="SQL">SQL</button>
-          <button class="filter-btn" data-category="AWS">AWS</button>
-          <button class="filter-btn" data-category="AI">AI</button>
-          <button class="filter-btn" data-category="Architecture">Architecture</button>
+          <h2 class="section-title">Knowledge <em>Hub.</em></h2>
+          <p class="section-copy">Sharing practical lessons from enterprise analytics, Tableau, SQL, AWS, AI and Analytics Engineering.</p>
         </div>
 
         <div class="knowledge-grid" id="knowledgeGrid">
-          <!-- Populated dynamically via JS from markdown registry -->
+          <!-- Populated dynamically via JS from articles.json -->
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 0.85rem; color: var(--muted); font-weight: 500;" id="roadmapCountText">Showing 6 of 15 planned insights</span>
+          <button class="btn secondary" id="viewRoadmapBtn" style="padding: 0.65rem 1.5rem; font-size: 0.85rem;">View Knowledge Roadmap</button>
+        </div>
+
+        <!-- Knowledge Roadmap Section -->
+        <div id="roadmapSection" style="display: none; margin-top: 3.5rem; border-top: 1px solid var(--border); padding-top: 2.5rem; animation: fadeIn 0.4s ease;">
+          <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem; text-align: center; font-family: 'Outfit', sans-serif;">2026 Technical Insights Roadmap</h3>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;" id="roadmapGrid">
+            <!-- Populated dynamically via JS -->
+          </div>
         </div>
       </div>
     </section>
@@ -3179,31 +3233,34 @@
           <h2 class="section-title">Feedback from <em>colleagues.</em></h2>
         </div>
 
-        <div class="rec-carousel">
-          <div class="rec-slide active">
+        <div class="rec-grid">
+          <div class="rec-card">
             <p class="rec-quote">"Ankur's expertise in Tableau and data architecture was key to optimizing our supply chain dashboards. He simplified complex queries and designed incredibly intuitive dashboards for our directors."</p>
-            <div class="rec-author">Engineering Manager</div>
-            <div class="rec-author-title">GE Power Supply Chain Client</div>
+            <div>
+              <div class="rec-author">Engineering Manager</div>
+              <div class="rec-author-title">GE Power Supply Chain Client</div>
+            </div>
           </div>
-          <div class="rec-slide">
+          <div class="rec-card">
             <p class="rec-quote">"Ankur led our BI dashboard delivery with extreme professionalism. He has deep technical knowledge in SQL, Tableau Server, and performance recording. Under his direction, manual efforts were cut by 95%."</p>
-            <div class="rec-author">Lead Analytics Architect</div>
-            <div class="rec-author-title">TCS Consulting Division</div>
+            <div>
+              <div class="rec-author">Lead Analytics Architect</div>
+              <div class="rec-author-title">TCS Consulting Division</div>
+            </div>
           </div>
-          <div class="rec-slide">
+          <div class="rec-card">
             <p class="rec-quote">"Ankur is an outstanding Tableau lead. He architected our 5-year financial planning dashboards, successfully connecting live feeds to SAP HANA with rapid load times. His work is highly valued by our executive leads."</p>
-            <div class="rec-author">Finance Director</div>
-            <div class="rec-author-title">Deutsche Bank / HCL Technologies Client</div>
+            <div>
+              <div class="rec-author">Finance Director</div>
+              <div class="rec-author-title">Deutsche Bank / HCL Technologies Client</div>
+            </div>
           </div>
-          <div class="rec-slide">
+          <div class="rec-card">
             <p class="rec-quote">"Ankur's work on dashboard innovation and LangChain/Bedrock AI extensions has transformed our self-service capabilities. He successfully drove platform adoption by 30% and engineered secure RLS pipelines."</p>
-            <div class="rec-author">Product Owner / Change Manager</div>
-            <div class="rec-author-title">Sun Life Financial</div>
-          </div>
-
-          <div class="rec-controls">
-            <button class="rec-btn" id="prevRecBtn" aria-label="Previous Recommendation">←</button>
-            <button class="rec-btn" id="nextRecBtn" aria-label="Next Recommendation">→</button>
+            <div>
+              <div class="rec-author">Product Owner / Change Manager</div>
+              <div class="rec-author-title">Sun Life Financial</div>
+            </div>
           </div>
         </div>
       </div>
@@ -3777,13 +3834,117 @@ EDUCATION
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- Full Page Article Template -->
+  <div id="article-view-content" style="display: none; padding-top: 100px; padding-bottom: 60px;">
+    <div class="shell">
+      <div style="margin-bottom: 2rem;">
+        <a href="#/insights" class="btn secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; font-size: 0.85rem; text-decoration: none;">
+          ← Back to Insights
+        </a>
+      </div>
+      
+      <div class="article-modal-header" style="border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <h1 class="section-title" id="article-view-title" style="margin: 0; text-align: left; font-size: 2.2rem; line-height: 1.2;">Article Title</h1>
+          <span class="status-badge" id="article-view-status">📝 Planned</span>
+        </div>
+        <div class="article-modal-meta" style="margin-top: 1rem; display: flex; gap: 1rem; align-items: center;">
+          <span class="difficulty-badge" id="article-view-difficulty">Intermediate</span>
+          <span id="article-view-readtime">⏱️ 15 min read</span>
+          <span id="article-view-category" style="color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">Tableau</span>
+        </div>
+        <div class="knowledge-card-tags" id="article-view-tags" style="margin-top: 1rem; margin-bottom: 0;"></div>
+      </div>
+
+      <div class="article-modal-grid">
+        <div class="article-main-content" id="article-view-body" style="font-size: 1rem; line-height: 1.7; color: var(--text);">
+          <!-- Rendered markdown content -->
+        </div>
+
+        <div class="article-sidebar">
+          <h4 style="margin-top: 0; font-size: 0.9rem; font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Expected Publication</h4>
+          <p style="font-size: 0.9rem; font-weight: 600; color: var(--primary); margin: 0.5rem 0 2rem 0;">Q3 2026</p>
+
+          <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Related Insights</h4>
+          <div class="related-articles-list" id="article-view-related">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full Page Project Storyteller Template -->
+  <div id="project-view-content" style="display: none; padding-top: 100px; padding-bottom: 60px;">
+    <div class="shell">
+      <div style="margin-bottom: 2rem;">
+        <a href="#projects" class="btn secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; font-size: 0.85rem; text-decoration: none;">
+          ← Back to Projects
+        </a>
+      </div>
+
+      <div class="project-modal-header" style="border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span class="knowledge-card-category" id="project-view-tag" style="font-weight: 700; color: var(--primary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em;">Analytics Engineering</span>
+            <h1 class="section-title" id="project-view-title" style="margin: 0.25rem 0 0 0; text-align: left; font-size: 2.2rem; line-height: 1.2;">Project Title</h1>
+          </div>
+          <div class="project-modal-actions-row" id="project-view-links" style="display: flex; gap: 0.75rem;">
+            <!-- Dynamically populated buttons -->
+          </div>
+        </div>
+      </div>
+
+      <div class="article-modal-grid">
+        <div class="article-main-content" style="font-size: 1rem; line-height: 1.7; color: var(--text);">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 0; margin-bottom: 0.75rem; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.35rem;">Project Overview</h3>
+          <p id="project-view-overview" style="margin-bottom: 2rem;"></p>
+
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.35rem;">Business Challenge</h3>
+          <p id="project-view-challenge" style="margin-bottom: 2rem;"></p>
+
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.35rem;">Solution</h3>
+          <p id="project-view-solution" style="margin-bottom: 2rem;"></p>
+
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.35rem;">Architecture Diagram</h3>
+          <div id="project-view-svg-canvas" style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; overflow: hidden; display: flex; align-items: center; justify-content: center; height: 180px;">
+            <!-- SVG -->
+          </div>
+          <p id="project-view-svg-explanation" style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 2rem; font-style: italic;"></p>
+
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.35rem;">Key Learnings</h3>
+          <ul id="project-view-learnings" style="padding-left: 1.25rem; margin-bottom: 2rem; list-style-type: square; display: flex; flex-direction: column; gap: 0.5rem;">
+            <!-- Bullet list -->
+          </ul>
+        </div>
+
+        <div class="article-sidebar">
+          <h4 style="margin-top: 0; font-size: 0.9rem; font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Technology Stack</h4>
+          <div class="project-card-badges" id="project-view-techs" style="margin-top: 0.75rem; margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 0.35rem;">
+            <!-- Tech badges -->
+          </div>
+
+          <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Business Impact</h4>
+          <div id="project-view-impact" style="margin-top: 0.75rem; margin-bottom: 2rem;">
+            <!-- Impact bullets -->
+          </div>
+
+          <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Related Insights</h4>
+          <div class="related-articles-list" id="project-view-related-insights">
+            <!-- Related insights links -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Footer -->
   <footer class="footer">
     <div class="shell">
       <ul class="footer-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#knowledge-hub">Knowledge Hub</a></li>
+        <li><a href="#insights">Insights</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -3912,948 +4073,543 @@ EDUCATION
       });
     });
 
-    // Detailed Project Modal Case Studies Data
-        const projectCaseStudies = {
+    // Detailed Project Case Studies Data (Storyteller Edition)
+    const projectCaseStudies = {
       'ai-bi': {
         tag: 'Tableau + AI Extension',
         title: 'Agentic Conversational BI Extension',
         overview: 'An enterprise-grade Tableau Dashboard Extension built with Python, LangChain, and AWS Bedrock that enables natural-language queries directly against worksheet summary tables, rendering custom viz blocks.',
-        problem: 'Global business unit leads needed instant answers on historical headcounts, sales metrics, and ESG stats without waiting for BI team ticket sprints.',
-        challenge: 'Executing sub-second natural language processing via TabPy on Tableau Server worksheets without exposing cloud endpoints or database credentials.',
+        challenge: 'Global business unit leads needed instant answers on historical headcounts, sales metrics, and ESG stats without waiting for BI team ticket sprints. The challenge was executing sub-second natural language processing via TabPy on Tableau Server worksheets without exposing cloud endpoints or database credentials.',
         solution: 'Engineered a TabPy middleware agent using LangChain, SageMaker endpoints, and Bedrock. The extension reads worksheet schema tables, interprets analytical intent, and runs SQL/calculated field filters dynamically.',
-        impact: 'Enabled self-service analytics for 120+ global leaders, accelerating decision-making by eliminating pipeline wait-times.',
+        archExplanation: 'The Tableau Dashboard UI triggers the custom Extension SDK, which routes queries to the TabPy backend. The python agent (built with LangChain) parses the metadata, queries the AWS Bedrock models, and updates calculations on the live worksheet.',
         techs: ['LangChain', 'AWS Bedrock', 'SageMaker', 'TabPy', 'Python', 'OpenAI'],
-        lessons: 'Caching sheet tables locally in browser sessionStorage prevents redundant server calls and improves response speed.',
+        impact: ['95% reduction in manual query wait times', 'Accelerated self-service BI adoption for 120+ global leaders', 'Reduced team ticket backlog by 35%'],
+        learnings: ['TabPy server container isolation guarantees security', 'SessionStorage caching of sheet schema prevents redundant API roundtrips', 'Prompt schema injection format limits LLM hallucinations'],
         github: 'https://github.com/vyankur/tableau-ai-conversational-extension',
         demo: '#',
-        svg: `<svg width="100%" height="100%" viewBox="0 0 500 150">
-          <rect x="20" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="28" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="56" y="79" font-size="8" fill="var(--text)" font-weight="600">Tableau UI</text>
-          <path d="M110 75 L140 75" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="140" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="148" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
-          <text x="176" y="79" font-size="8" fill="var(--text)" font-weight="600">TabPy Server</text>
-          <path d="M230 75 L260 75" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="260" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="268" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openai.svg"/>
-          <text x="296" y="79" font-size="8" fill="var(--text)" font-weight="600">LangChain</text>
-          <path d="M350 75 L380 75" stroke="var(--text)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="380" y="50" width="100" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="388" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonwebservices.svg"/>
-          <text x="416" y="79" font-size="8" fill="var(--text)" font-weight="600">AWS Bedrock</text>
+        relatedInsights: ['tableau-performance', 'ai-in-tableau', 'prompt-engineering'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
             </marker>
           </defs>
+          <rect x="10" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <image x="16" y="40" width="20" height="20" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
+          <text x="42" y="54" font-size="7" fill="var(--text)" font-weight="600">Tableau UI</text>
+          <path d="M80 50 L115 50" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="120" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <image x="126" y="40" width="20" height="20" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
+          <text x="152" y="54" font-size="7" fill="var(--text)" font-weight="600">TabPy</text>
+          <path d="M190 50 L225 50" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="230" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <image x="236" y="40" width="20" height="20" href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openai.svg"/>
+          <text x="260" y="54" font-size="7" fill="var(--text)" font-weight="600">LangChain</text>
+          <path d="M300 50 L335 50" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="340" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <image x="346" y="40" width="20" height="20" href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonwebservices.svg"/>
+          <text x="372" y="54" font-size="6.5" fill="var(--text)" font-weight="600">AWS Bedrock</text>
         </svg>`
       },
       'calendar': {
-        tag: 'Tableau Extensions',
-        title: 'Tableau Calendar Extension',
-        overview: 'A custom period date picker dashboard object developed to resolve native Tableau date-filtering limitations across non-related worksheets on a single dashboard.',
-        problem: 'Tableau lacks simple support for complex date selectors (e.g., custom rolling periods like financial week starts) across distinct worksheet connections.',
-        challenge: 'Applying multiple dates triggers infinite workbook reloading loops due to event listener collisions.',
-        solution: 'Built a calendar widget with CSS grids using the Tableau Extension Javascript API to map selection scopes to workbook parameters.',
-        impact: 'Standardized date selectors across 15+ central dashboard suites, improving user satisfaction by 20%.',
-        techs: ['JavaScript', 'HTML5', 'Vanilla CSS', 'Tableau Extensions API'],
-        lessons: 'Using event debouncing keeps parameter refreshes smooth without locking Tableau client rendering.',
-        github: 'https://github.com/vyankur/Tableau-Extension-Calander-Demo02',
+        tag: 'Tableau Custom Viz',
+        title: 'Interactive Tableau Calendar Dashboard',
+        overview: 'A custom calendar visualization in Tableau showing date-level metrics, CSAT scores, and case volumes using radial math and LOD calculations.',
+        challenge: 'Standard Tableau calendars lack interactive row detail, requiring complex calculated offsets to align days of the week across varying month spans without breaking grids.',
+        solution: 'Designed a row-level dataset joined to date indices. Used Level of Detail (LOD) calculations to determine the start of the week and custom math to compute radial alignment charts.',
+        archExplanation: 'Clean database date tables feed Tableau directly. Level of Detail calculations (e.g. FIXED) determine month grids and week numbers. Clicking a calendar day highlights corresponding timeline cases.',
+        techs: ['Tableau', 'LOD Calculations', 'Data Modeling', 'Radial Math'],
+        impact: ['Improved operational visibility of daily support volumes by 45%', 'Replaced 6 disparate report worksheets into a single tab', 'User dashboard feedback ratings reached 9.4/10'],
+        learnings: ['Tableau density marks handle large date points without lagging', 'LOD expressions must account for timezone differences', 'Custom radial math works best when combined with simple parameter filters'],
+        github: 'https://github.com/vyankur/tableau-custom-calendar',
         demo: '#',
-        svg: `<svg width="100%" height="100%" viewBox="0 0 500 150">
-          <rect x="20" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="28" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="56" y="79" font-size="8" fill="var(--text)" font-weight="600">Tableau UI</text>
-          <path d="M110 75 L140 75" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="140" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="148" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"/>
-          <text x="176" y="79" font-size="8" fill="var(--text)" font-weight="600">JS Widget</text>
-          <path d="M230 75 L260 75" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="260" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="268" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/>
-          <text x="296" y="79" font-size="8" fill="var(--text)" font-weight="600">CSS Grid</text>
-          <path d="M350 75 L380 75" stroke="var(--text)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="380" y="50" width="100" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="388" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="416" y="79" font-size="8" fill="var(--text)" font-weight="600">Workbook Sync</text>
+        relatedInsights: ['tableau-performance', 'dashboard-design', 'tableau-extensions'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
             </marker>
           </defs>
+          <rect x="10" y="30" width="90" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="20" y="54" font-size="7" fill="var(--text)" font-weight="600">Date Dimension</text>
+          <path d="M100 50 L145 50" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="150" y="30" width="110" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="160" y="54" font-size="7" fill="var(--text)" font-weight="600">LOD Grids & Weekdays</text>
+          <path d="M260 50 L305 50" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="310" y="30" width="110" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="320" y="54" font-size="7" fill="var(--text)" font-weight="600">Interactive Calendar</text>
         </svg>`
       },
       'aws-pipeline': {
-        tag: 'AWS Cloud BI',
-        title: 'AWS Athena & S3 Reporting Pipeline',
-        overview: 'High-throughput cloud data lake integration connecting Tableau Server live dashboards to Amazon Athena, virtualizing multi-million row transaction tables stored in S3.',
-        problem: 'Directly querying transactional databases caused severe locking. Extracting 50M+ rows into local Tableau files led to server crashes.',
-        challenge: 'Optimizing raw CSV querying over S3 data lakes to maintain dashboard load latencies under 5 seconds.',
-        solution: 'Re-architected pipeline using AWS Glue to convert raw events into columnar Apache Parquet. Partitioned data by year/month and connected Tableau via Athena live connectors.',
-        impact: 'Decreased dashboard render speeds by 35% and saved over $50K annually in cloud querying query-scan fees.',
-        techs: ['Amazon Athena', 'AWS S3', 'AWS Glue', 'Parquet', 'Tableau'],
-        lessons: 'Columnar file structures (Parquet) and partition pruning are critical to keeping Athena querying costs low.',
-        github: 'https://github.com/vyankur/tableau-athena-s3-pipeline',
+        tag: 'Cloud Architecture',
+        title: 'AWS Data Lake Analytics Pipeline',
+        overview: 'Serverless data lake analytics architecture querying transaction logs on AWS S3 using AWS Glue cataloging, Athena SQL, and live Tableau dashboard connections.',
+        challenge: 'Querying petabyte-scale raw customer logs was slow, expensive, and strained production database engines, leading to dashboard latency times of over 45 seconds.',
+        solution: 'Designed a serverless data pipeline storing files as columnar Parquet on S3, partitioning by date, registering schemas with Glue Crawlers, and exposing Athena as a SQL endpoint.',
+        archExplanation: 'Raw JSON files land in S3, triggers AWS Lambda to flatten schemas, writes to Curated Parquet S3 layers, Glue catalogs metadata, and Tableau connects live via Athena virtualized SQL query layers.',
+        techs: ['AWS S3', 'AWS Glue', 'AWS Lambda', 'Athena', 'Tableau', 'Parquet'],
+        impact: ['$50K annual AWS query cost savings', 'Decreased dashboard render times from 45s to under 3s', 'Structured query scan sizes reduced by 85%'],
+        learnings: ['Columnar formatting (Parquet) decreases scanned bytes by 90%', 'Partition pruning using S3 prefixes is critical for cost limits', 'Query caching in Athena speeds up recurring Tableau filters'],
+        github: 'https://github.com/vyankur/aws-serverless-data-lake',
         demo: '#',
-        svg: `<svg width="100%" height="100%" viewBox="0 0 500 150">
-          <rect x="20" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="28" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazons3.svg"/>
-          <text x="56" y="79" font-size="8" fill="var(--text)" font-weight="600">AWS S3</text>
-          <path d="M110 75 L140 75" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="140" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="148" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonwebservices.svg"/>
-          <text x="176" y="79" font-size="8" fill="var(--text)" font-weight="600">Glue Catalog</text>
-          <path d="M230 75 L260 75" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="260" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="268" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonwebservices.svg"/>
-          <text x="296" y="79" font-size="8" fill="var(--text)" font-weight="600">Athena SQL</text>
-          <path d="M350 75 L380 75" stroke="var(--text)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="380" y="50" width="100" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="388" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="416" y="79" font-size="8" fill="var(--text)" font-weight="600">Tableau Cloud</text>
+        relatedInsights: ['athena-optimization', 'aws-architecture', 'tableau-performance'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
             </marker>
           </defs>
+          <rect x="10" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="20" y="54" font-size="7" fill="var(--text)" font-weight="600">S3 Ingest</text>
+          <path d="M80 50 L115 50" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="120" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="130" y="54" font-size="7" fill="var(--text)" font-weight="600">Parquet S3</text>
+          <path d="M190 50 L225 50" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="230" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="240" y="54" font-size="7" fill="var(--text)" font-weight="600">Glue Catalog</text>
+          <path d="M300 50 L335 50" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="340" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="350" y="54" font-size="7" fill="var(--text)" font-weight="600">Athena / Tableau</text>
         </svg>`
       },
       'repo-analytics': {
-        tag: 'BI Administration',
-        title: 'Tableau Server Repository Analytics',
-        overview: 'System governance dashboard querying the Tableau PostgreSQL Workgroup repository database directly to track adoption, permissions, and orphan dashboards.',
-        problem: 'Admins had no automated method to identify unused workbooks, compliance leaks, and licensing waste across 1000+ users.',
-        challenge: 'Querying active workgroup tables could lock core system schemas and impact production dashboard speeds.',
-        solution: 'Configured a read-replica PG database sync, created scheduled views tracking active sessions, and built a comprehensive Tableau adoption panel.',
-        impact: 'Cleaned up 40% of unused workbook assets, audited RLS rule compliance, and reclaimed 80+ redundant creator licenses.',
-        techs: ['PostgreSQL', 'Tableau Server', 'SQL', 'System Auditing'],
-        lessons: 'Querying replica databases prevents system locking and maintains high server uptime.',
-        github: 'https://github.com/vyankur/tableau-server-repository-analytics',
+        tag: 'Analytics Engineering',
+        title: 'Data Analytics Portfolio Metrics',
+        overview: 'Data pipeline and dashboard suite tracking portfolio visits, visitor profiles, and interactions to audit content reach.',
+        challenge: 'Measuring portfolio outreach and chatbot metrics without violating visitor privacy requirements was difficult using standard tools.',
+        solution: 'Developed a serverless log capture endpoint in AWS API Gateway, routing payloads to Lambda and storing them in DynamoDB for Tableau query analysis.',
+        archExplanation: 'Static HTML pages trigger lightweight fetch hooks on load. API Gateway receives details, triggers Lambda to write to DynamoDB, and Athena maps tables to live Tableau charts.',
+        techs: ['AWS API Gateway', 'Lambda', 'DynamoDB', 'Athena', 'Tableau', 'Serverless'],
+        impact: ['100% serverless tracking running at zero base cost', 'Captured 1,200+ unique recruitment visits', 'Ensured GDPR compliance with full data anonymity'],
+        learnings: ['API Gateway caching prevents database writes on refresh spamming', 'Athena query views should use string parsing for IP geo-lookups', 'Keep payload schemas minimalist to prevent browser latency during loads'],
+        github: 'https://github.com/vyankur/portfolio-analytics-pipeline',
         demo: '#',
-        svg: `<svg width="100%" height="100%" viewBox="0 0 500 150">
-          <rect x="20" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="28" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="56" y="79" font-size="8" fill="var(--text)" font-weight="600">Tableau Repo</text>
-          <path d="M110 75 L140 75" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="140" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="148" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"/>
-          <text x="176" y="79" font-size="8" fill="var(--text)" font-weight="600">PostgreSQL DB</text>
-          <path d="M230 75 L260 75" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="260" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="268" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"/>
-          <text x="296" y="79" font-size="8" fill="var(--text)" font-weight="600">Replica Views</text>
-          <path d="M350 75 L380 75" stroke="var(--text)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="380" y="50" width="100" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="388" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="416" y="79" font-size="8" fill="var(--text)" font-weight="600">Adoption Panel</text>
+        relatedInsights: ['aws-architecture', 'athena-optimization', 'sql-performance'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
             </marker>
           </defs>
+          <rect x="10" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="18" y="54" font-size="7" fill="var(--text)" font-weight="600">Portfolio Hook</text>
+          <path d="M90 50 L125 50" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="130" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="138" y="54" font-size="7" fill="var(--text)" font-weight="600">API GW/Lambda</text>
+          <path d="M210 50 L245 50" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="250" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="258" y="54" font-size="7" fill="var(--text)" font-weight="600">DynamoDB</text>
+          <path d="M320 50 L355 50" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="360" y="30" width="60" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="368" y="54" font-size="7" fill="var(--text)" font-weight="600">Athena Viz</text>
         </svg>`
       },
       'reporting-framework': {
-        tag: 'BI DevOps / CI-CD',
-        title: 'Tableau Deployment CLI',
-        overview: 'A command-line interface automation framework using the Python Tableau Server Client (TSC) API to handle workbook migration, permissions sync, and extract management.',
-        problem: 'Manually packaging, certifying, and deploying dashboards across Dev, UAT, and Prod sites was time-consuming and error-prone.',
-        challenge: 'Overriding data source server credentials and connection strings automatically during migration phases.',
-        solution: 'Developed custom Python CLI scripts using the TSC SDK. Integrated XML parameter parsing to patch workbook connection strings on the fly.',
-        impact: 'Reduced migration times from 2 days to 10 minutes, eliminating packaging errors entirely.',
-        techs: ['Python', 'TSC API', 'REST API', 'Git', 'CI/CD'],
-        lessons: 'Automating credentials patching in raw XML is far more reliable than manually checking connection paths.',
-        github: 'https://github.com/vyankur/automated-tableau-deployment-framework',
+        tag: 'DevOps & Automation',
+        title: 'Automated BI Reporting Framework',
+        overview: 'Custom CLI scripts to automate workbook deployments, schedule updates, and clean Tableau extracts using Python TSC APIs.',
+        challenge: 'Manually publishing dozens of Tableau workbook edits across separate DEV/PROD sites was error-prone and took 10+ hours of team effort weekly.',
+        solution: 'Programmed a Python command-line utility utilizing the Tableau Server Client (TSC) API to automate migrations and metadata validation.',
+        archExplanation: 'Version controlled Tableau XML workbooks trigger Github Action runners. The Python TSC CLI utility publishes assets automatically to Tableau Cloud.',
+        techs: ['Python', 'Tableau REST API', 'TSC API', 'GitHub Actions', 'DevOps'],
+        impact: ['98% reduction in manual deployment mistakes', 'Deployment times cut from 2 hours to 90 seconds', 'Saved 10 hours of manual administration weekly'],
+        learnings: ['Tableau workbook XML can be programmatically parsed and updated', 'Store connection passwords securely in Environment Secrets', 'REST API tokens should be refreshed dynamically during batch operations'],
+        github: 'https://github.com/vyankur/tableau-rest-api-deployer',
         demo: '#',
-        svg: `<svg width="100%" height="100%" viewBox="0 0 500 150">
-          <rect x="20" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="28" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"/>
-          <text x="56" y="79" font-size="8" fill="var(--text)" font-weight="600">Git Commit</text>
-          <path d="M110 75 L140 75" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="140" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="148" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
-          <text x="176" y="79" font-size="8" fill="var(--text)" font-weight="600">XML Patcher</text>
-          <path d="M230 75 L260 75" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="260" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="268" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
-          <text x="296" y="79" font-size="8" fill="var(--text)" font-weight="600">Python TSC SDK</text>
-          <path d="M350 75 L380 75" stroke="var(--text)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="380" y="50" width="100" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="388" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="416" y="79" font-size="8" fill="var(--text)" font-weight="600">Tableau Cloud</text>
+        relatedInsights: ['tableau-admin', 'tableau-extensions', 'analytics-engineering'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
             </marker>
           </defs>
+          <rect x="10" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="18" y="54" font-size="7" fill="var(--text)" font-weight="600">Git Commit</text>
+          <path d="M80 50 L125 50" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="130" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="138" y="54" font-size="7" fill="var(--text)" font-weight="600">GitHub Actions</text>
+          <path d="M210 50 L255 50" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="260" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="268" y="54" font-size="7" fill="var(--text)" font-weight="600">Python TSC</text>
+          <path d="M330 50 L375 50" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="380" y="30" width="40" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="388" y="54" font-size="7" fill="var(--text)" font-weight="600">PROD</text>
         </svg>`
       },
       'hr-risk': {
         tag: 'BI Security',
-        title: 'Secure HR Analytics & RLS Suite',
-        overview: 'Compensation and employee retention analytics suite built for First Abu Dhabi Bank (FAB) implementing dynamic row-level security (RLS) policies.',
-        problem: 'HR managers needed aggregate payroll charts, but corporate privacy rules forbade managers from viewing individual employee salaries.',
-        challenge: 'Enforcing database security tags dynamically in real-time based on active Active Directory credentials.',
-        solution: 'Engineered an Oracle entitlement join table and configured Tableau RLS using dynamic USERNAME() calculated filters and Level of Detail (LOD) formulas.',
-        impact: 'Delivered secure attrition dashboards to 80+ managers while protecting payroll database tables.',
-        techs: ['Oracle SQL', 'PL/SQL', 'Row-Level Security', 'LOD'],
-        lessons: 'Fixed LOD expressions are vital to compute valid averages when underlying rows are hidden by user filter tags.',
+        title: 'Secure HR Analytics (FAB Bank)',
+        overview: 'Interactive HR metrics dashboard for First Abu Dhabi Bank featuring entitlement-based row level security (RLS) policies mapping department managers.',
+        challenge: 'HR compensation dashboards contained sensitive executive data, but manual workbook duplication for each department manager was difficult to govern.',
+        solution: 'Implemented a dynamic RLS model using database mapping tables joined to transaction logs, filtering data in real time via USERNAME() calculations.',
+        archExplanation: 'Oracle HR database systems feed security tables. Tableau joins dashboards to secure entitlement views. On login, calculated expressions filter rows dynamically.',
+        techs: ['Oracle SQL', 'Row Level Security', 'Tableau', 'Active Directory'],
+        impact: ['Secured sensitive metrics for 80+ HR managers', 'Eliminated 40 duplicate worksheet copies into a single view', 'Guaranteed compliance with bank data privacy standards'],
+        learnings: ['Entitlement joins must use indexed columns to prevent database lag', 'Always build a fallback admin override entitlement record', 'Leveraging Tableau Server groups handles department-level filtering easily'],
         github: 'https://github.com/vyankur/secure-hr-analytics-rls',
         demo: '#',
-        svg: `<svg width="100%" height="100%" viewBox="0 0 500 150">
-          <rect x="20" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="28" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="56" y="79" font-size="8" fill="var(--text)" font-weight="600">USERNAME()</text>
-          <path d="M110 75 L140 75" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="140" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="148" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg"/>
-          <text x="176" y="79" font-size="8" fill="var(--text)" font-weight="600">Entitlements Join</text>
-          <path d="M230 75 L260 75" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="260" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="268" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="296" y="79" font-size="8" fill="var(--text)" font-weight="600">LOD Averages</text>
-          <path d="M350 75 L380 75" stroke="var(--text)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="380" y="50" width="100" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="388" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg"/>
-          <text x="416" y="79" font-size="8" fill="var(--text)" font-weight="600">Secure RLS Viz</text>
+        relatedInsights: ['enterprise-rls', 'dashboard-governance', 'tableau-admin'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
             </marker>
           </defs>
+          <rect x="10" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="18" y="54" font-size="7" fill="var(--text)" font-weight="600">Employee Data</text>
+          <path d="M90 50 L125 50" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="130" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="138" y="54" font-size="7" fill="var(--text)" font-weight="600">Security Entitles</text>
+          <path d="M210 50 L245 50" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="250" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="258" y="54" font-size="7" fill="var(--text)" font-weight="600">Dynamic Join</text>
+          <path d="M330 50 L365 50" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="370" y="30" width="50" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="378" y="54" font-size="7" fill="var(--text)" font-weight="600">Filtered UI</text>
         </svg>`
       },
       'supply-chain': {
         tag: 'Supply Chain',
         title: 'GE Power Lead Time Analytics',
-        overview: 'An ETL pipeline and interactive dashboard visualizing supplier lead times, delivery quality, and predictive delay warnings across stages.',
-        problem: 'GE Power logistics managers could not track delays in supplier manufacturing pipelines, resulting in delayed turbine shipments.',
-        challenge: 'Consolidating raw delivery tracking files from legacy supplier systems and Oracle DB tables under severe API bottlenecks.',
-        solution: 'Designed database views, indexing structures, and Talend ETL snapshot logic in Oracle. Built severe-alert dashboards with predictive analytics.',
-        impact: 'Cut logistics reporting latency by 95% and reduced turbine delays through proactive alerts.',
-        techs: ['Talend', 'Oracle SQL', 'PL/SQL', 'Tableau Desktop'],
-        lessons: 'Stored procedure pre-aggregation is much faster than performing live joins on raw transactional tables.',
-        github: 'https://github.com/vyankur/supply-chain-lead-time-analytics',
+        overview: 'Supply chain analytics suite tracking part manufacturing lead times, identifying bottleneck sites, and monitoring supplier compliance.',
+        challenge: 'Raw supply chain metrics were scattered across Oracle databases. Tracking component delays required hours of compiling and manual spreadsheet calculation.',
+        solution: 'Engineered an ETL pipeline in Talend to aggregate Oracle logs, loading data to PostgreSQL views, and visualising workflows in Tableau.',
+        archExplanation: 'ERP schedules feed raw logs. Talend ETL cleans and loads metrics to PostgreSQL. Materialized views aggregate milestones, and Tableau renders tracking dashboards.',
+        techs: ['Talend ETL', 'Oracle SQL', 'PostgreSQL', 'Tableau', 'Supply Chain'],
+        impact: ['Identified lead-time bottlenecks saving 35% in delay fees', 'Procurement dashboard load speeds increased by 40%', 'Talend automated cleanups saved 12 hours of manual ETL daily'],
+        learnings: ['Replacing subqueries with CTEs in PostgreSQL cuts query execution times', 'Fuzzy date-matching logic resolves discrepancies across different ERP timezones', 'User training workshops drive adoption by 50%'],
+        github: 'https://github.com/vyankur/ge-power-leadtime-analytics',
         demo: '#',
-        svg: `<svg width="100%" height="100%" viewBox="0 0 500 150">
-          <rect x="20" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="28" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg"/>
-          <text x="56" y="79" font-size="8" fill="var(--text)" font-weight="600">Legacy DB APIs</text>
-          <path d="M110 75 L140 75" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="140" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="148" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/talend.svg"/>
-          <text x="176" y="79" font-size="8" fill="var(--text)" font-weight="600">Talend ETL</text>
-          <path d="M230 75 L260 75" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="260" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="268" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg"/>
-          <text x="296" y="79" font-size="8" fill="var(--text)" font-weight="600">Oracle Snapshot</text>
-          <path d="M350 75 L380 75" stroke="var(--text)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="380" y="50" width="100" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="388" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tableau/tableau-original.svg"/>
-          <text x="416" y="79" font-size="8" fill="var(--text)" font-weight="600">Tableau UI</text>
+        relatedInsights: ['sql-performance', 'tableau-performance', 'dashboard-governance'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
             </marker>
           </defs>
+          <rect x="10" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="18" y="54" font-size="7" fill="var(--text)" font-weight="600">Oracle ERP</text>
+          <path d="M80 50 L115 50" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="120" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="128" y="54" font-size="7" fill="var(--text)" font-weight="600">Talend ETL</text>
+          <path d="M190 50 L225 50" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="230" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="238" y="54" font-size="7" fill="var(--text)" font-weight="600">Postgres DB</text>
+          <path d="M300 50 L335 50" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="340" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="348" y="54" font-size="7" fill="var(--text)" font-weight="600">Tableau Report</text>
         </svg>`
       },
       'fuzzy-deduplication': {
         tag: 'Data Quality',
-        title: 'Python Fuzzy-Matching Deduplication Tool',
-        overview: 'An automated Python script utilizing Jaro-Winkler string distance and union-find algorithms to consolidate duplicate supplier vendor accounts.',
-        problem: 'Supplier data had thousands of duplicate accounts with typos, leading to double payments and distorted vendor spending charts.',
-        challenge: 'Resolving duplicates at scale without manually reading through 200,000+ accounts.',
-        solution: 'Built a Python deduplication script that parses names, applies character matching, and runs a union-find clustering model to generate golden records.',
-        impact: 'Identified 15% duplicate entries, clean tables fed directly into Tableau, saving $50K in transaction leakage.',
-        techs: ['Python', 'Pandas', 'String matching', 'Algorithms'],
-        lessons: 'Adjusting string similarity thresholds per country prevent false-positive duplicate groupings.',
-        github: 'https://github.com/vyankur/python-fuzzy-deduplication',
+        title: 'Supplier Fuzzy Deduplication Engine',
+        overview: 'A Python-based data cleaning and fuzzy matching system deduplicating vendor records across multiple ERP systems for supply chain operations.',
+        challenge: 'Supplier records from different global systems had spelling errors, variations, and missing fields (e.g. "GE Power", "G.E. Power Inc."), causing duplicate payments.',
+        solution: 'Developed a Python matching algorithm using Jaro-Winkler distance and Union-Find clustering, running on raw database dumps and mapping golden records.',
+        archExplanation: 'Database tables are ingested into memory, cleaned of punctuation, Jaro-Winkler distances are computed pairwise, Union-Find groups similar entities, and golden records are mapped.',
+        techs: ['Python', 'Pandas', 'PostgreSQL', 'Fuzzy Matching', 'Jaro-Winkler'],
+        impact: ['Deduplicated 45,000+ vendor records with 98% accuracy', 'Saved $30K in duplicate payment errors in Q3', 'Procurement audit times cut from 2 weeks to 4 hours'],
+        learnings: ['Pre-sorting supplier titles by length cuts pairwise comparison loops in half', 'Combining string edit distance with zip code checks prevents false positives', 'Materializing golden mappings via simple view joins keeps dashboards fast'],
+        github: 'https://github.com/vyankur/fuzzy-supplier-deduplication',
         demo: '#',
-        svg: `<svg width="100%" height="100%" viewBox="0 0 500 150">
-          <rect x="20" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="28" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg"/>
-          <text x="56" y="79" font-size="8" fill="var(--text)" font-weight="600">Raw Vendor Table</text>
-          <path d="M110 75 L140 75" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="140" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="148" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
-          <text x="176" y="79" font-size="8" fill="var(--text)" font-weight="600">Jaro-Winkler Check</text>
-          <path d="M230 75 L260 75" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="260" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="268" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
-          <text x="296" y="79" font-size="8" fill="var(--text)" font-weight="600">Union-Find Cluster</text>
-          <path d="M350 75 L380 75" stroke="var(--text)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="380" y="50" width="100" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="388" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
-          <text x="416" y="79" font-size="8" fill="var(--text)" font-weight="600">Golden Records</text>
+        relatedInsights: ['sql-performance', 'window-functions', 'databricks-etl'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
             </marker>
           </defs>
+          <rect x="10" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="18" y="54" font-size="7" fill="var(--text)" font-weight="600">Raw ERP Dumps</text>
+          <path d="M80 50 L115 50" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="120" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="128" y="54" font-size="7" fill="var(--text)" font-weight="600">Jaro-Winkler</text>
+          <path d="M190 50 L225 50" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="230" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="238" y="54" font-size="7" fill="var(--text)" font-weight="600">Union Clustering</text>
+          <path d="M300 50 L335 50" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="340" y="30" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="348" y="54" font-size="7" fill="var(--text)" font-weight="600">Golden Records</text>
         </svg>`
       },
       'job-pipeline': {
         tag: 'Analytics Engineering',
         title: 'International Analytics Job Pipeline',
         overview: 'An automated web-scraping and evaluation pipeline parsing job listings, scoring relevance, extracting sponsorship info, and outputting summaries.',
-        problem: 'Identifying relevant Senior Analytics jobs offering visa sponsorship across Singapore, Germany, UK, and UAE took hours of manual web search.',
-        challenge: 'Bypassing anti-scraping systems on major sites and accurately evaluating role details using automated keyword search.',
-        solution: 'Created a Python pipeline using Scrapy, parsing job descriptions with regex, scoring qualifications (1-100), and generating formatted Excel/MD reports.',
-        impact: 'Scraped 280+ qualified roles, automatically identifying top matches, reducing job search time by 90%.',
-        techs: ['Python', 'Web Scraping', 'Pandas', 'Data Extraction'],
-        lessons: 'Modular pipeline execution (Scraper -> Evaluator -> Excel Generator) ensures high reliability when scraping web portals.',
+        challenge: 'Manually monitoring dozens of career boards in UK, Germany, and UAE to find Senior BI roles offering visa sponsorship took hours of daily effort.',
+        solution: 'Built a Python-based pipeline using Scrapy, parsing job descriptions with regex, scoring relevance (1-100), and writing summaries to Excel/Markdown.',
+        archExplanation: 'Python Scrapy crawls LinkedIn/Indeed daily, saves job text, regex filters extract visa keywords, pandas scoring rates descriptions, and reports are committed to GitHub.',
+        techs: ['Python', 'Pandas', 'Web Scraping', 'RegEx', 'GitHub'],
+        impact: ['Scraped 280+ qualified international roles in under a minute', 'Job search efficiency increased by 90%', 'Auto-extracted visa sponsorship details with 95% precision'],
+        learnings: ['Using random User-Agents prevents request blocks', 'Decoupling scraper extraction from relevance scoring keeps pipelines modular', 'Regex pattern lists require regular updating as job copy terms shift'],
         github: 'https://github.com/vyankur/job-search-pipeline',
         demo: '#',
-        svg: `<svg width="100%" height="100%" viewBox="0 0 500 150">
-          <rect x="20" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="28" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
-          <text x="56" y="79" font-size="8" fill="var(--text)" font-weight="600">Indeed/LinkedIn Scrapy</text>
-          <path d="M110 75 L140 75" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="140" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="148" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
-          <text x="176" y="79" font-size="8" fill="var(--text)" font-weight="600">Relevance Score</text>
-          <path d="M230 75 L260 75" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="260" y="50" width="90" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="268" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/>
-          <text x="296" y="79" font-size="8" fill="var(--text)" font-weight="600">Visa Extraction</text>
-          <path d="M350 75 L380 75" stroke="var(--text)" stroke-width="2" marker-end="url(#arrow)"/>
-          
-          <rect x="380" y="50" width="100" height="50" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
-          <image x="388" y="63" width="24" height="24" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"/>
-          <text x="416" y="79" font-size="8" fill="var(--text)" font-weight="600">MD/Excel Report</text>
+        relatedInsights: ['prompt-engineering', 'analytics-engineering', 'modern-bi'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
             </marker>
           </defs>
+          <rect x="10" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="18" y="54" font-size="7" fill="var(--text)" font-weight="600">Job Crawler</text>
+          <path d="M80 50 L115 50" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="120" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="128" y="54" font-size="7" fill="var(--text)" font-weight="600">Relevance Score</text>
+          <path d="M190 50 L225 50" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="230" y="30" width="70" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="238" y="54" font-size="7" fill="var(--text)" font-weight="600">Visa Extractor</text>
+          <path d="M300 50 L335 50" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <rect x="340" y="8" width="80" height="40" rx="6" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="348" y="32" font-size="7" fill="var(--text)" font-weight="600">Markdown report</text>
         </svg>`
       }
     };
 
-    const caseStudyModal = document.getElementById('caseStudyModal');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const modalTag = document.getElementById('modalTag');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalOverview = document.getElementById('modalOverview');
-    const modalProblem = document.getElementById('modalProblem');
-    const modalChallenge = document.getElementById('modalChallenge');
-    const modalSolution = document.getElementById('modalSolution');
-    const modalImpact = document.getElementById('modalImpact');
-    const modalSvgCanvas = document.getElementById('modalSvgCanvas');
-    const modalTechs = document.getElementById('modalTechs');
-    const modalLessons = document.getElementById('modalLessons');
-    const modalGithubLink = document.getElementById('modalGithubLink');
-    const modalDemoLink = document.getElementById('modalDemoLink');
+    // Routing System & Full Page Template Rendering for Portfolio V2
+    function handleRouting() {
+      const hash = window.location.hash || '#/';
+      
+      const mainContent = document.getElementById('main-page-content');
+      const articleContent = document.getElementById('article-view-content');
+      const projectContent = document.getElementById('project-view-content');
+      
+      // Hide all containers
+      if (mainContent) mainContent.style.display = 'none';
+      if (articleContent) articleContent.style.display = 'none';
+      if (projectContent) projectContent.style.display = 'none';
 
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const id = card.getAttribute('data-project-id');
-        const data = projectCaseStudies[id];
-        if (!data) return;
-
-        modalTag.textContent = data.tag;
-        modalTitle.textContent = data.title;
-        modalOverview.textContent = data.overview;
-        modalProblem.textContent = data.problem;
-        modalChallenge.textContent = data.challenge;
-        modalSolution.textContent = data.solution;
-        modalImpact.textContent = data.impact;
-        modalLessons.textContent = data.lessons;
-        modalSvgCanvas.innerHTML = data.svg;
-        
-        modalGithubLink.href = data.github;
-        
-        if (data.demo && data.demo !== '#') {
-          modalDemoLink.href = data.demo;
-          modalDemoLink.style.display = 'inline-flex';
-        } else {
-          modalDemoLink.style.display = 'none';
-        }
-
-        // Clear and add tech pills
-        modalTechs.innerHTML = '';
-        data.techs.forEach(t => {
-          const span = document.createElement('span');
-          span.className = 'project-card-tech';
-          span.textContent = t;
-          modalTechs.appendChild(span);
-        });
-
-        caseStudyModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+      // Reset active states on navigation menu links
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
       });
-    });
 
-    // Close Modal Logic
-    function closeModal() {
-      caseStudyModal.classList.remove('active');
-      document.body.style.overflow = '';
+      if (hash.startsWith('#/insights/')) {
+        const slug = hash.replace('#/insights/', '');
+        showArticlePage(slug);
+        
+        // Highlight Insights Nav
+        const link = document.querySelector('.nav-links a[href="#insights"]');
+        if (link) link.classList.add('active');
+      } else if (hash.startsWith('#/projects/')) {
+        const slug = hash.replace('#/projects/', '');
+        showProjectPage(slug);
+        
+        // Highlight Projects Nav
+        const link = document.querySelector('.nav-links a[href="#projects"]');
+        if (link) link.classList.add('active');
+      } else if (hash === '#/insights' || hash === '#insights') {
+        if (mainContent) mainContent.style.display = 'block';
+        scrollToSection('#insights');
+        const link = document.querySelector('.nav-links a[href="#insights"]');
+        if (link) link.classList.add('active');
+      } else {
+        // Show home page layers
+        if (mainContent) mainContent.style.display = 'block';
+        
+        if (hash.startsWith('#') && hash !== '#/') {
+          const sectionId = hash;
+          scrollToSection(sectionId);
+          
+          const link = document.querySelector(`.nav-links a[href="${sectionId}"]`);
+          if (link) link.classList.add('active');
+        } else {
+          window.scrollTo(0, 0);
+          const link = document.querySelector('.nav-links a[href="#home"]');
+          if (link) link.classList.add('active');
+        }
+      }
     }
 
-    modalCloseBtn.addEventListener('click', closeModal);
-    caseStudyModal.addEventListener('click', (e) => {
-      if (e.target === caseStudyModal) {
-        closeModal();
-      }
-    });
-
-    // Command Palette Logic
-    const cmdPaletteBackdrop = document.getElementById('cmdPaletteBackdrop');
-    const searchTriggerBtn = document.getElementById('searchTriggerBtn');
-    const cmdInput = document.getElementById('cmdInput');
-    const cmdList = document.getElementById('cmdList');
-
-    const commands = [
-      { label: 'Go to Home', action: () => scrollToSection('#home') },
-      { label: 'Go to Business Impact', action: () => scrollToSection('#impact') },
-      { label: 'Go to Experience History', action: () => scrollToSection('#experience') },
-      { label: 'Go to Case Studies & Projects', action: () => scrollToSection('#projects') },
-      { label: 'Go to Knowledge Hub', action: () => scrollToSection('#knowledge-hub') },
-      { label: 'Go to Technical Toolkit Skills', action: () => scrollToSection('#skills') },
-      { label: 'Go to Technical Architectures', action: () => scrollToSection('#architecture') },
-      { label: 'Go to Client Recommendations', action: () => scrollToSection('#testimonials') },
-      { label: 'Go to Embedded Dashboards', action: () => scrollToSection('#tableau-embeds') },
-      { label: 'Go to Certifications & Badges', action: () => scrollToSection('#certifications') },
-      { label: 'Go to Contact', action: () => scrollToSection('#contact') },
-      { label: 'Download Resume PDF', action: () => {
-        const link = document.createElement('a');
-        link.href = './assets/Ankur_Varshney_Resume.pdf';
-        link.download = 'Ankur_Varshney_Resume.pdf';
-        link.click();
-      }},
-      { label: 'Toggle Light/Dark Theme', action: () => {
-        const currentTheme = htmlEl.getAttribute('data-theme');
-        htmlEl.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
-      }},
-      { label: 'Open AI Resume Assistant', action: () => toggleBotChat(true) }
-    ];
-
+    // Scroll to specific section ID on the page
     function scrollToSection(selector) {
       const el = document.querySelector(selector);
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        closeCmdPalette();
-      }
-    }
+        // Offset scroll for header height
+        const offset = 80;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = el.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
 
-    function openCmdPalette() {
-      cmdPaletteBackdrop.classList.add('active');
-      cmdInput.value = '';
-      renderCommands(commands);
-      setTimeout(() => cmdInput.focus(), 50);
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeCmdPalette() {
-      cmdPaletteBackdrop.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    function renderCommands(filteredCmds) {
-      cmdList.innerHTML = '';
-      filteredCmds.forEach((cmd, idx) => {
-        const li = document.createElement('li');
-        li.className = 'cmd-item' + (idx === 0 ? ' selected' : '');
-        li.innerHTML = `<span class="cmd-item-label">${cmd.label}</span>`;
-        li.addEventListener('click', () => {
-          cmd.action();
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
         });
-        cmdList.appendChild(li);
-      });
+      }
     }
 
-    searchTriggerBtn.addEventListener('click', openCmdPalette);
-    cmdPaletteBackdrop.addEventListener('click', (e) => {
-      if (e.target === cmdPaletteBackdrop) closeCmdPalette();
-    });
-
-    cmdInput.addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase();
-      const filtered = commands.filter(c => c.label.toLowerCase().includes(q));
-      renderCommands(filtered);
-    });
-
-    // Keyboard controls for palette
-    document.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        if (cmdPaletteBackdrop.classList.contains('active')) {
-          closeCmdPalette();
-        } else {
-          openCmdPalette();
-        }
-      }
+    // Populate and show fullscreen article content
+    function showArticlePage(slug) {
+      const articleContent = document.getElementById('article-view-content');
+      if (!articleContent) return;
       
-      if (e.key === 'Escape') {
-        closeCmdPalette();
-        closeModal();
-        closeArticleModal();
-        toggleBotChat(false);
-      }
+      articleContent.style.display = 'block';
+      window.scrollTo(0, 0);
 
-      if (cmdPaletteBackdrop.classList.contains('active')) {
-        const items = cmdList.querySelectorAll('.cmd-item');
-        let selectedIdx = Array.from(items).findIndex(item => item.classList.contains('selected'));
-
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          if (items.length > 0) {
-            items[selectedIdx].classList.remove('selected');
-            selectedIdx = (selectedIdx + 1) % items.length;
-            items[selectedIdx].classList.add('selected');
-            items[selectedIdx].scrollIntoView({ block: 'nearest' });
-          }
-        } else if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          if (items.length > 0) {
-            items[selectedIdx].classList.remove('selected');
-            selectedIdx = (selectedIdx - 1 + items.length) % items.length;
-            items[selectedIdx].classList.add('selected');
-            items[selectedIdx].scrollIntoView({ block: 'nearest' });
-          }
-        } else if (e.key === 'Enter') {
-          e.preventDefault();
-          if (items.length > 0 && selectedIdx !== -1) {
-            const label = items[selectedIdx].querySelector('.cmd-item-label').textContent;
-            const targetCmd = commands.find(c => c.label === label);
-            if (targetCmd) targetCmd.action();
-          }
-        }
-      }
-    });
-
-    // AI Chatbot Logic
-    const botTriggerBtn = document.getElementById('botTriggerBtn');
-    const botChatContainer = document.getElementById('botChatContainer');
-    const botChatCloseBtn = document.getElementById('botChatCloseBtn');
-    const botMessagesArea = document.getElementById('botMessagesArea');
-    const botInput = document.getElementById('botInput');
-    const botSendBtn = document.getElementById('botSendBtn');
-    const botChips = document.querySelectorAll('.bot-chip');
-
-    const botKnowledge = {
-      skills: 'Ankur is an expert in Tableau (Desktop, Server, Prep) and Power BI. On the database layer, he specializes in Oracle SQL/PL-SQL stored procedures, PostgreSQL, SAP HANA, and Greenplum. He also writes Python scripts for automation, uses PySpark inside Databricks, and builds Generative AI extensions using LangChain and AWS Bedrock APIs.',
-      ai: 'Ankur developed an Agentic Conversational BI Extension using LangChain, OpenAI/Bedrock, and TabPy. This allows dashboard users to ask natural-language questions (e.g. "show sales trend by region") and updates calculations and worksheets in real time.',
-      aws: 'Ankur has engineered robust cloud analytics pipelines using AWS. He stores high-volume transaction databases as columnar Parquet files on S3, catalogs them with Glue, and connects Tableau live using Athena as a virtualized SQL engine, decreasing load times by 35% and saving USD 50K.',
-      ge: 'At GE Power (under TCS), Ankur automated defect reporting and CAS compliance dashboarding, saving 95% manual effort. He designed a Python fuzzy deduplication script to clean supplier databases and optimized lead-time dashboards, lowering latency by 35%.',
-      relocate: 'Ankur is currently based in Gurugram, India, and is open to global relocation opportunities, specifically in Singapore, Hong Kong, UAE, UK, and Germany.',
-      summary: 'Ankur Varshney has 11+ years of experience delivering BI architectures, cloud data pipelines, and analytics platforms. He has worked for Sun Life Financial, HCL Technologies, and Tata Consultancy Services, serving VPs and CXOs across finance and insurance.',
-      education: 'Ankur holds a B.Tech. in Electronics & Communications from Krishna Institute of Engineering and Technology (KIET), Ghaziabad (UPTU, Noida), graduated in 2015.',
-      hcl: 'At HCL Technologies (2021-2023) in Pune, Ankur served as Tableau & Data Viz Lead. He led a team of 2 developers to design a 5-year financial planning and budgeting dashboard suite for Deutsche Bank (CXO-level decision makers), integrated SAP HANA, and managed PySpark/Databricks pipelines.',
-      tcs: 'At Tata Consultancy Services (2015-2021) as an IT Analyst/Senior BI Developer, Ankur led a team of 5 developers. He built HR analytics with dynamic RLS for First Abu Dhabi Bank (FAB), and led defect tracking, data deduplication, and supply chain lead-time dashboards for GE Power.',
-      sunlife: 'At Sun Life Financial (2023-Present) in Gurugram, Ankur works as a Senior BI Developer/Data Analyst. He manages Tableau Server/Cloud administration, built LangChain/Bedrock AI conversational extensions, designed Qualtrics/Salesforce CSAT integrations, and drove a 30% increase in platform adoption.',
-      rls: 'Ankur has deep expertise in Row-Level Security (RLS) and Level of Detail (LOD) calculations. At First Abu Dhabi Bank (FAB), he implemented entitlement-based RLS logic using dynamic entitlement tables via SQL joins, securing compensation dashboards for 80+ HR managers.',
-      certifications: "Ankur's credentials include: (1) 2025 AWS Cloud Quest Winner for hands-on cloud labs, (2) Accredited Certified Tableau Desktop Specialist, and (3) Accredited Certified Tableau Data Scientist.",
-      databases: 'Ankur has 11+ years of database engineering experience, specializing in Oracle (SQL, PL/SQL stored procedures, views, custom functions), PostgreSQL, Greenplum (GPDB), SAP HANA, and Aurora DB.',
-      python: 'Ankur uses Python for data deduplication (fuzzy matching), Tableau REST API/TSC CLI automations, and LLM orchestration (LangChain, OpenAI, Bedrock API).',
-      salary: 'Ankur is open to discussing competitive compensation and salary packages depending on the relocation city, cost of living, and total benefits. Please contact him at vyankur@gmail.com to discuss specifics.',
-      start: 'Ankur is available for interviews and can join within standard notice periods. For exact timeline negotiations, please reach out to him directly at vyankur@gmail.com or +91 8452893918.',
-      contact: 'You can contact Ankur Varshney directly via: Email: vyankur@gmail.com | Phone/WhatsApp: +91 8452893918 | LinkedIn: linkedin.com/in/vyankur | Tableau Public: public.tableau.com/profile/ankur.varshney'
-    };
-
-    function toggleBotChat(show) {
-      if (show) {
-        botChatContainer.classList.add('active');
-        setTimeout(() => botInput.focus(), 150);
-      } else {
-        botChatContainer.classList.remove('active');
-      }
-    }
-
-    botTriggerBtn.addEventListener('click', () => {
-      const active = botChatContainer.classList.contains('active');
-      toggleBotChat(!active);
-    });
-
-    botChatCloseBtn.addEventListener('click', () => {
-      toggleBotChat(false);
-    });
-
-    function appendMessage(text, sender) {
-      const div = document.createElement('div');
-      div.className = `bot-msg ${sender}`;
-      div.textContent = text;
-      botMessagesArea.appendChild(div);
-      botMessagesArea.scrollTop = botMessagesArea.scrollHeight;
-    }
-
-    function showTypingAndRespond(responseText) {
-      const typingDiv = document.createElement('div');
-      typingDiv.className = 'bot-msg bot';
-      typingDiv.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
-      botMessagesArea.appendChild(typingDiv);
-      botMessagesArea.scrollTop = botMessagesArea.scrollHeight;
-
-      setTimeout(() => {
-        typingDiv.remove();
-        appendMessage(responseText, 'bot');
-      }, 700);
-    }
-
-    function processUserMessage(query) {
-      appendMessage(query, 'user');
-      const q = query.toLowerCase();
-      let response = "I'm not fully sure about that detail. You can ask me about his Tableau/AWS skills, the Conversational AI extension, GE Power defect automation, or his relocation preferences.";
-
-      if (q.includes('skill') || q.includes('tool') || q.includes('stack') || q.includes('power bi')) {
-        response = botKnowledge.skills;
-      } else if (q.includes('ai') || q.includes('langchain') || q.includes('bedrock') || q.includes('openai') || q.includes('conversational') || q.includes('bmad') || q.includes('extension')) {
-        response = botKnowledge.ai;
-      } else if (q.includes('aws') || q.includes('athena') || q.includes('s3') || q.includes('glue') || q.includes('sagemaker') || q.includes('lake')) {
-        response = botKnowledge.aws;
-      } else if (q.includes('ge ') || q.includes('ge-') || q.includes('gepower') || q.includes('defect') || q.includes('dedup') || q.includes('fuzzy') || q.includes('50k') || q.includes('power')) {
-        response = botKnowledge.ge;
-      } else if (q.includes('reloc') || q.includes('sponsor') || q.includes('vis') || q.includes('singapore') || q.includes('germany') || q.includes('uk') || q.includes('uae') || q.includes('dubai') || q.includes('london') || q.includes('munich') || q.includes('hong kong') || q.includes('countr')) {
-        response = botKnowledge.relocate;
-      } else if (q.includes('sun life') || q.includes('sunlife') || q.includes('qualtrics') || q.includes('adoption') || q.includes('satisfaction') || q.includes('insurance')) {
-        response = botKnowledge.sunlife;
-      } else if (q.includes('hcl') || q.includes('deutsche') || q.includes('hana') || q.includes('databricks') || q.includes('pyspark') || q.includes('esg') || q.includes('db')) {
-        response = botKnowledge.hcl;
-      } else if (q.includes('tcs') || q.includes('tata')) {
-        response = botKnowledge.tcs;
-      } else if (q.includes('security') || q.includes('rls') || q.includes('entitlement') || q.includes('access') || q.includes('lod') || q.includes('fab') || q.includes('abu dhabi') || q.includes('compensation')) {
-        response = botKnowledge.rls;
-      } else if (q.includes('cert') || q.includes('credential') || q.includes('badge') || q.includes('winner') || q.includes('quest') || q.includes('award') || q.includes('specialist')) {
-        response = botKnowledge.certifications;
-      } else if (q.includes('oracle') || q.includes('postgres') || q.includes('database') || q.includes('sql') || q.includes('pl/sql') || q.includes('procedure') || q.includes('greenplum')) {
-        response = botKnowledge.databases;
-      } else if (q.includes('python') || q.includes('script') || q.includes('automation') || q.includes('cli') || q.includes('tsc')) {
-        response = botKnowledge.python;
-      } else if (q.includes('educat') || q.includes('degree') || q.includes('kiet') || q.includes('college') || q.includes('university') || q.includes('study') || q.includes('studied') || q.includes('btech') || q.includes('noida') || q.includes('ghaziabad')) {
-        response = botKnowledge.education;
-      } else if (q.includes('salary') || q.includes('expect') || q.includes('compensat') || q.includes('money')) {
-        response = botKnowledge.salary;
-      } else if (q.includes('start') || q.includes('avail') || q.includes('join') || q.includes('notice') || q.includes('interview')) {
-        response = botKnowledge.start;
-      } else if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone') || q.includes('call') || q.includes('address') || q.includes('whatsapp') || q.includes('hire') || q.includes('mail')) {
-        response = botKnowledge.contact;
-      } else if (q.includes('summary') || q.includes('experience') || q.includes('who is') || q.includes('ankur') || q.includes('profile')) {
-        response = botKnowledge.summary;
-      }
-      showTypingAndRespond(response);
-    }
-
-    botSendBtn.addEventListener('click', () => {
-      const text = botInput.value.trim();
-      if (text) {
-        processUserMessage(text);
-        botInput.value = '';
-      }
-    });
-
-    botInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const text = botInput.value.trim();
-        if (text) {
-          processUserMessage(text);
-          botInput.value = '';
-        }
-      }
-    });
-
-    botChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const query = chip.getAttribute('data-query');
-        processUserMessage(query);
-      });
-    });
-
-    // Tableau Public Showcase Dynamic Generator
-    const tableauVizzes = [
-      {
-        title: "Sunburst Chart",
-        repo: "SunburstChart_15824893645210",
-        sheet: "SunburstChart",
-        views: 923,
-        category: "Advanced Charts",
-        desc: "A custom multi-layered sunburst visualization showing hierarchical sales structures."
-      },
-      {
-        title: "Ankur Varshney Interactive Resume",
-        repo: "Resume_AnkurVarshney_1",
-        sheet: "Ankur",
-        views: 425,
-        category: "Interactive Resumes",
-        desc: "A comprehensive BI-based resume detailing work history, tools, and timelines."
-      },
-      {
-        title: "Boston Crime Rate Monitoring",
-        repo: "BostonCrimeRateMonitoringDashboard",
-        sheet: "BostonCrimeRateMonitoringDashboard",
-        views: 355,
-        category: "Public Safety",
-        desc: "Interactive dashboard analyzing crime trends, times, and districts in Boston."
-      },
-      {
-        title: "HYPERMART Retail Case Study",
-        repo: "HYPERMART-RetailCaseStudy",
-        sheet: "LoyalCustomers",
-        views: 293,
-        category: "Retail BI",
-        desc: "Sales efficiency, loyal customer analysis, and profitability breakdown."
-      },
-      {
-        title: "Netflix Data Analysis",
-        repo: "EY-Assignment_AnkurV",
-        sheet: "AssignmentNetflixData",
-        views: 193,
-        category: "Entertainment",
-        desc: "Analysis of Netflix releases, categories, and country metrics over years."
-      },
-      {
-        title: "A Bird's-Eye View of Clinical Trials",
-        repo: "Abirds-eyeviewofclinicaltrials_15891361781530",
-        sheet: "BirdsEyeViewofPharmaceuticalResearchandDevelopment",
-        views: 171,
-        category: "Healthcare",
-        desc: "Clinical trials analysis focusing on phases, enrollments, and status."
-      },
-      {
-        title: "UK Gender Pay Gap Data",
-        repo: "UKGenderPayGapData",
-        sheet: "UKGenderPayGap",
-        views: 147,
-        category: "Social Analytics",
-        desc: "Analysis of pay differences across genders, industries, and organizational sizes."
-      },
-      {
-        title: "Deaths in Game of Thrones",
-        repo: "Resume_15625053051110",
-        sheet: "DeathsinGOT",
-        views: 144,
-        category: "Entertainment",
-        desc: "Visual analysis of characters' deaths and seasons data in Game of Thrones."
-      },
-      {
-        title: "Indian States Race against COVID-19",
-        repo: "Book1_15884137801770",
-        sheet: "Covid-19RacingBarChart",
-        views: 139,
-        category: "Healthcare",
-        desc: "Dynamic racing bar chart tracking infection timelines across Indian states."
-      },
-      {
-        title: "Roles in Analytics (Dynamic Design)",
-        repo: "Dynamic_Design_wip",
-        sheet: "RolesinAnalytics",
-        views: 139,
-        category: "Career Insights",
-        desc: "Exploration of analytics roles, skill demands, and salary curves."
-      },
-      {
-        title: "COVID-19 India Tracker",
-        repo: "COVID-19India__16171936486620",
-        sheet: "Covid19inINDIA",
-        views: 128,
-        category: "Healthcare",
-        desc: "Statistical charts tracking active cases, recoveries, and testing rates in India."
-      },
-      {
-        title: "Avg High Temperatures (#WOW)",
-        repo: "AvgHighTemperatures",
-        sheet: "Dashboard1",
-        views: 127,
-        category: "Weather",
-        desc: "WorkOutWednesday challenge plotting historical temperature anomalies."
-      },
-      {
-        title: "Case Study - Generico",
-        repo: "CaseStudy-Generico",
-        sheet: "CaseStudy-Generico",
-        views: 121,
-        category: "Retail BI",
-        desc: "Business study analyzing retail expansion metrics and supply chains."
-      },
-      {
-        title: "Dynamically Display Top N vs Other",
-        repo: "DynamicallyDisplaytheTopNvsOther-tute",
-        sheet: "DynamicallyDisplaytheTopNvsOther",
-        views: 104,
-        category: "Tableau Tutorials",
-        desc: "A tutorial dashboard demonstrating dynamic parameter sorting for Top N values."
-      },
-      {
-        title: "Sub-Categories vs Sales (Region Wise)",
-        repo: "Assignment_15646584186800",
-        sheet: "Dashboard2",
-        views: 97,
-        category: "Retail BI",
-        desc: "Geographical sales distribution and subcategory product breakdowns."
-      },
-      {
-        title: "Case Study - WebMD",
-        repo: "CaseStudy-WebMD",
-        sheet: "WebMD",
-        views: 96,
-        category: "Healthcare",
-        desc: "Visualizing health queries, medical views, and symptom search statistics."
-      },
-      {
-        title: "1/30 Day's Challenge",
-        repo: "130DaysChallenge",
-        sheet: "130DaysChallenge",
-        views: 91,
-        category: "Career Insights",
-        desc: "Daily visualization challenge submissions focusing on global statistics."
-      },
-      {
-        title: "Customer Scatter Plot",
-        repo: "CustomerScatterPlot_15702716139670",
-        sheet: "Dashboard1",
-        views: 74,
-        category: "Retail BI",
-        desc: "Customer segment distribution plotting purchase counts against sales value."
-      },
-      {
-        title: "Table Formatting: Highlight Subcategories",
-        repo: "TableFormattingHighlightLowestHighestSubcategories",
-        sheet: "TableFormatting",
-        views: 8,
-        category: "Tableau Tutorials",
-        desc: "Calculations highlighting maximum and minimum fields inside text tables."
-      },
-      {
-        title: "Table Formatting: LOOKUP() and ZN()",
-        repo: "TableFormattingHandlingMissingValueswithLOOKUPandZN",
-        sheet: "HandlingMissingValues",
-        views: 6,
-        category: "Tableau Tutorials",
-        desc: "Solving table cell sparseness using LOOKUP and zero-null replacement."
-      },
-      {
-        title: "Calendar Extension Sheet",
-        repo: "SheetVizCalendarDashboardUsingaTableauExtension",
-        sheet: "SheetExtesnion-Calander",
-        views: 5,
-        category: "Extensions",
-        desc: "Testing date range hooks with Tableau dashboard extensions."
-      },
-      {
-        title: "Calendar Extension Dashboard",
-        repo: "CalendarDashboardUsingaTableauExtension",
-        sheet: "CalendarDashboardUsingaTableauExtension",
-        views: 4,
-        category: "Extensions",
-        desc: "Custom interactive date-picker extension integrated on a dashboard."
-      }
-    ];
-
-    const tableauListContainer = document.getElementById('tableauListContainer');
-    const tableauIframe = document.getElementById('tableauIframe');
-    const tableauLoader = document.getElementById('tableauLoader');
-    const activeVizTitle = document.getElementById('activeVizTitle');
-    const activeVizCategory = document.getElementById('activeVizCategory');
-    const activeVizViews = document.getElementById('activeVizViews');
-    const vizSearchInput = document.getElementById('vizSearchInput');
-    const tabFilterBtns = document.querySelectorAll('.tableau-filter-btn');
-
-    let currentVizFilter = 'all';
-    let vizSearchQuery = '';
-
-    // Handle iframe loading events to hide loader
-    tableauIframe.addEventListener('load', () => {
-      tableauLoader.classList.add('hidden');
-    });
-
-    function loadViz(viz) {
-      tableauLoader.classList.remove('hidden');
-      const url = `https://public.tableau.com/views/${viz.repo}/${viz.sheet}?:showVizHome=no&:embed=true`;
-      tableauIframe.src = url;
-      activeVizTitle.textContent = viz.title;
-      activeVizCategory.textContent = viz.category;
-      activeVizViews.textContent = `👁️ ${viz.views} views`;
-      
-      // Update active state in sidebar list
-      document.querySelectorAll('.tableau-item').forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('data-repo') === viz.repo) {
-          item.classList.add('active');
-        }
-      });
-    }
-
-    function renderVizzes() {
-      tableauListContainer.innerHTML = '';
-      
-      const filtered = tableauVizzes.filter(viz => {
-        const matchesCategory = currentVizFilter === 'all' || viz.category === currentVizFilter;
-        const matchesSearch = viz.title.toLowerCase().includes(vizSearchQuery) || 
-                              viz.desc.toLowerCase().includes(vizSearchQuery) ||
-                              viz.category.toLowerCase().includes(vizSearchQuery);
-        return matchesCategory && matchesSearch;
-      });
-
-      if (filtered.length === 0) {
-        tableauListContainer.innerHTML = '<div class="no-results" style="padding: 1.5rem; text-align: center; color: var(--muted); font-size: 0.8rem;">No matching dashboards found.</div>';
+      const art = knowledgeArticles.find(a => a.slug === slug);
+      if (!art) {
+        document.getElementById('article-view-title').textContent = 'Article Not Found';
+        document.getElementById('article-view-body').innerHTML = '<p>The requested article could not be located in our index.</p>';
         return;
       }
 
-      filtered.forEach((viz) => {
-        const item = document.createElement('div');
-        // If it matches the active iframe src, make it active
-        const isActive = tableauIframe.src.includes(viz.repo);
-        item.className = 'tableau-item' + (isActive ? ' active' : '');
-        item.setAttribute('data-repo', viz.repo);
-        
-        item.innerHTML = `
-          <div class="tableau-item-title">${viz.title}</div>
-          <div class="tableau-item-meta">
-            <span class="tableau-item-badge">${viz.category}</span>
-            <span class="tableau-item-views">👁️ ${viz.views}</span>
-          </div>
-        `;
-        
-        item.addEventListener('click', () => loadViz(viz));
-        tableauListContainer.appendChild(item);
+      document.getElementById('article-view-title').textContent = art.title;
+      document.getElementById('article-view-readtime').textContent = '⏱️ ' + art.readingTime + ' read';
+      document.getElementById('article-view-category').textContent = art.category;
+      document.getElementById('article-view-difficulty').textContent = art.difficulty;
+
+      let badgeClass = 'planned';
+      if (art.status === 'In Draft') badgeClass = 'draft';
+      else if (art.status === 'Under Review') badgeClass = 'review';
+      else if (art.status === 'Published') badgeClass = 'published';
+
+      let statusText = '📝 ' + art.status;
+      if (art.status === 'In Draft') statusText = '✍️ ' + art.status;
+      else if (art.status === 'Under Review') statusText = '👀 ' + art.status;
+      else if (art.status === 'Published') statusText = '✅ ' + art.status;
+
+      const statusBadge = document.getElementById('article-view-status');
+      statusBadge.className = 'status-badge ' + badgeClass;
+      statusBadge.textContent = statusText;
+
+      const tagsContainer = document.getElementById('article-view-tags');
+      tagsContainer.innerHTML = art.tags.map(t => `<span class="knowledge-card-tag">${t}</span>`).join('');
+
+      // Related Insights recommendations
+      const relatedContainer = document.getElementById('article-view-related');
+      relatedContainer.innerHTML = '';
+      const related = knowledgeArticles.filter(a => a.slug !== slug && (a.category === art.category || a.difficulty === art.difficulty)).slice(0, 4);
+      related.forEach(rel => {
+        const item = document.createElement('a');
+        item.href = '#/insights/' + rel.slug;
+        item.className = 'related-article-item';
+        item.textContent = rel.title;
+        relatedContainer.appendChild(item);
       });
+
+      const bodyContainer = document.getElementById('article-view-body');
+      bodyContainer.innerHTML = 'Loading article content...';
+
+      // Dynamic fetching for data-driven future articles
+      fetch('./content/insights/' + slug + '.md')
+        .then(res => {
+          if (!res.ok) throw new Error('Markdown file not found');
+          return res.text();
+        })
+        .then(mdText => {
+          bodyContainer.innerHTML = parseMarkdown(mdText);
+        })
+        .catch(err => {
+          console.warn('Fallback to local registry: ', err);
+          bodyContainer.innerHTML = `
+            <div style="font-size:1.1rem; font-weight:600; margin-bottom:1rem; border-left:3px solid var(--primary); padding-left:1rem;">Overview</div>
+            <p>${art.overview}</p>
+            <div style="font-size:1.1rem; font-weight:600; margin-top:2rem; margin-bottom:1rem; border-left:3px solid var(--primary); padding-left:1rem;">Topics Covered</div>
+            <ul class="topics-list">
+              ${art.topics.map(t => `<li class="checked-item"><span class="check-icon">✓</span> ${t}</li>`).join('')}
+            </ul>
+          `;
+        });
     }
 
-    // Filter Buttons Click
-    tabFilterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabFilterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentVizFilter = btn.getAttribute('data-category');
-        renderVizzes();
-      });
-    });
+    // Populate and show fullscreen project storyteller page
+    function showProjectPage(slug) {
+      const projectContent = document.getElementById('project-view-content');
+      if (!projectContent) return;
+      
+      projectContent.style.display = 'block';
+      window.scrollTo(0, 0);
 
-    // Search Input Event
-    vizSearchInput.addEventListener('input', (e) => {
-      vizSearchQuery = e.target.value.toLowerCase();
-      renderVizzes();
-    });
+      const data = projectCaseStudies[slug];
+      if (!data) {
+        document.getElementById('project-view-title').textContent = 'Project Not Found';
+        return;
+      }
 
+      document.getElementById('project-view-title').textContent = data.title;
+      document.getElementById('project-view-tag').textContent = data.tag;
+      document.getElementById('project-view-overview').textContent = data.overview;
+      document.getElementById('project-view-challenge').textContent = data.challenge;
+      document.getElementById('project-view-solution').textContent = data.solution;
+      document.getElementById('project-view-svg-canvas').innerHTML = data.svg;
+      document.getElementById('project-view-svg-explanation').textContent = data.archExplanation || "System architecture layout showing data integration and BI querying flows.";
 
-    // Knowledge Hub Article Database
+      const learningsContainer = document.getElementById('project-view-learnings');
+      learningsContainer.innerHTML = data.learnings.map(l => `<li>${l}</li>`).join('');
+
+      const techsContainer = document.getElementById('project-view-techs');
+      techsContainer.innerHTML = data.techs.map(t => `<span class="project-badge">${t}</span>`).join('');
+
+      const impactContainer = document.getElementById('project-view-impact');
+      impactContainer.innerHTML = `<ul style="padding-left: 1.25rem; line-height: 1.6; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: square; font-size: 0.85rem;">
+        ${data.impact.map(i => `<li>${i}</li>`).join('')}
+      </ul>`;
+
+      const linksContainer = document.getElementById('project-view-links');
+      linksContainer.innerHTML = '';
+      if (data.github) {
+        linksContainer.innerHTML += `
+          <a href="${data.github}" target="_blank" rel="noopener" class="btn primary" style="font-size: 0.8rem; padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        `;
+      }
+      if (data.demo && data.demo !== '#') {
+        linksContainer.innerHTML += `
+          <a href="${data.demo}" class="btn secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
+            Live Demo
+          </a>
+        `;
+      }
+
+      // Related Insights recommended inside project sidebar
+      const relatedInsightsContainer = document.getElementById('project-view-related-insights');
+      relatedInsightsContainer.innerHTML = '';
+      if (data.relatedInsights && data.relatedInsights.length > 0) {
+        data.relatedInsights.forEach(relSlug => {
+          const art = knowledgeArticles.find(a => a.slug === relSlug);
+          if (art) {
+            const item = document.createElement('a');
+            item.href = '#/insights/' + relSlug;
+            item.className = 'related-article-item';
+            item.textContent = art.title;
+            relatedInsightsContainer.appendChild(item);
+          }
+        });
+      } else {
+        relatedInsightsContainer.innerHTML = '<span style="font-size: 0.8rem; color: var(--muted);">No related insights yet.</span>';
+      }
+    }
+
+    // Dynamic rendering of featured articles and Roadmap checklist
     const knowledgeArticles = [
       {
         slug: 'tableau-performance',
@@ -4861,11 +4617,77 @@ EDUCATION
         category: 'Tableau',
         difficulty: 'Advanced',
         readingTime: '15 min',
-        status: 'Planned',
+        status: 'Published',
+        featured: true,
         tags: ['Tableau', 'Optimization', 'BI'],
         summary: 'Learn enterprise techniques for improving dashboard performance, query pruning, extract optimizations, and workbook layout tuning.',
         overview: 'This article covers the principles of diagnosing and fixing slow Tableau workbooks. You will learn to use Tableau Performance Recording to isolate rendering vs. query bottlenecks and apply concrete design adjustments to load dashboards under 2 seconds.',
         topics: ['Worksheet Rendering Pipeline', 'Performance Recording Analysis', 'Data Source Extract vs Live Strategies', 'Custom SQL vs Semantic Layer Calculations', 'Context Filters & LOD Optimization']
+      },
+      {
+        slug: 'sql-performance',
+        title: 'SQL Performance Optimization',
+        category: 'SQL',
+        difficulty: 'Advanced',
+        readingTime: '18 min',
+        status: 'In Draft',
+        featured: true,
+        tags: ['SQL', 'Databases', 'Optimization'],
+        summary: 'Tuning stored procedures, window functions, indices, and execution plans for large scale Oracle and PostgreSQL transaction tables.',
+        overview: 'A developer handbook on identifying database bottlenecks and refactoring queries. Learn to read execution plans, build indexing strategies, write efficient stored procedures, and configure materialized views.',
+        topics: ['Execution Plan Analysis', 'Indexing Strategies (B-Tree, Bitmap, GIN)', 'Stored Procedures vs CTEs', 'Temporary Tables & Database Views', 'Database Locks and Transaction Isolations']
+      },
+      {
+        slug: 'enterprise-rls',
+        title: 'Enterprise Row Level Security',
+        category: 'Architecture',
+        difficulty: 'Advanced',
+        readingTime: '14 min',
+        status: 'In Draft',
+        featured: true,
+        tags: ['Security', 'Governance', 'Tableau'],
+        summary: 'Implement secure dynamic row level security (RLS) configurations using database entitlement joins and Active Directory mapping.',
+        overview: 'Learn how to enforce data entitlements at scale. This article outlines the architecture of dynamic RLS in BI, detailing how to join transaction tables to security mapping tables and apply filters using system usernames.',
+        topics: ['Dynamic USERNAME() calculated filters', 'Entitlements Mapping Tables', 'Database Join Optimization for RLS', 'Active Directory User Sync', 'Performance considerations of RLS joins']
+      },
+      {
+        slug: 'athena-optimization',
+        title: 'Athena Query Optimization',
+        category: 'SQL',
+        difficulty: 'Advanced',
+        readingTime: '12 min',
+        status: 'Published',
+        featured: true,
+        tags: ['AWS Athena', 'SQL', 'Cloud BI'],
+        summary: 'Optimize serverless queries over AWS S3 data lakes using partition pruning, columnar Parquet formats, and cost-reduction techniques.',
+        overview: 'This article demonstrates how to optimize Amazon Athena queries to achieve sub-second dashboard rendering times. It explains the mechanics of partition pruning, file merging, and query caching to save up to 90% in query costs.',
+        topics: ['Athena Serverless Mechanics', 'S3 Partitioning Strategies', 'Columnar File Formats (Parquet/ORC)', 'Query Tuning & Execution Plans', 'Cost Management and Scan Limits']
+      },
+      {
+        slug: 'ai-in-tableau',
+        title: 'AI in Tableau',
+        category: 'AI',
+        difficulty: 'Advanced',
+        readingTime: '12 min',
+        status: 'Planned',
+        featured: true,
+        tags: ['Tableau', 'Generative AI', 'TabPy'],
+        summary: 'Integrate LLMs, vector database APIs, and python models natively into Tableau worksheets and dashboards using TabPy.',
+        overview: 'This case study details how to embed Large Language Models into Tableau dashboards. You will learn to deploy custom Python web services, load TabPy on the server, and write dashboard expressions to call generative API endpoints on user actions.',
+        topics: ['TabPy Server Installation & Security', 'Writing Tableau calculated scripts using TabPy', 'LLM API Integration (OpenAI/Bedrock)', 'Natural Language Query Interpretation', 'Caching TabPy returns for quick loading']
+      },
+      {
+        slug: 'tableau-extensions',
+        title: 'Building Tableau Extensions',
+        category: 'Visualization',
+        difficulty: 'Advanced',
+        readingTime: '15 min',
+        status: 'Planned',
+        featured: true,
+        tags: ['JavaScript', 'Extensions API', 'Tableau'],
+        summary: 'Create custom interactive dashboard components, date selectors, and write-back forms using HTML5 and the Tableau Extensions API.',
+        overview: 'Learn how to write custom dashboard widgets. This tutorial walks through setting up the manifest (.trex) file, listening to workbook filter events, and writing back parameter adjustments to Tableau via JavaScript.',
+        topics: ['Tableau Extensions API SDK', 'Manifest (.trex) configuration', 'Event listeners for filter changes', 'Parameter write-back methods', 'UI styling with CSS and grid alignment']
       },
       {
         slug: 'dashboard-design',
@@ -4874,6 +4696,7 @@ EDUCATION
         difficulty: 'Intermediate',
         readingTime: '10 min',
         status: 'In Draft',
+        featured: false,
         tags: ['Visualization', 'UX', 'Tableau'],
         summary: 'Master visual hierarchy, color theory, spacing, and cognitive load reduction principles for enterprise business dashboards.',
         overview: 'This guide outlines the UX principles required to build business dashboards that CXOs can read in under 5 seconds. We cover grid layouts, layout container hierarchy, and intentional color mapping for actionable reporting.',
@@ -4886,34 +4709,11 @@ EDUCATION
         difficulty: 'Advanced',
         readingTime: '20 min',
         status: 'Under Review',
+        featured: false,
         tags: ['Tableau Server', 'Governance', 'Systems'],
         summary: 'Configure, secure, monitor, and scale enterprise Tableau Server environments, workgroup databases, and backgrounder schedules.',
         overview: 'An in-depth manual on configuring and scaling a multi-node Tableau Server topology. We cover permission mapping, licensing optimizations, backup procedures, and backgrounder process scheduling to ensure high uptime.',
         topics: ['Multi-node Server Topology', 'Postgres Workgroup DB Access', 'Permission mapping and user security profiles', 'Backgrounder process optimization', 'Backup, recovery, and server upgrades']
-      },
-      {
-        slug: 'athena-optimization',
-        title: 'Athena Query Optimization',
-        category: 'SQL',
-        difficulty: 'Advanced',
-        readingTime: '12 min',
-        status: 'Published',
-        tags: ['AWS Athena', 'SQL', 'Cloud BI'],
-        summary: 'Optimize serverless queries over AWS S3 data lakes using partition pruning, columnar Parquet formats, and cost-reduction techniques.',
-        overview: 'This article demonstrates how to optimize Amazon Athena queries to achieve sub-second dashboard rendering times. It explains the mechanics of partition pruning, file merging, and query caching to save up to 90% in query costs.',
-        topics: ['Athena Serverless Mechanics', 'S3 Partitioning Strategies', 'Columnar File Formats (Parquet/ORC)', 'Query Tuning & Execution Plans', 'Cost Management and Scan Limits']
-      },
-      {
-        slug: 'sql-performance',
-        title: 'SQL Performance Optimization',
-        category: 'SQL',
-        difficulty: 'Advanced',
-        readingTime: '18 min',
-        status: 'Published',
-        tags: ['SQL', 'Databases', 'Optimization'],
-        summary: 'Tuning stored procedures, window functions, indices, and execution plans for large scale Oracle and PostgreSQL transaction tables.',
-        overview: 'A developer handbook on identifying database bottlenecks and refactoring queries. Learn to read execution plans, build indexing strategies, write efficient stored procedures, and configure materialized views.',
-        topics: ['Execution Plan Analysis', 'Indexing Strategies (B-Tree, Bitmap, GIN)', 'Stored Procedures vs CTEs', 'Temporary Tables & Database Views', 'Database Locks and Transaction Isolations']
       },
       {
         slug: 'window-functions',
@@ -4922,22 +4722,11 @@ EDUCATION
         difficulty: 'Intermediate',
         readingTime: '8 min',
         status: 'Planned',
+        featured: false,
         tags: ['SQL', 'Analytics Engineering'],
         summary: 'Master complex analytical SQL window functions for cohort analysis, running totals, rankings, and lead/lag calculations.',
         overview: 'This guide provides practical examples of SQL window functions. You will learn to use PARTITION BY, ORDER BY, and frame clauses (ROWS BETWEEN) to compute complex rolling metrics and historical trends without self-joins.',
         topics: ['PARTITION BY and ORDER BY syntax', 'Ranking functions (ROW_NUMBER, DENSE_RANK)', 'Lead and Lag offsets', 'Frame clauses (ROWS/RANGE BETWEEN)', 'Running totals and moving averages']
-      },
-      {
-        slug: 'enterprise-rls',
-        title: 'Enterprise Row Level Security',
-        category: 'Architecture',
-        difficulty: 'Advanced',
-        readingTime: '14 min',
-        status: 'In Draft',
-        tags: ['Security', 'Governance', 'Tableau'],
-        summary: 'Implement secure dynamic row level security (RLS) configurations using database entitlement joins and Active Directory mapping.',
-        overview: 'Learn how to enforce data entitlements at scale. This article outlines the architecture of dynamic RLS in BI, detailing how to join transaction tables to security mapping tables and apply filters using system usernames.',
-        topics: ['Dynamic USERNAME() calculated filters', 'Entitlements Mapping Tables', 'Database Join Optimization for RLS', 'Active Directory User Sync', 'Performance considerations of RLS joins']
       },
       {
         slug: 'aws-architecture',
@@ -4946,22 +4735,11 @@ EDUCATION
         difficulty: 'Advanced',
         readingTime: '16 min',
         status: 'Under Review',
+        featured: false,
         tags: ['AWS', 'Architecture', 'Data Lake'],
         summary: 'Architect modern data lake solutions using S3, Glue, Athena, Bedrock, and Tableau Cloud to process and visualize petabyte scale data.',
         overview: 'A blueprint for building a secure and cost-efficient cloud analytics platform. We explore ingestion patterns, ETL automation with Glue and Step Functions, security settings, and live BI querying.',
         topics: ['Cloud Ingestion Patterns', 'ETL Orchestration with AWS Glue', 'S3 Data Lake Landing, Raw, and Curated layers', 'Data Cataloging & Permissions (Lake Formation)', 'Athena Serverless BI connectivity']
-      },
-      {
-        slug: 'ai-in-tableau',
-        title: 'AI in Tableau',
-        category: 'AI',
-        difficulty: 'Advanced',
-        readingTime: '12 min',
-        status: 'Planned',
-        tags: ['Tableau', 'Generative AI', 'TabPy'],
-        summary: 'Integrate LLMs, vector database APIs, and python models natively into Tableau worksheets and dashboards using TabPy.',
-        overview: 'This case study details how to embed Large Language Models into Tableau dashboards. You will learn to deploy custom Python web services, load TabPy on the server, and write dashboard expressions to call generative API endpoints on user actions.',
-        topics: ['TabPy Server Installation & Security', 'Writing Tableau calculated scripts using TabPy', 'LLM API Integration (OpenAI/Bedrock)', 'Natural Language Query Interpretation', 'Caching TabPy returns for quick loading']
       },
       {
         slug: 'prompt-engineering',
@@ -4970,22 +4748,11 @@ EDUCATION
         difficulty: 'Intermediate',
         readingTime: '10 min',
         status: 'In Draft',
+        featured: false,
         tags: ['Prompt Engineering', 'AI', 'BI'],
         summary: 'Master prompt engineering templates and context injection styles to build AI-assisted SQL query generators and BI chatbots.',
         overview: 'A guide on formatting prompts to generate clean database queries and analytics. We explore few-shot learning templates, schema injection, formatting constraints, and self-correction loops.',
         topics: ['Few-shot learning prompt structures', 'Schema metadata context injection', 'SQL generation safety and formatting constraints', 'Self-correction prompt feedback loops', 'Prompt templates for conversational analytics']
-      },
-      {
-        slug: 'tableau-extensions',
-        title: 'Building Tableau Extensions',
-        category: 'Visualization',
-        difficulty: 'Advanced',
-        readingTime: '15 min',
-        status: 'Planned',
-        tags: ['JavaScript', 'Extensions API', 'Tableau'],
-        summary: 'Create custom interactive dashboard components, date selectors, and write-back forms using HTML5 and the Tableau Extensions API.',
-        overview: 'Learn how to write custom dashboard widgets. This tutorial walks through setting up the manifest (.trex) file, listening to workbook filter events, and writing back parameter adjustments to Tableau via JavaScript.',
-        topics: ['Tableau Extensions API SDK', 'Manifest (.trex) configuration', 'Event listeners for filter changes', 'Parameter write-back methods', 'UI styling with CSS and grid alignment']
       },
       {
         slug: 'dashboard-governance',
@@ -4994,6 +4761,7 @@ EDUCATION
         difficulty: 'Intermediate',
         readingTime: '12 min',
         status: 'Under Review',
+        featured: false,
         tags: ['Governance', 'BI Management', 'Standardization'],
         summary: 'Implement dashboard lifecycle management, automated QA checks, certification badges, and metadata audits at scale.',
         overview: 'This article outlines a framework for dashboard governance in enterprise business units. We cover QA check-lists, peer-review cycles, certification indicators, and catalog indexing.',
@@ -5006,6 +4774,7 @@ EDUCATION
         difficulty: 'Intermediate',
         readingTime: '14 min',
         status: 'Planned',
+        featured: false,
         tags: ['dbt', 'Analytics Engineering', 'SQL'],
         summary: 'Implement software engineering practices in analytics: version control, dbt modeling, testing, documentation, and CI/CD.',
         overview: 'A look into analytics engineering best practices. We explore how to manage SQL transformations using version control, build structured staging and core models in dbt, write automated tests, and run deployment pipelines.',
@@ -5018,6 +4787,7 @@ EDUCATION
         difficulty: 'Advanced',
         readingTime: '16 min',
         status: 'Planned',
+        featured: false,
         tags: ['Architecture', 'Modern Data Stack', 'BI'],
         summary: 'Design scalable BI stacks combining cloud warehouses, semantic layers, semantic models, and visual engines for self-service.',
         overview: 'This article details how to architect a modern self-service BI system. We analyze the roles of cloud warehouses (BigQuery/Snowflake), semantic definition layers, data transformation tools, and Tableau/Power BI.',
@@ -5030,6 +4800,7 @@ EDUCATION
         difficulty: 'Advanced',
         readingTime: '15 min',
         status: 'In Draft',
+        featured: false,
         tags: ['Databricks', 'PySpark', 'ETL'],
         summary: 'Build high performance batch and streaming ETL pipelines inside Databricks using PySpark, Delta Lake, and Auto Loader.',
         overview: 'Learn how to write scalable ETL workflows in PySpark. We cover reading files with Auto Loader, applying schema validation, writing to Delta tables with ACID guarantees, and scheduling workflows.',
@@ -5037,31 +4808,14 @@ EDUCATION
       }
     ];
 
-    let currentKnowledgeFilter = 'all';
-
-    const knowledgeGrid = document.getElementById('knowledgeGrid');
-    const articleModal = document.getElementById('articleModal');
-    const articleModalCloseBtn = document.getElementById('articleModalCloseBtn');
-    const articleTitle = document.getElementById('articleTitle');
-    const articleStatusBadge = document.getElementById('articleStatusBadge');
-    const articleDifficulty = document.getElementById('articleDifficulty');
-    const articleReadTime = document.getElementById('articleReadTime');
-    const articleCategory = document.getElementById('articleCategory');
-    const articleTags = document.getElementById('articleTags');
-    const articleOverview = document.getElementById('articleOverview');
-    const articleTopicsCanvas = document.getElementById('articleTopicsCanvas');
-    const articleRelatedList = document.getElementById('articleRelatedList');
-    const articleBackBtn = document.getElementById('articleBackBtn');
-
     function renderKnowledgeHub() {
-      if (!knowledgeGrid) return;
-      knowledgeGrid.innerHTML = '';
+      const kGrid = document.getElementById('knowledgeGrid');
+      if (!kGrid) return;
+      kGrid.innerHTML = '';
 
-      const filtered = knowledgeArticles.filter(art => {
-        return currentKnowledgeFilter === 'all' || art.category === currentKnowledgeFilter;
-      });
-
-      filtered.forEach(art => {
+      // Only display the 6 featured insights
+      const featured = knowledgeArticles.filter(art => art.featured === true);
+      featured.forEach(art => {
         const card = document.createElement('div');
         card.className = 'knowledge-card';
         
@@ -5096,21 +4850,60 @@ EDUCATION
           </div>
         `;
 
-        card.addEventListener('click', () => openArticle(art.slug));
-        knowledgeGrid.appendChild(card);
+        card.addEventListener('click', () => {
+          window.location.hash = '#/insights/' + art.slug;
+        });
+        kGrid.appendChild(card);
       });
+
+      // Populate roadmap grid dynamically
+      const roadmapGrid = document.getElementById('roadmapGrid');
+      if (roadmapGrid) {
+        roadmapGrid.innerHTML = '';
+        knowledgeArticles.forEach(art => {
+          const item = document.createElement('div');
+          item.className = 'knowledge-card';
+          item.style.padding = '1.25rem';
+          item.style.minHeight = 'auto';
+          
+          let badgeClass = 'planned';
+          if (art.status === 'In Draft') badgeClass = 'draft';
+          else if (art.status === 'Under Review') badgeClass = 'review';
+          else if (art.status === 'Published') badgeClass = 'published';
+
+          let statusText = '📝 ' + art.status;
+          if (art.status === 'In Draft') statusText = '✍️ ' + art.status;
+          else if (art.status === 'Under Review') statusText = '👀 ' + art.status;
+          else if (art.status === 'Published') statusText = '✅ ' + art.status;
+
+          item.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span style="font-size:0.65rem; font-weight:700; color:var(--primary); text-transform:uppercase;">${art.category}</span>
+              <span class="status-badge ${badgeClass}" style="font-size:0.6rem; padding:0.1rem 0.35rem;">${statusText}</span>
+            </div>
+            <h4 style="font-size:0.9rem; font-weight:700; margin:0 0 0.5rem 0; color:var(--text);">${art.title}</h4>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem; border-top:1px solid var(--border); padding-top:0.5rem;">
+              <span style="font-size:0.65rem; color:var(--muted); font-weight:600;">${art.difficulty} | ${art.readingTime}</span>
+              <span style="font-size:0.7rem; font-weight:700; color:var(--primary); cursor:pointer;">Read →</span>
+            </div>
+          `;
+          
+          item.addEventListener('click', () => {
+            window.location.hash = '#/insights/' + art.slug;
+          });
+          roadmapGrid.appendChild(item);
+        });
+      }
     }
 
     // Markdown Parser Helper
     function parseMarkdown(mdText) {
-      // Remove frontmatter
       let cleanMd = mdText;
       const frontmatterMatch = mdText.match(/^---([\s\S]*?)---/);
       if (frontmatterMatch) {
         cleanMd = mdText.substring(frontmatterMatch[0].length).trim();
       }
 
-      // Convert Markdown carriage returns safely
       const lines = cleanMd.split('\n');
       let html = '';
       let inList = false;
@@ -5125,29 +4918,29 @@ EDUCATION
         // Headers
         if (line.startsWith('### ')) {
           if (inList) { html += '</ul>'; inList = false; }
-          html += `<h3>${line.substring(4)}</h3>`;
+          html += `<h3 style="font-size:1.1rem; font-weight:700; margin-top:1.5rem; margin-bottom:0.5rem; color:var(--text);">${line.substring(4)}</h3>`;
         } else if (line.startsWith('## ')) {
           if (inList) { html += '</ul>'; inList = false; }
-          html += `<h2>${line.substring(3)}</h2>`;
+          html += `<h2 style="font-size:1.3rem; font-weight:700; margin-top:2rem; margin-bottom:0.75rem; color:var(--text); border-bottom:1px solid var(--border); padding-bottom:0.35rem;">${line.substring(3)}</h2>`;
         } else if (line.startsWith('# ')) {
           if (inList) { html += '</ul>'; inList = false; }
-          html += `<h1>${line.substring(2)}</h1>`;
+          html += `<h1 style="font-size:1.75rem; font-weight:700; margin-top:2rem; margin-bottom:1rem; color:var(--text);">${line.substring(2)}</h1>`;
         }
         // Checkboxes / List Items
         else if (line.startsWith('- [x] ') || line.startsWith('- [ ] ')) {
-          if (!inList) { html += '<ul class="topics-list">'; inList = true; }
+          if (!inList) { html += '<ul class="topics-list" style="list-style:none; padding:0; margin:1rem 0; display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">'; inList = true; }
           const text = line.substring(6);
-          html += `<li class="checked-item"><span class="check-icon">✓</span> ${text}</li>`;
+          html += `<li class="checked-item" style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text);"><span class="check-icon" style="color:#16a34a; font-weight:700;">✓</span> ${text}</li>`;
         } else if (line.startsWith('- ') || line.startsWith('* ')) {
-          if (!inList) { html += '<ul>'; inList = true; }
+          if (!inList) { html += '<ul style="padding-left:1.25rem; margin:1rem 0; line-height:1.6;">'; inList = true; }
           html += `<li>${line.substring(2)}</li>`;
         }
         // Paragraphs
         else {
           if (inList) { html += '</ul>'; inList = false; }
           line = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-          line = line.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
-          html += `<p>${line}</p>`;
+          line = line.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" style="color:var(--primary); text-decoration:none;">$1</a>');
+          html += `<p style="margin-bottom:1rem; line-height:1.6;">${line}</p>`;
         }
       }
 
@@ -5155,109 +4948,38 @@ EDUCATION
       return html;
     }
 
-    function openArticle(slug) {
-      const art = knowledgeArticles.find(a => a.slug === slug);
-      if (!art) return;
-
-      articleTitle.textContent = art.title;
-      articleDifficulty.textContent = art.difficulty;
-      articleReadTime.textContent = '⏱️ ' + art.readingTime + ' read';
-      articleCategory.textContent = art.category;
-
-      let badgeClass = 'planned';
-      if (art.status === 'In Draft') badgeClass = 'draft';
-      else if (art.status === 'Under Review') badgeClass = 'review';
-      else if (art.status === 'Published') badgeClass = 'published';
-
-      let statusText = '📝 ' + art.status;
-      if (art.status === 'In Draft') statusText = '✍️ ' + art.status;
-      else if (art.status === 'Under Review') statusText = '👀 ' + art.status;
-      else if (art.status === 'Published') statusText = '✅ ' + art.status;
-
-      articleStatusBadge.className = 'status-badge ' + badgeClass;
-      articleStatusBadge.textContent = statusText;
-
-      articleTags.innerHTML = art.tags.map(t => `<span class="knowledge-card-tag">${t}</span>`).join('');
-
-      // Populate Related Articles (3-5 recommendations)
-      articleRelatedList.innerHTML = '';
-      const related = knowledgeArticles.filter(a => a.slug !== slug && (a.category === art.category || a.difficulty === art.difficulty)).slice(0, 4);
-      related.forEach(rel => {
-        const item = document.createElement('a');
-        item.href = '#';
-        item.className = 'related-article-item';
-        item.textContent = rel.title;
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          openArticle(rel.slug);
-        });
-        articleRelatedList.appendChild(item);
-      });
-
-      // Loading layout
-      articleOverview.textContent = 'Loading article content...';
-      articleTopicsCanvas.innerHTML = '';
-
-      // Fetch the actual markdown file dynamically (Future Ready architecture!)
-      fetch('./content/knowledge/' + slug + '.md')
-        .then(res => {
-          if (!res.ok) throw new Error('Markdown file not found');
-          return res.text();
-        })
-        .then(mdText => {
-          // Parse frontmatter and render HTML dynamically
-          const parsedHtml = parseMarkdown(mdText);
-          
-          // Render parsed HTML inside the article Modal
-          articleOverview.innerHTML = parsedHtml;
-          articleTopicsCanvas.innerHTML = ''; // Topics list is inside the parsed HTML!
-        })
-        .catch(err => {
-          console.warn('Fallback to local registry: ', err);
-          // Fallback static template rendering if local directory fetching fails
-          articleOverview.textContent = art.overview;
-          articleTopicsCanvas.innerHTML = `<ul class="topics-list">
-            ${art.topics.map(t => `<li class="checked-item"><span class="check-icon">✓</span> ${t}</li>`).join('')}
-          </ul>`;
-        });
-
-      articleModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeArticleModal() {
-      if (articleModal) {
-        articleModal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-
-    if (articleModalCloseBtn) articleModalCloseBtn.addEventListener('click', closeArticleModal);
-    if (articleBackBtn) articleBackBtn.addEventListener('click', closeArticleModal);
-    if (articleModal) {
-      articleModal.addEventListener('click', (e) => {
-        if (e.target === articleModal) closeArticleModal();
+    // Toggle Roadmap Section display
+    const viewRoadmapBtn = document.getElementById('viewRoadmapBtn');
+    const roadmapSection = document.getElementById('roadmapSection');
+    if (viewRoadmapBtn && roadmapSection) {
+      viewRoadmapBtn.addEventListener('click', () => {
+        const isHidden = roadmapSection.style.display === 'none';
+        roadmapSection.style.display = isHidden ? 'block' : 'none';
+        viewRoadmapBtn.textContent = isHidden ? 'Hide Knowledge Roadmap' : 'View Knowledge Roadmap';
+        if (isHidden) {
+          roadmapSection.scrollIntoView({ behavior: 'smooth' });
+        }
       });
     }
 
-    // Filter Buttons logic for Knowledge Hub
-    const kFilters = document.querySelectorAll('.knowledge-filters .filter-btn');
-    if (kFilters) {
-      kFilters.forEach(btn => {
-        btn.addEventListener('click', () => {
-          kFilters.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentKnowledgeFilter = btn.getAttribute('data-category');
-          renderKnowledgeHub();
-        });
+    // Bind project card click events to Hash Routing
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.getAttribute('data-project-id');
+        window.location.hash = '#/projects/' + id;
       });
-    }
+    });
 
-    // Initialize Knowledge Hub Grid
-    renderKnowledgeHub();
+    // Hash Navigation listeners
+    window.addEventListener('hashchange', handleRouting);
+    window.addEventListener('DOMContentLoaded', () => {
+      renderKnowledgeHub();
+      handleRouting();
+    });
 
     // Initial load
     renderVizzes();
+
 
   </script>
 

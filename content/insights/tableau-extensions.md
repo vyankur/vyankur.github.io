@@ -7,9 +7,9 @@ category: "Visualization"
 difficulty: "Advanced"
 readingTime: "15 min"
 tags: ['JavaScript', 'Extensions API', 'Tableau']
+featured: True
 publishedDate: "2026-07-18"
 lastUpdated: "2026-07-18"
-featured: false
 ---
 
 # Building Tableau Extensions
@@ -25,5 +25,5 @@ Learn how to write custom dashboard widgets. This tutorial walks through setting
 ## Expected Publication
 The complete version of this article is scheduled to be published in the **Knowledge Hub** by **Q3 2026**.
 
-## Back to Portfolio
-[Return to Knowledge Hub](#knowledge-hub)
+## Back to Insights
+[Return to Insights](#/insights)

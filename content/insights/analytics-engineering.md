@@ -7,9 +7,9 @@ category: "Analytics Engineering"
 difficulty: "Intermediate"
 readingTime: "14 min"
 tags: ['dbt', 'Analytics Engineering', 'SQL']
+featured: False
 publishedDate: "2026-07-18"
 lastUpdated: "2026-07-18"
-featured: false
 ---
 
 # Analytics Engineering Best Practices
@@ -25,5 +25,5 @@ A look into analytics engineering best practices. We explore how to manage SQL t
 ## Expected Publication
 The complete version of this article is scheduled to be published in the **Knowledge Hub** by **Q3 2026**.
 
-## Back to Portfolio
-[Return to Knowledge Hub](#knowledge-hub)
+## Back to Insights
+[Return to Insights](#/insights)

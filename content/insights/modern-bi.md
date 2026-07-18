@@ -7,9 +7,9 @@ category: "Architecture"
 difficulty: "Advanced"
 readingTime: "16 min"
 tags: ['Architecture', 'Modern Data Stack', 'BI']
+featured: False
 publishedDate: "2026-07-18"
 lastUpdated: "2026-07-18"
-featured: false
 ---
 
 # Modern BI Architecture
@@ -25,5 +25,5 @@ This article details how to architect a modern self-service BI system. We analyz
 ## Expected Publication
 The complete version of this article is scheduled to be published in the **Knowledge Hub** by **Q3 2026**.
 
-## Back to Portfolio
-[Return to Knowledge Hub](#knowledge-hub)
+## Back to Insights
+[Return to Insights](#/insights)

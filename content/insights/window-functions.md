@@ -7,9 +7,9 @@ category: "SQL"
 difficulty: "Intermediate"
 readingTime: "8 min"
 tags: ['SQL', 'Analytics Engineering']
+featured: False
 publishedDate: "2026-07-18"
 lastUpdated: "2026-07-18"
-featured: false
 ---
 
 # Window Functions Deep Dive
@@ -25,5 +25,5 @@ This guide provides practical examples of SQL window functions. You will learn t
 ## Expected Publication
 The complete version of this article is scheduled to be published in the **Knowledge Hub** by **Q3 2026**.
 
-## Back to Portfolio
-[Return to Knowledge Hub](#knowledge-hub)
+## Back to Insights
+[Return to Insights](#/insights)

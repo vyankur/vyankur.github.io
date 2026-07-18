@@ -7,9 +7,9 @@ category: "Visualization"
 difficulty: "Intermediate"
 readingTime: "10 min"
 tags: ['Visualization', 'UX', 'Tableau']
+featured: False
 publishedDate: "2026-07-18"
 lastUpdated: "2026-07-18"
-featured: false
 ---
 
 # Dashboard Design Best Practices
@@ -25,5 +25,5 @@ This guide outlines the UX principles required to build business dashboards that
 ## Expected Publication
 The complete version of this article is scheduled to be published in the **Knowledge Hub** by **Q3 2026**.
 
-## Back to Portfolio
-[Return to Knowledge Hub](#knowledge-hub)
+## Back to Insights
+[Return to Insights](#/insights)

@@ -1,0 +1,346 @@
+[
+  {
+    "slug": "tableau-performance",
+    "title": "Tableau Performance Tuning",
+    "category": "Tableau",
+    "difficulty": "Advanced",
+    "readingTime": "15 min",
+    "status": "Published",
+    "featured": true,
+    "tags": [
+      "Tableau",
+      "Optimization",
+      "BI"
+    ],
+    "summary": "Learn enterprise techniques for improving dashboard performance, query pruning, extract optimizations, and workbook layout tuning.",
+    "overview": "This article covers the principles of diagnosing and fixing slow Tableau workbooks. You will learn to use Tableau Performance Recording to isolate rendering vs. query bottlenecks and apply concrete design adjustments to load dashboards under 2 seconds.",
+    "topics": [
+      "Worksheet Rendering Pipeline",
+      "Performance Recording Analysis",
+      "Data Source Extract vs Live Strategies",
+      "Custom SQL vs Semantic Layer Calculations",
+      "Context Filters & LOD Optimization"
+    ]
+  },
+  {
+    "slug": "sql-performance",
+    "title": "SQL Performance Optimization",
+    "category": "SQL",
+    "difficulty": "Advanced",
+    "readingTime": "18 min",
+    "status": "In Draft",
+    "featured": true,
+    "tags": [
+      "SQL",
+      "Databases",
+      "Optimization"
+    ],
+    "summary": "Tuning stored procedures, window functions, indices, and execution plans for large scale Oracle and PostgreSQL transaction tables.",
+    "overview": "A developer handbook on identifying database bottlenecks and refactoring queries. Learn to read execution plans, build indexing strategies, write efficient stored procedures, and configure materialized views.",
+    "topics": [
+      "Execution Plan Analysis",
+      "Indexing Strategies (B-Tree, Bitmap, GIN)",
+      "Stored Procedures vs CTEs",
+      "Temporary Tables & Database Views",
+      "Database Locks and Transaction Isolations"
+    ]
+  },
+  {
+    "slug": "enterprise-rls",
+    "title": "Enterprise Row Level Security",
+    "category": "Architecture",
+    "difficulty": "Advanced",
+    "readingTime": "14 min",
+    "status": "In Draft",
+    "featured": true,
+    "tags": [
+      "Security",
+      "Governance",
+      "Tableau"
+    ],
+    "summary": "Implement secure dynamic row level security (RLS) configurations using database entitlement joins and Active Directory mapping.",
+    "overview": "Learn how to enforce data entitlements at scale. This article outlines the architecture of dynamic RLS in BI, detailing how to join transaction tables to security mapping tables and apply filters using system usernames.",
+    "topics": [
+      "Dynamic USERNAME() calculated filters",
+      "Entitlements Mapping Tables",
+      "Database Join Optimization for RLS",
+      "Active Directory User Sync",
+      "Performance considerations of RLS joins"
+    ]
+  },
+  {
+    "slug": "athena-optimization",
+    "title": "Athena Query Optimization",
+    "category": "SQL",
+    "difficulty": "Advanced",
+    "readingTime": "12 min",
+    "status": "Published",
+    "featured": true,
+    "tags": [
+      "AWS Athena",
+      "SQL",
+      "Cloud BI"
+    ],
+    "summary": "Optimize serverless queries over AWS S3 data lakes using partition pruning, columnar Parquet formats, and cost-reduction techniques.",
+    "overview": "This article demonstrates how to optimize Amazon Athena queries to achieve sub-second dashboard rendering times. It explains the mechanics of partition pruning, file merging, and query caching to save up to 90% in query costs.",
+    "topics": [
+      "Athena Serverless Mechanics",
+      "S3 Partitioning Strategies",
+      "Columnar File Formats (Parquet/ORC)",
+      "Query Tuning & Execution Plans",
+      "Cost Management and Scan Limits"
+    ]
+  },
+  {
+    "slug": "ai-in-tableau",
+    "title": "AI in Tableau",
+    "category": "AI",
+    "difficulty": "Advanced",
+    "readingTime": "12 min",
+    "status": "Planned",
+    "featured": true,
+    "tags": [
+      "Tableau",
+      "Generative AI",
+      "TabPy"
+    ],
+    "summary": "Integrate LLMs, vector database APIs, and python models natively into Tableau worksheets and dashboards using TabPy.",
+    "overview": "This case study details how to embed Large Language Models into Tableau dashboards. You will learn to deploy custom Python web services, load TabPy on the server, and write dashboard expressions to call generative API endpoints on user actions.",
+    "topics": [
+      "TabPy Server Installation & Security",
+      "Writing Tableau calculated scripts using TabPy",
+      "LLM API Integration (OpenAI/Bedrock)",
+      "Natural Language Query Interpretation",
+      "Caching TabPy returns for quick loading"
+    ]
+  },
+  {
+    "slug": "tableau-extensions",
+    "title": "Building Tableau Extensions",
+    "category": "Visualization",
+    "difficulty": "Advanced",
+    "readingTime": "15 min",
+    "status": "Planned",
+    "featured": true,
+    "tags": [
+      "JavaScript",
+      "Extensions API",
+      "Tableau"
+    ],
+    "summary": "Create custom interactive dashboard components, date selectors, and write-back forms using HTML5 and the Tableau Extensions API.",
+    "overview": "Learn how to write custom dashboard widgets. This tutorial walks through setting up the manifest (.trex) file, listening to workbook filter events, and writing back parameter adjustments to Tableau via JavaScript.",
+    "topics": [
+      "Tableau Extensions API SDK",
+      "Manifest (.trex) configuration",
+      "Event listeners for filter changes",
+      "Parameter write-back methods",
+      "UI styling with CSS and grid alignment"
+    ]
+  },
+  {
+    "slug": "dashboard-design",
+    "title": "Dashboard Design Best Practices",
+    "category": "Visualization",
+    "difficulty": "Intermediate",
+    "readingTime": "10 min",
+    "status": "In Draft",
+    "featured": false,
+    "tags": [
+      "Visualization",
+      "UX",
+      "Tableau"
+    ],
+    "summary": "Master visual hierarchy, color theory, spacing, and cognitive load reduction principles for enterprise business dashboards.",
+    "overview": "This guide outlines the UX principles required to build business dashboards that CXOs can read in under 5 seconds. We cover grid layouts, layout container hierarchy, and intentional color mapping for actionable reporting.",
+    "topics": [
+      "Grid layouts and layout containers",
+      "Visual hierarchy and reading patterns",
+      "Cognitive load reduction",
+      "Color theory and theme harmonization",
+      "Typography and chart formatting spacing"
+    ]
+  },
+  {
+    "slug": "tableau-admin",
+    "title": "Tableau Server Administration",
+    "category": "Tableau",
+    "difficulty": "Advanced",
+    "readingTime": "20 min",
+    "status": "Under Review",
+    "featured": false,
+    "tags": [
+      "Tableau Server",
+      "Governance",
+      "Systems"
+    ],
+    "summary": "Configure, secure, monitor, and scale enterprise Tableau Server environments, workgroup databases, and backgrounder schedules.",
+    "overview": "An in-depth manual on configuring and scaling a multi-node Tableau Server topology. We cover permission mapping, licensing optimizations, backup procedures, and backgrounder process scheduling to ensure high uptime.",
+    "topics": [
+      "Multi-node Server Topology",
+      "Postgres Workgroup DB Access",
+      "Permission mapping and user security profiles",
+      "Backgrounder process optimization",
+      "Backup, recovery, and server upgrades"
+    ]
+  },
+  {
+    "slug": "window-functions",
+    "title": "Window Functions Deep Dive",
+    "category": "SQL",
+    "difficulty": "Intermediate",
+    "readingTime": "8 min",
+    "status": "Planned",
+    "featured": false,
+    "tags": [
+      "SQL",
+      "Analytics Engineering"
+    ],
+    "summary": "Master complex analytical SQL window functions for cohort analysis, running totals, rankings, and lead/lag calculations.",
+    "overview": "This guide provides practical examples of SQL window functions. You will learn to use PARTITION BY, ORDER BY, and frame clauses (ROWS BETWEEN) to compute complex rolling metrics and historical trends without self-joins.",
+    "topics": [
+      "PARTITION BY and ORDER BY syntax",
+      "Ranking functions (ROW_NUMBER, DENSE_RANK)",
+      "Lead and Lag offsets",
+      "Frame clauses (ROWS/RANGE BETWEEN)",
+      "Running totals and moving averages"
+    ]
+  },
+  {
+    "slug": "aws-architecture",
+    "title": "AWS Analytics Architecture",
+    "category": "AWS",
+    "difficulty": "Advanced",
+    "readingTime": "16 min",
+    "status": "Under Review",
+    "featured": false,
+    "tags": [
+      "AWS",
+      "Architecture",
+      "Data Lake"
+    ],
+    "summary": "Architect modern data lake solutions using S3, Glue, Athena, Bedrock, and Tableau Cloud to process and visualize petabyte scale data.",
+    "overview": "A blueprint for building a secure and cost-efficient cloud analytics platform. We explore ingestion patterns, ETL automation with Glue and Step Functions, security settings, and live BI querying.",
+    "topics": [
+      "Cloud Ingestion Patterns",
+      "ETL Orchestration with AWS Glue",
+      "S3 Data Lake Landing, Raw, and Curated layers",
+      "Data Cataloging & Permissions (Lake Formation)",
+      "Athena Serverless BI connectivity"
+    ]
+  },
+  {
+    "slug": "prompt-engineering",
+    "title": "Prompt Engineering for BI",
+    "category": "AI",
+    "difficulty": "Intermediate",
+    "readingTime": "10 min",
+    "status": "In Draft",
+    "featured": false,
+    "tags": [
+      "Prompt Engineering",
+      "AI",
+      "BI"
+    ],
+    "summary": "Master prompt engineering templates and context injection styles to build AI-assisted SQL query generators and BI chatbots.",
+    "overview": "A guide on formatting prompts to generate clean database queries and analytics. We explore few-shot learning templates, schema injection, formatting constraints, and self-correction loops.",
+    "topics": [
+      "Few-shot learning prompt structures",
+      "Schema metadata context injection",
+      "SQL generation safety and formatting constraints",
+      "Self-correction prompt feedback loops",
+      "Prompt templates for conversational analytics"
+    ]
+  },
+  {
+    "slug": "dashboard-governance",
+    "title": "Enterprise Dashboard Governance",
+    "category": "Architecture",
+    "difficulty": "Intermediate",
+    "readingTime": "12 min",
+    "status": "Under Review",
+    "featured": false,
+    "tags": [
+      "Governance",
+      "BI Management",
+      "Standardization"
+    ],
+    "summary": "Implement dashboard lifecycle management, automated QA checks, certification badges, and metadata audits at scale.",
+    "overview": "This article outlines a framework for dashboard governance in enterprise business units. We cover QA check-lists, peer-review cycles, certification indicators, and catalog indexing.",
+    "topics": [
+      "Dashboard Lifecycle Management (Dev -> Prod)",
+      "Automated QA and data validation check-lists",
+      "Certification indicators and branding standards",
+      "Metadata Auditing using Tableau REST API",
+      "Orphaned workbook clean-up procedures"
+    ]
+  },
+  {
+    "slug": "analytics-engineering",
+    "title": "Analytics Engineering Best Practices",
+    "category": "Analytics Engineering",
+    "difficulty": "Intermediate",
+    "readingTime": "14 min",
+    "status": "Planned",
+    "featured": false,
+    "tags": [
+      "dbt",
+      "Analytics Engineering",
+      "SQL"
+    ],
+    "summary": "Implement software engineering practices in analytics: version control, dbt modeling, testing, documentation, and CI/CD.",
+    "overview": "A look into analytics engineering best practices. We explore how to manage SQL transformations using version control, build structured staging and core models in dbt, write automated tests, and run deployment pipelines.",
+    "topics": [
+      "dbt modeling layouts (Staging, Marts)",
+      "Version Control strategies (Git branches)",
+      "Automated testing for nulls and uniques",
+      "SQL coding style and guidelines",
+      "CI/CD deployment for data models"
+    ]
+  },
+  {
+    "slug": "modern-bi",
+    "title": "Modern BI Architecture",
+    "category": "Architecture",
+    "difficulty": "Advanced",
+    "readingTime": "16 min",
+    "status": "Planned",
+    "featured": false,
+    "tags": [
+      "Architecture",
+      "Modern Data Stack",
+      "BI"
+    ],
+    "summary": "Design scalable BI stacks combining cloud warehouses, semantic layers, semantic models, and visual engines for self-service.",
+    "overview": "This article details how to architect a modern self-service BI system. We analyze the roles of cloud warehouses (BigQuery/Snowflake), semantic definition layers, data transformation tools, and Tableau/Power BI.",
+    "topics": [
+      "Cloud Data Warehouse configurations",
+      "Semantic layers and metric definitions",
+      "Data orchestration and pipeline flows",
+      "Self-service reporting access roles",
+      "Semantic modeling structures for rapid queries"
+    ]
+  },
+  {
+    "slug": "databricks-etl",
+    "title": "Databricks ETL Pipelines",
+    "category": "Databricks",
+    "difficulty": "Advanced",
+    "readingTime": "15 min",
+    "status": "In Draft",
+    "featured": false,
+    "tags": [
+      "Databricks",
+      "PySpark",
+      "ETL"
+    ],
+    "summary": "Build high performance batch and streaming ETL pipelines inside Databricks using PySpark, Delta Lake, and Auto Loader.",
+    "overview": "Learn how to write scalable ETL workflows in PySpark. We cover reading files with Auto Loader, applying schema validation, writing to Delta tables with ACID guarantees, and scheduling workflows.",
+    "topics": [
+      "PySpark Dataframe API transformation",
+      "Delta Lake ACID transaction logs",
+      "Auto Loader directory file stream",
+      "Databricks Workflows orchestration",
+      "Performance tuning (Shuffling and Partitioning)"
+    ]
+  }
+]
