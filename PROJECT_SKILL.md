@@ -208,6 +208,7 @@ Custom tailormade dark and light themes using sleek HSL variables:
 | 2026-07-18 | Print layout | Embedded print CSS styles in index | Allows recruiters to print a clean resume layout directly from the landing page | `index.html` |
 | 2026-07-19 | Tableau Widget | Restructured header to span full-width | Centering active viz title above player + sidebar columns integrates layout design better | `index.html` |
 | 2026-07-19 | Resume download | Redirected LinkedIn button to profile | Linking to a local developer guide MD file is confusing; linking to profile fits portfolio standard | `index.html` |
+| 2026-07-19 | Hero Header | Promoted Ankur Varshney to primary H1 | The name was previously missing from the main hero text; promoting it to clamp(3.2rem, 6.5vw, 5.2rem) serves personal branding and SEO guidelines | `index.html` |
 
 ---
 
@@ -262,9 +263,9 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 *   **Why**: Restore broken interactivity.
 
 ### 2026-07-19
-*   **Task**: Testimonials, layout alignments, and new PostgreSQL guide article.
+*   **Task**: Testimonials, layout alignments, name font size, and new PostgreSQL guide article.
 *   **Files Changed**: `index.html`, `articles.json`, `content/insights/tableau-server-repository.md`.
-*   **What Changed**: Added real LinkedIn recommendations, restructured Tableau widget header to span full width, increased headings max-width, redirected resume button to actual LinkedIn profile, and created the PostgreSQL Server Repository article.
+*   **What Changed**: Added real LinkedIn recommendations, restructured Tableau widget header to span full width, increased headings max-width, redirected resume button to actual LinkedIn profile, promoted Ankur Varshney to main H1 header in Hero layout, and created the PostgreSQL Server Repository article.
 *   **Why**: Implement user comments and profile expansion.
 
 ---
@@ -273,7 +274,7 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 PROJECT MEMORY (DO NOT DELETE)
 ========================================
 
-Current Version: 2.0.2
+Current Version: 2.0.3
 Last Updated: 2026-07-19
 Current Branch: main
 
@@ -282,6 +283,7 @@ Architecture Version: SPA-Hash-Router-V2
 Completed Features:
 - Rebranded value titles to Senior Data Analytics Consultant
 - Single-page hash routing navigation mapping deep links
+- Promoted Ankur Varshney name to main H1 hero heading with responsive scaling typography
 - Dynamic Tableau Public Showcase list player and filters
 - Unified interactive widget layout container with full-width header
 - Command Palette search engine with keyboard bindings
