@@ -1,7 +1,7 @@
 [
   {
-    "slug": "tableau-performance",
-    "title": "Tableau Performance Tuning",
+    "slug": "tableau-performance-tuning",
+    "title": "Tableau Performance Tuning: Building Dashboards That Load in Under 2 Seconds",
     "category": "Tableau",
     "difficulty": "Advanced",
     "readingTime": "15 min",
@@ -9,10 +9,15 @@
     "featured": true,
     "tags": [
       "Tableau",
+      "Performance",
       "Optimization",
-      "BI"
+      "Dashboard Design",
+      "Business Intelligence",
+      "Tableau Server",
+      "Hyper",
+      "SQL"
     ],
-    "summary": "Learn enterprise techniques for improving dashboard performance, query pruning, extract optimizations, and workbook layout tuning.",
+    "summary": "Learn how to diagnose and optimize slow Tableau dashboards using Performance Recording, Hyper extracts, filter optimization, LOD expressions, and dashboard design best practices.",
     "overview": "This article covers the principles of diagnosing and fixing slow Tableau workbooks. You will learn to use Tableau Performance Recording to isolate rendering vs. query bottlenecks and apply concrete design adjustments to load dashboards under 2 seconds.",
     "topics": [
       "Worksheet Rendering Pipeline",
