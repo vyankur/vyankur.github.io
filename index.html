@@ -910,6 +910,10 @@
       margin-top: 0.25rem;
     }
 
+    .rec-card.featured-rec {
+      grid-column: span 2;
+    }
+
     @media (max-width: 1024px) {
       .rec-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -919,6 +923,9 @@
     @media (max-width: 768px) {
       .rec-grid {
         grid-template-columns: 1fr;
+      }
+      .rec-card.featured-rec {
+        grid-column: span 1;
       }
     }
 
@@ -3380,32 +3387,30 @@
         </div>
 
         <div class="rec-grid">
+          <!-- Meghna Mahendra (Google Manager) -->
           <div class="rec-card">
-            <p class="rec-quote">"Ankur's expertise in Tableau and data architecture was key to optimizing our supply chain dashboards. He simplified complex queries and designed incredibly intuitive dashboards for our directors."</p>
+            <p class="rec-quote">"I am amazed by Ankur's ability to make work so much fun even when we are chasing tight timelines. He knows how to keep calm, comes up with the best innovative solutions in very less time frame, and these solutions are appreciated by all our stakeholders. He is a highly focused person as well as analytical and can add that to any team he is a part of. His energy to make things happen is contagious and that really helped us achieve great goals."</p>
             <div>
-              <div class="rec-author">Engineering Manager</div>
-              <div class="rec-author-title">GE Power Supply Chain Client</div>
+              <div class="rec-author">Meghna Mahendra</div>
+              <div class="rec-author-title">Global Senior Learning Specialist at Google (Manager)</div>
             </div>
           </div>
+
+          <!-- Jun Jungco (Sun Life Manager) -->
           <div class="rec-card">
-            <p class="rec-quote">"Ankur led our BI dashboard delivery with extreme professionalism. He has deep technical knowledge in SQL, Tableau Server, and performance recording. Under his direction, manual efforts were cut by 95%."</p>
+            <p class="rec-quote">"Ankur is a very valuable part of our team. He is very reliable and can work independently with our stakeholders. He is very knowledgeable when it comes to developing dashboards and data analysis. Our key business stakeholders appreciated his output very much."</p>
             <div>
-              <div class="rec-author">Lead Analytics Architect</div>
-              <div class="rec-author-title">TCS Consulting Division</div>
+              <div class="rec-author">Jun Jungco</div>
+              <div class="rec-author-title">Business Intelligence Lead at Sun Life (Manager)</div>
             </div>
           </div>
-          <div class="rec-card">
-            <p class="rec-quote">"Ankur is an outstanding Tableau lead. He architected our 5-year financial planning dashboards, successfully connecting live feeds to SAP HANA with rapid load times. His work is highly valued by our executive leads."</p>
+
+          <!-- Kristal Vi Gazmen (Client) -->
+          <div class="rec-card featured-rec">
+            <p class="rec-quote">"I had the opportunity to work with Ankur when he joined our team as a BI Specialist. He quickly became a reliable and valued member of the team, especially since he worked with senior stakeholders directly with minimal guidance and support. He is highly organized and structured in the way he approaches his work, with a strong focus on quality and timely delivery. He consistently produced well-designed and reliable dashboards that translated business requirements into clear, useful insights. What also stood out was his ability to engage directly with stakeholders. He was able to clarify requirements, manage expectations, communicate progress, and ensure that the dashboards he delivered addressed the underlying business need. He also created clear and comprehensive documentation for both technical and business users. Beyond documenting data sources, logic, and dashboard functionality, he explained the business questions each dashboard could help answer. This made his outputs easier to understand, adopt, and use in decision-making. Ankur is dependable, professional, and easy to work with."</p>
             <div>
-              <div class="rec-author">Finance Director</div>
-              <div class="rec-author-title">Deutsche Bank / HCL Technologies Client</div>
-            </div>
-          </div>
-          <div class="rec-card">
-            <p class="rec-quote">"Ankur's work on dashboard innovation and LangChain/Bedrock AI extensions has transformed our self-service capabilities. He successfully drove platform adoption by 30% and engineered secure RLS pipelines."</p>
-            <div>
-              <div class="rec-author">Product Owner / Change Manager</div>
-              <div class="rec-author-title">Sun Life Financial</div>
+              <div class="rec-author">Kristal Vi Gazmen</div>
+              <div class="rec-author-title">MSc Data Science and Analytics Graduate (Client)</div>
             </div>
           </div>
         </div>
