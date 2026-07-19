@@ -919,9 +919,9 @@
     /* Recommendations Testimonials Carousel Styles */
     .rec-carousel-wrapper {
       position: relative;
-      max-width: 680px;
+      max-width: 1000px;
       margin: 2.5rem auto 0 auto;
-      padding: 0 3rem;
+      padding: 0 3.5rem;
     }
 
     .rec-carousel-viewport {
@@ -929,10 +929,12 @@
       width: 100%;
       border-radius: 12px;
       position: relative;
+      transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .rec-carousel-track {
       display: flex;
+      align-items: flex-start;
       transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       width: 100%;
     }
@@ -942,18 +944,31 @@
       width: 100%;
       box-sizing: border-box;
       margin: 0;
-      opacity: 0.3;
-      transform: scale(0.95);
-      transition: all 0.45s ease;
-      background: var(--card-bg);
+      opacity: 0.05;
+      transform: scale(0.98);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+      background: linear-gradient(145deg, var(--card-bg), rgba(var(--primary-rgb), 0.02));
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 2.25rem 2.5rem;
       box-shadow: 0 10px 30px var(--shadow);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      min-height: 240px;
+      justify-content: flex-start;
+      position: relative;
+    }
+    .rec-carousel-track .rec-card::before {
+      content: "“";
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      font-size: 5rem;
+      font-family: Georgia, serif;
+      color: var(--primary);
+      opacity: 0.08;
+      line-height: 1;
+      pointer-events: none;
     }
 
     .rec-carousel-track .rec-card.active {
@@ -966,12 +981,14 @@
     }
 
     .rec-quote {
-      font-size: 0.88rem;
-      line-height: 1.7;
+      font-size: 0.98rem;
+      line-height: 1.75;
       color: var(--text);
       font-style: italic;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
       font-family: 'Outfit', sans-serif;
+      position: relative;
+      z-index: 1;
     }
 
     .rec-author {
@@ -990,11 +1007,13 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: var(--card-bg);
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       border: 1px solid var(--border);
       color: var(--text);
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1511,7 +1530,7 @@
 
     .tableau-layout {
       display: grid;
-      grid-template-columns: 3.5fr 1fr;
+      grid-template-columns: 1fr 240px;
       margin-top: 0;
       height: 620px;
     }
@@ -1644,7 +1663,7 @@
       border: none;
       border-left: 1px solid var(--border);
       border-radius: 0;
-      padding: 1.25rem;
+      padding: 1rem;
       box-shadow: none;
       display: flex;
       flex-direction: column;
@@ -3496,7 +3515,7 @@
         <div class="section-head">
           <div class="eyebrow">Architecture</div>
           <h2 class="section-title">Technical <em>design charts.</em></h2>
-          <p class="section-copy">Clean architecture schemas for BI and Cloud data pipelines.</p>
+          <p class="section-copy">Architecture schemas for BI and Cloud data pipelines.</p>
         </div>
 
         <div class="gallery-grid">
@@ -5438,6 +5457,15 @@ EDUCATION
           }
         });
         
+        // Adjust viewport height to match current active card
+        const activeCard = cards[currentIndex];
+        const viewport = track.parentElement;
+        if (viewport && activeCard) {
+          requestAnimationFrame(() => {
+            viewport.style.height = `${activeCard.offsetHeight}px`;
+          });
+        }
+        
         dots.forEach((dot, idx) => {
           if (idx === currentIndex) {
             dot.classList.add('active');
@@ -5485,6 +5513,22 @@ EDUCATION
           }
         }
       }
+
+      // Update height on window resize
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          const activeCard = cards[currentIndex];
+          const viewport = track.parentElement;
+          if (viewport && activeCard) {
+            viewport.style.height = `${activeCard.offsetHeight}px`;
+          }
+        }, 100);
+      });
+
+      // Set initial height after rendering is complete
+      setTimeout(updateCarousel, 300);
     }
 
     // Advanced Markdown Parser Helper
