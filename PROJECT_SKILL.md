@@ -209,6 +209,7 @@ Custom tailormade dark and light themes using sleek HSL variables:
 | 2026-07-19 | Tableau Widget | Restructured header to span full-width | Centering active viz title above player + sidebar columns integrates layout design better | `index.html` |
 | 2026-07-19 | Resume download | Redirected LinkedIn button to profile | Linking to a local developer guide MD file is confusing; linking to profile fits portfolio standard | `index.html` |
 | 2026-07-19 | Hero Header | Promoted Ankur Varshney to primary H1 | The name was previously missing from the main hero text; promoting it to clamp(3.2rem, 6.5vw, 5.2rem) serves personal branding and SEO guidelines | `index.html` |
+| 2026-07-19 | Recommendations | Upgraded to Swipe Carousel | Implemented responsive slide carousel with touch support and pagination dots to display recommendations elegantly | `index.html` |
 
 ---
 
@@ -307,8 +308,7 @@ Current Priorities:
 3. Validate Mermaid diagram sizing inside insights deep link page view
 
 Important Decisions:
-- Testimonials changed to grid cards layout, with Kristal's long quote featured full-width across 2 columns
-- Removed old slideshow recommendations carousel to expose quotes immediately on landing page
+- Testimonials upgraded to responsive slide carousel layout with touch swipe support, navigation arrows, and indicators to display manager quotes neatly
 - Integrated full-width headers spanning both columns on Tableau Public widget
 - Linked career resume secondary action button to actual LinkedIn profile URL
 

@@ -643,6 +643,59 @@
       color: var(--muted);
     }
 
+    .timeline-projects {
+      margin-top: 2rem;
+    }
+
+    .timeline-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .timeline-project-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .timeline-project-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.1);
+    }
+
+    .timeline-project-name {
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-project-env {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .timeline-project-env span {
+      font-size: 0.62rem;
+      color: var(--primary);
+      background: rgba(var(--primary-rgb), 0.1);
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Projects Grid */
     .project-filters {
       display: flex;
@@ -863,69 +916,170 @@
       line-height: 1.6;
     }
 
-    /* Recommendations Testimonials Grid Styles */
-    .rec-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 3rem;
+    /* Recommendations Testimonials Carousel Styles */
+    .rec-carousel-wrapper {
+      position: relative;
+      max-width: 680px;
+      margin: 2.5rem auto 0 auto;
+      padding: 0 3rem;
     }
 
-    .rec-card {
+    .rec-carousel-viewport {
+      overflow: hidden;
+      width: 100%;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .rec-carousel-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      width: 100%;
+    }
+
+    .rec-carousel-track .rec-card {
+      flex: 0 0 100%;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0;
+      opacity: 0.3;
+      transform: scale(0.95);
+      transition: all 0.45s ease;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 2rem;
       box-shadow: 0 10px 30px var(--shadow);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
+      min-height: 240px;
     }
 
-    .rec-card:hover {
-      transform: translateY(-2px);
+    .rec-carousel-track .rec-card.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .rec-carousel-track .rec-card:hover {
       border-color: var(--primary);
-      box-shadow: 0 15px 35px var(--shadow);
     }
 
     .rec-quote {
-      font-size: 1rem;
-      line-height: 1.6;
+      font-size: 0.88rem;
+      line-height: 1.7;
       color: var(--text);
       font-style: italic;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       font-family: 'Outfit', sans-serif;
     }
 
     .rec-author {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--primary);
     }
 
     .rec-author-title {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--muted);
       margin-top: 0.25rem;
     }
 
-    .rec-card.featured-rec {
-      grid-column: span 2;
+    .carousel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 15px var(--shadow);
     }
 
-    @media (max-width: 1024px) {
-      .rec-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .carousel-control:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-control.prev {
+      left: 0;
+    }
+
+    .carousel-control.next {
+      right: 0;
+    }
+
+    .rec-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .rec-carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .rec-carousel-dot.active {
+      background: var(--primary);
+      width: 24px;
+      border-radius: 4px;
     }
 
     @media (max-width: 768px) {
-      .rec-grid {
-        grid-template-columns: 1fr;
+      .rec-carousel-wrapper {
+        padding: 0 0.5rem;
       }
-      .rec-card.featured-rec {
-        grid-column: span 1;
+      .carousel-control {
+        display: none;
+      }
+      .rec-carousel-track .rec-card {
+        padding: 1.5rem;
+        min-height: auto;
+      }
+    }
+
+    @media print {
+      .rec-carousel-wrapper {
+        padding: 0 !important;
+        margin-top: 1.5rem !important;
+      }
+      .rec-carousel-viewport {
+        overflow: visible !important;
+      }
+      .rec-carousel-track {
+        display: block !important;
+        transform: none !important;
+      }
+      .rec-carousel-track .rec-card {
+        opacity: 1 !important;
+        transform: none !important;
+        margin-bottom: 1.5rem !important;
+        min-height: auto !important;
+        page-break-inside: avoid;
+        padding: 1.5rem !important;
+        background: #FFF !important;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+      }
+      .carousel-control, .rec-carousel-dots {
+        display: none !important;
       }
     }
 
@@ -1357,7 +1511,7 @@
 
     .tableau-layout {
       display: grid;
-      grid-template-columns: 2.8fr 1fr;
+      grid-template-columns: 3.5fr 1fr;
       margin-top: 0;
       height: 620px;
     }
@@ -2604,7 +2758,7 @@
           <div class="hero-avatar-frame">
             <div class="hero-avatar-ring"></div>
             <div class="hero-avatar-circle">
-              <img src="./assets/img/avatar.jpg" alt="Ankur Varshney">
+              <img src="./assets/img/avatar.jpg" alt="Ankur Varshney" width="240" height="240">
             </div>
           </div>
         </div>
@@ -3014,13 +3168,13 @@
         </div>
         
         <div style="text-align: center; margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-          <span style="font-size: 0.85rem; color: var(--muted); font-weight: 500;" id="roadmapCountText">Showing 6 of 15 planned insights</span>
+          <span style="font-size: 0.85rem; color: var(--muted); font-weight: 500;" id="roadmapCountText"></span>
           <button class="btn secondary" id="viewRoadmapBtn" style="padding: 0.65rem 1.5rem; font-size: 0.85rem;">View Knowledge Roadmap</button>
         </div>
 
         <!-- Knowledge Roadmap Section -->
         <div id="roadmapSection" style="display: none; margin-top: 3.5rem; border-top: 1px solid var(--border); padding-top: 2.5rem; animation: fadeIn 0.4s ease;">
-          <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem; text-align: center; font-family: 'Outfit', sans-serif;">2026 Technical Insights Roadmap</h3>
+          <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem; text-align: center; font-family: 'Outfit', sans-serif;">Technical Insights Roadmap</h3>
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;" id="roadmapGrid">
             <!-- Populated dynamically via JS -->
           </div>
@@ -3079,6 +3233,43 @@
                 <div class="timeline-ach-desc">Modeled client feedback loops by combining Qualtrics, Salesforce, and social data streams.</div>
               </div>
             </div>
+            <div class="timeline-projects">
+              <h5 class="timeline-section-title">Key Projects</h5>
+              <div class="timeline-projects-grid">
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">Enterprise Insurance Analytics Platform</div>
+                  <div class="timeline-project-env">
+                    <span>Tableau Cloud</span>
+                    <span>AWS Athena</span>
+                    <span>S3</span>
+                  </div>
+                </div>
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">Agentic Conversational BI Extension</div>
+                  <div class="timeline-project-env">
+                    <span>LangChain</span>
+                    <span>OpenAI</span>
+                    <span>TabPy</span>
+                  </div>
+                </div>
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">Customer Satisfaction Analytics</div>
+                  <div class="timeline-project-env">
+                    <span>Qualtrics</span>
+                    <span>Salesforce</span>
+                    <span>Tableau</span>
+                  </div>
+                </div>
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">Tableau Server Administration</div>
+                  <div class="timeline-project-env">
+                    <span>Tableau Server</span>
+                    <span>PostgreSQL</span>
+                    <span>REST API</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- HCL Panel -->
@@ -3118,6 +3309,27 @@
                 <div class="timeline-ach-desc">Configured sub-second queries by connecting Tableau live to optimized SAP HANA views.</div>
               </div>
             </div>
+            <div class="timeline-projects">
+              <h5 class="timeline-section-title">Key Projects</h5>
+              <div class="timeline-projects-grid">
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">Deutsche Bank Financial Planning Suite</div>
+                  <div class="timeline-project-env">
+                    <span>Tableau Desktop</span>
+                    <span>SAP HANA</span>
+                    <span>SQL</span>
+                  </div>
+                </div>
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">ESG Compliance Dashboards</div>
+                  <div class="timeline-project-env">
+                    <span>Databricks</span>
+                    <span>PySpark</span>
+                    <span>Tableau</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- TCS Panel -->
@@ -3154,6 +3366,43 @@
               <div class="timeline-ach-card">
                 <div class="timeline-ach-title">35% Load Speedup (GE Power)</div>
                 <div class="timeline-ach-desc">Optimized supply chain lead-time dashboards via SQL refactoring and parameter tuning.</div>
+              </div>
+            </div>
+            <div class="timeline-projects">
+              <h5 class="timeline-section-title">Key Projects</h5>
+              <div class="timeline-projects-grid">
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">HR Analytics & Risk Reporting — FAB Bank</div>
+                  <div class="timeline-project-env">
+                    <span>Tableau</span>
+                    <span>Oracle SQL</span>
+                    <span>PL/SQL</span>
+                  </div>
+                </div>
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">Master Data Governance — GE Power</div>
+                  <div class="timeline-project-env">
+                    <span>Tableau Prep</span>
+                    <span>Greenplum</span>
+                    <span>Aurora DB</span>
+                  </div>
+                </div>
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">CAS Compliance Assessment — GE Power</div>
+                  <div class="timeline-project-env">
+                    <span>Tableau</span>
+                    <span>Oracle SQL</span>
+                    <span>Python</span>
+                  </div>
+                </div>
+                <div class="timeline-project-item">
+                  <div class="timeline-project-name">Supply Chain Lead Time Analytics — GE Power</div>
+                  <div class="timeline-project-env">
+                    <span>Tableau</span>
+                    <span>Talend ETL</span>
+                    <span>Oracle SQL</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -3387,33 +3636,47 @@
           <h2 class="section-title">Feedback from <em>colleagues.</em></h2>
         </div>
 
-        <div class="rec-grid">
-          <!-- Meghna Mahendra (Google Manager) -->
-          <div class="rec-card">
-            <p class="rec-quote">"I am amazed by Ankur's ability to make work so much fun even when we are chasing tight timelines. He knows how to keep calm, comes up with the best innovative solutions in very less time frame, and these solutions are appreciated by all our stakeholders. He is a highly focused person as well as analytical and can add that to any team he is a part of. His energy to make things happen is contagious and that really helped us achieve great goals."</p>
-            <div>
-              <div class="rec-author">Meghna Mahendra</div>
-              <div class="rec-author-title">Global Senior Learning Specialist at Google (Manager)</div>
+        <div class="rec-carousel-wrapper">
+          <button class="carousel-control prev" id="recPrevBtn" aria-label="Previous recommendation">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          
+          <div class="rec-carousel-viewport">
+            <div class="rec-carousel-track" id="recTrack">
+              <!-- Meghna Mahendra (Google Manager) -->
+              <div class="rec-card active">
+                <p class="rec-quote">"I am amazed by Ankur's ability to make work so much fun even when we are chasing tight timelines. He knows how to keep calm, comes up with the best innovative solutions in very less time frame, and these solutions are appreciated by all our stakeholders. He is a highly focused person as well as analytical and can add that to any team he is a part of. His energy to make things happen is contagious and that really helped us achieve great goals."</p>
+                <div>
+                  <div class="rec-author">Meghna Mahendra</div>
+                  <div class="rec-author-title">Global Senior Learning Specialist at Google (Manager)</div>
+                </div>
+              </div>
+
+              <!-- Jun Jungco (Sun Life Manager) -->
+              <div class="rec-card">
+                <p class="rec-quote">"Ankur is a very valuable part of our team. He is very reliable and can work independently with our stakeholders. He is very knowledgeable when it comes to developing dashboards and data analysis. Our key business stakeholders appreciated his output very much."</p>
+                <div>
+                  <div class="rec-author">Jun Jungco</div>
+                  <div class="rec-author-title">Business Intelligence Lead at Sun Life (Manager)</div>
+                </div>
+              </div>
+
+              <!-- Kristal Vi Gazmen -->
+              <div class="rec-card">
+                <p class="rec-quote">"I had the opportunity to work with Ankur when he joined our team as a BI Specialist. He quickly became a reliable and valued member of the team, especially since he worked with senior stakeholders directly with minimal guidance and support. He is highly organized and structured in the way he approaches his work, with a strong focus on quality and timely delivery. He consistently produced well-designed and reliable dashboards that translated business requirements into clear, useful insights. What also stood out was his ability to engage directly with stakeholders. He was able to clarify requirements, manage expectations, communicate progress, and ensure that the dashboards he delivered addressed the underlying business need. He also created clear and comprehensive documentation for both technical and business users. Beyond documenting data sources, logic, and dashboard functionality, he explained the business questions each dashboard could help answer. This made his outputs easier to understand, adopt, and use in decision-making. Ankur is dependable, professional, and easy to work with."</p>
+                <div>
+                  <div class="rec-author">Kristal Vi Gazmen</div>
+                  <div class="rec-author-title">Head, Data and Analytics at Sun Life</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Jun Jungco (Sun Life Manager) -->
-          <div class="rec-card">
-            <p class="rec-quote">"Ankur is a very valuable part of our team. He is very reliable and can work independently with our stakeholders. He is very knowledgeable when it comes to developing dashboards and data analysis. Our key business stakeholders appreciated his output very much."</p>
-            <div>
-              <div class="rec-author">Jun Jungco</div>
-              <div class="rec-author-title">Business Intelligence Lead at Sun Life (Manager)</div>
-            </div>
-          </div>
+          <button class="carousel-control next" id="recNextBtn" aria-label="Next recommendation">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
 
-          <!-- Kristal Vi Gazmen (Client) -->
-          <div class="rec-card featured-rec">
-            <p class="rec-quote">"I had the opportunity to work with Ankur when he joined our team as a BI Specialist. He quickly became a reliable and valued member of the team, especially since he worked with senior stakeholders directly with minimal guidance and support. He is highly organized and structured in the way he approaches his work, with a strong focus on quality and timely delivery. He consistently produced well-designed and reliable dashboards that translated business requirements into clear, useful insights. What also stood out was his ability to engage directly with stakeholders. He was able to clarify requirements, manage expectations, communicate progress, and ensure that the dashboards he delivered addressed the underlying business need. He also created clear and comprehensive documentation for both technical and business users. Beyond documenting data sources, logic, and dashboard functionality, he explained the business questions each dashboard could help answer. This made his outputs easier to understand, adopt, and use in decision-making. Ankur is dependable, professional, and easy to work with."</p>
-            <div>
-              <div class="rec-author">Kristal Vi Gazmen</div>
-              <div class="rec-author-title">MSc Data Science and Analytics Graduate (Client)</div>
-            </div>
-          </div>
+          <div class="rec-carousel-dots" id="recDots"></div>
         </div>
       </div>
     </section>
@@ -3817,7 +4080,7 @@ EDUCATION
           </div>
 
           <div class="contact-form-panel">
-            <form action="mailto:vyankur@gmail.com" method="post" enctype="text/plain">
+            <form id="contactForm" onsubmit="return false;">
               <div class="form-group">
                 <label class="form-label" for="formName">Name</label>
                 <input class="form-control" type="text" id="formName" name="name" required>
@@ -3830,7 +4093,10 @@ EDUCATION
                 <label class="form-label" for="formMessage">Message</label>
                 <textarea class="form-control" id="formMessage" name="message" rows="5" required></textarea>
               </div>
-              <button class="btn primary" type="submit" style="width: 100%">Send Message</button>
+              <button class="btn primary" type="submit" id="contactSubmitBtn" style="width: 100%">Send Message</button>
+              <div id="contactSuccessMsg" style="display:none; text-align:center; margin-top:1rem; padding:0.75rem; background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); border-radius:8px; color:rgb(34,197,94); font-size:0.85rem; font-weight:600;">
+                ✅ Your email client will open with the pre-filled message. Thank you!
+              </div>
             </form>
           </div>
         </div>
@@ -4917,7 +5183,7 @@ EDUCATION
         difficulty: 'Advanced',
         readingTime: '15 min',
         status: 'Planned',
-        featured: true,
+        featured: false,
         tags: ['JavaScript', 'Extensions API', 'Tableau'],
         summary: 'Create custom interactive dashboard components, date selectors, and write-back forms using HTML5 and the Tableau Extensions API.',
         overview: 'Learn how to write custom dashboard widgets. This tutorial walks through setting up the manifest (.trex) file, listening to workbook filter events, and writing back parameter adjustments to Tableau via JavaScript.',
@@ -5127,6 +5393,97 @@ EDUCATION
           });
           roadmapGrid.appendChild(item);
         });
+      }
+
+      // Dynamically update the counter text from actual data
+      const countEl = document.getElementById('roadmapCountText');
+      if (countEl) {
+        countEl.textContent = `Showing ${featured.length} of ${knowledgeArticles.length} total insights`;
+      }
+    }
+
+    // Initialize Recommendations Carousel Slider
+    function initTestimonialsCarousel() {
+      const track = document.getElementById('recTrack');
+      const prevBtn = document.getElementById('recPrevBtn');
+      const nextBtn = document.getElementById('recNextBtn');
+      const dotsContainer = document.getElementById('recDots');
+      
+      if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+      
+      const cards = Array.from(track.children);
+      let currentIndex = 0;
+      
+      // Generate dots
+      dotsContainer.innerHTML = '';
+      cards.forEach((_, idx) => {
+        const dot = document.createElement('div');
+        dot.className = `rec-carousel-dot${idx === 0 ? ' active' : ''}`;
+        dot.addEventListener('click', () => {
+          goToSlide(idx);
+        });
+        dotsContainer.appendChild(dot);
+      });
+      
+      const dots = Array.from(dotsContainer.children);
+      
+      function updateCarousel() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        cards.forEach((card, idx) => {
+          if (idx === currentIndex) {
+            card.classList.add('active');
+          } else {
+            card.classList.remove('active');
+          }
+        });
+        
+        dots.forEach((dot, idx) => {
+          if (idx === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+      
+      function goToSlide(index) {
+        currentIndex = index;
+        if (currentIndex < 0) currentIndex = cards.length - 1;
+        if (currentIndex >= cards.length) currentIndex = 0;
+        updateCarousel();
+      }
+      
+      prevBtn.addEventListener('click', () => {
+        goToSlide(currentIndex - 1);
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        goToSlide(currentIndex + 1);
+      });
+      
+      // Touch swipe support for mobile devices
+      let startX = 0;
+      let endX = 0;
+      
+      track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      
+      track.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        handleSwipe();
+      }, { passive: true });
+      
+      function handleSwipe() {
+        const diffX = startX - endX;
+        if (Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+            goToSlide(currentIndex + 1);
+          } else {
+            goToSlide(currentIndex - 1);
+          }
+        }
       }
     }
 
@@ -5668,6 +6025,32 @@ EDUCATION
       });
     }
 
+    // Contact Form JS Handler (avoids mailto: POST security warnings)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('formName').value.trim();
+        const email = document.getElementById('formEmail').value.trim();
+        const message = document.getElementById('formMessage').value.trim();
+        if (!name || !email || !message) return;
+        
+        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+        window.location.href = `mailto:vyankur@gmail.com?subject=${subject}&body=${body}`;
+        
+        // Show success feedback
+        const successMsg = document.getElementById('contactSuccessMsg');
+        if (successMsg) successMsg.style.display = 'block';
+        
+        // Reset form after short delay
+        setTimeout(() => {
+          contactForm.reset();
+          if (successMsg) setTimeout(() => { successMsg.style.display = 'none'; }, 4000);
+        }, 1000);
+      });
+    }
+
     // Bind project card click events to Hash Routing
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('click', () => {
@@ -5680,6 +6063,7 @@ EDUCATION
     window.addEventListener('hashchange', handleRouting);
     window.addEventListener('DOMContentLoaded', () => {
       renderKnowledgeHub();
+      initTestimonialsCarousel();
       handleRouting();
     });
 
@@ -5713,7 +6097,9 @@ EDUCATION
       }},
       { label: 'Toggle Light/Dark Theme', action: () => {
         const currentTheme = htmlEl.getAttribute('data-theme');
-        htmlEl.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        htmlEl.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
       }},
       { label: 'Open AI Resume Assistant', action: () => toggleBotChat(true) }
     ];
@@ -5830,7 +6216,10 @@ EDUCATION
       python: 'Ankur uses Python for data deduplication (fuzzy matching), Tableau REST API/TSC CLI automations, and LLM orchestration (LangChain, OpenAI, Bedrock API).',
       salary: 'Ankur is open to discussing competitive compensation and salary packages depending on the relocation city, cost of living, and total benefits. Please contact him at vyankur@gmail.com to discuss specifics.',
       start: 'Ankur is available for interviews and can join within standard notice periods. For exact timeline negotiations, please reach out to him directly at vyankur@gmail.com or +91 8452893918.',
-      contact: 'You can contact Ankur Varshney directly via: Email: vyankur@gmail.com | Phone/WhatsApp: +91 8452893918 | LinkedIn: linkedin.com/in/vyankur | Tableau Public: public.tableau.com/profile/ankur.varshney'
+      contact: 'You can contact Ankur Varshney directly via: Email: vyankur@gmail.com | Phone/WhatsApp: +91 8452893918 | LinkedIn: linkedin.com/in/vyankur | Tableau Public: public.tableau.com/profile/ankur.varshney',
+      website: 'This portfolio website (vyankur.github.io) showcases Ankur\'s professional profile. It includes: **Projects** (9 enterprise case studies), **Experience** (timeline with Sun Life, HCL, TCS), **Skills** (BI, SQL, Cloud, AI), **Tableau Showcase** (live interactive dashboards), **Knowledge Hub** (16 technical insights and articles), **Recommendations** (LinkedIn testimonials), and a **Contact** form. Use Ctrl+K to open the Command Palette for quick navigation!',
+      tableau_showcase: 'The **Tableau Showcase** section lets you browse and interact with Ankur\'s live dashboards hosted on Tableau Public. You can filter by categories like Insurance, Finance, or Supply Chain, and search for specific dashboards. Each dashboard loads in an embedded viewer right on the page!',
+      articles_overview: 'The Knowledge Hub contains **16 technical insights** across categories like Tableau, SQL, AWS, AI, and Architecture. Published articles include guides on Tableau Performance Tuning, Athena Optimization, Window Functions, Enterprise RLS, Dashboard Governance, and Tableau Server Repository Analytics. Click "View Knowledge Roadmap" in the Insights section to see the full list!'
     };
 
     function toggleBotChat(show) {
@@ -5854,7 +6243,29 @@ EDUCATION
     function appendMessage(text, sender) {
       const div = document.createElement('div');
       div.className = `bot-msg ${sender}`;
-      div.textContent = text;
+      
+      if (sender === 'bot') {
+        // Safe formatting for markdown links [Text](URL), bold text **bold**, and newlines
+        let formatted = text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\n/g, '<br>')
+          .replace(/\[([^\]]+)\]\((#[^\)]+)\)/g, '<a href="$2" class="chat-link" style="color: var(--primary); font-weight: 700; text-decoration: underline;">$1</a>');
+        
+        formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        div.innerHTML = formatted;
+        
+        // Add click listener to close chatbot on link click
+        div.querySelectorAll('.chat-link').forEach(link => {
+          link.addEventListener('click', () => {
+            toggleBotChat(false);
+          });
+        });
+      } else {
+        div.textContent = text;
+      }
+      
       botMessagesArea.appendChild(div);
       botMessagesArea.scrollTop = botMessagesArea.scrollHeight;
     }
@@ -5875,43 +6286,85 @@ EDUCATION
     function processUserMessage(query) {
       appendMessage(query, 'user');
       const q = query.toLowerCase();
-      let response = "I'm not fully sure about that detail. You can ask me about his Tableau/AWS skills, the Conversational AI extension, GE Power defect automation, or his relocation preferences.";
+      let response = "";
 
-      if (q.includes('skill') || q.includes('tool') || q.includes('stack') || q.includes('power bi')) {
-        response = botKnowledge.skills;
-      } else if (q.includes('ai') || q.includes('langchain') || q.includes('bedrock') || q.includes('openai') || q.includes('conversational') || q.includes('bmad') || q.includes('extension')) {
-        response = botKnowledge.ai;
-      } else if (q.includes('aws') || q.includes('athena') || q.includes('s3') || q.includes('glue') || q.includes('sagemaker') || q.includes('lake')) {
-        response = botKnowledge.aws;
-      } else if (q.includes('ge ') || q.includes('ge-') || q.includes('gepower') || q.includes('defect') || q.includes('dedup') || q.includes('fuzzy') || q.includes('50k') || q.includes('power')) {
-        response = botKnowledge.ge;
-      } else if (q.includes('reloc') || q.includes('sponsor') || q.includes('vis') || q.includes('singapore') || q.includes('germany') || q.includes('uk') || q.includes('uae') || q.includes('dubai') || q.includes('london') || q.includes('munich') || q.includes('hong kong') || q.includes('countr')) {
-        response = botKnowledge.relocate;
-      } else if (q.includes('sun life') || q.includes('sunlife') || q.includes('qualtrics') || q.includes('adoption') || q.includes('satisfaction') || q.includes('insurance')) {
-        response = botKnowledge.sunlife;
-      } else if (q.includes('hcl') || q.includes('deutsche') || q.includes('hana') || q.includes('databricks') || q.includes('pyspark') || q.includes('esg') || q.includes('db')) {
-        response = botKnowledge.hcl;
-      } else if (q.includes('tcs') || q.includes('tata')) {
-        response = botKnowledge.tcs;
-      } else if (q.includes('security') || q.includes('rls') || q.includes('entitlement') || q.includes('access') || q.includes('lod') || q.includes('fab') || q.includes('abu dhabi') || q.includes('compensation')) {
-        response = botKnowledge.rls;
-      } else if (q.includes('cert') || q.includes('credential') || q.includes('badge') || q.includes('winner') || q.includes('quest') || q.includes('award') || q.includes('specialist')) {
-        response = botKnowledge.certifications;
-      } else if (q.includes('oracle') || q.includes('postgres') || q.includes('database') || q.includes('sql') || q.includes('pl/sql') || q.includes('procedure') || q.includes('greenplum')) {
-        response = botKnowledge.databases;
-      } else if (q.includes('python') || q.includes('script') || q.includes('automation') || q.includes('cli') || q.includes('tsc')) {
-        response = botKnowledge.python;
-      } else if (q.includes('educat') || q.includes('degree') || q.includes('kiet') || q.includes('college') || q.includes('university') || q.includes('study') || q.includes('studied') || q.includes('btech') || q.includes('noida') || q.includes('ghaziabad')) {
-        response = botKnowledge.education;
-      } else if (q.includes('salary') || q.includes('expect') || q.includes('compensat') || q.includes('money')) {
-        response = botKnowledge.salary;
-      } else if (q.includes('start') || q.includes('avail') || q.includes('join') || q.includes('notice') || q.includes('interview')) {
-        response = botKnowledge.start;
-      } else if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone') || q.includes('call') || q.includes('address') || q.includes('whatsapp') || q.includes('hire') || q.includes('mail')) {
-        response = botKnowledge.contact;
-      } else if (q.includes('summary') || q.includes('experience') || q.includes('who is') || q.includes('ankur') || q.includes('profile')) {
-        response = botKnowledge.summary;
+      // Dynamic search of technical articles dataset
+      let articleMatches = [];
+      const cleanQ = q.replace(/^(do you have|show me|find|search for|tell me about|what is|how to|about)\s+/i, '').trim();
+      
+      if (cleanQ.length > 2) {
+        knowledgeArticles.forEach(art => {
+          const inTitle = art.title.toLowerCase().includes(cleanQ);
+          const inSummary = art.summary.toLowerCase().includes(cleanQ);
+          const inTags = art.tags.some(t => t.toLowerCase().includes(cleanQ));
+          const inTopics = art.topics.some(tp => tp.toLowerCase().includes(cleanQ));
+          const inCat = art.category.toLowerCase().includes(cleanQ);
+          if (inTitle || inSummary || inTags || inTopics || inCat) {
+            articleMatches.push(art);
+          }
+        });
       }
+
+      // Base FAQ keyword matching
+      let baseResponse = "";
+      if (q.includes('skill') || q.includes('tool') || q.includes('stack') || q.includes('power bi')) {
+        baseResponse = botKnowledge.skills;
+      } else if (q.includes('ai') || q.includes('langchain') || q.includes('bedrock') || q.includes('openai') || q.includes('conversational') || q.includes('bmad') || q.includes('extension')) {
+        baseResponse = botKnowledge.ai;
+      } else if (q.includes('aws') || q.includes('athena') || q.includes('s3') || q.includes('glue') || q.includes('sagemaker') || q.includes('lake')) {
+        baseResponse = botKnowledge.aws;
+      } else if (q.includes('ge ') || q.includes('ge-') || q.includes('gepower') || q.includes('defect') || q.includes('dedup') || q.includes('fuzzy') || q.includes('50k') || q.includes('power')) {
+        baseResponse = botKnowledge.ge;
+      } else if (q.includes('reloc') || q.includes('sponsor') || q.includes('vis') || q.includes('singapore') || q.includes('germany') || q.includes('uk') || q.includes('uae') || q.includes('dubai') || q.includes('london') || q.includes('munich') || q.includes('hong kong') || q.includes('countr')) {
+        baseResponse = botKnowledge.relocate;
+      } else if (q.includes('sun life') || q.includes('sunlife') || q.includes('qualtrics') || q.includes('adoption') || q.includes('satisfaction') || q.includes('insurance')) {
+        baseResponse = botKnowledge.sunlife;
+      } else if (q.includes('hcl') || q.includes('deutsche') || q.includes('hana') || q.includes('databricks') || q.includes('pyspark') || q.includes('esg') || q.includes('db')) {
+        baseResponse = botKnowledge.hcl;
+      } else if (q.includes('tcs') || q.includes('tata')) {
+        baseResponse = botKnowledge.tcs;
+      } else if (q.includes('security') || q.includes('rls') || q.includes('entitlement') || q.includes('access') || q.includes('lod') || q.includes('fab') || q.includes('abu dhabi') || q.includes('compensation')) {
+        baseResponse = botKnowledge.rls;
+      } else if (q.includes('cert') || q.includes('credential') || q.includes('badge') || q.includes('winner') || q.includes('quest') || q.includes('award') || q.includes('specialist')) {
+        baseResponse = botKnowledge.certifications;
+      } else if (q.includes('oracle') || q.includes('postgres') || q.includes('database') || q.includes('sql') || q.includes('pl/sql') || q.includes('procedure') || q.includes('greenplum')) {
+        baseResponse = botKnowledge.databases;
+      } else if (q.includes('python') || q.includes('script') || q.includes('automation') || q.includes('cli') || q.includes('tsc')) {
+        baseResponse = botKnowledge.python;
+      } else if (q.includes('educat') || q.includes('degree') || q.includes('kiet') || q.includes('college') || q.includes('university') || q.includes('study') || q.includes('studied') || q.includes('btech') || q.includes('noida') || q.includes('ghaziabad')) {
+        baseResponse = botKnowledge.education;
+      } else if (q.includes('salary') || q.includes('expect') || q.includes('compensat') || q.includes('money')) {
+        baseResponse = botKnowledge.salary;
+      } else if (q.includes('start') || q.includes('avail') || q.includes('join') || q.includes('notice') || q.includes('interview')) {
+        baseResponse = botKnowledge.start;
+      } else if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone') || q.includes('call') || q.includes('address') || q.includes('whatsapp') || q.includes('hire') || q.includes('mail')) {
+        baseResponse = botKnowledge.contact;
+      } else if (q.includes('website') || q.includes('portfolio') || q.includes('section') || q.includes('navigate') || q.includes('page') || q.includes('site') || q.includes('command palette') || q.includes('ctrl+k')) {
+        baseResponse = botKnowledge.website;
+      } else if (q.includes('showcase') || q.includes('dashboard') || q.includes('embed') || q.includes('viz') || q.includes('tableau public') || q.includes('interactive')) {
+        baseResponse = botKnowledge.tableau_showcase;
+      } else if (q.includes('summary') || q.includes('experience') || q.includes('who is') || q.includes('ankur') || q.includes('profile')) {
+        baseResponse = botKnowledge.summary;
+      }
+
+      const isArticleRequest = q.includes('article') || q.includes('insight') || q.includes('blog') || q.includes('writeup') || q.includes('post') || q.includes('publication') || q.includes('roadmap') || q.includes('read') || q.includes('topic');
+
+      if (articleMatches.length > 0) {
+        if (baseResponse) {
+          response = baseResponse + "\n\n📚 **Related Insights:**\n" + articleMatches.slice(0, 2).map(art => `• [${art.title}](#/insights/${art.slug})`).join('\n');
+        } else {
+          response = `I found **${articleMatches.length}** technical article(s) matching your search:\n\n` + 
+                     articleMatches.slice(0, 3).map(art => `• [${art.title}](#/insights/${art.slug}) (${art.category})\n  *Summary: ${art.summary}*`).join('\n\n') +
+                     (articleMatches.length > 3 ? `\n\n...and ${articleMatches.length - 3} more. Browse them in the "Insights" section or click "View Knowledge Roadmap" to see all of them!` : '');
+        }
+      } else if (isArticleRequest) {
+        response = `Ankur has written **16** deep-dive engineering insights on this site. Highlights include:\n\n• [Querying Tableau Postgres Workgroup](#/insights/tableau-server-repository)\n• [Tableau Performance tuning under 2s](#/insights/tableau-performance-tuning)\n• [AWS Athena partition optimizations](#/insights/athena-optimization)\n\nFeel free to ask me questions like *"do you have articles on RLS?"* or *"search for SQL optimization"* to find direct write-ups!`;
+      } else if (baseResponse) {
+        response = baseResponse;
+      } else {
+        response = "I'm not fully sure about that detail. You can ask me about Ankur's skills (Tableau, AWS, SQL, Python), work history (Sun Life, HCL, TCS), or his published technical insights (e.g. *\"show articles about Postgres or Performance\"*).";
+      }
+
       showTypingAndRespond(response);
     }
 
