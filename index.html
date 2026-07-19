@@ -243,7 +243,7 @@
 
     .section-head {
       margin-bottom: 4rem;
-      max-width: 800px;
+      max-width: 1000px;
     }
 
     .eyebrow {
@@ -1337,20 +1337,29 @@
     }
 
     /* Interactive Dashboards - Tableau Public Showcase */
+    .tableau-widget-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 12px 36px var(--shadow);
+      overflow: hidden;
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+    }
+
     .tableau-layout {
       display: grid;
       grid-template-columns: 2.8fr 1fr;
-      gap: 1.5rem;
-      margin-top: 3rem;
-      height: 660px;
+      margin-top: 0;
+      height: 620px;
     }
 
     .tableau-viewer {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0;
-      box-shadow: 0 12px 36px var(--shadow);
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -1363,13 +1372,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 1.25rem 0.5rem 1.25rem;
+      padding: 0.95rem 1.5rem 0.85rem 1.5rem;
       border-bottom: 1px solid var(--border);
       background: var(--shadow);
     }
 
     .tableau-viewer-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text);
     }
@@ -1388,9 +1397,8 @@
     .tableau-iframe-container {
       position: relative;
       flex-grow: 1;
-      height: calc(100% - 48px);
+      height: 100%;
       width: 100%;
-      border-radius: 0 0 8px 8px;
       overflow: hidden;
       background: #00000008;
       min-height: 0;
@@ -1471,11 +1479,12 @@
     }
 
     .tableau-sidebar {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      background: transparent;
+      border: none;
+      border-left: 1px solid var(--border);
+      border-radius: 0;
       padding: 1.25rem;
-      box-shadow: 0 12px 36px var(--shadow);
+      box-shadow: none;
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -1643,6 +1652,8 @@
 
       .tableau-sidebar {
         height: 450px;
+        border-left: none;
+        border-top: 1px solid var(--border);
       }
     }
 
@@ -3410,28 +3421,30 @@
           <p class="section-copy">Interactive visualizations hosted on Tableau Public.</p>
         </div>
 
-        <div class="tableau-layout">
-          <!-- Left Panel: Large Dashboard Player -->
-          <div class="tableau-viewer">
-            <div class="tableau-viewer-header">
-              <div class="tableau-viewer-title" id="activeVizTitle">Sunburst Chart</div>
-              <div class="tableau-viewer-meta">
-                <span id="activeVizCategory">Advanced Charts</span>
-                <span id="activeVizViews">👁️ 923 views</span>
-              </div>
-            </div>
-            <div class="tableau-iframe-container">
-              <!-- Loading Spinner Overlay -->
-              <div class="tableau-loader" id="tableauLoader">
-                <div class="tableau-spinner"></div>
-                <p>Loading Tableau dashboard dynamically...</p>
-              </div>
-              <iframe id="tableauIframe" src="https://public.tableau.com/views/SunburstChart_15824893645210/SunburstChart?:showVizHome=no&:embed=true" title="Tableau Public Dashboard Showcase" loading="lazy"></iframe>
+        <div class="tableau-widget-container">
+          <div class="tableau-viewer-header">
+            <div class="tableau-viewer-title" id="activeVizTitle">Sunburst Chart</div>
+            <div class="tableau-viewer-meta">
+              <span id="activeVizCategory">Advanced Charts</span>
+              <span id="activeVizViews">👁️ 923 views</span>
             </div>
           </div>
 
-          <!-- Right Panel: Search, Category Filters, and Sidebar Selector -->
-          <div class="tableau-sidebar">
+          <div class="tableau-layout">
+            <!-- Left Panel: Large Dashboard Player -->
+            <div class="tableau-viewer">
+              <div class="tableau-iframe-container">
+                <!-- Loading Spinner Overlay -->
+                <div class="tableau-loader" id="tableauLoader">
+                  <div class="tableau-spinner"></div>
+                  <p>Loading Tableau dashboard dynamically...</p>
+                </div>
+                <iframe id="tableauIframe" src="https://public.tableau.com/views/SunburstChart_15824893645210/SunburstChart?:showVizHome=no&:embed=true" title="Tableau Public Dashboard Showcase" loading="lazy"></iframe>
+              </div>
+            </div>
+
+            <!-- Right Panel: Search, Category Filters, and Sidebar Selector -->
+            <div class="tableau-sidebar">
             <div class="tableau-search-box">
               <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
               <input type="text" placeholder="Search dashboards..." id="vizSearchInput">
@@ -3452,7 +3465,8 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- GitHub Integration Section -->
     <section class="section" id="github">
@@ -4812,6 +4826,19 @@ EDUCATION
 
     // Dynamic rendering of featured articles and Roadmap checklist
     const knowledgeArticles = [
+      {
+        slug: 'tableau-server-repository',
+        title: 'Querying the Tableau Server Repository: A Practical Guide to PostgreSQL Metadata',
+        category: 'Tableau',
+        difficulty: 'Advanced',
+        readingTime: '12 min',
+        status: 'Published',
+        featured: true,
+        tags: ['Tableau Server', 'PostgreSQL', 'SQL', 'Governance', 'Row-Level Security'],
+        summary: 'How to pull governance-grade answers — permissions, view activity, RLS coverage — straight from Tableau\'s own repository database, without relying on the Metadata API.',
+        overview: 'Every Tableau Server is backed by a PostgreSQL repository database that logs almost everything. This article walks through which tables matter, querying constraints, and dynamic RLS coverage validation.',
+        topics: ['Tableau Postgres Workgroup Database Schema', 'Content Hierarchy Tables (workbooks, views, projects)', 'Historical Events Activity Logs', 'Correlated Subqueries vs. CTEs', 'Dynamic Entitlement RLS Auditing']
+      },
       {
         slug: 'tableau-performance-tuning',
         title: 'Tableau Performance Tuning: Building Dashboards That Load in Under 2 Seconds',

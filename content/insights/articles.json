@@ -1,5 +1,30 @@
 [
   {
+    "slug": "tableau-server-repository",
+    "title": "Querying the Tableau Server Repository: A Practical Guide to PostgreSQL Metadata",
+    "category": "Tableau",
+    "difficulty": "Advanced",
+    "readingTime": "12 min",
+    "status": "Published",
+    "featured": true,
+    "tags": [
+      "Tableau Server",
+      "PostgreSQL",
+      "SQL",
+      "Governance",
+      "Row-Level Security"
+    ],
+    "summary": "How to pull governance-grade answers — permissions, view activity, RLS coverage — straight from Tableau's own repository database, without relying on the Metadata API.",
+    "overview": "Every Tableau Server is backed by a PostgreSQL repository database that logs almost everything. This article walks through which tables matter, querying constraints, and dynamic RLS coverage validation.",
+    "topics": [
+      "Tableau Postgres Workgroup Database Schema",
+      "Content Hierarchy Tables (workbooks, views, projects)",
+      "Historical Events Activity Logs",
+      "Correlated Subqueries vs. CTEs",
+      "Dynamic Entitlement RLS Auditing"
+    ]
+  },
+  {
     "slug": "tableau-performance-tuning",
     "title": "Tableau Performance Tuning: Building Dashboards That Load in Under 2 Seconds",
     "category": "Tableau",
