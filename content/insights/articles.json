@@ -53,6 +53,32 @@
     ]
   },
   {
+    "slug": "workbook-sentinel",
+    "title": "Workbook Sentinel: Corporate Security Audit & Implementation Guide",
+    "category": "Security",
+    "difficulty": "Advanced",
+    "readingTime": "10 min",
+    "status": "Published",
+    "featured": true,
+    "tags": [
+      "Tableau",
+      "Security",
+      "Governance",
+      "Extensions",
+      "JavaScript",
+      "XML Parser"
+    ],
+    "summary": "A comprehensive security audit, governance risk assessment, and implementation challenge review for deploying Workbook Sentinel in a corporate enterprise environment.",
+    "overview": "Workbook Sentinel is a local-first Tableau Dashboard Extension. This article analyzes its loopback boundary, security audit procedures via remote debugging, zip file memory limitations, and XML parser versioning strategies.",
+    "topics": [
+      "Local Loopback Sandbox Security Limits",
+      "Chrome DevTools Remote Debugging Audits",
+      "Corporate Group Policy whitelist configurations",
+      "Zip archive stream filter parsing",
+      "Legacy QtWebEngine DOM compatibility"
+    ]
+  },
+  {
     "slug": "sql-performance",
     "title": "SQL Performance Optimization",
     "category": "SQL",
