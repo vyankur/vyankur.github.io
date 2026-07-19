@@ -14,16 +14,6 @@ featuredImage: "tableau-performance-cover.png"
 seoDescription: "Learn how to diagnose and optimize slow Tableau dashboards using Performance Recording, Hyper extracts, filter optimization, LOD expressions, and dashboard design best practices."
 ---
 
-# Hero Section
-
-Title: Tableau Performance Tuning: Building Dashboards That Load in Under 2 Seconds
-Subtitle: Learn how to diagnose performance bottlenecks, optimize dashboard rendering, reduce query execution time, and build enterprise-grade Tableau dashboards that scale efficiently.
-Reading Information:
-• Advanced
-• 15 min read
-• Published July 2026
-
----
 
 # Overview
 

@@ -20,16 +20,6 @@ tags:
 seoDescription: "An engineering deep dive into designing a secure, enterprise-ready Tableau extension for metadata parsing, lineage analysis, and governance without exposing corporate data."
 ---
 
-# Hero Section
-
-Title: Building Workbook Sentinel: Engineering a Secure Local-First Tableau Metadata Parser
-
-Subtitle: An engineering deep dive into designing a secure, enterprise-ready Tableau extension for metadata parsing, lineage analysis, and governance without exposing corporate data.
-
-Reading Information:
-• Advanced • ⏱️ 18 min read • Tableau Extension Security, Governance
-
----
 
 # Why I Built Workbook Sentinel
 
