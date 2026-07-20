@@ -1,3 +1,8 @@
+---
+name: portfolio-management
+description: Manage and maintain technical aspects of the Ankur Varshney analytics engineer portfolio website.
+---
+
 # Project Skill File: Ankur Analytics Portfolio V2
 
 This document serves as the single source of truth for the technical architecture, design system, feature specifications, coding standards, and decision history for the **ankuranalytics.com** portfolio website.
@@ -203,13 +208,15 @@ Custom tailormade dark and light themes using sleek HSL variables:
 
 | Date | Task | Decision | Reason | Files Affected |
 | :--- | :--- | :--- | :--- | :--- |
-| 2026-07-18 | Rebrand Section | Renamed Knowledge Hub to Insights | Fits professional architecture consultant profile better than blog terminology | `index.html`, `articles.json`, `content/` |
+| 2026-07-18 | Rebrand Section | Renamed Knowledge Hub to Insights | Fits professional analytics consultant profile better than blog terminology | `index.html`, `articles.json`, `content/` |
 | 2026-07-18 | Recommendations | Built Grid layout instead of Carousel | Slideshow hidden content reduces visual readability; grid exposes quotes immediately | `index.html` |
 | 2026-07-18 | Print layout | Embedded print CSS styles in index | Allows recruiters to print a clean resume layout directly from the landing page | `index.html` |
 | 2026-07-19 | Tableau Widget | Restructured header to span full-width | Centering active viz title above player + sidebar columns integrates layout design better | `index.html` |
 | 2026-07-19 | Resume download | Redirected LinkedIn button to profile | Linking to a local developer guide MD file is confusing; linking to profile fits portfolio standard | `index.html` |
 | 2026-07-19 | Hero Header | Promoted Ankur Varshney to primary H1 | The name was previously missing from the main hero text; promoting it to clamp(3.2rem, 6.5vw, 5.2rem) serves personal branding and SEO guidelines | `index.html` |
 | 2026-07-19 | Recommendations | Upgraded to Swipe Carousel | Implemented responsive slide carousel with touch support and pagination dots to display recommendations elegantly | `index.html` |
+| 2026-07-19 | Workbook Sentinel Blog | Restructured as engineering case study | Documentation format replaced with challenge-based case study targeting hiring managers and senior engineers | `workbook-sentinel.md`, `articles.json`, `index.html` |
+| 2026-07-20 | Tableau Calendar Extension | Replaced vague/dummy project text | Replaced placeholder text with correct React/TS/Vite extension details from Claude suggestion | `index.html`, `LINKEDIN_PROFILE_GUIDE.md` |
 
 ---
 
@@ -269,14 +276,26 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 *   **What Changed**: Added real LinkedIn recommendations, restructured Tableau widget header to span full width, increased headings max-width, redirected resume button to actual LinkedIn profile, promoted Ankur Varshney to main H1 header in Hero layout, and created the PostgreSQL Server Repository article.
 *   **Why**: Implement user comments and profile expansion.
 
+### 2026-07-19 (Session 2)
+*   **Task**: Restructure Workbook Sentinel blog as engineering case study.
+*   **Files Changed**: `content/insights/workbook-sentinel.md`, `content/insights/articles.json`, `index.html`.
+*   **What Changed**: Completely rewrote article from documentation format to engineering case study with challenge-based sections (4 challenges with Engineering Challenge, Why Traditional Solutions Fall Short, Design Decision, Technical Implementation, Trade-offs, Outcome, Key Takeaways), architecture overview with Mermaid diagrams, design decision callout boxes, Lessons Learned, Future Improvements roadmap, My Contribution author attribution, and Technologies Used tag list. Updated metadata in articles.json and knowledgeArticles array.
+*   **Why**: Transform from technical documentation into a senior engineering portfolio piece targeting hiring managers, engineering managers, and enterprise architecture teams.
+
+### 2026-07-20
+*   **Task**: Replace dummy/vague project details for Tableau Calendar Extension.
+*   **Files Changed**: `index.html`, `LINKEDIN_PROFILE_GUIDE.md`.
+*   **What Changed**: Updated project card tech stack and description to React, TypeScript, Vite, and CSS Grid. Upgraded projectCaseStudies['calendar'] detail structure with the real project challenges, solution, impact, learnings, and repo link. Built a custom themed architecture flowchart SVG diagram for the extension. Updated chatbot knowledge base to reference both extensions.
+*   **Why**: Ensure portfolio accurately reflects the actual extension code repository and features rather than vague custom visualization placeholders.
+
 ---
 
 ========================================
 PROJECT MEMORY (DO NOT DELETE)
 ========================================
 
-Current Version: 2.0.3
-Last Updated: 2026-07-19
+Current Version: 2.0.5
+Last Updated: 2026-07-20
 Current Branch: main
 
 Architecture Version: SPA-Hash-Router-V2
@@ -292,6 +311,8 @@ Completed Features:
 - Authentic LinkedIn testimonials from Google, Sun Life, and client
 - Integrated local Markdown insight reader with Mermaid schemas
 - Upgraded Postgres Server Repository metadata analysis article
+- Restructured Workbook Sentinel blog as engineering case study with challenge-based format
+- Replaced dummy/vague project details for Tableau Calendar Extension with custom SVG flowchart and correct React/TypeScript/Vite stack details
 
 Pending Features:
 - None
@@ -311,6 +332,7 @@ Important Decisions:
 - Testimonials upgraded to responsive slide carousel layout with touch swipe support, navigation arrows, and indicators to display manager quotes neatly
 - Integrated full-width headers spanning both columns on Tableau Public widget
 - Linked career resume secondary action button to actual LinkedIn profile URL
+- Workbook Sentinel article restructured from documentation to engineering case study format (challenge → design decision → implementation → trade-offs → outcome pattern)
 
 Do Not Change:
 - Unified script tags layout block structure
