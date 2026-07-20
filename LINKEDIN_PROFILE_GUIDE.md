@@ -85,7 +85,7 @@ Environment: Tableau Desktop/Server, Tableau Prep Builder, SAP HANA, Databricks,
 ### Project 2: Tableau Calendar Extension
 - **Project URL**: `https://github.com/vyankur/Tableau-Extension-Calander-Demo02`
 - **Description**:
-  > Built a custom period date-picker extension for Tableau dashboards using the Tableau Extensions API, JavaScript, and CSS. This extension enables users to apply complex custom period filters across worksheets that are not natively supported in Tableau.
+  > Built a native full-year circular calendar heatmap date picker extension for Tableau dashboards using React, TypeScript, Vite, and CSS Grid on the Tableau Extensions API, enabling users to drive interactive two-way filtering across all dashboard worksheets based on live sheet-level aggregate measures.
 
 ### Project 3: Supply Chain Lead Time Analytics
 - **Project URL**: `https://github.com/vyankur/supply-chain-lead-time-analytics`
