@@ -219,6 +219,7 @@ Custom tailormade dark and light themes using sleek HSL variables:
 | 2026-07-20 | Tableau Calendar Extension | Replaced vague/dummy project text | Replaced placeholder text with correct React/TS/Vite extension details from Claude suggestion | `index.html`, `LINKEDIN_PROFILE_GUIDE.md` |
 | 2026-07-21 | Inline SVGs & Blog alignment | Replaced broken CDN image references with inline SVG paths and renamed Blog to Featured Insights | Fixed broken Tableau image and aligned navigation & articles metadata | `index.html` |
 | 2026-07-21 | Premium Design Upgrades | Added Instrument Serif font, refined color palettes (Alabaster & Onyx), and added a scrolling client experience marquee | Upgraded portfolio to a bespoke, high-end editorial aesthetic inspired by shobhitvarshney.com | `index.html` |
+| 2026-07-21 | Dynamic Chatbot & Dash Clean | Refactored chatbot responses to use dynamic ES6 getters and replaced em-dashes with standard punctuation | Ensured chatbot updates automatically when content arrays change and removed AI-like separator markers | `index.html, articles.json, workbook-sentinel.md` |
 
 ---
 
@@ -302,13 +303,19 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 *   **What Changed**: Imported Google Font `Instrument Serif` and styled heading `em` accents with it. Replaced default Tailwind slate grays with custom warm Alabaster light mode (`#FAFAF7`) and true Onyx dark mode (`#0B0B0C`) color schemes. Built a responsive, infinite scrolling client logo/badge marquee directly beneath the hero section featuring Sun Life, Deutsche Bank, HCLTech, TCS, and FAB.
 *   **Why**: Elevate the portfolio visual appeal to a bespoke, premium editorial designer aesthetic.
 
+### 2026-07-21
+*   **Task**: Auto-sync chatbot responses and clean up profile em-dashes.
+*   **Files Changed**: `index.html`, `content/insights/articles.json`, `content/insights/workbook-sentinel.md`.
+*   **What Changed**: Refactored the chatbot's `botKnowledge` facts list in JavaScript to use dynamic ES6 getters (`get ai()`, `get aws()`, `get articles_overview()`) that compute their text blocks by reading directly from `projectCaseStudies` and `knowledgeArticles` arrays at runtime. Updated the `isArticleRequest` block to dynamically loop over published articles and count them. Ran a clean-up utility to locate and replace all em-dashes (`—`) with standard commas, colons, or parentheses in the profile page, articles index, and sentinel write-up.
+*   **Why**: Ensure chatbot counts and project listings stay perfectly in sync without manual script runs or double-hardcoding, and remove AI-like punctuation styles for a clean human-written feel.
+
 ---
 
 ========================================
 PROJECT MEMORY (DO NOT DELETE)
 ========================================
 
-Current Version: 2.0.7
+Current Version: 2.0.8
 Last Updated: 2026-07-21
 Current Branch: main
 
@@ -329,6 +336,7 @@ Completed Features:
 - Replaced dummy/vague project details for Tableau Calendar Extension with custom SVG flowchart and correct React/TypeScript/Vite stack details
 - Fixed broken Tableau icons in diagrams with stable inline SVG shapes and aligned Blog cards with actual Insights router paths
 - Integrated Instrument Serif editorial typography, refined Alabaster/Onyx color variables, and added infinite client marquee scroll
+- Converted chatbot facts and article request search to dynamic runtime getters and replaced all em-dashes with standard punctuation
 
 Pending Features:
 - None

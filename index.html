@@ -4000,7 +4000,7 @@
               <span class="ai-tech-tag">PostgreSQL</span>
             </div>
             <h3 class="ai-card-title">Querying the Tableau Server Repository: A Practical Guide to PostgreSQL Metadata</h3>
-            <p class="ai-card-desc">How to pull governance-grade answers — permissions, view activity, RLS coverage — straight from Tableau's own repository database, without relying on the Metadata API.</p>
+            <p class="ai-card-desc">How to pull governance-grade answers (permissions, view activity, RLS coverage) straight from Tableau's own repository database, without relying on the Metadata API.</p>
             <a href="#/insights/tableau-server-repository" class="btn secondary">Read Article</a>
           </div>
           <div class="ai-portfolio-card">
@@ -4108,7 +4108,7 @@ May 2021 – Apr 2023
 Domain: Banking and Financial Services | Financial Planning, Budgeting & ESG Compliance
 Environment: Tableau Desktop, Tableau Prep Builder, SAP HANA, Databricks, PySpark, SQL, Python
 
-* Planning: Led a team of 2 developers to design and develop a 5-year financial planning and budgeting dashboard suite for Deutsche Bank, covering inter- and intra-department spend analysis across programs — delivered exclusively for senior leadership and CXO-level decision-makers.
+* Planning: Led a team of 2 developers to design and develop a 5-year financial planning and budgeting dashboard suite for Deutsche Bank, covering inter- and intra-department spend analysis across programs, delivered exclusively for senior leadership and CXO-level decision-makers.
 * ESG: Built compliance dashboards to track sustainability metrics, governance scores, and disclosure requirements across the bank's investment portfolio.
 * Integration: Connected Tableau live to SAP HANA for high-frequency query execution and leveraged Databricks/PySpark for ETL and data preparation workflows.
 * Governance: Applied row-level security to restrict data access by department and user roles, partnering with finance teams to translate requirements into scalable reporting solutions.
@@ -5369,7 +5369,7 @@ EDUCATION
         status: 'Published',
         featured: true,
         tags: ['Tableau Server', 'PostgreSQL', 'SQL', 'Governance', 'Row-Level Security'],
-        summary: 'How to pull governance-grade answers — permissions, view activity, RLS coverage — straight from Tableau\'s own repository database, without relying on the Metadata API.',
+        summary: 'How to pull governance-grade answers (permissions, view activity, RLS coverage) straight from Tableau\'s own repository database, without relying on the Metadata API.',
         overview: 'Every Tableau Server is backed by a PostgreSQL repository database that logs almost everything. This article walks through which tables matter, querying constraints, and dynamic RLS coverage validation.',
         topics: ['Tableau Postgres Workgroup Database Schema', 'Content Hierarchy Tables (workbooks, views, projects)', 'Historical Events Activity Logs', 'Correlated Subqueries vs. CTEs', 'Dynamic Entitlement RLS Auditing']
       },
@@ -5395,8 +5395,8 @@ EDUCATION
         status: 'Published',
         featured: true,
         tags: ['Tableau', 'Security', 'Governance', 'Extensions', 'JavaScript', 'XML Parser', 'Local-First Architecture', 'React', 'TypeScript'],
-        summary: 'An engineering case study on designing a secure, local-first Tableau extension for metadata parsing, lineage analysis, and governance — covering architecture decisions, security verification, memory optimization, and browser compatibility.',
-        overview: 'This article walks through the engineering journey behind Workbook Sentinel: a local-first Tableau Dashboard Extension that parses workbook metadata entirely within the browser sandbox. It covers four core challenges — eliminating data leakage, providing auditable security evidence, processing multi-GB packaged workbooks efficiently, and supporting legacy Tableau runtime environments.',
+        summary: 'An engineering case study on designing a secure, local-first Tableau extension for metadata parsing, lineage analysis, and governance, covering architecture decisions, security verification, memory optimization, and browser compatibility.',
+        overview: 'This article walks through the engineering journey behind Workbook Sentinel: a local-first Tableau Dashboard Extension that parses workbook metadata entirely within the browser sandbox. It covers four core challenges: eliminating data leakage, providing auditable security evidence, processing multi-GB packaged workbooks efficiently, and supporting legacy Tableau runtime environments.',
         topics: ['Local-First Architecture & Zero Data Leakage', 'Auditable Security Verification via DevTools', 'Header-First ZIP Selective Decompression', 'QtWebEngine Legacy Browser Compatibility', 'Engineering Lessons & Future Roadmap']
       },
       {
@@ -6501,8 +6501,20 @@ EDUCATION
 
     const botKnowledge = {
       skills: 'Ankur is an expert in Tableau (Desktop, Server, Prep) and Power BI. On the database layer, he specializes in Oracle SQL/PL-SQL stored procedures, PostgreSQL, SAP HANA, and Greenplum. He also writes Python scripts for automation, uses PySpark inside Databricks, and builds Generative AI extensions using LangChain and AWS Bedrock APIs.',
-      ai: 'Ankur has developed multiple advanced Tableau Extensions: (1) Agentic Conversational BI Extension using LangChain, AWS Bedrock, and TabPy to run real-time natural language queries on worksheets, and (2) Tableau Calendar Extension, a native full-year circular heatmap date picker built with React, TypeScript, and Vite that allows direct date-picker interactions to drive worksheet filters.',
-      aws: 'Ankur has engineered robust cloud analytics pipelines using AWS. He stores high-volume transaction databases as columnar Parquet files on S3, catalogs them with Glue, and connects Tableau live using Athena as a virtualized SQL engine, decreasing load times by 35% and saving USD 50K.',
+      
+      get ai() {
+        const aiBi = projectCaseStudies['ai-bi'];
+        const cal = projectCaseStudies['calendar'];
+        const aiBiTitle = aiBi ? aiBi.title : 'Agentic Conversational BI Extension';
+        const calTitle = cal ? cal.title : 'Tableau Calendar Extension';
+        return `Ankur has developed multiple advanced Tableau Extensions: (1) **${aiBiTitle}** utilizing ${aiBi ? aiBi.techs.join(', ') : 'LangChain, Bedrock, TabPy'} to run real-time natural language queries on worksheets, and (2) **${calTitle}** built with ${cal ? cal.techs.join(', ') : 'React, TypeScript, Vite, CSS Grid'} that allows direct date-picker interactions to drive worksheet filters.`;
+      },
+      
+      get aws() {
+        const pipe = projectCaseStudies['aws-pipeline'];
+        return `Ankur has engineered robust cloud analytics pipelines using AWS. In his **${pipe ? pipe.title : 'AWS Data Lake Analytics Pipeline'}** case study, he stores transaction logs as columnar Parquet on S3, catalogs them with Glue, and connects Tableau live using Athena as a virtualized SQL engine, decreasing load times by 35% and saving USD 50K.`;
+      },
+      
       ge: 'At GE Power (under TCS), Ankur automated defect reporting and CAS compliance dashboarding, saving 95% manual effort. He designed a Python fuzzy deduplication script to clean supplier databases and optimized lead-time dashboards, lowering latency by 35%.',
       relocate: 'Ankur is currently based in Gurugram, India, and is open to global relocation opportunities, specifically in Singapore, Hong Kong, UAE, UK, and Germany.',
       summary: 'Ankur Varshney has 11+ years of experience delivering BI architectures, cloud data pipelines, and analytics platforms. He has worked for Sun Life Financial, HCL Technologies, and Tata Consultancy Services, serving VPs and CXOs across finance and insurance.',
@@ -6519,7 +6531,14 @@ EDUCATION
       contact: 'You can contact Ankur Varshney directly via: Email: vyankur@gmail.com | Phone/WhatsApp: +91 8452893918 | LinkedIn: linkedin.com/in/vyankur | Tableau Public: public.tableau.com/profile/ankur.varshney',
       website: 'This portfolio website (vyankur.github.io) showcases Ankur\'s professional profile. It includes: **Projects** (9 enterprise case studies), **Experience** (timeline with Sun Life, HCL, TCS), **Skills** (BI, SQL, Cloud, AI), **Tableau Showcase** (live interactive dashboards), **Knowledge Hub** (16 technical insights and articles), **Recommendations** (LinkedIn testimonials), and a **Contact** form. Use Ctrl+K to open the Command Palette for quick navigation!',
       tableau_showcase: 'The **Tableau Showcase** section lets you browse and interact with Ankur\'s live dashboards hosted on Tableau Public. You can filter by categories like Insurance, Finance, or Supply Chain, and search for specific dashboards. Each dashboard loads in an embedded viewer right on the page!',
-      articles_overview: 'The Knowledge Hub contains **16 technical insights** across categories like Tableau, SQL, AWS, AI, and Architecture. Published articles include guides on Tableau Performance Tuning, Athena Optimization, Window Functions, Enterprise RLS, Dashboard Governance, and Tableau Server Repository Analytics. Click "View Knowledge Roadmap" in the Insights section to see the full list!'
+      
+      get articles_overview() {
+        const total = knowledgeArticles.length;
+        const categories = [...new Set(knowledgeArticles.map(a => a.category))];
+        const publishedCount = knowledgeArticles.filter(a => a.status === 'Published').length;
+        const keyArticles = knowledgeArticles.filter(a => a.featured).slice(0, 6).map(a => a.title.split(':')[0]).join(', ');
+        return `The Knowledge Hub contains **${total} technical insights** (${publishedCount} published) across categories like ${categories.join(', ')}. Published articles include guides on ${keyArticles}. Click "View Knowledge Roadmap" in the Insights section to see the full list!`;
+      }
     };
 
     function toggleBotChat(show) {
@@ -6658,7 +6677,10 @@ EDUCATION
                      (articleMatches.length > 3 ? `\n\n...and ${articleMatches.length - 3} more. Browse them in the "Insights" section or click "View Knowledge Roadmap" to see all of them!` : '');
         }
       } else if (isArticleRequest) {
-        response = `Ankur has written **16** deep-dive engineering insights on this site. Highlights include:\n\n• [Querying Tableau Postgres Workgroup](#/insights/tableau-server-repository)\n• [Tableau Performance tuning under 2s](#/insights/tableau-performance-tuning)\n• [AWS Athena partition optimizations](#/insights/athena-optimization)\n\nFeel free to ask me questions like *"do you have articles on RLS?"* or *"search for SQL optimization"* to find direct write-ups!`;
+        const total = knowledgeArticles.length;
+        const publishedList = knowledgeArticles.filter(a => a.status === 'Published').slice(0, 3);
+        const articlesListMarkup = publishedList.map(art => `• [${art.title}](#/insights/${art.slug})`).join('\n');
+        response = `Ankur has written **${total}** deep-dive engineering insights on this site. Highlights include:\n\n${articlesListMarkup}\n\nFeel free to ask me questions like *"do you have articles on RLS?"* or *"search for SQL optimization"* to find direct write-ups!`;
       } else if (baseResponse) {
         response = baseResponse;
       } else {

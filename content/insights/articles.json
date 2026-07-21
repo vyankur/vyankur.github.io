@@ -14,7 +14,7 @@
       "Governance",
       "Row-Level Security"
     ],
-    "summary": "How to pull governance-grade answers — permissions, view activity, RLS coverage — straight from Tableau's own repository database, without relying on the Metadata API.",
+    "summary": "How to pull governance-grade answers (permissions, view activity, RLS coverage) straight from Tableau's own repository database, without relying on the Metadata API.",
     "overview": "Every Tableau Server is backed by a PostgreSQL repository database that logs almost everything. This article walks through which tables matter, querying constraints, and dynamic RLS coverage validation.",
     "topics": [
       "Tableau Postgres Workgroup Database Schema",
@@ -71,8 +71,8 @@
       "React",
       "TypeScript"
     ],
-    "summary": "An engineering case study on designing a secure, local-first Tableau extension for metadata parsing, lineage analysis, and governance — covering architecture decisions, security verification, memory optimization, and browser compatibility.",
-    "overview": "This article walks through the engineering journey behind Workbook Sentinel: a local-first Tableau Dashboard Extension that parses workbook metadata entirely within the browser sandbox. It covers four core challenges — eliminating data leakage, providing auditable security evidence, processing multi-GB packaged workbooks efficiently, and supporting legacy Tableau runtime environments.",
+    "summary": "An engineering case study on designing a secure, local-first Tableau extension for metadata parsing, lineage analysis, and governance, covering architecture decisions, security verification, memory optimization, and browser compatibility.",
+    "overview": "This article walks through the engineering journey behind Workbook Sentinel: a local-first Tableau Dashboard Extension that parses workbook metadata entirely within the browser sandbox. It covers four core challenges: eliminating data leakage, providing auditable security evidence, processing multi-GB packaged workbooks efficiently, and supporting legacy Tableau runtime environments.",
     "topics": [
       "Local-First Architecture & Zero Data Leakage",
       "Auditable Security Verification via DevTools",
