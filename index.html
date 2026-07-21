@@ -4016,7 +4016,7 @@
               <span class="ai-tech-tag">Generative AI</span>
             </div>
             <h3 class="ai-card-title">AI in Tableau: Connecting Amazon Bedrock and LangChain Agents via TabPy</h3>
-            <p class="ai-card-desc">Integrate LLMs, vector database APIs, and python models natively into Tableau worksheets and dashboards using TabPy calculated scripts.</p>
+            <p class="ai-card-desc">Integrate Amazon Bedrock foundation models and LangChain agents natively into Tableau worksheets and dashboards using TabPy calculated scripts.</p>
             <a href="#/insights/ai-in-tableau" class="btn secondary">Read Article</a>
           </div>
         </div>
@@ -5447,16 +5447,16 @@ EDUCATION
       },
       {
         slug: 'ai-in-tableau',
-        title: 'AI in Tableau',
+        title: 'AI in Tableau: Connecting Amazon Bedrock and LangChain Agents via TabPy',
         category: 'AI',
         difficulty: 'Advanced',
         readingTime: '12 min',
-        status: 'Planned',
+        status: 'Published',
         featured: true,
-        tags: ['Tableau', 'Generative AI', 'TabPy'],
-        summary: 'Integrate LLMs, vector database APIs, and python models natively into Tableau worksheets and dashboards using TabPy.',
-        overview: 'This case study details how to embed Large Language Models into Tableau dashboards. You will learn to deploy custom Python web services, load TabPy on the server, and write dashboard expressions to call generative API endpoints on user actions.',
-        topics: ['TabPy Server Installation & Security', 'Writing Tableau calculated scripts using TabPy', 'LLM API Integration (OpenAI/Bedrock)', 'Natural Language Query Interpretation', 'Caching TabPy returns for quick loading']
+        tags: ['Tableau', 'Generative AI', 'TabPy', 'Amazon Bedrock', 'LangChain'],
+        summary: 'Integrate Amazon Bedrock foundation models and LangChain agents natively into Tableau worksheets and dashboards using TabPy calculated scripts.',
+        overview: 'This article lays out a production architecture for embedding generative AI in Tableau: TabPy as a thin transport layer, a LangChain agent as the orchestration layer, and Amazon Bedrock as the model layer, plus the security, caching, and cost-control patterns needed to run it on a live dashboard.',
+        topics: ['TabPy Server Installation & Security', 'Building a LangChain Agent Service Behind TabPy', 'Amazon Bedrock Model Integration', 'Writing Tableau Calculated Scripts (SCRIPT_STR)', 'Caching TabPy Returns for Quick Loading']
       },
       {
         slug: 'tableau-extensions',
