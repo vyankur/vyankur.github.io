@@ -5,7 +5,7 @@ description: Manage and maintain technical aspects of the Ankur Varshney analyti
 
 # Project Skill File: Ankur Analytics Portfolio V2
 
-This document serves as the single source of truth for the technical architecture, design system, feature specifications, coding standards, and decision history for the **ankuranalytics.com** portfolio website.
+This document serves as the single source of truth for the technical architecture, design system, feature specifications, coding standards, and decision history for the **vyankur.github.io** portfolio website.
 
 ---
 
@@ -225,6 +225,7 @@ Custom tailormade dark and light themes using sleek HSL variables:
 | 2026-07-21 | Corporate Logos & Dual Marquee | Added exact corporate vector SVG logos for clients and created dual running marquee ticker for Clients & Expertise | Replaced generic SVG shapes with authentic brand logos and added specialization running strip | `index.html` |
 | 2026-07-21 | Mermaid Diagram Layout | Converted AI in Tableau architecture diagram to flowchart TD with explicit subgraphs and added min-height: 280px CSS | Prevented horizontal compression and unreadable box sizing | `index.html, content/insights/ai-in-tableau.md` |
 | 2026-07-21 | Corporate Employment Alignment | Replaced "Clients" label with "Companies", "Global Client Base" with "Global Footprint", and aligned experience copy | Accurately distinguished full-time corporate employment history from client vendor labels | `index.html` |
+| 2026-07-21 | Stray Domain & Marquee Streamline | Removed stray ankuranalytics.com footer text and streamlined marquee to single clean Companies logo row | Removed template artifact string and eliminated keyword-heavy ticker row for an elegant hero block | `index.html, PROJECT_SKILL.md` |
 
 ---
 
@@ -344,13 +345,19 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 *   **What Changed**: Replaced the "Clients" ticker label with "Companies" on row 1 of the marquee, updated the impact card header from "Global Client Base" to "Global Footprint", and updated experience scope descriptions from "clients" to "domains/projects".
 *   **Why**: Ensure portfolio terminology accurately reflects direct employment history with Sun Life, HCL, TCS, etc.
 
+### 2026-07-21
+*   **Task**: Remove stray domain leftover and streamline hero marquee.
+*   **Files Changed**: `index.html`, `PROJECT_SKILL.md`.
+*   **What Changed**: Replaced stray `ankuranalytics.com` span in the article modal footer with `vyankur.github.io`. Streamlined the hero marquee to a single elegant row (`Companies` logos) by removing the second keyword-stuffed expertise ticker row.
+*   **Why**: Eliminate leftover domain text and keep the hero section classy, clean, and spacious.
+
 ---
 
 ========================================
 PROJECT MEMORY (DO NOT DELETE)
 ========================================
 
-Current Version: 2.0.13
+Current Version: 2.0.14
 Last Updated: 2026-07-21
 Current Branch: main
 
@@ -377,6 +384,7 @@ Completed Features:
 - Added authentic corporate vector SVG logos for client brands and created a dual running ticker banner for Clients and Core Specializations
 - Uncompressed AI in Tableau Mermaid architecture diagram into a multi-row top-down flowchart with generous min-height CSS rules
 - Updated ticker label to "Companies" and impact title to "Global Footprint" to accurately reflect direct employment history
+- Removed stray ankuranalytics.com domain string and streamlined hero marquee to a single elegant Companies logo strip
 
 Pending Features:
 - None
