@@ -42,17 +42,33 @@ That constraint shapes the whole design. A calculated field can only call `SCRIP
 ## Architecture: from a worksheet to a Bedrock response
 
 ```mermaid
-graph LR
-    A["Tableau Worksheet"] -->|"SCRIPT_STR calculated field"| B["TabPy Server :9004"]
-    B -->|"validated request"| C["LangChain Agent Service"]
-    C -->|"tool call: query dashboard dataset"| D["Cached Aggregate / Data Source"]
-    C -->|"prompt + retrieved context"| E["Amazon Bedrock Runtime"]
-    E -->|"model response"| C
-    C -->|"formatted answer"| B
-    B -->|"string result"| A
-    style E fill:#F59E0B,stroke:#B45309,stroke-width:2px,color:#fff
-    style C fill:#3B82F6,stroke:#1D4ED8,stroke-width:2px,color:#fff
-    style B fill:#10B981,stroke:#047857,stroke-width:2px,color:#fff
+flowchart TD
+    subgraph Frontend["1. Worksheet Layer"]
+        A["📊 Tableau Worksheet<br/><b>SCRIPT_STR([Question], [Metric], [Value])</b>"]
+    end
+
+    subgraph Transport["2. Transport Layer"]
+        B["⚡ TabPy Server (:9004)<br/><b>ask_dashboard_agent() Passthrough</b><br/><i>Validates &amp; Forwards Payload</i>"]
+    end
+
+    subgraph Orchestration["3. Orchestration &amp; LLM Layer"]
+        C["🧠 LangChain Agent Service<br/><b>FastAPI / Tool Router</b>"]
+        D[("💾 Cached Aggregate /<br/>Dashboard Data Source")]
+        E["☁️ Amazon Bedrock Runtime<br/><b>Anthropic Claude 3.5 Sonnet</b>"]
+    end
+
+    A -->|"1. User Question + Context"| B
+    B -->|"2. Authenticated REST Request"| C
+    C <-->|"3. Query KPI History / Cache"| D
+    C <-->|"4. Prompts &amp; LLM Generation"| E
+    C -->|"5. Formatted Text Response"| B
+    B -->|"6. Returns String Mark"| A
+
+    style A fill:#FAFAF7,stroke:#0A0A0A,stroke-width:2px,color:#0A0A0A
+    style B fill:#10B981,stroke:#047857,stroke-width:2px,color:#ffffff
+    style C fill:#3B82F6,stroke:#1D4ED8,stroke-width:2px,color:#ffffff
+    style D fill:#6B7280,stroke:#374151,stroke-width:2px,color:#ffffff
+    style E fill:#F59E0B,stroke:#B45309,stroke-width:2px,color:#ffffff
 ```
 
 Four layers, each with one job:

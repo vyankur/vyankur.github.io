@@ -223,6 +223,7 @@ Custom tailormade dark and light themes using sleek HSL variables:
 | 2026-07-21 | Experience Title | Replaced "Proven history of leadership." with "Journey so far." | Updated heading to match reference style and give a more inviting personal tone | `index.html` |
 | 2026-07-21 | Contact size & Link | Centered and restricted Contact layout container to 960px max-width, and added LinkedIn social icon in topbar | Optimized spacing of Contact block and added top-right social routing | `index.html` |
 | 2026-07-21 | Corporate Logos & Dual Marquee | Added exact corporate vector SVG logos for clients and created dual running marquee ticker for Clients & Expertise | Replaced generic SVG shapes with authentic brand logos and added specialization running strip | `index.html` |
+| 2026-07-21 | Mermaid Diagram Layout | Converted AI in Tableau architecture diagram to flowchart TD with explicit subgraphs and added min-height: 280px CSS | Prevented horizontal compression and unreadable box sizing | `index.html, content/insights/ai-in-tableau.md` |
 
 ---
 
@@ -330,13 +331,19 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 *   **What Changed**: Replaced generic placeholder SVGs with authentic vector logos for Sun Life Financial, Deutsche Bank, HCLTech, TCS, FAB, and GE Power. Converted the marquee into a dual running ticker banner featuring client logos on row 1 (scrolling left) and core specializations (`Data Viz Architect ✦ AWS Cloud Analytics ✦ SQL Performance Tuning ✦ Generative AI Extensions`) on row 2 (scrolling right).
 *   **Why**: Provide an official enterprise client presentation and highlight core domain capabilities in an infinite scrolling banner.
 
+### 2026-07-21
+*   **Task**: Uncompress AI in Tableau Mermaid architecture diagram and fix box visibility.
+*   **Files Changed**: `content/insights/ai-in-tableau.md`, `index.html`.
+*   **What Changed**: Refactored the diagram from a single horizontal line (`graph LR`) to a structured top-down flowchart (`flowchart TD`) with 3 explicit subgraphs (Worksheet Layer, Transport Layer, Orchestration & LLM Layer). Updated `.mermaid svg` CSS rules in `index.html` to set a generous `min-height: 280px` and flexible flex alignment to eliminate vertical squishing.
+*   **Why**: Ensure architecture diagrams render with readable fonts and visible node boxes.
+
 ---
 
 ========================================
 PROJECT MEMORY (DO NOT DELETE)
 ========================================
 
-Current Version: 2.0.11
+Current Version: 2.0.12
 Last Updated: 2026-07-21
 Current Branch: main
 
@@ -361,6 +368,7 @@ Completed Features:
 - Renamed the Experience timeline header to "Journey so far" for a highly polished editorial introduction
 - Centered and resized Contact container to 960px max-width, and appended LinkedIn SVG icon after the Contact header link
 - Added authentic corporate vector SVG logos for client brands and created a dual running ticker banner for Clients and Core Specializations
+- Uncompressed AI in Tableau Mermaid architecture diagram into a multi-row top-down flowchart with generous min-height CSS rules
 
 Pending Features:
 - None

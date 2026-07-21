@@ -2831,10 +2831,30 @@
       background: var(--primary-light);
     }
     
-    /* Mermaid dark mode adjustment */
+    /* Mermaid Diagram Formatting */
+    .mermaid-container {
+      background: var(--card-bg) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 12px !important;
+      padding: 2rem 1.5rem !important;
+      margin: 2rem 0 !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      overflow-x: auto !important;
+      width: 100% !important;
+    }
+
+    .mermaid {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: center !important;
+    }
+
     .mermaid svg {
       max-width: 100% !important;
       height: auto !important;
+      min-height: 280px !important;
     }
   </style>
 </head>
@@ -6127,7 +6147,7 @@ EDUCATION
         .replace(/>/g, '&gt;');
         
       if (lang === 'mermaid') {
-        return `<div class="mermaid-container" style="background:var(--shadow); border:1px solid var(--border); border-radius:8px; padding:1.5rem; margin:1.5rem 0; display:flex; justify-content:center; align-items:center; overflow-x:auto;"><div class="mermaid">${code}</div></div>`;
+        return `<div class="mermaid-container"><div class="mermaid">${code}</div></div>`;
       }
       
       let highlighted = escapedCode;
