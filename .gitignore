@@ -1,11 +1,19 @@
-# Exclude temporary resumes and docs
-Ankur_V_Resume.pdf
+# Exclude internal agent skills and management docs
+PROJECT_SKILL.md
+.agents/
+.gemini/
+plan.md
+LINKEDIN_PROFILE_GUIDE.md
 IMPLEMENTATION_PLAN.md
+Ankur_V_Resume.pdf
+
+# Backup & Scratch files
+index_v2_backup.html
+*.txt
+scratch/
 
 # Logs and system files
 *.log
-.gemini/
-.agents/
 .vscode/
 node_modules/
 .DS_Store
