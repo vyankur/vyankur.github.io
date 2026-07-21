@@ -222,6 +222,7 @@ Custom tailormade dark and light themes using sleek HSL variables:
 | 2026-07-21 | Dynamic Chatbot & Dash Clean | Refactored chatbot responses to use dynamic ES6 getters and replaced em-dashes with standard punctuation | Ensured chatbot updates automatically when content arrays change and removed AI-like separator markers | `index.html, articles.json, workbook-sentinel.md` |
 | 2026-07-21 | Experience Title | Replaced "Proven history of leadership." with "Journey so far." | Updated heading to match reference style and give a more inviting personal tone | `index.html` |
 | 2026-07-21 | Contact size & Link | Centered and restricted Contact layout container to 960px max-width, and added LinkedIn social icon in topbar | Optimized spacing of Contact block and added top-right social routing | `index.html` |
+| 2026-07-21 | Corporate Logos & Dual Marquee | Added exact corporate vector SVG logos for clients and created dual running marquee ticker for Clients & Expertise | Replaced generic SVG shapes with authentic brand logos and added specialization running strip | `index.html` |
 
 ---
 
@@ -323,13 +324,19 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 *   **What Changed**: Set `.contact-layout` to a centered `max-width: 960px` to tighten up the grid presentation and make it look clean on larger screens. Appended a new list item inside the `<ul class="nav-links">` header block containing an inline vector SVG LinkedIn icon linking to `https://linkedin.com/in/vyankur`.
 *   **Why**: Optimize visual hierarchy of the contact form and add a direct professional social networking route at the top right of the navigation layer.
 
+### 2026-07-21
+*   **Task**: Add corporate vector logos and specializations running marquee strip.
+*   **Files Changed**: `index.html`.
+*   **What Changed**: Replaced generic placeholder SVGs with authentic vector logos for Sun Life Financial, Deutsche Bank, HCLTech, TCS, FAB, and GE Power. Converted the marquee into a dual running ticker banner featuring client logos on row 1 (scrolling left) and core specializations (`Data Viz Architect ✦ AWS Cloud Analytics ✦ SQL Performance Tuning ✦ Generative AI Extensions`) on row 2 (scrolling right).
+*   **Why**: Provide an official enterprise client presentation and highlight core domain capabilities in an infinite scrolling banner.
+
 ---
 
 ========================================
 PROJECT MEMORY (DO NOT DELETE)
 ========================================
 
-Current Version: 2.0.10
+Current Version: 2.0.11
 Last Updated: 2026-07-21
 Current Branch: main
 
@@ -353,6 +360,7 @@ Completed Features:
 - Converted chatbot facts and article request search to dynamic runtime getters and replaced all em-dashes with standard punctuation
 - Renamed the Experience timeline header to "Journey so far" for a highly polished editorial introduction
 - Centered and resized Contact container to 960px max-width, and appended LinkedIn SVG icon after the Contact header link
+- Added authentic corporate vector SVG logos for client brands and created a dual running ticker banner for Clients and Core Specializations
 
 Pending Features:
 - None

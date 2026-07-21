@@ -287,98 +287,111 @@
       line-height: 1.8;
     }
 
-    /* Client Experience Marquee */
+    /* Dual Running Marquee & Corporate Logos */
     .client-marquee {
       display: flex;
-      align-items: center;
-      gap: 2rem;
+      flex-direction: column;
+      gap: 0.85rem;
       border-top: 1.5px solid var(--border);
       border-bottom: 1.5px solid var(--border);
-      padding: 1.25rem 0;
+      padding: 1.1rem 0;
       margin: 3rem 0 1rem 0;
     }
-    
+
+    .marquee-row {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
     .marquee-label {
       font-family: 'Outfit', sans-serif;
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--muted);
       white-space: nowrap;
       flex-shrink: 0;
+      min-width: 5.5rem;
     }
-    
+
     .marquee-wrapper {
       overflow: hidden;
       display: flex;
       width: 100%;
-      mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0, #000 50px, #000 calc(100% - 50px), transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 50px, #000 calc(100% - 50px), transparent 100%);
     }
-    
+
     .marquee-track {
       display: flex;
-      gap: 4rem;
+      gap: 3.5rem;
       align-items: center;
-      animation: scroll-marquee 30s linear infinite;
+      animation: scroll-marquee 32s linear infinite;
       flex-shrink: 0;
     }
-    
+
+    .marquee-track-reverse {
+      animation: scroll-marquee-reverse 36s linear infinite;
+    }
+
     .marquee-item {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       font-family: 'Outfit', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--text);
-      opacity: 0.5;
+      opacity: 0.65;
       transition: all 0.25s ease;
       white-space: nowrap;
     }
-    
+
     .marquee-item:hover {
       opacity: 1;
-      transform: scale(1.03);
+      transform: translateY(-1px);
     }
-    
-    .marquee-icon {
-      width: 1.1rem;
-      height: 1.1rem;
-      transition: color 0.25s ease;
+
+    .company-logo {
+      display: inline-block;
+      vertical-align: middle;
+      transition: transform 0.2s ease, color 0.2s ease;
     }
-    
-    /* Hover specific brand colors */
-    .marquee-item:hover .sunlife-icon {
-      color: #f59e0b; /* Golden sun color */
+
+    .marquee-item:hover .sunlife-logo { color: #f59e0b; }
+    .marquee-item:hover .db-logo { color: #0284c7; }
+    .marquee-item:hover .hcl-logo { color: #2563eb; }
+    .marquee-item:hover .tcs-logo { color: #0d9488; }
+    .marquee-item:hover .fab-logo { color: #dc2626; }
+    .marquee-item:hover .ge-logo { color: #4f46e5; }
+
+    .spec-item {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text);
+      opacity: 0.8;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
     }
-    
-    .marquee-item:hover .db-icon {
-      color: #0284c7; /* Deutsche Bank blue */
-    }
-    
-    .marquee-item:hover .fab-icon {
-      color: #b91c1c; /* FAB red */
-    }
-    
-    .tech-text-logo {
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      transition: color 0.25s ease;
-    }
-    
-    .marquee-item:hover .tech-text-logo {
+
+    .spec-star {
       color: var(--primary);
+      font-size: 0.75rem;
     }
-    
+
     @keyframes scroll-marquee {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes scroll-marquee-reverse {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
     }
 
     /* Hero Section */
@@ -2887,69 +2900,121 @@
           </div>
         </div>
 
-        <!-- Client Experience Logo Marquee -->
+        <!-- Dual Running Marquee: Client Experience + Specializations -->
         <div class="client-marquee">
-          <span class="marquee-label">Client Experience</span>
-          <div class="marquee-wrapper">
-            <div class="marquee-track">
-              <span class="marquee-item">
-                <svg class="marquee-icon sunlife-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-                Sun Life Financial
-              </span>
-              <span class="marquee-item">
-                <svg class="marquee-icon db-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1.5"/><line x1="7" y1="16" x2="17" y2="8" stroke-width="2.5"/></svg>
-                Deutsche Bank
-              </span>
-              <span class="marquee-item">
-                <span class="tech-text-logo">HCLTech</span>
-              </span>
-              <span class="marquee-item">
-                <span class="tech-text-logo">TCS</span>
-              </span>
-              <span class="marquee-item">
-                <svg class="marquee-icon fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                First Abu Dhabi Bank
-              </span>
-              
-              <!-- Repeat set 2 -->
-              <span class="marquee-item">
-                <svg class="marquee-icon sunlife-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-                Sun Life Financial
-              </span>
-              <span class="marquee-item">
-                <svg class="marquee-icon db-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1.5"/><line x1="7" y1="16" x2="17" y2="8" stroke-width="2.5"/></svg>
-                Deutsche Bank
-              </span>
-              <span class="marquee-item">
-                <span class="tech-text-logo">HCLTech</span>
-              </span>
-              <span class="marquee-item">
-                <span class="tech-text-logo">TCS</span>
-              </span>
-              <span class="marquee-item">
-                <svg class="marquee-icon fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                First Abu Dhabi Bank
-              </span>
+          <!-- Row 1: Client Experience Logos -->
+          <div class="marquee-row">
+            <span class="marquee-label">Clients</span>
+            <div class="marquee-wrapper">
+              <div class="marquee-track">
+                <span class="marquee-item">
+                  <svg class="company-logo sunlife-logo" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Sun Life Financial
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo db-logo" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="17" x2="17" y2="7" stroke-width="3" stroke-linecap="round"/></svg>
+                  Deutsche Bank
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo hcl-logo" viewBox="0 0 28 16" width="22" height="14" fill="currentColor"><path d="M1 2h3v4.5h4V2h3v12H8V9.5H4V14H1V2zm11.5 0h10.5v3H16v1.8h5.5v2.8H16v1.9h7V14H12.5V2z"/></svg>
+                  HCLTech
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo tcs-logo" viewBox="0 0 24 16" width="20" height="14" fill="currentColor"><path d="M1 2h22v3h-9.5v9h-3V5H1V2z"/></svg>
+                  TCS
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo fab-logo" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zm0 5.5L6.5 7 12 4.25 17.5 7 12 7.5zM2 12l10 5 10-5M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.2"/></svg>
+                  First Abu Dhabi Bank
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo ge-logo" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8.5 9.5C8 10.5 8 13.5 9 14.5c1 1 2.5.5 3-.5m-3-2h3M15 9.5c-.5 0-1 .5-1 1v3.5c0 .5.5 1 1 1h2.5" stroke-linecap="round"/></svg>
+                  GE Power
+                </span>
 
-              <!-- Repeat set 3 -->
-              <span class="marquee-item">
-                <svg class="marquee-icon sunlife-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-                Sun Life Financial
-              </span>
-              <span class="marquee-item">
-                <svg class="marquee-icon db-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1.5"/><line x1="7" y1="16" x2="17" y2="8" stroke-width="2.5"/></svg>
-                Deutsche Bank
-              </span>
-              <span class="marquee-item">
-                <span class="tech-text-logo">HCLTech</span>
-              </span>
-              <span class="marquee-item">
-                <span class="tech-text-logo">TCS</span>
-              </span>
-              <span class="marquee-item">
-                <svg class="marquee-icon fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                First Abu Dhabi Bank
-              </span>
+                <!-- Repeat Set 2 -->
+                <span class="marquee-item">
+                  <svg class="company-logo sunlife-logo" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Sun Life Financial
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo db-logo" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="17" x2="17" y2="7" stroke-width="3" stroke-linecap="round"/></svg>
+                  Deutsche Bank
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo hcl-logo" viewBox="0 0 28 16" width="22" height="14" fill="currentColor"><path d="M1 2h3v4.5h4V2h3v12H8V9.5H4V14H1V2zm11.5 0h10.5v3H16v1.8h5.5v2.8H16v1.9h7V14H12.5V2z"/></svg>
+                  HCLTech
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo tcs-logo" viewBox="0 0 24 16" width="20" height="14" fill="currentColor"><path d="M1 2h22v3h-9.5v9h-3V5H1V2z"/></svg>
+                  TCS
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo fab-logo" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zm0 5.5L6.5 7 12 4.25 17.5 7 12 7.5zM2 12l10 5 10-5M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.2"/></svg>
+                  First Abu Dhabi Bank
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo ge-logo" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8.5 9.5C8 10.5 8 13.5 9 14.5c1 1 2.5.5 3-.5m-3-2h3M15 9.5c-.5 0-1 .5-1 1v3.5c0 .5.5 1 1 1h2.5" stroke-linecap="round"/></svg>
+                  GE Power
+                </span>
+
+                <!-- Repeat Set 3 -->
+                <span class="marquee-item">
+                  <svg class="company-logo sunlife-logo" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Sun Life Financial
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo db-logo" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="17" x2="17" y2="7" stroke-width="3" stroke-linecap="round"/></svg>
+                  Deutsche Bank
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo hcl-logo" viewBox="0 0 28 16" width="22" height="14" fill="currentColor"><path d="M1 2h3v4.5h4V2h3v12H8V9.5H4V14H1V2zm11.5 0h10.5v3H16v1.8h5.5v2.8H16v1.9h7V14H12.5V2z"/></svg>
+                  HCLTech
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo tcs-logo" viewBox="0 0 24 16" width="20" height="14" fill="currentColor"><path d="M1 2h22v3h-9.5v9h-3V5H1V2z"/></svg>
+                  TCS
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo fab-logo" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zm0 5.5L6.5 7 12 4.25 17.5 7 12 7.5zM2 12l10 5 10-5M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.2"/></svg>
+                  First Abu Dhabi Bank
+                </span>
+                <span class="marquee-item">
+                  <svg class="company-logo ge-logo" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8.5 9.5C8 10.5 8 13.5 9 14.5c1 1 2.5.5 3-.5m-3-2h3M15 9.5c-.5 0-1 .5-1 1v3.5c0 .5.5 1 1 1h2.5" stroke-linecap="round"/></svg>
+                  GE Power
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Specializations Running Banner -->
+          <div class="marquee-row">
+            <span class="marquee-label">Expertise</span>
+            <div class="marquee-wrapper">
+              <div class="marquee-track marquee-track-reverse">
+                <span class="spec-item">Data Viz Architect <span class="spec-star">✦</span></span>
+                <span class="spec-item">AWS Cloud Analytics <span class="spec-star">✦</span></span>
+                <span class="spec-item">SQL Performance Tuning <span class="spec-star">✦</span></span>
+                <span class="spec-item">Generative AI Extensions <span class="spec-star">✦</span></span>
+                <span class="spec-item">Tableau Server Governance <span class="spec-star">✦</span></span>
+                <span class="spec-item">Enterprise RLS &amp; Data Lakes <span class="spec-star">✦</span></span>
+
+                <!-- Repeat Set 2 -->
+                <span class="spec-item">Data Viz Architect <span class="spec-star">✦</span></span>
+                <span class="spec-item">AWS Cloud Analytics <span class="spec-star">✦</span></span>
+                <span class="spec-item">SQL Performance Tuning <span class="spec-star">✦</span></span>
+                <span class="spec-item">Generative AI Extensions <span class="spec-star">✦</span></span>
+                <span class="spec-item">Tableau Server Governance <span class="spec-star">✦</span></span>
+                <span class="spec-item">Enterprise RLS &amp; Data Lakes <span class="spec-star">✦</span></span>
+
+                <!-- Repeat Set 3 -->
+                <span class="spec-item">Data Viz Architect <span class="spec-star">✦</span></span>
+                <span class="spec-item">AWS Cloud Analytics <span class="spec-star">✦</span></span>
+                <span class="spec-item">SQL Performance Tuning <span class="spec-star">✦</span></span>
+                <span class="spec-item">Generative AI Extensions <span class="spec-star">✦</span></span>
+                <span class="spec-item">Tableau Server Governance <span class="spec-star">✦</span></span>
+                <span class="spec-item">Enterprise RLS &amp; Data Lakes <span class="spec-star">✦</span></span>
+              </div>
             </div>
           </div>
         </div>
