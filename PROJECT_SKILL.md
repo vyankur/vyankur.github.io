@@ -217,6 +217,7 @@ Custom tailormade dark and light themes using sleek HSL variables:
 | 2026-07-19 | Recommendations | Upgraded to Swipe Carousel | Implemented responsive slide carousel with touch support and pagination dots to display recommendations elegantly | `index.html` |
 | 2026-07-19 | Workbook Sentinel Blog | Restructured as engineering case study | Documentation format replaced with challenge-based case study targeting hiring managers and senior engineers | `workbook-sentinel.md`, `articles.json`, `index.html` |
 | 2026-07-20 | Tableau Calendar Extension | Replaced vague/dummy project text | Replaced placeholder text with correct React/TS/Vite extension details from Claude suggestion | `index.html`, `LINKEDIN_PROFILE_GUIDE.md` |
+| 2026-07-21 | Inline SVGs & Blog alignment | Replaced broken CDN image references with inline SVG paths and renamed Blog to Featured Insights | Fixed broken Tableau image and aligned navigation & articles metadata | `index.html` |
 
 ---
 
@@ -288,14 +289,20 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 *   **What Changed**: Updated project card tech stack and description to React, TypeScript, Vite, and CSS Grid. Upgraded projectCaseStudies['calendar'] detail structure with the real project challenges, solution, impact, learnings, and repo link. Built a custom themed architecture flowchart SVG diagram for the extension. Updated chatbot knowledge base to reference both extensions.
 *   **Why**: Ensure portfolio accurately reflects the actual extension code repository and features rather than vague custom visualization placeholders.
 
+### 2026-07-21
+*   **Task**: Fix broken Tableau icons and align Blog section with Insights router.
+*   **Files Changed**: `index.html`.
+*   **What Changed**: Replaced external Tableau brand icon image tags with stable inline SVG paths inside project case study flowcharts. Renamed the "Blog" section to "Featured Insights" and updated card metadata (titles, descriptions, tags, and routes) to match `articles.json` and link directly to active insight router paths.
+*   **Why**: Eliminate layout/resource load failures from non-existent Devicon brand references and fix navigation alignment issues.
+
 ---
 
 ========================================
 PROJECT MEMORY (DO NOT DELETE)
 ========================================
 
-Current Version: 2.0.5
-Last Updated: 2026-07-20
+Current Version: 2.0.6
+Last Updated: 2026-07-21
 Current Branch: main
 
 Architecture Version: SPA-Hash-Router-V2
@@ -313,6 +320,7 @@ Completed Features:
 - Upgraded Postgres Server Repository metadata analysis article
 - Restructured Workbook Sentinel blog as engineering case study with challenge-based format
 - Replaced dummy/vague project details for Tableau Calendar Extension with custom SVG flowchart and correct React/TypeScript/Vite stack details
+- Fixed broken Tableau icons in diagrams with stable inline SVG shapes and aligned Blog cards with actual Insights router paths
 
 Pending Features:
 - None
