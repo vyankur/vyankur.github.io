@@ -224,6 +224,7 @@ Custom tailormade dark and light themes using sleek HSL variables:
 | 2026-07-21 | Contact size & Link | Centered and restricted Contact layout container to 960px max-width, and added LinkedIn social icon in topbar | Optimized spacing of Contact block and added top-right social routing | `index.html` |
 | 2026-07-21 | Corporate Logos & Dual Marquee | Added exact corporate vector SVG logos for clients and created dual running marquee ticker for Clients & Expertise | Replaced generic SVG shapes with authentic brand logos and added specialization running strip | `index.html` |
 | 2026-07-21 | Mermaid Diagram Layout | Converted AI in Tableau architecture diagram to flowchart TD with explicit subgraphs and added min-height: 280px CSS | Prevented horizontal compression and unreadable box sizing | `index.html, content/insights/ai-in-tableau.md` |
+| 2026-07-21 | Corporate Employment Alignment | Replaced "Clients" label with "Companies", "Global Client Base" with "Global Footprint", and aligned experience copy | Accurately distinguished full-time corporate employment history from client vendor labels | `index.html` |
 
 ---
 
@@ -337,13 +338,19 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 *   **What Changed**: Refactored the diagram from a single horizontal line (`graph LR`) to a structured top-down flowchart (`flowchart TD`) with 3 explicit subgraphs (Worksheet Layer, Transport Layer, Orchestration & LLM Layer). Updated `.mermaid svg` CSS rules in `index.html` to set a generous `min-height: 280px` and flexible flex alignment to eliminate vertical squishing.
 *   **Why**: Ensure architecture diagrams render with readable fonts and visible node boxes.
 
+### 2026-07-21
+*   **Task**: Align marquee and experience labels with employment history.
+*   **Files Changed**: `index.html`.
+*   **What Changed**: Replaced the "Clients" ticker label with "Companies" on row 1 of the marquee, updated the impact card header from "Global Client Base" to "Global Footprint", and updated experience scope descriptions from "clients" to "domains/projects".
+*   **Why**: Ensure portfolio terminology accurately reflects direct employment history with Sun Life, HCL, TCS, etc.
+
 ---
 
 ========================================
 PROJECT MEMORY (DO NOT DELETE)
 ========================================
 
-Current Version: 2.0.12
+Current Version: 2.0.13
 Last Updated: 2026-07-21
 Current Branch: main
 
@@ -369,6 +376,7 @@ Completed Features:
 - Centered and resized Contact container to 960px max-width, and appended LinkedIn SVG icon after the Contact header link
 - Added authentic corporate vector SVG logos for client brands and created a dual running ticker banner for Clients and Core Specializations
 - Uncompressed AI in Tableau Mermaid architecture diagram into a multi-row top-down flowchart with generous min-height CSS rules
+- Updated ticker label to "Companies" and impact title to "Global Footprint" to accurately reflect direct employment history
 
 Pending Features:
 - None
