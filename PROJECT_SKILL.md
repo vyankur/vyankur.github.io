@@ -218,6 +218,7 @@ Custom tailormade dark and light themes using sleek HSL variables:
 | 2026-07-19 | Workbook Sentinel Blog | Restructured as engineering case study | Documentation format replaced with challenge-based case study targeting hiring managers and senior engineers | `workbook-sentinel.md`, `articles.json`, `index.html` |
 | 2026-07-20 | Tableau Calendar Extension | Replaced vague/dummy project text | Replaced placeholder text with correct React/TS/Vite extension details from Claude suggestion | `index.html`, `LINKEDIN_PROFILE_GUIDE.md` |
 | 2026-07-21 | Inline SVGs & Blog alignment | Replaced broken CDN image references with inline SVG paths and renamed Blog to Featured Insights | Fixed broken Tableau image and aligned navigation & articles metadata | `index.html` |
+| 2026-07-21 | Premium Design Upgrades | Added Instrument Serif font, refined color palettes (Alabaster & Onyx), and added a scrolling client experience marquee | Upgraded portfolio to a bespoke, high-end editorial aesthetic inspired by shobhitvarshney.com | `index.html` |
 
 ---
 
@@ -295,13 +296,19 @@ All core V2 portfolio features are fully coded, debugged, validated, and pushed 
 *   **What Changed**: Replaced external Tableau brand icon image tags with stable inline SVG paths inside project case study flowcharts. Renamed the "Blog" section to "Featured Insights" and updated card metadata (titles, descriptions, tags, and routes) to match `articles.json` and link directly to active insight router paths.
 *   **Why**: Eliminate layout/resource load failures from non-existent Devicon brand references and fix navigation alignment issues.
 
+### 2026-07-21
+*   **Task**: Implement design & aesthetics upgrades inspired by shobhitvarshney.com.
+*   **Files Changed**: `index.html`.
+*   **What Changed**: Imported Google Font `Instrument Serif` and styled heading `em` accents with it. Replaced default Tailwind slate grays with custom warm Alabaster light mode (`#FAFAF7`) and true Onyx dark mode (`#0B0B0C`) color schemes. Built a responsive, infinite scrolling client logo/badge marquee directly beneath the hero section featuring Sun Life, Deutsche Bank, HCLTech, TCS, and FAB.
+*   **Why**: Elevate the portfolio visual appeal to a bespoke, premium editorial designer aesthetic.
+
 ---
 
 ========================================
 PROJECT MEMORY (DO NOT DELETE)
 ========================================
 
-Current Version: 2.0.6
+Current Version: 2.0.7
 Last Updated: 2026-07-21
 Current Branch: main
 
@@ -321,6 +328,7 @@ Completed Features:
 - Restructured Workbook Sentinel blog as engineering case study with challenge-based format
 - Replaced dummy/vague project details for Tableau Calendar Extension with custom SVG flowchart and correct React/TypeScript/Vite stack details
 - Fixed broken Tableau icons in diagrams with stable inline SVG shapes and aligned Blog cards with actual Insights router paths
+- Integrated Instrument Serif editorial typography, refined Alabaster/Onyx color variables, and added infinite client marquee scroll
 
 Pending Features:
 - None
