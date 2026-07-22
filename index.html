@@ -2429,6 +2429,118 @@
       gap: 0.4rem;
     }
 
+    /* Modern Intuitive Journey Summary Container */
+    .journey-summary-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    .journey-header-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-bottom: 1.1rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .journey-banner-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .journey-banner-stats {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .journey-stat-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .journey-grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .journey-grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .journey-column-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.15rem;
+    }
+
+    .journey-column-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .journey-chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .journey-chip {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    }
+
+    .journey-chip:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+
+    .journey-chip.highlight {
+      background: var(--primary-light);
+      border-color: rgba(99, 102, 241, 0.3);
+      color: var(--primary);
+    }
+
     /* AI Resume Chatbot Styles */
     .bot-trigger {
       position: fixed;
@@ -3619,76 +3731,48 @@
           <h2 class="section-title">Journey <em>so far.</em></h2>
         </div>
 
-        <!-- Consulting Career Timeline Block -->
-        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2.2rem; box-shadow: 0 4px 12px var(--shadow);">
-          <div class="career-timeline-flex" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; position: relative; padding: 0.5rem 0;">
-            <!-- Timeline Item 1 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--primary);">11+ Years</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">Experience</span>
+        <!-- Intuitive Executive Expertise & Technical Matrix Block -->
+        <div class="journey-summary-container">
+          <div class="journey-header-banner">
+            <div class="journey-banner-title">
+              <span>💼</span>
+              <span>11+ Years Experience Overview</span>
             </div>
-            <div class="timeline-arrow-sep" style="color: var(--border); font-size: 1.1rem; font-weight: 300;">→</div>
-            
-            <!-- Timeline Item 2 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--text);">🏥 Insurance</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">Domain</span>
+            <div class="journey-banner-stats">
+              <span class="journey-stat-badge">5 Global Domains</span>
+              <span class="journey-stat-badge">Enterprise BI & Data Architecture</span>
+              <span class="journey-stat-badge">Custom Extensions & Solutioning</span>
             </div>
-            <div class="timeline-arrow-sep" style="color: var(--border); font-size: 1.1rem; font-weight: 300;">→</div>
+          </div>
 
-            <!-- Timeline Item 3 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--text);">🏦 Banking</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">Domain</span>
+          <div class="journey-grid-layout">
+            <!-- Column 1: Sector Domains -->
+            <div class="journey-column-box">
+              <div class="journey-column-title">
+                <span>🌐</span> <span>Industry Sectors & Domain Mastery</span>
+              </div>
+              <div class="journey-chip-group">
+                <span class="journey-chip">🏥 Insurance <em>(Life & Health)</em></span>
+                <span class="journey-chip">🏦 Banking <em>(FAB Bank)</em></span>
+                <span class="journey-chip">🏭 Manufacturing <em>(GE Power)</em></span>
+                <span class="journey-chip">⚡ Energy & Utilities</span>
+                <span class="journey-chip">✈️ Aviation <em>(SIA)</em></span>
+              </div>
             </div>
-            <div class="timeline-arrow-sep" style="color: var(--border); font-size: 1.1rem; font-weight: 300;">→</div>
 
-            <!-- Timeline Item 4 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--text);">🏭 Manuf.</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">Domain</span>
-            </div>
-            <div class="timeline-arrow-sep" style="color: var(--border); font-size: 1.1rem; font-weight: 300;">→</div>
-
-            <!-- Timeline Item 5 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--text);">⚡ Energy</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">Domain</span>
-            </div>
-            <div class="timeline-arrow-sep" style="color: var(--border); font-size: 1.1rem; font-weight: 300;">→</div>
-
-            <!-- Timeline Item 6 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--text);">✈️ Aviation</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">Domain</span>
-            </div>
-            <div class="timeline-arrow-sep" style="color: var(--border); font-size: 1.1rem; font-weight: 300;">→</div>
-
-            <!-- Timeline Item 7 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--primary);">☁️ Cloud</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">Analytics</span>
-            </div>
-            <div class="timeline-arrow-sep" style="color: var(--border); font-size: 1.1rem; font-weight: 300;">→</div>
-
-            <!-- Timeline Item 8 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--primary);">📊 Tableau</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">BI Platform</span>
-            </div>
-            <div class="timeline-arrow-sep" style="color: var(--border); font-size: 1.1rem; font-weight: 300;">→</div>
-
-            <!-- Timeline Item 9 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--primary);">🐍 Python</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">Scripting</span>
-            </div>
-            <div class="timeline-arrow-sep" style="color: var(--border); font-size: 1.1rem; font-weight: 300;">→</div>
-
-            <!-- Timeline Item 10 -->
-            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px; text-align: center;">
-              <span style="font-size: 0.95rem; font-weight: 800; color: var(--accent);">🤖 GenAI</span>
-              <span style="font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; font-weight: 600; text-transform: uppercase;">BI Extension</span>
+            <!-- Column 2: Tech Stack & High-Impact Solutioning -->
+            <div class="journey-column-box">
+              <div class="journey-column-title">
+                <span>⚡</span> <span>Core Tech Stack & Enterprise Solutions</span>
+              </div>
+              <div class="journey-chip-group">
+                <span class="journey-chip highlight">📊 Tableau BI Platform</span>
+                <span class="journey-chip">❄️ Snowflake & GCP BigQuery</span>
+                <span class="journey-chip">🛢️ SAP HANA & Oracle DB</span>
+                <span class="journey-chip highlight">🐍 Python Data Pipelines</span>
+                <span class="journey-chip highlight">🤖 GenAI BI Extensions <em>(Bedrock/TabPy)</em></span>
+                <span class="journey-chip">💡 Cost & Performance Optimization</span>
+              </div>
             </div>
           </div>
         </div>
