@@ -53,7 +53,7 @@ graph TD
     H --> I["React Visualization UI"]
     I --> J["localhost:8765"]
     J -.- K{"Outbound Internet?"}
-    K - "ZERO requests" --> L["🔒 Secure Device Boundary"]
+    K -- "ZERO requests" --> L["🔒 Secure Device Boundary"]
     style L fill:#10B981,stroke:#047857,stroke-width:2px,color:#fff
     style K fill:#EF4444,stroke:#B91C1C,stroke-width:2px,color:#fff
 ```
@@ -100,7 +100,7 @@ graph TD
     E --> F["Metadata Extraction Engine"]
     F --> G["Local Host UI, Port 8765"]
     G -.- H{"Outbound Connections?"}
-    H - "ZERO" --> I["🔒 Secure Corporate Device Boundary"]
+    H -- "ZERO" --> I["🔒 Secure Corporate Device Boundary"]
     style I fill:#10B981,stroke:#047857,stroke-width:2px,color:#fff
 ```
 
@@ -157,8 +157,8 @@ graph TD
     C --> D["Open Network Tab<br/>Clear Existing Log"]
     D --> E["Perform Workbook<br/>Drag & Drop Parse"]
     E --> F{"External HTTP/HTTPS<br/>Requests Detected?"}
-    F - "0 requests" --> G["✅ Security Compliance Verified"]
-    F - "Any requests" --> H["❌ Investigation Required"]
+    F -- "0 requests" --> G["✅ Security Compliance Verified"]
+    F -- "Any requests" --> H["❌ Investigation Required"]
     G --> I["Export HAR Log<br/>for Compliance Archive"]
     style G fill:#10B981,stroke:#047857,stroke-width:2px,color:#fff
     style H fill:#EF4444,stroke:#B91C1C,stroke-width:2px,color:#fff
@@ -211,8 +211,8 @@ The `fflate` library provides low-level ZIP parsing capabilities that support th
 graph TD
     A["TWBX Packaged Workbook<br/>(potentially multi-GB)"] --> B["Read ZIP Central Directory<br/>Headers Only"]
     B --> C{"Identify File<br/>by Extension"}
-    C - ".hyper / .csv / .tde" --> D["⏭️ Skip, Do Not<br/>Decompress"]
-    C - ".twb XML" --> E["✅ Decompress Target<br/>File Only"]
+    C -- ".hyper / .csv / .tde" --> D["⏭️ Skip, Do Not<br/>Decompress"]
+    C -- ".twb XML" --> E["✅ Decompress Target<br/>File Only"]
     E --> F["DOMParser<br/>XML Processing"]
     F --> G["Metadata Extraction<br/>& Lineage Engine"]
     D --> H["Memory Saved:<br/>Potentially GBs"]
@@ -267,12 +267,12 @@ The compatibility strategy operates on two levels:
 ```mermaid
 graph TD
     A["Tableau Desktop<br/>Multiple Versions"] --> B{"QtWebEngine<br/>Version Check"}
-    B - "Older Engine<br/>(2021 to 2023)" --> C["Conservative DOM API<br/>parentNode Loops<br/>querySelector Only"]
-    B - "Newer Engine<br/>(2024+)" --> C
+    B -- "Older Engine<br/>(2021 to 2023)" --> C["Conservative DOM API<br/>parentNode Loops<br/>querySelector Only"]
+    B -- "Newer Engine<br/>(2024+)" --> C
     C --> D["Modular XML<br/>Schema Accessors"]
     D --> E{"Tableau XML<br/>Schema Version"}
-    E - "2023.x Schema" --> F["Accessor Layer<br/>Resolves Paths"]
-    E - "2024.x Schema" --> F
+    E -- "2023.x Schema" --> F["Accessor Layer<br/>Resolves Paths"]
+    E -- "2024.x Schema" --> F
     F --> G["Core Lineage<br/>Extraction Engine"]
     G --> H["✅ Stable Output<br/>Across Versions"]
     style H fill:#10B981,stroke:#047857,stroke-width:2px,color:#fff
