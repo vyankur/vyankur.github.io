@@ -1,0 +1,34 @@
+{
+  "id": "ai-bi",
+  "tag": "Tableau + AI Extension",
+  "title": "Agentic Conversational BI Extension",
+  "overview": "An enterprise-grade Tableau Dashboard Extension built with Python, LangChain, and AWS Bedrock that enables natural-language queries directly against worksheet summary tables, rendering custom viz blocks.",
+  "challenge": "Global business unit leads needed instant answers on historical headcounts, sales metrics, and ESG stats without waiting for BI team ticket sprints. The challenge was executing sub-second natural language processing via TabPy on Tableau Server worksheets without exposing cloud endpoints or database credentials.",
+  "solution": "Engineered a TabPy middleware agent using LangChain, SageMaker endpoints, and Bedrock. The extension reads worksheet schema tables, interprets analytical intent, and runs SQL/calculated field filters dynamically.",
+  "archExplanation": "The Tableau Dashboard UI triggers the custom Extension SDK, which routes queries to the TabPy backend. The python agent (built with LangChain) parses the metadata, queries the AWS Bedrock models, and updates calculations on the live worksheet.",
+  "techs": [
+    "LangChain",
+    "AWS Bedrock",
+    "SageMaker",
+    "TabPy",
+    "Python",
+    "OpenAI"
+  ],
+  "impact": [
+    "95% reduction in manual query wait times",
+    "Accelerated self-service BI adoption for 120+ global leaders",
+    "Reduced team ticket backlog by 35%"
+  ],
+  "learnings": [
+    "TabPy server container isolation guarantees security",
+    "SessionStorage caching of sheet schema prevents redundant API roundtrips",
+    "Prompt schema injection format limits LLM hallucinations"
+  ],
+  "github": "https://github.com/vyankur/tableau-ai-conversational-extension",
+  "demo": "#",
+  "relatedInsights": [
+    "workbook-sentinel",
+    "tableau-performance-tuning",
+    "ai-in-tableau"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "calendar",
+  "tag": "Tableau + Extensions API",
+  "title": "Tableau Calendar Extension: A Native Full-Year Heatmap Date Picker",
+  "overview": "A native full-year circular heatmap date picker built with React, TypeScript, and Vite on the Extensions API to drive interactive, two-way filters.",
+  "challenge": "Native Tableau date filters are limited to relative date sliders and standard dropdown lists, which lack high-density visual heatmap feedback across full calendar years.",
+  "solution": "Built a custom Tableau extension in React and D3 that renders interactive 365-day heatmaps and binds parameter updates back to the active worksheet.",
+  "archExplanation": "React component listens to mark selection events via the Extensions API and pushes target date range parameter modifications back to Tableau Server.",
+  "techs": [
+    "React",
+    "TypeScript",
+    "Vite",
+    "D3.js",
+    "Tableau Extensions SDK"
+  ],
+  "impact": [
+    "100% native integration into Tableau Server dashboards",
+    "Enabled multi-date range comparative analysis for retail finance teams"
+  ],
+  "learnings": [
+    "State updates must throttle parameter calls to avoid Tableau layout render locks",
+    "Vite bundling minimizes extension load footprint"
+  ],
+  "github": "https://github.com/vyankur/Tableau-Extension-Calander-Demo02",
+  "demo": "#",
+  "relatedInsights": [
+    "tableau-extensions",
+    "dashboard-design"
+  ]
+}

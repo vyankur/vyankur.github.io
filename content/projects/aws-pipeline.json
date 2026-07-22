@@ -1,0 +1,30 @@
+{
+  "id": "aws-pipeline",
+  "tag": "Cloud Analytics",
+  "title": "AWS S3 + Athena Analytics Pipeline",
+  "overview": "Serverless analytics infrastructure processing raw event logs from Amazon S3 through Glue Data Catalog into Athena for sub-second Tableau querying.",
+  "challenge": "Legacy relational databases suffered from query timeouts when analyzing high-volume web event streams.",
+  "solution": "Migrated analytics workloads to a serverless AWS S3 data lake configured with Apache Parquet columnar partitioning.",
+  "archExplanation": "Log streams land in S3; AWS Glue Crawlers update catalog schemas; Athena executes SQL queries consumed live by Tableau Server.",
+  "techs": [
+    "AWS S3",
+    "Amazon Athena",
+    "AWS Glue",
+    "Apache Parquet",
+    "Tableau"
+  ],
+  "impact": [
+    "85% query speed improvement over legacy database",
+    "Saved $40K annually in cloud database compute costs"
+  ],
+  "learnings": [
+    "Partitioning by year/month/day is critical for query cost containment",
+    "Parquet file compaction improves Athena scan throughput"
+  ],
+  "github": "https://github.com/vyankur",
+  "demo": "#",
+  "relatedInsights": [
+    "athena-optimization",
+    "aws-architecture"
+  ]
+}

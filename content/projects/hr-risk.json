@@ -1,0 +1,30 @@
+{
+  "id": "hr-risk",
+  "tag": "BI Security",
+  "title": "Secure HR Analytics (FAB Bank)",
+  "overview": "HR dashboards implementing strict row-level security mapping, ensuring managers only see data for their direct reports while aggregating high-level trends for leadership.",
+  "challenge": "Sensitive compensation and performance data required strict multi-tenant row-level access control across 5,000+ bank employees.",
+  "solution": "Joined transaction tables to an Active Directory security entitlement mapping table in Oracle SQL using dynamic USERNAME() Tableau calculations.",
+  "archExplanation": "Oracle SQL database views resolve employee entitlement trees; Tableau evaluates dynamic USERNAME() security filters on load.",
+  "techs": [
+    "Tableau",
+    "Oracle SQL",
+    "PL/SQL",
+    "Row-Level Security",
+    "Active Directory"
+  ],
+  "impact": [
+    "Zero security breach incidents across 5 years",
+    "Streamlined executive reporting for bank leadership"
+  ],
+  "learnings": [
+    "User security tables must be indexed on lower(username) for instant evaluation",
+    "Cache security entitlements locally on Tableau Server"
+  ],
+  "github": "https://github.com/vyankur",
+  "demo": "#",
+  "relatedInsights": [
+    "enterprise-rls",
+    "tableau-server-repository"
+  ]
+}

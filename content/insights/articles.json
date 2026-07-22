@@ -133,7 +133,7 @@
     "category": "SQL",
     "difficulty": "Advanced",
     "readingTime": "12 min",
-    "status": "Published",
+    "status": "In Draft",
     "featured": true,
     "tags": [
       "AWS Athena",
@@ -246,24 +246,26 @@
   },
   {
     "slug": "window-functions",
-    "title": "Window Functions Deep Dive",
+    "title": "Window Functions Deep Dive: The SQL Superpower Every Data Professional Needs",
     "category": "SQL",
     "difficulty": "Intermediate",
     "readingTime": "8 min",
-    "status": "Planned",
-    "featured": false,
+    "status": "Published",
+    "featured": true,
     "tags": [
       "SQL",
-      "Analytics Engineering"
+      "Analytics Engineering",
+      "Data Analytics",
+      "Performance"
     ],
-    "summary": "Master complex analytical SQL window functions for cohort analysis, running totals, rankings, and lead/lag calculations.",
-    "overview": "This guide provides practical examples of SQL window functions. You will learn to use PARTITION BY, ORDER BY, and frame clauses (ROWS BETWEEN) to compute complex rolling metrics and historical trends without self-joins.",
+    "summary": "Master complex analytical SQL window functions for cohort analysis, running totals, rankings, lead/lag offsets, and moving averages.",
+    "overview": "An in-depth guide to mastering SQL window functions. Learn how OVER(), PARTITION BY, ORDER BY, frame clauses, ROW_NUMBER, RANK, DENSE_RANK, NTILE, LAG, and LEAD eliminate complex self-joins and speed up analytical queries.",
     "topics": [
-      "PARTITION BY and ORDER BY syntax",
-      "Ranking functions (ROW_NUMBER, DENSE_RANK)",
-      "Lead and Lag offsets",
-      "Frame clauses (ROWS/RANGE BETWEEN)",
-      "Running totals and moving averages"
+      "OVER(), PARTITION BY and ORDER BY Mechanics",
+      "ROW_NUMBER vs. RANK vs. DENSE_RANK & NTILE",
+      "Period-over-Period Analytics with LAG and LEAD",
+      "Window Frames (ROWS/RANGE BETWEEN)",
+      "Real Business Scenarios & Performance Tuning Tips"
     ]
   },
   {

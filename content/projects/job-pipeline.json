@@ -1,0 +1,30 @@
+{
+  "id": "job-pipeline",
+  "tag": "Data Engineering",
+  "title": "Automated Market Intelligence Pipeline",
+  "overview": "End-to-end Python web scraper and NLP relevance pipeline extracting market intelligence and technical trends into structured datasets.",
+  "challenge": "Manually monitoring industry hiring and technology trends required dozens of hours of repetitive web research.",
+  "solution": "Built a multi-threaded Python scraper with NLP keyword scoring that extracts job specs and outputs structured Markdown reports.",
+  "archExplanation": "Python Scrapy pipeline crawls web listings; NLP relevance scorer filters technologies; SQLite stores metrics powering BI feeds.",
+  "techs": [
+    "Python",
+    "Scrapy",
+    "NLP",
+    "SQLite",
+    "Markdown Generator"
+  ],
+  "impact": [
+    "Automated 100% of market trend data extraction",
+    "Generates daily structured technology briefs"
+  ],
+  "learnings": [
+    "Rate limiting and proxy rotation prevent web crawler blocks",
+    "Structured Pydantic schemas prevent downstream parsing errors"
+  ],
+  "github": "https://github.com/vyankur",
+  "demo": "#",
+  "relatedInsights": [
+    "prompt-engineering",
+    "analytics-engineering"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "repo-analytics",
+  "tag": "Governance & Security",
+  "title": "Tableau Server Repository Governance Analytics",
+  "overview": "Extracting governance insights, row-level security audits, and view access frequency directly from the Tableau Server PostgreSQL workgroup database.",
+  "challenge": "BI leadership lacked visibility into user dashboard adoption, stale workbooks, and permission compliance.",
+  "solution": "Authored automated SQL queries against the Tableau Server workgroup Postgres DB, publishing live admin governance dashboards.",
+  "archExplanation": "Tableau Server PostgreSQL repository is queried via read-only credentials; aggregated views power executive governance dashboards.",
+  "techs": [
+    "PostgreSQL",
+    "Tableau Server Repository",
+    "SQL",
+    "Row-Level Security"
+  ],
+  "impact": [
+    "Identified and archived 200+ stale workbooks",
+    "Validated 100% RLS compliance across enterprise security groups"
+  ],
+  "learnings": [
+    "Correlated subqueries on historical_events table require index hints",
+    "Always read from read-only standby nodes"
+  ],
+  "github": "https://github.com/vyankur",
+  "demo": "#",
+  "relatedInsights": [
+    "tableau-server-repository",
+    "enterprise-rls"
+  ]
+}

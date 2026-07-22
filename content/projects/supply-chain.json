@@ -1,0 +1,29 @@
+{
+  "id": "supply-chain",
+  "tag": "Supply Chain & Analytics",
+  "title": "Supply Chain Lead Time Predictor (GE Power)",
+  "overview": "Interactive lead time tracking dashboards with item-level drill-down across delivery stages and predictive completion tracking for GE Power.",
+  "challenge": "Global shipment delays caused production bottlenecks due to fragmented tracking spreadsheets across regional warehouses.",
+  "solution": "Built unified supply chain tracking dashboards fed by Talend ETL pipelines and Oracle SQL materialized views.",
+  "archExplanation": "Talend extracts warehouse shipment logs into Oracle SQL materialized views; Tableau renders real-time stage tracking metrics.",
+  "techs": [
+    "Tableau",
+    "Oracle SQL",
+    "Talend ETL",
+    "Supply Chain Analytics"
+  ],
+  "impact": [
+    "Reduced supply chain bottleneck delays by 25%",
+    "35% faster dashboard rendering after SQL query tuning"
+  ],
+  "learnings": [
+    "Materialized view refreshes should align with warehouse shift updates",
+    "Custom alerts keep regional managers proactive"
+  ],
+  "github": "https://github.com/vyankur",
+  "demo": "#",
+  "relatedInsights": [
+    "sql-performance",
+    "dashboard-design"
+  ]
+}

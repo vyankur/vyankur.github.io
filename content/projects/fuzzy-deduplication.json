@@ -1,0 +1,30 @@
+{
+  "id": "fuzzy-deduplication",
+  "tag": "Data Quality & Python",
+  "title": "Python Fuzzy Matching Data Deduplication",
+  "overview": "Automated Python data cleaning pipeline using fuzzy string matching algorithms to deduplicate vendor and product records prior to BI ingestion.",
+  "challenge": "Duplicate vendor names from disparate ERP systems degraded analytics accuracy for GE Power compliance auditing.",
+  "solution": "Developed a Python script utilizing Levenshtein distance and Jaro-Winkler algorithms to auto-merge vendor records.",
+  "archExplanation": "Raw staging tables are processed by Python scheduled job; cleaned output tables are written to Greenplum DB for Tableau consumption.",
+  "techs": [
+    "Python",
+    "Levenshtein Fuzzy Matching",
+    "Greenplum DB",
+    "Pandas",
+    "ETL"
+  ],
+  "impact": [
+    "Eliminated 95% of vendor duplicate records",
+    "$50K USD annual savings in compliance auditing effort"
+  ],
+  "learnings": [
+    "Pre-blocking string matches by state/city reduces comparison complexity from O(n^2) to O(n)",
+    "Confidence score thresholds should be tuned with business stewards"
+  ],
+  "github": "https://github.com/vyankur",
+  "demo": "#",
+  "relatedInsights": [
+    "analytics-engineering",
+    "prompt-engineering"
+  ]
+}

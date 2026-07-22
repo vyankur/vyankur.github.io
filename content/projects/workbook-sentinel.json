@@ -1,0 +1,34 @@
+{
+  "id": "workbook-sentinel",
+  "tag": "Tableau + Security",
+  "title": "Workbook Sentinel",
+  "overview": "A local-first Tableau Dashboard Extension that performs automated auditing, dependency lineage mapping, and calculations governance on workbook XML models without external data leaves.",
+  "challenge": "Enterprise BI teams needed a way to audit complex workbook structures, calculation dependencies, and layout performance containers locally. Standard solutions require loading XML files onto cloud-based APIs, violating corporate data privacy guidelines.",
+  "solution": "Engineered a fully client-side extension that runs on a local loopback server. It reads dropped workbooks using the HTML5 FileReader API, decompresses files in sandbox memory, and parses workbook metadata directly in the browser using the DOMParser without triggering any outbound network connections.",
+  "archExplanation": "The extension runs as a Tableau dashboard web iframe bound to localhost. Users drag and drop workbooks; the client-side parser unzips files, isolates the .twb XML schema, parses calculated field lineage, and renders interactive maps on the client device.",
+  "techs": [
+    "JavaScript",
+    "HTML5 FileReader",
+    "DOMParser",
+    "Tableau Extensions SDK",
+    "fflate",
+    "Local-first"
+  ],
+  "impact": [
+    "Zero data leakage compliance validated by security teams",
+    "Local file parsing completes in under 500ms",
+    "Eliminated external cloud-processing infrastructure costs"
+  ],
+  "learnings": [
+    "Pre-filtering zip archives by header keeps memory usage within browser limits",
+    "Supporting older QtWebEngine versions requires legacy parentNode traversal",
+    "Local loopback extensions require safelist whitelists on Tableau Server"
+  ],
+  "github": "https://github.com/vyankur/Workbook-Sentinel",
+  "demo": "#",
+  "relatedInsights": [
+    "tableau-server-repository",
+    "tableau-performance-tuning",
+    "dashboard-governance"
+  ]
+}

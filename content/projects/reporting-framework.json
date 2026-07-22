@@ -1,0 +1,31 @@
+{
+  "id": "reporting-framework",
+  "tag": "DevOps & Automation",
+  "title": "Automated BI Reporting Framework",
+  "overview": "Automated framework handling workbook migrations, schedule updates, and extract maintenance across environments using Python and Tableau REST API.",
+  "challenge": "Manually publishing dozens of Tableau workbook edits across separate DEV/PROD sites was error-prone and took 10+ hours of team effort weekly.",
+  "solution": "Programmed a Python command-line utility utilizing the Tableau Server Client (TSC) API to automate migrations and metadata validation.",
+  "archExplanation": "Version controlled Tableau XML workbooks trigger GitHub Action runners. The Python TSC CLI utility publishes assets automatically to Tableau Cloud.",
+  "techs": [
+    "Python",
+    "Tableau REST API",
+    "TSC API",
+    "GitHub Actions",
+    "DevOps"
+  ],
+  "impact": [
+    "98% reduction in manual deployment mistakes",
+    "Deployment times cut from 2 hours to 90 seconds",
+    "Saved 10 hours of manual administration weekly"
+  ],
+  "learnings": [
+    "Tableau workbook XML can be programmatically parsed and updated",
+    "Store connection passwords securely in Environment Secrets"
+  ],
+  "github": "https://github.com/vyankur/tableau-rest-api-deployer",
+  "demo": "#",
+  "relatedInsights": [
+    "tableau-admin",
+    "analytics-engineering"
+  ]
+}

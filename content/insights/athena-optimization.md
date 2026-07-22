@@ -2,19 +2,19 @@
 title: "Athena Query Optimization"
 slug: "athena-optimization"
 summary: "Optimize serverless queries over AWS S3 data lakes using partition pruning, columnar Parquet formats, and cost-reduction techniques."
-status: "Published"
+status: "In Draft"
 category: "SQL"
 difficulty: "Advanced"
 readingTime: "12 min"
 tags: ['AWS Athena', 'SQL', 'Cloud BI']
-featured: True
+featured: true
 publishedDate: "2026-07-18"
 lastUpdated: "2026-07-18"
 ---
 
 # Athena Query Optimization
 
-**Difficulty:** Advanced | **Read Time:** 12 min | **Status:** Published | **Category:** SQL
+**Difficulty:** Advanced | **Read Time:** 12 min | **Status:** In Draft | **Category:** SQL
 
 ## Overview
 This article demonstrates how to optimize Amazon Athena queries to achieve sub-second dashboard rendering times. It explains the mechanics of partition pruning, file merging, and query caching to save up to 90% in query costs.
