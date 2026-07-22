@@ -2429,116 +2429,141 @@
       gap: 0.4rem;
     }
 
-    /* Modern Intuitive Journey Summary Container */
-    .journey-summary-container {
+    /* 10/10 Experience Showcase & Stepper CSS */
+    .experience-showcase-v4 {
+      margin-bottom: 2.2rem;
+    }
+    .exp-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+    @media (max-width: 900px) {
+      .exp-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 500px) {
+      .exp-metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .exp-metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 15px var(--shadow);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .exp-metric-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+    }
+    .exp-metric-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.35rem;
+    }
+    .exp-metric-num {
+      font-size: 1.35rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    .exp-metric-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .exp-stepper-container {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.5rem 1.75rem;
-      margin-bottom: 2.2rem;
-      box-shadow: 0 10px 30px var(--shadow);
+      box-shadow: 0 8px 25px var(--shadow);
     }
-
-    .journey-header-banner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding-bottom: 1.1rem;
-      margin-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .journey-banner-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .journey-banner-stats {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .journey-stat-badge {
-      background: var(--primary-light);
-      color: var(--primary);
-      padding: 0.35rem 0.85rem;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-    }
-
-    .journey-grid-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-
-    @media (max-width: 768px) {
-      .journey-grid-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .journey-column-box {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.15rem;
-    }
-
-    .journey-column-title {
+    .exp-stepper-title {
       font-size: 0.82rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 0.85rem;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    .exp-stepper-track {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
     }
-
-    .journey-chip-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
+    @media (max-width: 768px) {
+      .exp-stepper-track {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .exp-step-line {
+        width: 2px !important;
+        height: 24px !important;
+        margin: 0 auto !important;
+      }
     }
-
-    .journey-chip {
+    .exp-step-node {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .exp-step-node:hover, .exp-step-node.active {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+    .exp-step-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 4px;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      padding: 0.45rem 0.85rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-    }
-
-    .journey-chip:hover {
-      border-color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px var(--shadow);
-    }
-
-    .journey-chip.highlight {
-      background: var(--primary-light);
-      border-color: rgba(99, 102, 241, 0.3);
       color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+    .exp-step-company {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+    }
+    .exp-step-role {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    .exp-step-domains {
+      font-size: 0.72rem;
+      color: var(--text);
+      opacity: 0.85;
+      margin-top: 0.4rem;
+    }
+    .exp-step-line {
+      height: 2px;
+      flex: 0 0 40px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      opacity: 0.6;
     }
 
     /* AI Resume Chatbot Styles */
@@ -3752,47 +3777,58 @@
           <h2 class="section-title">Journey <em>so far.</em></h2>
         </div>
 
-        <!-- Intuitive Executive Expertise & Technical Matrix Block -->
-        <div class="journey-summary-container">
-          <div class="journey-header-banner">
-            <div class="journey-banner-title">
-              <span>💼</span>
-              <span>11+ Years Experience Overview</span>
+        <!-- 10/10 Executive Experience Showcase Block -->
+        <div class="experience-showcase-v4">
+          <!-- Top Row: 4 Hero Metric Cards -->
+          <div class="exp-metrics-grid">
+            <div class="exp-metric-card">
+              <div class="exp-metric-icon">🏆</div>
+              <div class="exp-metric-num">11+ Years</div>
+              <div class="exp-metric-label">Enterprise BI &amp; Cloud Analytics Leadership</div>
             </div>
-            <div class="journey-banner-stats">
-              <span class="journey-stat-badge">5 Global Domains</span>
-              <span class="journey-stat-badge">Enterprise BI & Data Architecture</span>
-              <span class="journey-stat-badge">Custom Extensions & Solutioning</span>
+            <div class="exp-metric-card">
+              <div class="exp-metric-icon">🌍</div>
+              <div class="exp-metric-num">6 Regions</div>
+              <div class="exp-metric-label">US, UK, Germany, UAE, Singapore &amp; India</div>
+            </div>
+            <div class="exp-metric-card">
+              <div class="exp-metric-icon">🏢</div>
+              <div class="exp-metric-num">7 Leaders</div>
+              <div class="exp-metric-label">Sun Life, FAB Bank, Deutsche, GE Power, SIA</div>
+            </div>
+            <div class="exp-metric-card">
+              <div class="exp-metric-icon">🤖</div>
+              <div class="exp-metric-num">GenAI BI</div>
+              <div class="exp-metric-label">AWS Bedrock, TabPy &amp; React Extensions</div>
             </div>
           </div>
 
-          <div class="journey-grid-layout">
-            <!-- Column 1: Sector Domains -->
-            <div class="journey-column-box">
-              <div class="journey-column-title">
-                <span>🌐</span> <span>Industry Sectors & Domain Mastery</span>
+          <!-- Career Journey Visual Stepper Bar -->
+          <div class="exp-stepper-container">
+            <div class="exp-stepper-title">Career Progression &amp; Leadership Milestones</div>
+            <div class="exp-stepper-track">
+              <!-- Node 1: Sun Life (Current) -->
+              <div class="exp-step-node active" data-tab="sunlife">
+                <div class="exp-step-badge">2023 – Present</div>
+                <div class="exp-step-company">Sun Life Financial</div>
+                <div class="exp-step-role">Senior BI Developer / Data Analyst</div>
+                <div class="exp-step-domains">🏥 Insurance &amp; Wealth Analytics</div>
               </div>
-              <div class="journey-chip-group">
-                <span class="journey-chip">🏥 Insurance <em>(Life & Health)</em></span>
-                <span class="journey-chip">🏦 Banking <em>(FAB Bank)</em></span>
-                <span class="journey-chip">🏭 Manufacturing <em>(GE Power)</em></span>
-                <span class="journey-chip">⚡ Energy & Utilities</span>
-                <span class="journey-chip">✈️ Aviation <em>(SIA)</em></span>
+              <div class="exp-step-line"></div>
+              <!-- Node 2: HCL Tech -->
+              <div class="exp-step-node" data-tab="hcl">
+                <div class="exp-step-badge">2021 – 2023</div>
+                <div class="exp-step-company">HCL Technologies</div>
+                <div class="exp-step-role">Tableau &amp; Data Viz Lead</div>
+                <div class="exp-step-domains">🏦 Deutsche Bank Financial Suite</div>
               </div>
-            </div>
-
-            <!-- Column 2: Tech Stack & High-Impact Solutioning -->
-            <div class="journey-column-box">
-              <div class="journey-column-title">
-                <span>⚡</span> <span>Core Tech Stack & Enterprise Solutions</span>
-              </div>
-              <div class="journey-chip-group">
-                <span class="journey-chip highlight">📊 Tableau BI Platform</span>
-                <span class="journey-chip">❄️ Snowflake & GCP BigQuery</span>
-                <span class="journey-chip">🛢️ SAP HANA & Oracle DB</span>
-                <span class="journey-chip highlight">🐍 Python Data Pipelines</span>
-                <span class="journey-chip highlight">🤖 GenAI BI Extensions <em>(Bedrock/TabPy)</em></span>
-                <span class="journey-chip">💡 Cost & Performance Optimization</span>
+              <div class="exp-step-line"></div>
+              <!-- Node 3: TCS -->
+              <div class="exp-step-node" data-tab="tcs">
+                <div class="exp-step-badge">2015 – 2021</div>
+                <div class="exp-step-company">Tata Consultancy Services</div>
+                <div class="exp-step-role">Senior BI Developer / IT Analyst</div>
+                <div class="exp-step-domains">🏦 FAB Bank · ⚡ GE Power · ✈️ SIA</div>
               </div>
             </div>
           </div>
@@ -5304,18 +5340,37 @@ EDUCATION
       htmlEl.setAttribute('data-theme', 'dark'); // Default to premium dark mode
     }
 
-    // Timeline Tab Switching Logic
+    // Timeline Tab & Stepper Node Switching Logic
     const timelineTabs = document.querySelectorAll('.timeline-tab');
     const timelinePanels = document.querySelectorAll('.timeline-panel');
+    const expStepNodes = document.querySelectorAll('.exp-step-node');
+
+    function selectCompanyTab(company) {
+      timelineTabs.forEach(t => {
+        if (t.getAttribute('data-company') === company) t.classList.add('active');
+        else t.classList.remove('active');
+      });
+      timelinePanels.forEach(p => p.classList.remove('active'));
+      const targetPanel = document.getElementById(`panel-${company}`);
+      if (targetPanel) targetPanel.classList.add('active');
+
+      expStepNodes.forEach(node => {
+        if (node.getAttribute('data-tab') === company) node.classList.add('active');
+        else node.classList.remove('active');
+      });
+    }
 
     timelineTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        timelineTabs.forEach(t => t.classList.remove('active'));
-        timelinePanels.forEach(p => p.classList.remove('active'));
-
-        tab.classList.add('active');
         const company = tab.getAttribute('data-company');
-        document.getElementById(`panel-${company}`).classList.add('active');
+        selectCompanyTab(company);
+      });
+    });
+
+    expStepNodes.forEach(node => {
+      node.addEventListener('click', () => {
+        const company = node.getAttribute('data-tab');
+        selectCompanyTab(company);
       });
     });
 
