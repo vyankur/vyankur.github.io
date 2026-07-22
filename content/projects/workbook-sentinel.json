@@ -2,6 +2,8 @@
   "id": "workbook-sentinel",
   "tag": "Tableau + Security",
   "title": "Workbook Sentinel",
+  "videoEmbed": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/yGhdDtCEF2E?si=Uf_PhJVzpQ59e1s7\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen style=\"position:absolute; top:0; left:0; width:100%; height:100%; border:0;\"></iframe>",
+  "videoUrl": "https://www.youtube.com/watch?v=yGhdDtCEF2E",
   "overview": "A local-first Tableau Dashboard Extension that performs automated auditing, dependency lineage mapping, and calculations governance on workbook XML models without external data leaves.",
   "challenge": "Enterprise BI teams needed a way to audit complex workbook structures, calculation dependencies, and layout performance containers locally. Standard solutions require loading XML files onto cloud-based APIs, violating corporate data privacy guidelines.",
   "solution": "Engineered a fully client-side extension that runs on a local loopback server. It reads dropped workbooks using the HTML5 FileReader API, decompresses files in sandbox memory, and parses workbook metadata directly in the browser using the DOMParser without triggering any outbound network connections.",
