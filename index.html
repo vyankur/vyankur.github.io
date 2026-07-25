@@ -3852,12 +3852,6 @@
         </div>
 
         <div class="timeline-container">
-          <div class="timeline-tabs">
-            <button class="timeline-tab active" data-company="sunlife">Sun Life Financial</button>
-            <button class="timeline-tab" data-company="hcl">HCL Technologies</button>
-            <button class="timeline-tab" data-company="tcs">TCS</button>
-          </div>
-
           <!-- Sun Life Panel -->
           <div class="timeline-panel active" id="panel-sunlife">
             <div class="timeline-header">
@@ -5357,16 +5351,11 @@ EDUCATION
       htmlEl.setAttribute('data-theme', 'dark'); // Default to premium dark mode
     }
 
-    // Timeline Tab & Stepper Node Switching Logic
-    const timelineTabs = document.querySelectorAll('.timeline-tab');
+    // Timeline Stepper Node Switching Logic
     const timelinePanels = document.querySelectorAll('.timeline-panel');
     const expStepNodes = document.querySelectorAll('.exp-step-node');
 
     function selectCompanyTab(company) {
-      timelineTabs.forEach(t => {
-        if (t.getAttribute('data-company') === company) t.classList.add('active');
-        else t.classList.remove('active');
-      });
       timelinePanels.forEach(p => p.classList.remove('active'));
       const targetPanel = document.getElementById(`panel-${company}`);
       if (targetPanel) targetPanel.classList.add('active');
@@ -5376,13 +5365,6 @@ EDUCATION
         else node.classList.remove('active');
       });
     }
-
-    timelineTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const company = tab.getAttribute('data-company');
-        selectCompanyTab(company);
-      });
-    });
 
     expStepNodes.forEach(node => {
       node.addEventListener('click', () => {
@@ -5398,8 +5380,7 @@ EDUCATION
         const expSection = document.getElementById('experience');
         if (expSection) {
           expSection.scrollIntoView({ behavior: 'smooth' });
-          const sunlifeTab = document.querySelector('.timeline-tab[data-company="sunlife"]');
-          if (sunlifeTab) sunlifeTab.click();
+          selectCompanyTab('sunlife');
         }
       } else if (target === 'experience') {
         const expSection = document.getElementById('experience');
