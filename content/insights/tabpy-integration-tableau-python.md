@@ -15,7 +15,7 @@ seoDescription: "Learn how TabPy extends Tableau calculation engine with Python.
 
 # Bringing Python Into Tableau: A Practical Guide to TabPy Integration
 
-Tableau is excellent at visual analytics, but its calculation engine hits a ceiling fast. Fuzzy text matching, machine learning scoring, live API calls — none of that lives comfortably inside a native calculated field. TabPy closes that gap. It lets Tableau hand off a calculation to a running Python process and get the result back inline, as if it were any other field.
+Tableau is excellent at visual analytics, but its calculation engine hits a ceiling fast. Fuzzy text matching, machine learning scoring, live API calls, none of that lives comfortably inside a native calculated field. TabPy closes that gap. It lets Tableau hand off a calculation to a running Python process and get the result back inline, as if it were any other field.
 
 This guide walks through what TabPy actually does, how to wire it up, where it earns its keep, and the architectural patterns required to take it from local prototype to enterprise production.
 
@@ -23,13 +23,13 @@ This guide walks through what TabPy actually does, how to wire it up, where it e
 
 ## What TabPy Is, in Plain Terms
 
-TabPy — the Tableau Python Server — is Tableau's official Analytics Extension for Python. Once it's running and connected, Tableau can pass field values into a Python script through a calculated field, run that script inside a Python runtime, and return the result back into the view as a table calculation.
+TabPy, the Tableau Python Server, is Tableau's official Analytics Extension for Python. Once it's running and connected, Tableau can pass field values into a Python script through a calculated field, run that script inside a Python runtime, and return the result back into the view as a table calculation.
 
 Practically, that opens up four categories of work Tableau can't do on its own:
 
-- **Text processing that goes beyond `CONTAINS`/`REGEXP`** — fuzzy matching, NLP-style cleanup, keyword extraction across long free-text fields.
-- **Statistical and ML logic** — running a trained scikit-learn or XGBoost model against live dashboard data for real-time scoring or clustering.
-- **External API calls** — pulling in weather, geocoding, or even LLM responses (e.g., OpenAI or Amazon Bedrock) and surfacing them next to the rest of your view.
+- **Text processing that goes beyond `CONTAINS`/`REGEXP`**, fuzzy matching, NLP-style cleanup, keyword extraction across long free-text fields.
+- **Statistical and ML logic**, running a trained scikit-learn or XGBoost model against live dashboard data for real-time scoring or clustering.
+- **External API calls**, pulling in weather, geocoding, or even LLM responses (e.g., OpenAI or Amazon Bedrock) and surfacing them next to the rest of your view.
 - **Custom math** that would otherwise mean maintaining a monster nested `IF`/`CASE` calculation.
 
 ---
@@ -89,7 +89,7 @@ Launch the TabPy server directly from your command prompt or terminal:
 tabpy
 ```
 
-Leave that terminal window open — TabPy needs to keep running in the background on port `9004` for the connection to stay alive.
+Leave that terminal window open, TabPy needs to keep running in the background on port `9004` for the connection to stay alive.
 
 ![Step 1.1: Launching TabPy Service in Terminal](assets/tabpy-screenshots/1.1.png)
 
@@ -109,7 +109,7 @@ That's the entire local setup. No complex server config or credentials are requi
 
 ## How Tableau Actually Talks to Python
 
-This is the part that trips developers up the first time. Tableau doesn't just let you drop Python anywhere — it routes through four SCRIPT functions, each defined by the data type it expects back from your script:
+This is the part that trips developers up the first time. Tableau doesn't just let you drop Python anywhere, it routes through four SCRIPT functions, each defined by the data type it expects back from your script:
 
 | Function | Returns | Expected Python Output |
 |---|---|---|
@@ -131,7 +131,7 @@ SCRIPT_STR(
 
 ### Critical Rules for SCRIPT Functions
 
-1. **Every field passed in must be aggregated** — `SUM()`, `MIN()`, `ATTR()`, or `AVG()`. Tableau evaluates SCRIPT calls as table calculations. If it isn't told how to collapse multiple rows into one value per mark, it has no way to know what array to hand Python. Passing an unaggregated `[Field]` will throw a syntax error.
+1. **Every field passed in must be aggregated**, `SUM()`, `MIN()`, `ATTR()`, or `AVG()`. Tableau evaluates SCRIPT calls as table calculations. If it isn't told how to collapse multiple rows into one value per mark, it has no way to know what array to hand Python. Passing an unaggregated `[Field]` will throw a syntax error.
 2. **Nulls and asterisks come through as `None`.** When `ATTR([Field])` evaluates multiple distinct values within a partition, Tableau returns `*`, which translates to `None` in Python. If your script assumes clean input and doesn't guard for `None`, the script will throw an unhandled exception or return incorrect results.
 
 ---
@@ -140,7 +140,7 @@ SCRIPT_STR(
 
 ### Example 1: Keyword Search Across Free-Text Fields
 
-In domains dealing with long-form text records — insurance policy documents, claims notes, contract clauses — flagging specific exclusion terms is a common requirement. Tableau's native `CONTAINS()` string functions fall short when partial matches, regex synonyms, or running term counts are needed.
+In domains dealing with long-form text records, insurance policy documents, claims notes, contract clauses, flagging specific exclusion terms is a common requirement. Tableau's native `CONTAINS()` string functions fall short when partial matches, regex synonyms, or running term counts are needed.
 
 ```sql
 SCRIPT_INT(
@@ -312,6 +312,6 @@ flowchart TD
 
 ## Summary: When TabPy is Worth Reaching For
 
-TabPy is the ideal choice when business logic cannot be expressed in native Tableau calculations — fuzzy matching, complex statistical scoring, ML model scoring, and live external API calls. However, it should not be used as a shortcut to bypass proper data warehouse transformations in dbt, Snowflake, or Databricks. 
+TabPy is the ideal choice when business logic cannot be expressed in native Tableau calculations, fuzzy matching, complex statistical scoring, ML model scoring, and live external API calls. However, it should not be used as a shortcut to bypass proper data warehouse transformations in dbt, Snowflake, or Databricks. 
 
 By utilizing **deployed TabPy endpoints**, **vectorized execution**, and **containerized production topology**, TabPy seamlessly elevates Tableau from a visual reporting tool into an interactive data science platform.
