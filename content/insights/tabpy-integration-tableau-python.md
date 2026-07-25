@@ -312,6 +312,6 @@ flowchart TD
 
 ## Summary: When TabPy is Worth Reaching For
 
-TabPy is the ideal choice when business logic cannot be expressed in native Tableau calculations, fuzzy matching, complex statistical scoring, ML model scoring, and live external API calls. However, it should not be used as a shortcut to bypass proper data warehouse transformations in dbt, Snowflake, or Databricks. 
+TabPy is the ideal choice when business logic cannot be expressed in native Tableau calculations (such as fuzzy text matching, complex statistical scoring, ML model scoring, or live external API calls). However, it should not be used as a shortcut to bypass proper data warehouse transformations in dbt, Snowflake, or Databricks.
 
 By utilizing **deployed TabPy endpoints**, **vectorized execution**, and **containerized production topology**, TabPy seamlessly elevates Tableau from a visual reporting tool into an interactive data science platform.
