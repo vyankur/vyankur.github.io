@@ -6584,7 +6584,7 @@ EDUCATION
         return (idxA !== -1 ? idxA : 99) - (idxB !== -1 ? idxB : 99);
       });
 
-      publishedFeatured.forEach(art => {
+      publishedFeatured.slice(0, 3).forEach(art => {
         const card = document.createElement('div');
         card.className = 'ai-portfolio-card';
         card.innerHTML = `
