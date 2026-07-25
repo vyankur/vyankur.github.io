@@ -6568,7 +6568,22 @@ EDUCATION
       if (!grid) return;
       grid.innerHTML = '';
 
+      const prioritySlugs = [
+        'tabpy-integration-tableau-python',
+        'tableau-server-repository',
+        'ai-in-tableau',
+        'workbook-sentinel',
+        'tableau-performance-tuning',
+        'window-functions'
+      ];
+
       const publishedFeatured = knowledgeArticles.filter(art => art.featured === true && art.status === 'Published');
+      publishedFeatured.sort((a, b) => {
+        const idxA = prioritySlugs.indexOf(a.slug);
+        const idxB = prioritySlugs.indexOf(b.slug);
+        return (idxA !== -1 ? idxA : 99) - (idxB !== -1 ? idxB : 99);
+      });
+
       publishedFeatured.forEach(art => {
         const card = document.createElement('div');
         card.className = 'ai-portfolio-card';
