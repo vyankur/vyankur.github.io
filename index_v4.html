@@ -1981,7 +1981,7 @@
     /* AI Portfolio / GitHub Grid */
     .ai-portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
       margin-top: 2rem;
     }
@@ -3720,25 +3720,8 @@
           <p class="section-copy">Sharing experiences on BI architecture, SQL performance, and AI extensions.</p>
         </div>
 
-        <div class="ai-portfolio-grid">
-          <div class="ai-portfolio-card">
-            <div class="ai-tech-tags">
-              <span class="ai-tech-tag">Tableau Server</span>
-              <span class="ai-tech-tag">PostgreSQL</span>
-            </div>
-            <h3 class="ai-card-title">Querying the Tableau Server Repository: A Practical Guide to PostgreSQL Metadata</h3>
-            <p class="ai-card-desc">How to pull governance-grade answers (permissions, view activity, RLS coverage) straight from Tableau's own repository database, without relying on the Metadata API.</p>
-            <a href="#/insights/tableau-server-repository" class="btn secondary">Read Article</a>
-          </div>
-          <div class="ai-portfolio-card">
-            <div class="ai-tech-tags">
-              <span class="ai-tech-tag">Tableau</span>
-              <span class="ai-tech-tag">Generative AI</span>
-            </div>
-            <h3 class="ai-card-title">AI in Tableau: Connecting Amazon Bedrock and LangChain Agents via TabPy</h3>
-            <p class="ai-card-desc">Integrate Amazon Bedrock foundation models and LangChain agents natively into Tableau worksheets and dashboards using TabPy calculated scripts.</p>
-            <a href="#/insights/ai-in-tableau" class="btn secondary">Read Article</a>
-          </div>
+        <div class="ai-portfolio-grid" id="featuredInsightsGrid">
+          <!-- Populated dynamically via JS from published featured articles -->
         </div>
       </div>
     </section>
@@ -6547,6 +6530,29 @@ EDUCATION
 
     let showAllInsights = false;
 
+    function renderFeaturedInsights() {
+      const grid = document.getElementById('featuredInsightsGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const publishedFeatured = knowledgeArticles.filter(art => art.featured === true && art.status === 'Published');
+      publishedFeatured.forEach(art => {
+        const card = document.createElement('div');
+        card.className = 'ai-portfolio-card';
+        card.innerHTML = `
+          <div class="ai-tech-tags">
+            ${art.tags.slice(0, 3).map(t => `<span class="ai-tech-tag">${t}</span>`).join('')}
+          </div>
+          <h3 class="ai-card-title">${art.title}</h3>
+          <p class="ai-card-desc">${art.summary}</p>
+          <div style="margin-top: auto;">
+            <a href="#/insights/${art.slug}" class="btn secondary">Read Article</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
     function renderKnowledgeHub() {
       const kGrid = document.getElementById('knowledgeGrid');
       if (!kGrid) return;
@@ -7331,6 +7337,7 @@ EDUCATION
     // Hash Navigation listeners
     window.addEventListener('hashchange', handleRouting);
     window.addEventListener('DOMContentLoaded', () => {
+      renderFeaturedInsights();
       renderKnowledgeHub();
       initTestimonialsCarousel();
       handleRouting();
@@ -7692,31 +7699,61 @@ EDUCATION
 
     function processUserMessage(query) {
       appendMessage(query, 'user');
-      const q = query.toLowerCase();
-      let response = "";
+      const rawQ = query.trim();
+      const q = rawQ.toLowerCase();
 
-      // Dynamic search of technical articles dataset
-      let articleMatches = [];
-      const cleanQ = q.replace(/^(do you have|show me|find|search for|tell me about|what is|how to|about)\s+/i, '').trim();
-      
-      if (cleanQ.length > 2) {
-        knowledgeArticles.forEach(art => {
-          const inTitle = art.title.toLowerCase().includes(cleanQ);
-          const inSummary = art.summary.toLowerCase().includes(cleanQ);
-          const inTags = art.tags.some(t => t.toLowerCase().includes(cleanQ));
-          const inTopics = art.topics.some(tp => tp.toLowerCase().includes(cleanQ));
-          const inCat = art.category.toLowerCase().includes(cleanQ);
-          if (inTitle || inSummary || inTags || inTopics || inCat) {
-            articleMatches.push(art);
+      // Clean query text for keyword searching
+      const cleanQ = q
+        .replace(/^(do you have|show me|find|search for|tell me about|what is|how to|about|can you tell me|where is|list|give me)\s+/i, '')
+        .replace(/\b(articles?|insights?|blogs?|case stud(y|ies)|projects?|experience|writeups?|posts?)\b/gi, '')
+        .trim();
+
+      const searchKeyword = cleanQ.length >= 2 ? cleanQ : q;
+      const searchTerms = searchKeyword.split(/\s+/).filter(t => t.length >= 2);
+
+      // 1. Search Technical Articles (knowledgeArticles)
+      const articleMatches = knowledgeArticles.filter(art => {
+        const textToSearch = [
+          art.title,
+          art.summary,
+          art.overview || '',
+          art.category,
+          art.difficulty,
+          art.slug,
+          ...(art.tags || []),
+          ...(art.topics || [])
+        ].join(' ').toLowerCase();
+
+        return searchTerms.some(term => textToSearch.includes(term));
+      });
+
+      // 2. Search Enterprise Case Studies (projectCaseStudies)
+      const projectMatches = [];
+      if (typeof projectCaseStudies === 'object') {
+        Object.keys(projectCaseStudies).forEach(key => {
+          const proj = projectCaseStudies[key];
+          const textToSearch = [
+            proj.title || '',
+            proj.subtitle || '',
+            proj.summary || '',
+            proj.challenge || '',
+            proj.solution || '',
+            proj.impact || '',
+            ...(proj.techs || []),
+            ...(proj.outcomes || [])
+          ].join(' ').toLowerCase();
+
+          if (searchTerms.some(term => textToSearch.includes(term))) {
+            projectMatches.push({ id: key, ...proj });
           }
         });
       }
 
-      // Base FAQ keyword matching
+      // 3. Base FAQ keyword matching
       let baseResponse = "";
       if (q.includes('skill') || q.includes('tool') || q.includes('stack') || q.includes('power bi')) {
         baseResponse = botKnowledge.skills;
-      } else if (q.includes('ai') || q.includes('langchain') || q.includes('bedrock') || q.includes('openai') || q.includes('conversational') || q.includes('bmad') || q.includes('extension')) {
+      } else if (q.includes('ai') || q.includes('langchain') || q.includes('bedrock') || q.includes('openai') || q.includes('conversational') || q.includes('bmad') || q.includes('extension') || q.includes('tabpy')) {
         baseResponse = botKnowledge.ai;
       } else if (q.includes('aws') || q.includes('athena') || q.includes('s3') || q.includes('glue') || q.includes('sagemaker') || q.includes('lake')) {
         baseResponse = botKnowledge.aws;
@@ -7754,28 +7791,40 @@ EDUCATION
         baseResponse = botKnowledge.summary;
       }
 
-      const isArticleRequest = q.includes('article') || q.includes('insight') || q.includes('blog') || q.includes('writeup') || q.includes('post') || q.includes('publication') || q.includes('roadmap') || q.includes('read') || q.includes('topic');
+      // 4. Assemble Multi-Source Response
+      let sections = [];
 
-      if (articleMatches.length > 0) {
-        if (baseResponse) {
-          response = baseResponse + "\n\n📚 **Related Insights:**\n" + articleMatches.slice(0, 2).map(art => `• [${art.title}](#/insights/${art.slug})`).join('\n');
-        } else {
-          response = `I found **${articleMatches.length}** technical article(s) matching your search:\n\n` + 
-                     articleMatches.slice(0, 3).map(art => `• [${art.title}](#/insights/${art.slug}) (${art.category})\n  *Summary: ${art.summary}*`).join('\n\n') +
-                     (articleMatches.length > 3 ? `\n\n...and ${articleMatches.length - 3} more. Browse them in the "Insights" section or click "View Knowledge Roadmap" to see all of them!` : '');
-        }
-      } else if (isArticleRequest) {
-        const total = knowledgeArticles.length;
-        const publishedList = knowledgeArticles.filter(a => a.status === 'Published').slice(0, 3);
-        const articlesListMarkup = publishedList.map(art => `• [${art.title}](#/insights/${art.slug})`).join('\n');
-        response = `Ankur has written **${total}** deep-dive engineering insights on this site. Highlights include:\n\n${articlesListMarkup}\n\nFeel free to ask me questions like *"do you have articles on RLS?"* or *"search for SQL optimization"* to find direct write-ups!`;
-      } else if (baseResponse) {
-        response = baseResponse;
-      } else {
-        response = "I'm not fully sure about that detail. You can ask me about Ankur's skills (Tableau, AWS, SQL, Python), work history (Sun Life, HCL, TCS), or his published technical insights (e.g. *\"show articles about Postgres or Performance\"*).";
+      if (baseResponse) {
+        sections.push(baseResponse);
       }
 
-      showTypingAndRespond(response);
+      if (articleMatches.length > 0) {
+        let artList = "📚 **Related Insights & Technical Articles:**\n" + 
+          articleMatches.slice(0, 4).map(art => `• [${art.title}](#/insights/${art.slug})\n  *Summary: ${art.summary}*`).join('\n\n');
+        if (articleMatches.length > 4) {
+          artList += `\n\n*(+ ${articleMatches.length - 4} more matching articles in Knowledge Hub)*`;
+        }
+        sections.push(artList);
+      }
+
+      if (projectMatches.length > 0) {
+        let projList = "💼 **Related Case Studies & Projects:**\n" + 
+          projectMatches.slice(0, 3).map(p => `• [${p.title}](#/projects/${p.id}) — *${p.techs ? p.techs.join(', ') : ''}*\n  *${p.summary}*`).join('\n\n');
+        sections.push(projList);
+      }
+
+      let responseText = "";
+      if (sections.length > 0) {
+        responseText = sections.join('\n\n---\n\n');
+      } else {
+        responseText = `I couldn't find specific matches for **"${rawQ}"**. You can search for core topics like:\n\n` +
+          `• **Analytics & BI**: *Tableau, TabPy, Power BI, SQL, PostgreSQL, Oracle, RLS*\n` +
+          `• **Cloud & AI**: *AWS, Athena, PySpark, Databricks, Bedrock, LangChain, Python*\n` +
+          `• **Experience & Case Studies**: *Sun Life, HCL, TCS, GE Power, FAB Bank, Sentinel, Extensions*\n\n` +
+          `Or ask me questions like *"Tell me about Ankur's TabPy integration"* or *"Show articles on SQL optimization"*.`;
+      }
+
+      showTypingAndRespond(responseText);
     }
 
     botSendBtn.addEventListener('click', () => {
