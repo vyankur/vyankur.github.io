@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Ankur Varshney | Business Intelligence & Data Analytics</title>
+  <meta name="description" content="Professional introduction of Ankur Varshney - 11+ years of experience in Business Intelligence, Data Analytics, Tableau, SQL, and Enterprise Reporting.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #000000;
+      --card-bg: #0c0c0e;
+      --card-border: #1e1e24;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.15);
+      --accent-light: #818cf8;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    /* Ambient Glow Background Element */
+    .glow-container {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 900px;
+      height: 400px;
+      background: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.18), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 820px;
+    }
+
+    /* Header Nav */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .brand {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+    }
+
+    .nav-btn {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    /* Main Content Card */
+    .profile-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.1);
+      margin-bottom: 32px;
+    }
+
+    .profile-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .profile-subtitle {
+      font-size: 16px;
+      color: var(--accent-light);
+      font-weight: 500;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .content-body {
+      font-size: 16px;
+      color: var(--text-main);
+      font-weight: 400;
+    }
+
+    .content-body p {
+      margin-bottom: 24px;
+      line-height: 1.8;
+      color: #e5e7eb;
+    }
+
+    .content-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-body strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .highlight {
+      color: #ffffff;
+      background: rgba(99, 102, 241, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(99, 102, 241, 0.25);
+    }
+
+    /* Footer Action Bar */
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 36px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 16px;
+      }
+      .profile-card {
+        padding: 28px 20px;
+      }
+      .profile-title {
+        font-size: 26px;
+      }
+      .action-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .social-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-container"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <a href="index.html" class="brand">
+        <span class="brand-dot"></span>
+        Ankur Varshney
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Portfolio</a>
+        <a href="mailto:vyankur@gmail.com" class="nav-btn">Get in Touch</a>
+      </div>
+    </header>
+
+    <!-- Main Content Card -->
+    <main class="profile-card">
+      <h1 class="profile-title">About Me</h1>
+      <div class="profile-subtitle">
+        <span>Business Intelligence &amp; Data Analytics Professional</span>
+      </div>
+
+      <article class="content-body">
+        <p>
+          Hello, I'm Ankur, and I have over 11 years of experience in Business Intelligence and Data Analytics, specializing in Tableau, SQL, data visualization, and enterprise reporting.
+        </p>
+
+        <p>
+          Throughout my career, I've worked across insurance, banking, and enterprise analytics, partnering with business stakeholders to transform complex data into actionable insights.
+        </p>
+
+        <p>
+          My expertise spans the complete analytics lifecycle—from understanding business requirements and designing data models to developing dashboards, optimizing SQL, and delivering executive reports that support strategic decision-making.
+        </p>
+
+        <p>
+          In my current role at Sun Life, I develop enterprise BI solutions using Tableau, SQL, AWS Athena, and Redshift. I work closely with cross-functional teams to define KPIs, improve reporting efficiency, ensure data quality, and deliver scalable analytics solutions. Previously, at HCL, I worked on BI projects where I gained strong experience in stakeholder management, report automation, and delivering solutions in Agile environments. I have also contributed to HR Analytics and business reporting projects, building dashboards that enabled leaders to monitor workforce and operational metrics through interactive visualizations.
+        </p>
+
+        <p>
+          One of my key strengths is my ability to bridge the gap between business and technology. I enjoy collaborating with stakeholders, understanding their challenges, and translating them into practical, data-driven solutions that create measurable business value.
+        </p>
+
+        <p>
+          I'm excited about this opportunity because it aligns perfectly with my experience in Business Intelligence, analytics delivery, stakeholder engagement, and continuous learning. I look forward to contributing my technical expertise and business-focused approach to help the organization make better data-driven decisions.
+        </p>
+      </article>
+
+      <div class="action-bar">
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/vyankur/" target="_blank" class="social-btn">
+            LinkedIn Profile
+          </a>
+          <a href="https://github.com/vyankur" target="_blank" class="social-btn">
+            GitHub
+          </a>
+          <a href="https://public.tableau.com/profile/ankur.varshney" target="_blank" class="social-btn">
+            Tableau Portfolio
+          </a>
+        </div>
+        <a href="index.html" class="social-btn" style="background: var(--accent); border-color: var(--accent); color: #fff;">
+          View Full Interactive Portfolio →
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      © Ankur Varshney • Business Intelligence &amp; Analytics
+    </footer>
+  </div>
+
+</body>
+</html>
