@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Ankur Varshney | Business Intelligence & Data Analytics</title>
-  <meta name="description" content="Professional introduction of Ankur Varshney - 11+ years of experience in Business Intelligence, Data Analytics, Tableau, SQL, and Enterprise Reporting.">
+  <meta name="description" content="Professional background and experience of Ankur Varshney - 11+ years in Business Intelligence, Data Analytics, Tableau, SQL, AWS, and Enterprise Reporting.">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 820px;
+      max-width: 840px;
     }
 
     /* Header Nav */
@@ -160,19 +160,15 @@
     }
 
     .content-body {
-      font-size: 16px;
+      font-size: 15.5px;
       color: var(--text-main);
       font-weight: 400;
     }
 
     .content-body p {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       line-height: 1.8;
       color: #e5e7eb;
-    }
-
-    .content-body p:last-child {
-      margin-bottom: 0;
     }
 
     .content-body strong {
@@ -180,12 +176,38 @@
       font-weight: 600;
     }
 
-    .highlight {
+    .role-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
       color: #ffffff;
-      background: rgba(99, 102, 241, 0.12);
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid rgba(99, 102, 241, 0.25);
+      margin: 28px 0 14px 0;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 24px;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+      line-height: 1.7;
+      color: #d1d5db;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-light);
+      font-size: 18px;
+      line-height: 1;
+      top: 2px;
     }
 
     /* Footer Action Bar */
@@ -195,7 +217,7 @@
       gap: 16px;
       justify-content: space-between;
       align-items: center;
-      padding-top: 16px;
+      padding-top: 20px;
       border-top: 1px solid var(--border-subtle);
       margin-top: 36px;
     }
@@ -293,7 +315,31 @@
         </p>
 
         <p>
-          In my current role at Sun Life, I develop enterprise BI solutions using Tableau, SQL, AWS Athena, and Redshift. I work closely with cross-functional teams to define KPIs, improve reporting efficiency, ensure data quality, and deliver scalable analytics solutions. Previously, at HCL, I worked on BI projects where I gained strong experience in stakeholder management, report automation, and delivering solutions in Agile environments. I have also contributed to HR Analytics and business reporting projects, building dashboards that enabled leaders to monitor workforce and operational metrics through interactive visualizations.
+          In my current role at Sun Life, I develop enterprise BI solutions using Tableau, SQL, AWS Athena, and Redshift. I work closely with cross-functional teams to define KPIs, improve reporting efficiency, ensure data quality, and deliver scalable analytics solutions. Specifically, my key accomplishments include:
+        </p>
+
+        <ul class="bullet-list">
+          <li><strong>Platform Architecture:</strong> Built an enterprise-wide insurance analytics platform spanning HNW, attrition, adoption, and product performance use cases. Designed a custom adoption dashboard suite used by VPs, Product Owners, Change Managers, and BU Heads, driving a <strong>30% increase in platform adoption</strong> across business units.</li>
+          <li><strong>Customer Experience:</strong> Developed executive dashboards integrating client feedback from Qualtrics, Salesforce, and social media channels across customer journeys, achieving a <strong>20% increase in customer satisfaction index</strong>.</li>
+          <li><strong>Performance Optimization:</strong> Optimized dashboard performance using Tableau Performance Recording, query tuning, and a balanced live/extract data strategy.</li>
+          <li><strong>Governance &amp; Security:</strong> Delivered advanced financial reporting with entitlement-based row-level security (RLS), complex LOD calculations, and thorough null handling for executive reporting accuracy.</li>
+          <li><strong>Administration:</strong> Managed Tableau Server and Cloud administration, permissions, scheduling, deployment automation, and release processes across Dev, UAT, and Production.</li>
+          <li><strong>AI/ML POC:</strong> Led a proof-of-concept using the <strong>BMAD Framework</strong> to orchestrate AI agents for automated dashboard requirement gathering and spec generation, streamlining the analytics intake process.</li>
+          <li><strong>Compliance Validation POC:</strong> Designed an <strong>AI-powered Proof of Compliance Validation</strong> system using <strong>Amazon SageMaker, Bedrock, and Claude Vision</strong> to automate assessment of regulatory evidence across structured (Excel) and unstructured (PDFs, scanned documents, images) data. Built an end-to-end pipeline with S3 ingestion, document chunking, semantic retrieval via embeddings, and multimodal foundation models to classify submissions into Compliant, Partially Compliant, and Non-Compliant categories with explainable results, significantly reducing manual document review effort.</li>
+        </ul>
+
+        <p>
+          Previously, at HCL, I worked on BI projects where I gained strong experience in stakeholder management, report automation, and delivering solutions in Agile environments:
+        </p>
+
+        <ul class="bullet-list">
+          <li><strong>Financial Planning:</strong> Led a team of 2 developers to build a 5-year financial planning and budgeting dashboard suite for Deutsche Bank, covering inter- and intra-department spend analysis across programs, delivered exclusively for senior leadership and CXO-level decision-makers.</li>
+          <li><strong>ESG Compliance:</strong> Built compliance dashboards to track sustainability metrics, governance scores, and disclosure requirements across the bank's investment portfolio.</li>
+          <li><strong>Data Integration &amp; Security:</strong> Connected Tableau live to SAP HANA for high-performance query execution, used Databricks/PySpark for ETL, and applied row-level security (RLS) to restrict data access by department and user roles.</li>
+        </ul>
+
+        <p>
+          I have also contributed to HR Analytics and business reporting projects, building dashboards that enabled leaders to monitor workforce and operational metrics through interactive visualizations.
         </p>
 
         <p>
