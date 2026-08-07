@@ -7,8 +7,10 @@ LINKEDIN_PROFILE_GUIDE.md
 IMPLEMENTATION_PLAN.md
 Ankur_V_Resume.pdf
 
-# Backup & Scratch files
-index_v2_backup.html
+# Backup, Staging & Snapshot files (Keep local only)
+index_v*.html
+index_*_backup.html
+index_*_legacy.html
 scratch/
 
 # Logs and system files
