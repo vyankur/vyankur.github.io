@@ -83,25 +83,30 @@
   },
   {
     "slug": "sql-performance",
-    "title": "SQL Performance Optimization",
+    "title": "SQL Performance Tuning & Execution Plan Mastery: Architecting Sub-Second Database Queries",
     "category": "SQL",
     "difficulty": "Advanced",
     "readingTime": "18 min",
-    "status": "In Draft",
+    "status": "Published",
     "featured": true,
     "tags": [
       "SQL",
-      "Databases",
-      "Optimization"
+      "PostgreSQL",
+      "Oracle",
+      "Performance Tuning",
+      "Execution Plans",
+      "Indexing",
+      "Query Optimization",
+      "Stored Procedures"
     ],
-    "summary": "Tuning stored procedures, window functions, indices, and execution plans for large scale Oracle and PostgreSQL transaction tables.",
-    "overview": "A developer handbook on identifying database bottlenecks and refactoring queries. Learn to read execution plans, build indexing strategies, write efficient stored procedures, and configure materialized views.",
+    "summary": "A senior developer guide to tuning complex SQL queries, analyzing execution plans, building advanced indexing strategies, and eliminating database concurrency bottlenecks in PostgreSQL and Oracle.",
+    "overview": "Master SQL performance optimization: read EXPLAIN ANALYZE execution plans, design composite covering indexes, refactor non-SARGable queries, manage CTE fences, and prevent lock contention with SKIP LOCKED.",
     "topics": [
-      "Execution Plan Analysis",
-      "Indexing Strategies (B-Tree, Bitmap, GIN)",
-      "Stored Procedures vs CTEs",
-      "Temporary Tables & Database Views",
-      "Database Locks and Transaction Isolations"
+      "Execution Plan Analysis (PostgreSQL EXPLAIN BUFFERS & Oracle DBMS_XPLAN)",
+      "Advanced Indexing (B-Tree, Composite Leading Columns, Covering INCLUDE)",
+      "Partial & Filtered Indexes, Functional/Expression Indexes, GIN/GiST",
+      "Refactoring Non-SARGable Predicates, Implicit Casts & Subqueries",
+      "CTE Optimization Fences, Materialized Views & High-Throughput Concurrency Locks"
     ]
   },
   {
@@ -131,25 +136,30 @@
   },
   {
     "slug": "athena-optimization",
-    "title": "Athena Query Optimization",
+    "title": "Amazon Athena Query Optimization: Sub-Second Serverless Analytics at Petabyte Scale",
     "category": "SQL",
     "difficulty": "Advanced",
-    "readingTime": "12 min",
-    "status": "In Draft",
+    "readingTime": "14 min",
+    "status": "Published",
     "featured": true,
     "tags": [
       "AWS Athena",
       "SQL",
-      "Cloud BI"
+      "Cloud BI",
+      "Presto",
+      "Performance Tuning",
+      "S3 Partitioning",
+      "Parquet",
+      "Tableau"
     ],
-    "summary": "Optimize serverless queries over AWS S3 data lakes using partition pruning, columnar Parquet formats, and cost-reduction techniques.",
-    "overview": "This article demonstrates how to optimize Amazon Athena queries to achieve sub-second dashboard rendering times. It explains the mechanics of partition pruning, file merging, and query caching to save up to 90% in query costs.",
+    "summary": "Optimize serverless queries over AWS S3 data lakes using partition projection, columnar Parquet formats, compaction pipelines, and cost-reduction techniques.",
+    "overview": "A developer guide to optimizing Amazon Athena queries: partition projection, Parquet compression, small file compaction, execution plan tuning, and cost reduction.",
     "topics": [
-      "Athena Serverless Mechanics",
-      "S3 Partitioning Strategies",
-      "Columnar File Formats (Parquet/ORC)",
-      "Query Tuning & Execution Plans",
-      "Cost Management and Scan Limits"
+      "Serverless Query Mechanics & Distributed Trino Architecture",
+      "S3 Partitioning & Partition Projection Rules",
+      "Columnar Storage Formats (Apache Parquet with Snappy/ZSTD)",
+      "Solving the Small Files Problem via S3 CTAS Compaction",
+      "Query Plan Tuning, EXPLAIN ANALYZE, Predicate Pushdown & Cost Controls"
     ]
   },
   {

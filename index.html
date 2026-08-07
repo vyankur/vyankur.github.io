@@ -352,9 +352,14 @@
       -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 50px, #000 calc(100% - 50px), transparent 100%);
     }
 
+    .marquee-wrapper:hover .marquee-track,
+    .marquee-wrapper:focus-within .marquee-track {
+      animation-play-state: paused;
+    }
+
     .marquee-track {
       display: flex;
-      gap: 3.5rem;
+      gap: 2.5rem;
       align-items: center;
       animation: scroll-marquee 32s linear infinite;
       flex-shrink: 0;
@@ -372,14 +377,31 @@
       font-size: 0.92rem;
       font-weight: 600;
       color: var(--text);
-      opacity: 0.65;
+      opacity: 0.7;
       transition: all 0.25s ease;
       white-space: nowrap;
+      cursor: pointer;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      border: 1px solid transparent;
+      user-select: none;
     }
 
-    .marquee-item:hover {
+    .marquee-item:hover, .marquee-item:focus-visible {
       opacity: 1;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      background: var(--card-bg);
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px rgba(var(--primary-rgb), 0.22);
+    }
+
+    .marquee-item:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .marquee-item:active {
+      transform: scale(0.97);
     }
 
     .company-logo {
@@ -388,13 +410,14 @@
       height: 28px;
       width: auto;
       object-fit: contain;
-      filter: grayscale(100%) opacity(55%);
+      filter: grayscale(100%) opacity(60%);
       transition: all 0.25s ease;
     }
 
-    .marquee-item:hover .company-logo {
+    .marquee-item:hover .company-logo,
+    .marquee-item:focus-visible .company-logo {
       filter: grayscale(0%) opacity(100%);
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
 
     .spec-item {
@@ -3336,6 +3359,143 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .skill-category-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: border-color 0.25s ease;
+    }
+    .skill-category-title {
+      font-size: 1.05rem;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .skill-chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+    .skill-chip {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.35rem 0.65rem;
+      border-radius: 4px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .skill-chip:hover {
+      background: var(--card-bg);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+    }
+    .skill-chip:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 1px;
+    }
+    .skill-chip.active {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+      border-color: var(--primary) !important;
+      font-weight: 700;
+      box-shadow: 0 0 14px rgba(var(--primary-rgb), 0.45);
+      transform: translateY(-1px);
+    }
+    .skill-chip.active::after {
+      content: '✕';
+      font-size: 0.65rem;
+      margin-left: 0.25rem;
+      opacity: 0.85;
+    }
+
+    /* Active Skill Filter Banner */
+    .skill-filter-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.12), rgba(var(--primary-rgb), 0.04));
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 0.3s ease;
+      box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.15);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .skill-filter-info {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    .skill-filter-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--primary);
+      animation: pulseDot 1.5s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+    .skill-filter-clear-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .skill-filter-clear-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Highlight Animations */
+    @keyframes panelHighlightFlash {
+      0% { box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.8); border-color: var(--primary); }
+      50% { box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0.25); border-color: var(--primary); }
+      100% { box-shadow: 0 4px 12px var(--shadow); }
+    }
+    .panel-highlight-flash {
+      animation: panelHighlightFlash 1.6s ease;
+      border-color: var(--primary) !important;
+    }
+    .skill-matched-card {
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 16px rgba(var(--primary-rgb), 0.25) !important;
+    }
     .tableau-context-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -3444,22 +3604,22 @@
             <div class="marquee-wrapper">
               <div class="marquee-track">
                 <!-- Group 1 -->
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/sunlife.png" alt="Sun Life Financial"> Sun Life Financial</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/db.png" alt="Deutsche Bank"> Deutsche Bank</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/hcl.jpg" alt="HCLTech"> HCLTech</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/tcs.png" alt="TCS"> TCS</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/fab.webp" alt="First Abu Dhabi Bank"> First Abu Dhabi Bank</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/ge.png" alt="GE Power"> GE Power</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/sia.png" alt="Singapore Airlines"> Singapore Airlines</span>
+                <span class="marquee-item" data-company="sunlife" role="button" tabindex="0" title="Click to view Sun Life Financial experience"><img class="company-logo" src="./assets/logos/sunlife.png" alt="Sun Life Financial"> Sun Life Financial</span>
+                <span class="marquee-item" data-company="db" role="button" tabindex="0" title="Click to view Deutsche Bank experience (HCLTech)"><img class="company-logo" src="./assets/logos/db.png" alt="Deutsche Bank"> Deutsche Bank</span>
+                <span class="marquee-item" data-company="hcl" role="button" tabindex="0" title="Click to view HCLTech experience"><img class="company-logo" src="./assets/logos/hcl.jpg" alt="HCLTech"> HCLTech</span>
+                <span class="marquee-item" data-company="tcs" role="button" tabindex="0" title="Click to view Tata Consultancy Services experience"><img class="company-logo" src="./assets/logos/tcs.png" alt="TCS"> TCS</span>
+                <span class="marquee-item" data-company="fab" role="button" tabindex="0" title="Click to view First Abu Dhabi Bank experience (TCS)"><img class="company-logo" src="./assets/logos/fab.webp" alt="First Abu Dhabi Bank"> First Abu Dhabi Bank</span>
+                <span class="marquee-item" data-company="ge" role="button" tabindex="0" title="Click to view GE Power experience (TCS)"><img class="company-logo" src="./assets/logos/ge.png" alt="GE Power"> GE Power</span>
+                <span class="marquee-item" data-company="sia" role="button" tabindex="0" title="Click to view Singapore Airlines experience (TCS)"><img class="company-logo" src="./assets/logos/sia.png" alt="Singapore Airlines"> Singapore Airlines</span>
                 
                 <!-- Group 2 (Clone for infinite seamless loop) -->
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/sunlife.png" alt="Sun Life Financial"> Sun Life Financial</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/db.png" alt="Deutsche Bank"> Deutsche Bank</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/hcl.jpg" alt="HCLTech"> HCLTech</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/tcs.png" alt="TCS"> TCS</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/fab.webp" alt="First Abu Dhabi Bank"> First Abu Dhabi Bank</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/ge.png" alt="GE Power"> GE Power</span>
-                <span class="marquee-item"><img class="company-logo" src="./assets/logos/sia.png" alt="Singapore Airlines"> Singapore Airlines</span>
+                <span class="marquee-item" data-company="sunlife" role="button" tabindex="0" title="Click to view Sun Life Financial experience"><img class="company-logo" src="./assets/logos/sunlife.png" alt="Sun Life Financial"> Sun Life Financial</span>
+                <span class="marquee-item" data-company="db" role="button" tabindex="0" title="Click to view Deutsche Bank experience (HCLTech)"><img class="company-logo" src="./assets/logos/db.png" alt="Deutsche Bank"> Deutsche Bank</span>
+                <span class="marquee-item" data-company="hcl" role="button" tabindex="0" title="Click to view HCLTech experience"><img class="company-logo" src="./assets/logos/hcl.jpg" alt="HCLTech"> HCLTech</span>
+                <span class="marquee-item" data-company="tcs" role="button" tabindex="0" title="Click to view Tata Consultancy Services experience"><img class="company-logo" src="./assets/logos/tcs.png" alt="TCS"> TCS</span>
+                <span class="marquee-item" data-company="fab" role="button" tabindex="0" title="Click to view First Abu Dhabi Bank experience (TCS)"><img class="company-logo" src="./assets/logos/fab.webp" alt="First Abu Dhabi Bank"> First Abu Dhabi Bank</span>
+                <span class="marquee-item" data-company="ge" role="button" tabindex="0" title="Click to view GE Power experience (TCS)"><img class="company-logo" src="./assets/logos/ge.png" alt="GE Power"> GE Power</span>
+                <span class="marquee-item" data-company="sia" role="button" tabindex="0" title="Click to view Singapore Airlines experience (TCS)"><img class="company-logo" src="./assets/logos/sia.png" alt="Singapore Airlines"> Singapore Airlines</span>
               </div>
             </div>
           </div>
@@ -3695,8 +3855,21 @@
           <button class="filter-btn" data-filter="ai">AI &amp; Extensions</button>
         </div>
 
+        <!-- Active Skill Filter Banner (Dynamic) -->
+        <div id="skillFilterBanner" class="skill-filter-banner" style="display: none;">
+          <div class="skill-filter-info">
+            <span class="skill-filter-dot"></span>
+            <span>Filtered by Skill: <strong id="skillFilterName" style="color: var(--primary);">Tableau</strong></span>
+            <span class="skill-filter-count" id="skillFilterCount" style="opacity: 0.85; font-size: 0.8rem;">(4 Projects, 6 Articles)</span>
+          </div>
+          <button id="skillFilterClearBtn" class="skill-filter-clear-btn" type="button" title="Clear skill filter">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Clear Filter
+          </button>
+        </div>
+
         <!-- 9 Projects Grid -->
-                <div class="projects-grid">
+        <div class="projects-grid">
           <!-- Project 1 -->
           <div class="project-card" data-category="tableau ai python" data-project-id="ai-bi">
             <div class="project-card-header">
@@ -4354,81 +4527,99 @@
         <div class="section-head">
           <div class="eyebrow">Skills</div>
           <h2 class="section-title">Core <em>Capabilities.</em></h2>
-          <p class="section-copy">Technical assets and capabilities categorized by domain.</p>
+          <p class="section-copy">Technical assets and capabilities categorized by domain. <span style="color: var(--primary); font-weight: 600;">(Click any skill to filter matching projects &amp; insights)</span></p>
         </div>
         <div class="skills-panels-v4">
           <!-- Business Intelligence -->
-          <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 12px var(--shadow);">
-            <h3 style="font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--text); font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; font-family: 'Outfit';">Business Intelligence</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem;">
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Tableau Desktop</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Tableau Server</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Tableau Cloud</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Tableau Prep</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Power BI</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Dashboard Design</span>
+          <div class="skill-category-card">
+            <h3 class="skill-category-title">
+              <span>Business Intelligence</span>
+              <span style="font-size: 0.72rem; color: var(--primary); font-weight: 600;">BI &amp; Viz</span>
+            </h3>
+            <div class="skill-chips-container">
+              <span class="skill-chip" data-skill="Tableau Desktop" role="button" tabindex="0" title="Filter by Tableau Desktop">Tableau Desktop</span>
+              <span class="skill-chip" data-skill="Tableau Server" role="button" tabindex="0" title="Filter by Tableau Server">Tableau Server</span>
+              <span class="skill-chip" data-skill="Tableau Cloud" role="button" tabindex="0" title="Filter by Tableau Cloud">Tableau Cloud</span>
+              <span class="skill-chip" data-skill="Tableau Prep" role="button" tabindex="0" title="Filter by Tableau Prep">Tableau Prep</span>
+              <span class="skill-chip" data-skill="Power BI" role="button" tabindex="0" title="Filter by Power BI">Power BI</span>
+              <span class="skill-chip" data-skill="Dashboard Design" role="button" tabindex="0" title="Filter by Dashboard Design">Dashboard Design</span>
             </div>
           </div>
           <!-- Cloud Analytics -->
-          <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 12px var(--shadow);">
-            <h3 style="font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--text); font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; font-family: 'Outfit';">Cloud Analytics</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem;">
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Amazon S3</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Amazon Athena</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">AWS Glue</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">AWS Lambda</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">AWS SageMaker</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Azure Cloud</span>
+          <div class="skill-category-card">
+            <h3 class="skill-category-title">
+              <span>Cloud Analytics</span>
+              <span style="font-size: 0.72rem; color: var(--primary); font-weight: 600;">AWS &amp; Cloud</span>
+            </h3>
+            <div class="skill-chips-container">
+              <span class="skill-chip" data-skill="Amazon S3" role="button" tabindex="0" title="Filter by Amazon S3">Amazon S3</span>
+              <span class="skill-chip" data-skill="Amazon Athena" role="button" tabindex="0" title="Filter by Amazon Athena">Amazon Athena</span>
+              <span class="skill-chip" data-skill="AWS Glue" role="button" tabindex="0" title="Filter by AWS Glue">AWS Glue</span>
+              <span class="skill-chip" data-skill="AWS Lambda" role="button" tabindex="0" title="Filter by AWS Lambda">AWS Lambda</span>
+              <span class="skill-chip" data-skill="AWS SageMaker" role="button" tabindex="0" title="Filter by AWS SageMaker">AWS SageMaker</span>
+              <span class="skill-chip" data-skill="Azure Cloud" role="button" tabindex="0" title="Filter by Azure Cloud">Azure Cloud</span>
             </div>
           </div>
           <!-- Data Engineering -->
-          <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 12px var(--shadow);">
-            <h3 style="font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--text); font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; font-family: 'Outfit';">Data Engineering</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem;">
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Databricks</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">PySpark</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">SAP HANA</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Snowflake</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Greenplum</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Talend ETL</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">dbt</span>
+          <div class="skill-category-card">
+            <h3 class="skill-category-title">
+              <span>Data Engineering</span>
+              <span style="font-size: 0.72rem; color: var(--primary); font-weight: 600;">Pipelines &amp; ETL</span>
+            </h3>
+            <div class="skill-chips-container">
+              <span class="skill-chip" data-skill="Databricks" role="button" tabindex="0" title="Filter by Databricks">Databricks</span>
+              <span class="skill-chip" data-skill="PySpark" role="button" tabindex="0" title="Filter by PySpark">PySpark</span>
+              <span class="skill-chip" data-skill="SAP HANA" role="button" tabindex="0" title="Filter by SAP HANA">SAP HANA</span>
+              <span class="skill-chip" data-skill="Snowflake" role="button" tabindex="0" title="Filter by Snowflake">Snowflake</span>
+              <span class="skill-chip" data-skill="Greenplum" role="button" tabindex="0" title="Filter by Greenplum">Greenplum</span>
+              <span class="skill-chip" data-skill="Talend ETL" role="button" tabindex="0" title="Filter by Talend ETL">Talend ETL</span>
+              <span class="skill-chip" data-skill="dbt" role="button" tabindex="0" title="Filter by dbt">dbt</span>
             </div>
           </div>
           <!-- Programming -->
-          <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 12px var(--shadow);">
-            <h3 style="font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--text); font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; font-family: 'Outfit';">Programming &amp; Databases</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem;">
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Python</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">SQL</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Oracle SQL</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">PostgreSQL</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">PL/SQL</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">REST APIs</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Pandas</span>
+          <div class="skill-category-card">
+            <h3 class="skill-category-title">
+              <span>Programming &amp; Databases</span>
+              <span style="font-size: 0.72rem; color: var(--primary); font-weight: 600;">SQL &amp; Dev</span>
+            </h3>
+            <div class="skill-chips-container">
+              <span class="skill-chip" data-skill="Python" role="button" tabindex="0" title="Filter by Python">Python</span>
+              <span class="skill-chip" data-skill="SQL" role="button" tabindex="0" title="Filter by SQL">SQL</span>
+              <span class="skill-chip" data-skill="Oracle SQL" role="button" tabindex="0" title="Filter by Oracle SQL">Oracle SQL</span>
+              <span class="skill-chip" data-skill="PostgreSQL" role="button" tabindex="0" title="Filter by PostgreSQL">PostgreSQL</span>
+              <span class="skill-chip" data-skill="PL/SQL" role="button" tabindex="0" title="Filter by PL/SQL">PL/SQL</span>
+              <span class="skill-chip" data-skill="REST APIs" role="button" tabindex="0" title="Filter by REST APIs">REST APIs</span>
+              <span class="skill-chip" data-skill="Pandas" role="button" tabindex="0" title="Filter by Pandas">Pandas</span>
             </div>
           </div>
           <!-- Artificial Intelligence -->
-          <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 12px var(--shadow);">
-            <h3 style="font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--text); font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; font-family: 'Outfit';">Artificial Intelligence</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem;">
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Generative AI</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">LangChain</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">AWS Bedrock</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">OpenAI APIs</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Prompt Engineering</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">TabPy AI Viz</span>
+          <div class="skill-category-card">
+            <h3 class="skill-category-title">
+              <span>Artificial Intelligence</span>
+              <span style="font-size: 0.72rem; color: var(--primary); font-weight: 600;">GenAI &amp; LLM</span>
+            </h3>
+            <div class="skill-chips-container">
+              <span class="skill-chip" data-skill="Generative AI" role="button" tabindex="0" title="Filter by Generative AI">Generative AI</span>
+              <span class="skill-chip" data-skill="LangChain" role="button" tabindex="0" title="Filter by LangChain">LangChain</span>
+              <span class="skill-chip" data-skill="AWS Bedrock" role="button" tabindex="0" title="Filter by AWS Bedrock">AWS Bedrock</span>
+              <span class="skill-chip" data-skill="OpenAI APIs" role="button" tabindex="0" title="Filter by OpenAI APIs">OpenAI APIs</span>
+              <span class="skill-chip" data-skill="Prompt Engineering" role="button" tabindex="0" title="Filter by Prompt Engineering">Prompt Engineering</span>
+              <span class="skill-chip" data-skill="TabPy AI Viz" role="button" tabindex="0" title="Filter by TabPy AI Viz">TabPy AI Viz</span>
             </div>
           </div>
           <!-- Administration -->
-          <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 12px var(--shadow);">
-            <h3 style="font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--text); font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; font-family: 'Outfit';">Platform &amp; Administration</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem;">
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Tableau Server Admin</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Tableau Repository</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Data Governance</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Release Management</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">DevOps &amp; CI/CD</span>
-              <span style="font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); color: var(--text);">GitHub Actions</span>
+          <div class="skill-category-card">
+            <h3 class="skill-category-title">
+              <span>Platform &amp; Administration</span>
+              <span style="font-size: 0.72rem; color: var(--primary); font-weight: 600;">Governance &amp; Ops</span>
+            </h3>
+            <div class="skill-chips-container">
+              <span class="skill-chip" data-skill="Tableau Server Admin" role="button" tabindex="0" title="Filter by Tableau Server Admin">Tableau Server Admin</span>
+              <span class="skill-chip" data-skill="Tableau Repository" role="button" tabindex="0" title="Filter by Tableau Repository">Tableau Repository</span>
+              <span class="skill-chip" data-skill="Data Governance" role="button" tabindex="0" title="Filter by Data Governance">Data Governance</span>
+              <span class="skill-chip" data-skill="Release Management" role="button" tabindex="0" title="Filter by Release Management">Release Management</span>
+              <span class="skill-chip" data-skill="DevOps &amp; CI/CD" role="button" tabindex="0" title="Filter by DevOps &amp; CI/CD">DevOps &amp; CI/CD</span>
+              <span class="skill-chip" data-skill="GitHub Actions" role="button" tabindex="0" title="Filter by GitHub Actions">GitHub Actions</span>
             </div>
           </div>
         </div>
@@ -5645,6 +5836,66 @@ EDUCATION
       });
     });
 
+    // Interactive Marquee Item Click Handler
+    function handleMarqueeClick(company) {
+      let tab = 'sunlife';
+      let companyName = 'Sun Life Financial';
+
+      if (company === 'sunlife') {
+        tab = 'sunlife';
+        companyName = 'Sun Life Financial';
+      } else if (company === 'db') {
+        tab = 'hcl';
+        companyName = 'Deutsche Bank (HCLTech)';
+      } else if (company === 'hcl') {
+        tab = 'hcl';
+        companyName = 'HCLTech';
+      } else if (company === 'tcs') {
+        tab = 'tcs';
+        companyName = 'Tata Consultancy Services';
+      } else if (company === 'fab') {
+        tab = 'tcs';
+        companyName = 'First Abu Dhabi Bank (TCS)';
+      } else if (company === 'ge') {
+        tab = 'tcs';
+        companyName = 'GE Power (TCS)';
+      } else if (company === 'sia') {
+        tab = 'tcs';
+        companyName = 'Singapore Airlines (TCS)';
+      }
+
+      selectCompanyTab(tab);
+      const expSection = document.getElementById('experience');
+      if (expSection) {
+        expSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Flash highlight on the active timeline panel
+      const targetPanel = document.getElementById(`panel-${tab}`);
+      if (targetPanel) {
+        targetPanel.classList.remove('panel-highlight-flash');
+        void targetPanel.offsetWidth; // trigger reflow
+        targetPanel.classList.add('panel-highlight-flash');
+      }
+
+      if (window.showToast) {
+        window.showToast(`Viewing Experience: ${companyName}`);
+      }
+    }
+
+    document.querySelectorAll('.marquee-item').forEach(item => {
+      const company = item.getAttribute('data-company');
+      if (company) {
+        item.addEventListener('click', () => handleMarqueeClick(company));
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleMarqueeClick(company);
+          }
+        });
+      }
+    });
+
     window.navigateToImpact = function(target) {
       if (target.startsWith('#/projects/') || target.startsWith('#/insights/')) {
         window.location.hash = target;
@@ -5667,6 +5918,7 @@ EDUCATION
 
     let currentCategory = 'all';
     let isProjectsCollapsed = true;
+    let activeSkill = null;
 
     function updateProjectVisibility() {
       let visibleCount = 0;
@@ -5714,6 +5966,10 @@ EDUCATION
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        // Clear active skill if user clicks manual filter button
+        if (activeSkill) {
+          clearSkillFilter(false);
+        }
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentCategory = btn.getAttribute('data-filter');
@@ -5725,6 +5981,201 @@ EDUCATION
         updateProjectVisibility();
       });
     });
+
+    // Interactive Skill Filter System
+    function applySkillFilter(skillName) {
+      if (activeSkill === skillName) {
+        clearSkillFilter();
+        return;
+      }
+
+      activeSkill = skillName;
+      const cleanSkill = skillName.trim().toLowerCase();
+
+      // Update active state on skill chips
+      document.querySelectorAll('.skill-chip').forEach(chip => {
+        if (chip.getAttribute('data-skill') === skillName) {
+          chip.classList.add('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      });
+
+      // Filter Projects
+      let matchedProjectsCount = 0;
+      projectCards.forEach(card => {
+        const title = (card.querySelector('.project-card-title')?.textContent || '').toLowerCase();
+        const desc = (card.querySelector('.project-card-desc')?.textContent || '').toLowerCase();
+        const category = (card.getAttribute('data-category') || '').toLowerCase();
+        const techs = Array.from(card.querySelectorAll('.project-card-tech')).map(t => t.textContent.toLowerCase()).join(' ');
+        const cardText = `${title} ${desc} ${category} ${techs}`;
+
+        const skillTokens = cleanSkill.split(/[\s/&]+/).filter(Boolean);
+        const matches = skillTokens.some(tok => cardText.includes(tok))
+          || (cleanSkill.includes('tableau') && cardText.includes('tableau'))
+          || (cleanSkill.includes('sql') && (cardText.includes('sql') || cardText.includes('postgres') || cardText.includes('oracle') || cardText.includes('db')))
+          || (cleanSkill.includes('aws') && (cardText.includes('aws') || cardText.includes('athena') || cardText.includes('s3') || cardText.includes('bedrock')))
+          || (cleanSkill.includes('python') && (cardText.includes('python') || cardText.includes('tabpy') || cardText.includes('pandas')))
+          || (cleanSkill.includes('ai') && (cardText.includes('ai') || cardText.includes('bedrock') || cardText.includes('langchain') || cardText.includes('openai')))
+          || (cleanSkill.includes('governance') && (cardText.includes('governance') || cardText.includes('security') || cardText.includes('admin') || cardText.includes('rls')));
+
+        if (matches) {
+          matchedProjectsCount++;
+          card.style.display = 'flex';
+          card.classList.remove('hidden-by-collapse');
+          card.classList.add('skill-matched-card');
+        } else {
+          card.style.display = 'none';
+          card.classList.remove('skill-matched-card');
+        }
+      });
+
+      // Expand project cards view so all matches are visible
+      isProjectsCollapsed = false;
+      if (toggleProjectsBtn) {
+        toggleProjectsBtn.parentElement.style.display = 'none';
+      }
+
+      // Filter Knowledge Hub
+      let matchedArticlesCount = 0;
+      const kGrid = document.getElementById('knowledgeGrid');
+      if (kGrid && typeof knowledgeArticles !== 'undefined') {
+        kGrid.innerHTML = '';
+        const matchingArticles = knowledgeArticles.filter(art => {
+          const cat = (art.category || '').toLowerCase();
+          const title = (art.title || '').toLowerCase();
+          const sum = (art.summary || '').toLowerCase();
+          const tags = (art.tags || []).map(t => t.toLowerCase()).join(' ');
+          const topics = (art.topics || []).map(t => t.toLowerCase()).join(' ');
+          const allText = `${cat} ${title} ${sum} ${tags} ${topics}`;
+
+          const skillTokens = cleanSkill.split(/[\s/&]+/).filter(Boolean);
+          return skillTokens.some(tok => allText.includes(tok))
+            || (cleanSkill.includes('tableau') && allText.includes('tableau'))
+            || (cleanSkill.includes('sql') && (allText.includes('sql') || allText.includes('postgres') || allText.includes('oracle')))
+            || (cleanSkill.includes('aws') && (allText.includes('aws') || allText.includes('athena') || allText.includes('s3') || allText.includes('bedrock')))
+            || (cleanSkill.includes('python') && (allText.includes('python') || allText.includes('tabpy')))
+            || (cleanSkill.includes('ai') && (allText.includes('ai') || allText.includes('bedrock') || allText.includes('langchain') || allText.includes('prompt')))
+            || (cleanSkill.includes('governance') && (allText.includes('governance') || allText.includes('security') || allText.includes('repository') || allText.includes('rls')));
+        });
+
+        matchedArticlesCount = matchingArticles.length;
+        const toDisplay = matchingArticles.length > 0 ? matchingArticles : knowledgeArticles.slice(0, 3);
+        
+        toDisplay.forEach(art => {
+          const card = document.createElement('div');
+          card.className = 'knowledge-card';
+          if (matchingArticles.includes(art)) {
+            card.classList.add('skill-matched-card');
+          }
+          
+          let badgeClass = 'planned';
+          if (art.status === 'In Draft') badgeClass = 'draft';
+          else if (art.status === 'Under Review') badgeClass = 'review';
+          else if (art.status === 'Published') badgeClass = 'published';
+
+          let statusText = '📝 ' + art.status;
+          if (art.status === 'In Draft') statusText = '✍️ ' + art.status;
+          else if (art.status === 'Under Review') statusText = '👀 ' + art.status;
+          else if (art.status === 'Published') statusText = '✅ ' + art.status;
+
+          card.innerHTML = `
+            <div>
+              <div class="knowledge-card-header">
+                <span class="knowledge-card-category">${art.category}</span>
+                <span class="status-badge ${badgeClass}">${statusText}</span>
+              </div>
+              <h3 class="knowledge-card-title">${art.title}</h3>
+              <p class="knowledge-card-desc">${art.summary}</p>
+              <div class="knowledge-card-tags">
+                ${art.tags.map(t => `<span class="knowledge-card-tag">${t}</span>`).join('')}
+              </div>
+            </div>
+            <div class="knowledge-card-footer">
+              <div class="knowledge-card-meta">
+                <span class="difficulty-badge">${art.difficulty}</span>
+                <span>⏱️ ${art.readingTime}</span>
+              </div>
+              <span class="knowledge-cta">Read Preview →</span>
+            </div>
+          `;
+
+          card.addEventListener('click', () => {
+            window.location.hash = '#/insights/' + art.slug;
+          });
+          kGrid.appendChild(card);
+        });
+      }
+
+      // Update Filter Banner
+      const banner = document.getElementById('skillFilterBanner');
+      const nameEl = document.getElementById('skillFilterName');
+      const countEl = document.getElementById('skillFilterCount');
+      if (banner && nameEl && countEl) {
+        nameEl.textContent = skillName;
+        countEl.textContent = `(${matchedProjectsCount} Projects, ${matchedArticlesCount} Articles)`;
+        banner.style.display = 'flex';
+      }
+
+      // Deactivate general category filter buttons
+      filterBtns.forEach(b => b.classList.remove('active'));
+
+      // Smooth scroll to projects section to see results
+      const projSec = document.getElementById('projects');
+      if (projSec) {
+        projSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (window.showToast) {
+        window.showToast(`⚡ Filtered by skill: ${skillName}`);
+      }
+    }
+
+    function clearSkillFilter(showToastMsg = true) {
+      activeSkill = null;
+      document.querySelectorAll('.skill-chip').forEach(c => c.classList.remove('active'));
+      
+      const banner = document.getElementById('skillFilterBanner');
+      if (banner) banner.style.display = 'none';
+
+      projectCards.forEach(card => {
+        card.classList.remove('skill-matched-card');
+      });
+
+      currentCategory = 'all';
+      isProjectsCollapsed = true;
+      const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
+      if (allFilterBtn) {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        allFilterBtn.classList.add('active');
+      }
+
+      updateProjectVisibility();
+      if (typeof renderKnowledgeHub === 'function') {
+        renderKnowledgeHub();
+      }
+
+      if (showToastMsg && window.showToast) {
+        window.showToast('✓ Skill filter reset');
+      }
+    }
+
+    // Attach Skill Chip Event Listeners
+    document.querySelectorAll('.skill-chip').forEach(chip => {
+      const skillName = chip.getAttribute('data-skill') || chip.textContent.trim();
+      chip.addEventListener('click', () => applySkillFilter(skillName));
+      chip.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          applySkillFilter(skillName);
+        }
+      });
+    });
+
+    const clearSkillFilterBtn = document.getElementById('skillFilterClearBtn');
+    if (clearSkillFilterBtn) {
+      clearSkillFilterBtn.addEventListener('click', () => clearSkillFilter(true));
+    }
 
     // Resume Section Tabs & Action Handlers
     document.querySelectorAll('.resume-tab-btn').forEach(btn => {
@@ -6342,7 +6793,9 @@ EDUCATION
   "ai-in-tableau": "---\ntitle: \"AI in Tableau: Connecting Amazon Bedrock and LangChain Agents via TabPy\"\nslug: \"ai-in-tableau\"\nsummary: \"Integrate Amazon Bedrock foundation models and LangChain agents natively into Tableau worksheets and dashboards using TabPy calculated scripts.\"\nstatus: \"Published\"\ncategory: \"AI\"\ndifficulty: \"Advanced\"\nreadingTime: \"12 min\"\ntags: ['Tableau', 'Generative AI', 'TabPy', 'Amazon Bedrock', 'LangChain']\nfeatured: True\npublishedDate: \"2026-07-21\"\nlastUpdated: \"2026-07-21\"\nfeaturedImage: \"ai-in-tableau-cover.png\"\nseoDescription: \"A practical architecture for embedding Amazon Bedrock foundation models and LangChain agents inside Tableau dashboards using TabPy, with caching, security, and cost-control patterns for production use.\"\n---\n\n# AI in Tableau: Connecting Amazon Bedrock and LangChain Agents via TabPy\n\nTurning a plain-English question typed into a dashboard into a governed call against an Amazon Bedrock foundation model, routed through a LangChain agent that lives behind TabPy.\n\n---\n\n## Overview\n\nMost people meet TabPy through small statistical scripts: a forecast, a clustering pass, a regression score returned into a calculated field. It's a smaller step from there than it looks to something more ambitious, routing a calculated field through TabPy into a LangChain agent, and having that agent call an Amazon Bedrock foundation model to answer a question a dashboard user typed in plain English.\n\nThis article lays out that architecture end to end: TabPy as the transport layer between Tableau and Python, a small LangChain agent as the orchestration layer that decides which tool or data slice a question needs, and Bedrock as the model layer that generates the final answer. It also covers the guardrails, authentication, timeouts, and response caching, that separate a working notebook demo from something a business user can click on a live dashboard without timing it out.\n\n> [!IMPORTANT]\n> Design Decision: TabPy is used purely as a transport, not as the place where LLM logic lives. The Python function registered with TabPy stays thin, it validates the request and forwards it to a separate LangChain agent service. Keeping the agent out of the TabPy process makes it independently testable, deployable, and scalable away from the Tableau Server host.\n\n---\n\n## Why route through TabPy instead of a custom extension\n\nA Tableau Dashboard Extension (the same mechanism behind write-back forms and custom UI panels) can call an LLM directly from the browser sandbox, and for a dedicated chat-style panel that's often the better choice. TabPy earns its place when the requirement is different: the answer needs to live inside a calculated field, alongside existing measures, filterable and sortable like any other value on the sheet, not confined to a separate panel.\n\nThat constraint shapes the whole design. A calculated field can only call `SCRIPT_STR` (or `SCRIPT_INT`/`SCRIPT_REAL`/`SCRIPT_BOOL`) synchronously, wait for the response, and render it in the mark. There's no persistent chat state at that layer, no streaming tokens, no follow-up turns. Every call is stateless from Tableau's point of view, which pushes conversational memory and multi-step reasoning down into the LangChain agent, where they belong.\n\n---\n\n## Architecture: from a worksheet to a Bedrock response\n\n```mermaid\nflowchart TD\n    subgraph Frontend[\"1. Worksheet Layer\"]\n        A[\"\ud83d\udcca Tableau Worksheet<br/><b>SCRIPT_STR([Question], [Metric], [Value])</b>\"]\n    end\n\n    subgraph Transport[\"2. Transport Layer\"]\n        B[\"\u26a1 TabPy Server (:9004)<br/><b>ask_dashboard_agent() Passthrough</b><br/><i>Validates &amp; Forwards Payload</i>\"]\n    end\n\n    subgraph Orchestration[\"3. Orchestration &amp; LLM Layer\"]\n        C[\"\ud83e\udde0 LangChain Agent Service<br/><b>FastAPI / Tool Router</b>\"]\n        D[(\"\ud83d\udcbe Cached Aggregate /<br/>Dashboard Data Source\")]\n        E[\"\u2601\ufe0f Amazon Bedrock Runtime<br/><b>Anthropic Claude 3.5 Sonnet</b>\"]\n    end\n\n    A -->|\"1. User Question + Context\"| B\n    B -->|\"2. Authenticated REST Request\"| C\n    C <-->|\"3. Query KPI History / Cache\"| D\n    C <-->|\"4. Prompts &amp; LLM Generation\"| E\n    C -->|\"5. Formatted Text Response\"| B\n    B -->|\"6. Returns String Mark\"| A\n\n    style A fill:#FAFAF7,stroke:#0A0A0A,stroke-width:2px,color:#0A0A0A\n    style B fill:#10B981,stroke:#047857,stroke-width:2px,color:#ffffff\n    style C fill:#3B82F6,stroke:#1D4ED8,stroke-width:2px,color:#ffffff\n    style D fill:#6B7280,stroke:#374151,stroke-width:2px,color:#ffffff\n    style E fill:#F59E0B,stroke:#B45309,stroke-width:2px,color:#ffffff\n```\n\nFour layers, each with one job:\n\n* **Tableau worksheet** sends the parameter text (the user's question) and any needed field values into a `SCRIPT_STR` calculated field.\n* **TabPy server** exposes a registered Python endpoint, validates the incoming payload, and forwards it, it does not call Bedrock itself.\n* **LangChain agent service** is a small standalone Python service (FastAPI works well) that owns the prompt template, decides whether the question needs a tool call against the dashboard's underlying data, and assembles the final prompt.\n* **Amazon Bedrock Runtime** hosts the model (Anthropic Claude on Bedrock is a common choice for this pattern) and returns the generated text.\n\n> [!TIP]\n> Keeping the agent service separate from TabPy means it can be scaled, versioned, and redeployed without touching the Tableau Server TabPy configuration, and it can be reused by other consumers (a Slack bot, an internal API) that have nothing to do with Tableau.\n\n---\n\n## Setting up TabPy securely\n\nTabPy ships with an authentication mode that's worth turning on before anything else, since an unauthenticated TabPy endpoint that can reach an LLM (and, transitively, your AWS account) is a meaningful exposure if the server is reachable beyond the corporate network.\n\n```bash\n# Start TabPy with authentication and TLS enabled via config file\ntabpy-server --config=tabpy.conf\n```\n\n```ini\n# tabpy.conf\n[TabPy]\nTABPY_PORT = 9004\nTABPY_EVALUATE_ENABLE = false\nTABPY_TRANSFER_PROTOCOL = https\nTABPY_CERTIFICATE_FILE = /etc/tabpy/cert.pem\nTABPY_KEY_FILE = /etc/tabpy/key.pem\n```\n\n> [!WARNING]\n> Set `TABPY_EVALUATE_ENABLE = false` in any deployment that exposes TabPy beyond a single developer machine. The `/evaluate` endpoint runs arbitrary Python on the TabPy host; only the deployed, reviewed functions registered through `/query` should be reachable in production.\n\nDeploying the function itself is a normal TabPy `deploy` call, the function body is intentionally thin:\n\n```python\nfrom tabpy.tabpy_tools.client import Client\nimport requests\n\ndef ask_dashboard_agent(question, context_metric, context_value):\n    \"\"\"Forwards a dashboard question to the LangChain agent service.\n    Stays thin on purpose: no prompt logic, no Bedrock SDK calls here.\"\"\"\n    response = requests.post(\n        \"https://agent-service.internal:8080/ask\",\n        json={\n            \"question\": question,\n            \"metric\": context_metric,\n            \"value\": context_value,\n        },\n        timeout=8,\n        headers={\"Authorization\": f\"Bearer {INTERNAL_SERVICE_TOKEN}\"},\n    )\n    response.raise_for_status()\n    return response.json()[\"answer\"]\n\nclient = Client(\"https://tabpy-server.internal:9004/\")\nclient.deploy(\"ask_dashboard_agent\", ask_dashboard_agent,\n               \"Routes a natural-language dashboard question to the LangChain agent.\",\n               override=True)\n```\n\n---\n\n## The LangChain agent behind TabPy\n\nThe agent service is where the actual reasoning happens. It receives the question and whatever context Tableau passed along, decides whether it needs to pull a fresh aggregate from the data source before answering, and calls Bedrock with an assembled prompt.\n\n```python\nfrom langchain_aws import ChatBedrock\nfrom langchain.agents import AgentExecutor, create_tool_calling_agent\nfrom langchain_core.prompts import ChatPromptTemplate\n\nllm = ChatBedrock(\n    model_id=\"anthropic.claude-3-5-sonnet-20241022-v2:0\",\n    region_name=\"us-east-1\",\n    model_kwargs={\"temperature\": 0, \"max_tokens\": 400},\n)\n\nprompt = ChatPromptTemplate.from_messages([\n    (\"system\", \"You answer questions about a Tableau dashboard's KPIs. \"\n               \"Be concise, one to two sentences, and cite the metric name and value \"\n               \"you were given rather than inventing figures.\"),\n    (\"human\", \"{question}\\n\\nContext metric: {metric} = {value}\"),\n    (\"placeholder\", \"{agent_scratchpad}\"),\n])\n\nagent = create_tool_calling_agent(llm, tools=[lookup_kpi_history], prompt=prompt)\nexecutor = AgentExecutor(agent=agent, tools=[lookup_kpi_history], max_iterations=3)\n```\n\n`temperature=0` matters more here than in a general-purpose chatbot. A calculated field renders the same string for every mark that shares the same partition, so a nondeterministic answer shows up as visibly inconsistent text sitting next to an otherwise stable number, which undermines trust in the dashboard faster than a slow response does.\n\n---\n\n## Writing the Tableau calculated field\n\nOn the Tableau side, the calculated field is intentionally simple, it passes the question and the relevant context fields and expects a single string back:\n\n```\nSCRIPT_STR(\n    \"return tabpy.query('ask_dashboard_agent', _arg1, _arg2, _arg3)['response']\",\n    [Parameters].[Question],\n    ATTR([KPI Name]),\n    SUM([KPI Value])\n)\n```\n\n> [!TIP]\n> Aggregate every measure passed into the script (`SUM`, `AVG`, `ATTR`) so the calculation resolves at the level of detail the viz is actually drawn at. An unaggregated field in a `SCRIPT_STR` call is one of the most common causes of \"cannot mix aggregate and non-aggregate\" errors when wiring TabPy into an existing worksheet.\n\n---\n\n## Caching, latency, and cost control\n\nA Bedrock round trip through an agent that may itself call a tool typically lands somewhere between one and three seconds, more if the agent needs a second reasoning pass. That's tolerable for a one-off question triggered by a parameter action, but not for a value recalculated on every filter change across a full crosstab.\n\n| Layer | What gets cached | Typical TTL |\n| :--- | :--- | :--- |\n| Agent service | Question + context hash to answer | 15-30 min |\n| TabPy function | Nothing (stateless passthrough) | n/a |\n| Tableau | Extract refresh, not the LLM answer itself | Per extract schedule |\n\nThe practical pattern is to cache at the agent service on a hash of the question text plus the context values it was given, since dashboard users tend to ask the same handful of questions (\"why did this drop\", \"how does this compare to last quarter\") far more often than they ask something genuinely novel. A simple in-memory or Redis-backed cache in front of the Bedrock call cuts both latency and token spend substantially without touching the Tableau side at all.\n\n> [!IMPORTANT]\n> Design Decision: Scope the calculated field to a parameter action (a button click, an \"Ask\" action) rather than a live filter-driven recalculation. This keeps the number of Bedrock invocations proportional to how often a user actually asks a question, not to how often the view redraws.\n\n---\n\n## Key learnings\n\n* **Keep TabPy thin.** It should validate and forward, not hold prompt templates or SDK credentials, so the agent logic can evolve and scale independently of the Tableau Server host.\n* **Determinism is a dashboard requirement, not a nice-to-have.** `temperature=0` and a tight system prompt keep repeated marks from showing inconsistent text for the same underlying value.\n* **Cache on question and context, not on the raw request.** Most dashboard questions repeat; a short-TTL cache in the agent service is the single biggest lever on both latency and Bedrock cost.\n* **Gate invocation behind a deliberate user action.** Wiring an LLM call to a live filter change turns every dashboard interaction into a paid API call; a parameter-driven \"Ask\" action keeps usage proportional to genuine intent.\n* **Lock down `/evaluate` before anything else.** TabPy's authentication and evaluate-disable settings are the first thing to configure, not an afterthought once the integration works.\n",
   "tableau-server-repository": "# Querying the Tableau Server Repository: A Practical Guide to PostgreSQL Metadata\n\nHow to pull governance-grade answers - permissions, view activity, RLS coverage - straight from Tableau's own repository database, without relying on the Metadata API.\n\n---\n\n## Overview\n\nEvery Tableau Server (and Tableau Cloud, behind the scenes) is backed by a PostgreSQL repository database that logs almost everything: who owns which workbook, who can see which view, when a dashboard was last opened, and which entitlements a user actually inherited once group and project permissions are flattened out. The Metadata API gets you part of the way there, but for audit-grade questions - \"which workbooks does this ex-employee still have Explorer access to?\" - going straight to the repository is often the more direct route.\n\nThis is a walkthrough of that approach: which tables actually matter, the constraints I built under on a recent enterprise deployment, and the patterns that kept the queries both correct and safe to run against a production repository.\n\n---\n\n## Why go around the Metadata API at all\n\nThe Metadata API is the supported, forward-compatible way to ask Tableau about content relationships - and it's the right default. But it has gaps that matter for governance work: historical view-count trends, raw permission-capability rows (not just resolved \"can view\" booleans), and anything that needs to be joined against an external entitlement source in a single SQL statement. When the question is inherently relational - \"join our HR org chart to Tableau's permission grants\" - a direct repository query is often simpler than stitching together several API calls.\n\n> [!IMPORTANT]\n> The repository schema is officially documented by Tableau as the *Repository Data Dictionary*, refreshed per release. Treat it as the source of truth for column meanings - table and view names can shift slightly between versions, and undocumented internal tables should be assumed unstable.\n\n---\n\n## The tables that actually matter\n\nMost governance questions only touch a handful of the repository's tables and admin views:\n\n* **workbooks, views, projects** - the content hierarchy\n* **users, groups, groupusers** - identity and group membership\n* **Permission-capability tables** - the raw grants before Tableau resolves them into an effective \"can view / can edit\" decision\n* **historical_events** and the admin views built on top of it - the closest thing to an activity log for view opens, extract refreshes, and subscription sends\n* **sites** - essential the moment you're working across more than one site, since almost every other table is site-scoped\n\n> [!TIP]\n> The admin views (the ones Tableau ships specifically for querying, rather than the raw internal tables) are worth defaulting to first - they already handle a lot of the join logic and are more stable across upgrades than reaching into internal tables directly.\n\n---\n\n## Working under real constraints: no CTEs, no recursion\n\nOn one deployment, the review process I was working under ruled out common table expressions (CTEs) and recursive queries entirely - reviewers wanted every query plan predictable and every join visible inline, not hidden behind a WITH clause. That's a reasonable constraint for a shared production database, but it does mean rewriting the patterns most people reach for automatically.\n\nIn practice, this comes down to pushing the \"staging\" step CTEs usually do into a scalar or correlated subquery instead. For example, resolving \"the most recent view timestamp per workbook\" without a CTE:\n\n```sql\nSELECT\n    w.name AS workbook_name,\n    (\n        SELECT MAX(he.created_at)\n        FROM historical_events he\n        JOIN views v ON v.id = he.view_id\n        WHERE v.workbook_id = w.id\n    ) AS last_viewed_at\nFROM workbooks w\nWHERE w.project_id = (\n    SELECT id FROM projects WHERE name = 'Insurance Analytics'\n);\n```\n\nIt reads less elegantly than the CTE version, but it kept every intermediate result inline and auditable, which was the actual point of the constraint.\n\n> [!WARNING]\n> Correlated subqueries like this can execute once per outer row, so they need to be scoped tightly (as above, to a single project) rather than run unfiltered across the whole repository.\n\n---\n\n## Verifying against the data dictionary before trusting a result\n\nRepository columns aren't always named the way you'd guess. A field that looks like a boolean \"is active\" flag might actually track something narrower, like whether a user's license was provisioned versus whether they've ever logged in. Before shipping any query that governance or compliance would act on, I cross-check every non-obvious column against Tableau's published data dictionary rather than inferring meaning from the column name alone - it's a five-minute check that avoids reporting a false positive on something like license reclamation or access review.\n\n---\n\n## Putting it together: an entitlement-based RLS coverage check\n\nA common ask: \"show me every workbook that contains PII fields but does not have row-level security applied.\" That's a natural fit for this approach, since it needs to join content metadata against permission grants in one pass:\n\n```sql\nSELECT w.name AS workbook_name, p.name AS project_name\nFROM workbooks w\nJOIN projects p ON p.id = w.project_id\nWHERE w.id NOT IN (\n    SELECT DISTINCT workbook_id\n    FROM workbook_rls_flags   - example: an internal tagging view\n    WHERE has_entitlement_rls = true\n)\nAND p.name IN ('HNW Client Reporting', 'Product Performance');\n```\n\nThe specific tagging mechanism will differ per environment (some teams tag RLS coverage in a naming convention, others in a metadata table maintained alongside deployment), but the shape of the query - anti-join content against a coverage source, scoped to sensitive projects - is reusable anywhere entitlement-based RLS matters.\n\n---\n\n## Key learnings\n\n* **Default to Tableau's admin views** over raw tables; they're the more upgrade-stable surface.\n* **Losing CTEs isn't just a syntax inconvenience** - it forces every intermediate step to stay visible, which is often exactly what a security reviewer wants from a query touching a production repository.\n* **Never trust a column name at face value.** Verify against the current data dictionary, since it's revised per Tableau release.\n* **historical_events retention is configurable server-side** - confirm the retention window before treating \"no events found\" as \"never viewed.\"\n",
   "window-functions": "---\ntitle: \"Window Functions Deep Dive: The SQL Superpower Every Data Professional Needs\"\nslug: \"window-functions\"\nsummary: \"Master complex analytical SQL window functions for cohort analysis, running totals, rankings, lead/lag offsets, and moving averages.\"\nstatus: \"Published\"\ncategory: \"SQL\"\ndifficulty: \"Intermediate\"\nreadingTime: \"8 min\"\ntags: ['SQL', 'Analytics Engineering', 'Data Analytics', 'Performance']\nfeatured: true\npublishedDate: \"2026-07-22\"\nlastUpdated: \"2026-07-22\"\n---\n\n# Window Functions Deep Dive: The SQL Superpower Every Data Professional Needs\n\n**Intermediate** | \u23f1\ufe0f **8 min read** | **Tags:** SQL \u00b7 Analytics Engineering \u00b7 Data Analytics \u00b7 Performance\n\n---\n\n## Introduction\n\nIf you've ever written a query that needed to rank employees, calculate running totals, compare sales with previous months, or find the highest-performing product in each category, you've likely encountered a problem that **GROUP BY alone cannot solve**.\n\nThis is where **Window Functions** become one of SQL's most powerful features.\n\nUnlike aggregate functions, window functions perform calculations **across a set of related rows while preserving every individual row**. This makes them indispensable for business intelligence, analytics engineering, reporting, and data warehousing.\n\nIn this article, we'll understand what window functions are, how they work, and the real-world scenarios where they shine.\n\n---\n\n# What Are Window Functions?\n\nA window function performs calculations over a **window (subset) of rows** related to the current row.\n\nThink of it like this:\n\n* **GROUP BY** collapses multiple rows into one.\n* **Window Functions** keep every row but allow you to analyze it in relation to other rows.\n\nFor example:\n\nInstead of showing only total sales per department,\n\n| Department | Employee | Salary |\n| :--- | :--- | :--- |\n| Sales | Alice | 60000 |\n| Sales | Bob | 70000 |\n| Sales | Charlie | 80000 |\n\nYou can display:\n\n| Employee | Salary | Department Average |\n| :--- | :--- | :--- |\n| Alice | 60000 | 70000 |\n| Bob | 70000 | 70000 |\n| Charlie | 80000 | 70000 |\n\nNotice that every employee remains visible.\n\n---\n\n# Anatomy of a Window Function\n\nThe general syntax is:\n\n```sql\nFUNCTION_NAME() OVER (\n    PARTITION BY column\n    ORDER BY column\n)\n```\n\nLet's understand each component.\n\n## OVER()\n\nThe `OVER()` clause tells SQL that this is a window function.\n\nWithout it, SQL treats functions like SUM() or AVG() as regular aggregate functions.\n\n---\n\n## PARTITION BY\n\nThis divides the dataset into logical groups.\n\nExample:\n\n```sql\nAVG(Salary) OVER(PARTITION BY Department)\n```\n\nEach department gets its own independent calculation.\n\nThink of it as creating multiple mini tables behind the scenes.\n\n---\n\n## ORDER BY\n\nDetermines the order in which calculations happen.\n\nExample:\n\n```sql\nSUM(Sales) OVER(\n    PARTITION BY Region\n    ORDER BY Sale_Date\n)\n```\n\nThis creates a running total in chronological order.\n\n---\n\n# Most Common Window Functions\n\nLet's explore the functions you'll use almost every day.\n\n---\n\n## 1. ROW_NUMBER()\n\nAssigns a unique number to every row.\n\n```sql\nSELECT\n  Employee,\n  Salary,\n  ROW_NUMBER() OVER(\n    PARTITION BY Department\n    ORDER BY Salary DESC\n  ) AS Rank\nFROM Employees;\n```\n\nResult:\n\n| Employee | Salary | Rank |\n| :--- | :--- | :--- |\n| Charlie | 80000 | 1 |\n| Bob | 70000 | 2 |\n| Alice | 60000 | 3 |\n\nPerfect for:\n\n* Pagination\n* Removing duplicates\n* Top-N records\n\n---\n\n## 2. RANK()\n\nSimilar to ROW_NUMBER but handles ties.\n\nExample:\n\n| Salary | Rank |\n| :--- | :--- |\n| 90000 | 1 |\n| 90000 | 1 |\n| 80000 | 3 |\n\nNotice Rank 2 is skipped.\n\nUseful when rankings should reflect ties.\n\n---\n\n## 3. DENSE_RANK()\n\nAlso handles ties.\n\nDifference:\n\n| Salary | Dense Rank |\n| :--- | :--- |\n| 90000 | 1 |\n| 90000 | 1 |\n| 80000 | 2 |\n\nNo gaps in ranking.\n\nIdeal for leaderboards.\n\n---\n\n## 4. NTILE()\n\nDivides rows into equal groups.\n\n```sql\nNTILE(4) OVER(ORDER BY Salary DESC)\n```\n\nCreates Quartiles.\n\nUseful for:\n\n* Customer segmentation\n* Performance bands\n* Salary benchmarking\n\n---\n\n## 5. LAG()\n\nLooks at the previous row.\n\n```sql\nSELECT\n  Month,\n  Revenue,\n  LAG(Revenue) OVER(ORDER BY Month) AS Previous_Month\nFROM Sales;\n```\n\nResult:\n\n| Month | Revenue | Previous |\n| :--- | :--- | :--- |\n| Jan | 100 | NULL |\n| Feb | 120 | 100 |\n| Mar | 150 | 120 |\n\nPerfect for Month-over-Month analysis.\n\n---\n\n## 6. LEAD()\n\nLooks ahead.\n\n```sql\nLEAD(Revenue) OVER(ORDER BY Month)\n```\n\nUseful for:\n\n* Forecasting\n* Comparing current vs next month\n* Time-series analytics\n\n---\n\n## 7. FIRST_VALUE()\n\nReturns the first value in the window.\n\n```sql\nFIRST_VALUE(Salary) OVER(\n  PARTITION BY Department\n  ORDER BY Salary DESC\n)\n```\n\nReturns the highest salary for every employee in that department.\n\n---\n\n## 8. LAST_VALUE()\n\nReturns the last value.\n\nTypically used with window framing.\n\n---\n\n## 9. SUM()\n\nWindow functions aren't limited to ranking.\n\nExample:\n\n```sql\nSUM(Sales) OVER(\n  PARTITION BY Region\n  ORDER BY Month\n)\n```\n\nCreates Running Totals.\n\n---\n\n## 10. AVG()\n\n```sql\nAVG(Salary) OVER(PARTITION BY Department)\n```\n\nShows department average without losing employee-level detail.\n\n---\n\n# Real Business Scenarios\n\n## Sales Dashboard\n\nCalculate:\n\n* Running Revenue\n* Previous Month Revenue\n* Growth Percentage\n\nWithout multiple joins.\n\n---\n\n## HR Analytics\n\nFind:\n\n* Highest paid employee\n* Lowest paid employee\n* Department average\n* Salary percentile\n\nAll in one query.\n\n---\n\n## Banking\n\nDetect:\n\n* Previous transaction\n* Next transaction\n* Running account balance\n\n---\n\n## E-commerce\n\nRank products by sales:\n\n```sql\nRANK() OVER(\n  PARTITION BY Category\n  ORDER BY Sales DESC\n)\n```\n\nRetrieve Top 5 products from every category.\n\n---\n\n## Customer Retention\n\nCompare:\n\n* Current purchase\n* Previous purchase\n* Days between purchases\n\nusing `LAG(Purchase_Date)`.\n\n---\n\n# Window Frames\n\nOne of the most overlooked concepts.\n\nBy default,\n\n```sql\nSUM() OVER(ORDER BY Date)\n```\n\nuses:\n\n```sql\nRANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW\n```\n\nYou can customize it.\n\nExample - Last 3 rows:\n\n```sql\nROWS BETWEEN 2 PRECEDING AND CURRENT ROW\n```\n\nMoving Average:\n\n```sql\nAVG(Sales) OVER(\n  ORDER BY Date\n  ROWS BETWEEN 2 PRECEDING AND CURRENT ROW\n)\n```\n\nVery useful for trend analysis.\n\n---\n\n# Performance Tips\n\nWindow functions are powerful, but they can become expensive on large datasets.\n\nBest practices:\n\n\u2705 Index columns used in `PARTITION BY` and `ORDER BY`\n\n\u2705 Filter unnecessary rows before applying window functions\n\n\u2705 Avoid repeated window calculations - use a CTE when the same window expression is reused.\n\n\u2705 Partition only when necessary; excessive partitions can increase processing overhead.\n\n\u2705 On very large tables, consider materialized views or pre-aggregated datasets for frequently used analytical queries.\n\n---\n\n# GROUP BY vs Window Functions\n\n| GROUP BY | Window Functions |\n| :--- | :--- |\n| Collapses rows | Preserves rows |\n| One output per group | One output per row |\n| Aggregate only | Aggregate + Analytical |\n| Simpler calculations | Running totals, ranking, comparisons |\n| Limited analytical capability | Powerful advanced analytics |\n\n---\n\n# Common Interview Questions\n\n### Why use window functions instead of GROUP BY?\n\nBecause they retain row-level data while performing aggregate calculations across related rows.\n\n---\n\n### Difference between RANK() and DENSE_RANK()?\n\n* **RANK()** leaves gaps after ties.\n* **DENSE_RANK()** does not.\n\n---\n\n### When should you use LAG()?\n\nWhenever you need to compare the current row with a previous row, such as Month-over-Month revenue, previous transactions, or customer purchase history.\n\n---\n\n### Can window functions be combined?\n\nAbsolutely.\n\nExample:\n\n```sql\nSELECT\n  Employee,\n  Salary,\n  RANK() OVER(PARTITION BY Department ORDER BY Salary DESC) AS Salary_Rank,\n  AVG(Salary) OVER(PARTITION BY Department) AS Dept_Average,\n  LAG(Salary) OVER(PARTITION BY Department ORDER BY Salary) AS Previous_Salary\nFROM Employees;\n```\n\nThis single query delivers ranking, departmental averages, and historical comparisons without any self-joins.\n\n---\n\n# Key Takeaways\n\nWindow functions are among the most valuable SQL features for modern analytics. They allow you to compute rankings, running totals, moving averages, period-over-period comparisons, and other advanced metrics while preserving row-level detail.\n\nIf you're working with BI platforms like Tableau or Power BI, building data models, or preparing for SQL interviews, mastering window functions will significantly improve both the readability and performance of your analytical queries.\n\nThe next time you're tempted to write a complex self-join or nested subquery, ask yourself: **Could a window function solve this more elegantly?** In many cases, the answer is yes.\n\n---\n\n## What's Next?\n\nIn the next article, we'll explore **Common Table Expressions (CTEs) and Recursive Queries**, covering how they simplify complex SQL, improve readability, and replace deeply nested subqueries in real-world analytics workflows.\n\n[Return to Knowledge Hub](#/insights)\n",
-  "enterprise-rls": "# Row-Level Security in Tableau: Enterprise Data Entitlements Guide\n\nIf you have ever needed to publish a single dashboard where a sales rep sees only their own region, a claims manager sees only their line of business, and a VP sees everything, you have needed Row-Level Security (RLS). It is one of those Tableau capabilities that looks simple in a demo and gets genuinely tricky the moment real users, real groups, and real performance requirements show up.\n\nThis guide walks through what RLS actually is, the main ways to implement it in Tableau, how to test it properly, and the architectural mistakes that most commonly break it in production.\n\n---\n\n## Overview & Architecture\n\n```mermaid\nflowchart TD\n    subgraph DB[\"Database / Data Warehouse Layer\"]\n        Fact[\"Fact Table<br/>(Sales, Claims, HR Data)\"]\n        Entitlements[\"Entitlement Mapping Table<br/>(Username / Group -> Security Key)\"]\n        Fact ---|Join on Security Key| Entitlements\n    end\n\n    subgraph Tableau[\"Tableau Calculation Engine\"]\n        Entitlements --> SecurityCalc[\"Calculated Security Filter:<br/>[Entitlement Username] = USERNAME()\"]\n        SecurityCalc --> ContextFilter[\"Data Source Context Filter:<br/>[Has Access] = True\"]\n    end\n\n    subgraph Views[\"User Role Views\"]\n        ContextFilter --> Analyst[\"Sales Rep: Sees North Region\"]\n        ContextFilter --> Manager[\"Regional Lead: Sees Multi-Region\"]\n        ContextFilter --> Executive[\"Executive: Sees Global Data\"]\n    end\n\n    style DB fill:#1e293b,stroke:#475569,color:#f8fafc\n    style Tableau fill:#0f172a,stroke:#3b82f6,color:#f8fafc\n    style Views fill:#1e293b,stroke:#475569,color:#f8fafc\n```\n\n---\n\n## What Row-Level Security Actually Means\n\nRLS restricts the *rows* a user can see in a data source: not the fields, not the dashboard layout, but the underlying data rows. Two users opening the exact same dashboard, built from the exact same data source, see completely different data based on their identity and entitlements.\n\n> [!NOTE]\n> **RLS is distinct from Permissions and Column-Level Security:**\n> * **Permissions**: Governs whether a user can open, edit, or download a workbook or data source.\n> * **Column-Level Security**: Hides specific sensitive fields (e.g., SSN, Salary) from certain roles. Tableau does not natively support column-level security in a single data source; it is typically handled via separate published data sources or secure database views.\n> * **Row-Level Security**: Dynamically filters row records based on user identity (`USERNAME()`, `FULLNAME()`, or `ISMEMBER()`).\n\n---\n\n## Why It Matters\n\nThe legacy alternative to RLS is creating separate copies of the same dashboard for different teams, or manually filtering and re-publishing every time an organization changes. That approach does not scale and introduces severe governance risk: someone eventually forgets to update a filter, leading to data leaks.\n\nIn regulated industries such as financial services, insurance, and healthcare, unauthorized data exposure is a major compliance violation. RLS allows teams to publish once while security enforcement travels with the data model itself.\n\n---\n\n## The 4 Main Approaches\n\n| Approach | Scales Well? | Maintenance Owner | Works with Extracts? |\n| :--- | :--- | :--- | :--- |\n| **1. Manual User Filters** | No | Workbook Author | Yes |\n| **2. Entitlement Table + Calc Field** | Yes | Analyst / BI Developer | Yes |\n| **3. ISMEMBER() + Server Groups** | Yes (for group-level access) | Analyst + Server Admin | Yes |\n| **4. Database-Level RLS Pushdown** | Yes (enterprise scale) | DBA / Data Platform Team | Live Connections Only |\n\n### 1. Manual User Filters\nTableau allows creators to set manual user filters via **Edit Filter \u2192 Show Filter for Selected Users**. While quick for a proof of concept, it does not scale. Every new employee requires a manual workbook edit and republication. Avoid this for production workflows.\n\n### 2. Entitlement Table + Calculated Field (Standard Enterprise Pattern)\nThis is the most flexible production pattern. You maintain a security mapping table (an entitlement table) that maps users or groups to dimension values.\n\n```text\nEntitlement Table\n----------------------------------\nusername        | region_code\n----------------------------------\npriya.k         | NORTH\npriya.k         | EAST\narjun.m         | SOUTH\nmanager.rao     | ALL\n```\n\nJoin this table to your transaction fact table, then implement an access calculation:\n\n```tableau\n// Calculated Field: [Has Access]\n[Entitlement Username] = USERNAME() OR [Entitlement Username] = 'ALL'\n```\n\nApplying `[Has Access] = True` at the Data Source Filter level ensures that every worksheet automatically inherits the restriction.\n\n### 3. ISMEMBER() with Tableau Server / Cloud Groups\nWhen access aligns cleanly with Active Directory or SAML groups, `ISMEMBER()` avoids extra table joins:\n\n```tableau\nIF ISMEMBER('North_Region_Group') THEN [Region] = \"North\"\nELSEIF ISMEMBER('South_Region_Group') THEN [Region] = \"South\"\nELSE FALSE\nEND\n```\n\n> [!TIP]\n> `ISMEMBER()` works well when access maps 1:1 to corporate roles. However, if entitlements are granular (e.g., specific account combinations across multiple territories), entitlement mapping tables are much easier to maintain than nested `IF/ELSE` statements.\n\n### 4. Database-Level Security Pushdown\nFor enterprise warehouses (Snowflake Row Access Policies, PostgreSQL RLS, AWS Redshift Security Predicates), security logic resides directly inside the database engine. Tableau passes the user identity via impersonation or session parameters, and the warehouse returns only authorized rows.\n\n> [!IMPORTANT]\n> Database-level RLS requires live queries. If data is extracted into a Hyper extract file without pre-filtering, database-level security is lost unless user-specific extracts or virtual connections are configured.\n\n---\n\n## Step-by-Step Entitlement Table Implementation\n\n1. **Build a Governed Entitlement Table**: Store one row per entitlement mapping (`username`, `dimension_key`). Keep this table in a database, not an unmanaged spreadsheet.\n2. **Join to Fact Data**: Perform an inner or left join between your fact table and entitlement mapping table on the shared business key (e.g., `Region_ID`, `Department_Code`).\n3. **Create the Calculated Security Filter**:\n   ```tableau\n   // [Security Filter]\n   [Entitlement_Username] = USERNAME()\n   ```\n4. **Apply as a Data Source Filter**: Right-click the Data Source \u2192 **Edit Data Source Filters** \u2192 Add `[Security Filter]` set to `True`.\n5. **Promote Filter to Context**: Add the security filter to context so Tableau evaluates it before fixed LOD calculations and dimension filters.\n\n---\n\n## Testing & Verification: Using \"View As\"\n\nNever test RLS by asking business users if they can see their data. Tableau Server and Cloud provide a built-in **\"View As\"** feature for Administrators:\n\n1. Open the published dashboard on Tableau Server/Cloud.\n2. Click the **View As** button in the top toolbar.\n3. Select any user or group to render the dashboard under their exact security context.\n\n> [!TIP]\n> **Verification Checklist:**\n> * **Unmapped Users**: Confirm that users omitted from the entitlement table see zero records rather than unfiltered data.\n> * **Multi-Role Users**: Ensure users mapped to multiple regions see the complete union of their entitlements.\n> * **LOD Behavior**: Verify that `{FIXED}` LOD expressions do not bypass RLS filters (ensure RLS filters are in Context).\n\n---\n\n## Performance Considerations\n\nBecause RLS filters execute on every query, unoptimized calculations can degrade dashboard load times:\n\n* **Prefer Joins over Blends**: Data blending enforces RLS post-aggregation, which can cause significant performance bottlenecks on large datasets.\n* **Avoid Complex LODs inside RLS Calcs**: Simple boolean expressions (`[User] = USERNAME()`) execute far faster than complex nested LOD expressions.\n* **Indexing Security Keys**: Ensure the join keys between fact and entitlement tables are properly indexed in live database connections.\n\n---\n\n## Common Pitfalls\n\n* **Sheet-Level Filter Omission**: Applying RLS filters to individual worksheets instead of the Data Source level creates risk if a creator adds a new sheet and forgets the filter.\n* **Secondary Data Source Leakage**: In multi-data-source workbooks, applying RLS to Data Source A while leaving Data Source B unfiltered exposes sensitive data.\n* **Extract Refresh Staleness**: If user access changes in Active Directory, ensure extract refresh schedules sync promptly to avoid stale permissions.\n\n---\n\n## Governance & Audit Readiness\n\nThe calculated field is only one piece of the security model. Complete audit readiness requires documenting:\n\n1. **Entitlement Ownership**: Who approves access updates in the mapping table.\n2. **Sync Automation**: How Active Directory / SAML identity updates propagate to database entitlement tables.\n3. **Periodic Access Reviews**: Regular automated checks against Tableau PostgreSQL Repository data to verify entitlement validity.\n\n---\n\n## Back to Insights\n[Return to Insights](#/insights)\n"
+  "enterprise-rls": "# Row-Level Security in Tableau: Enterprise Data Entitlements Guide\n\nIf you have ever needed to publish a single dashboard where a sales rep sees only their own region, a claims manager sees only their line of business, and a VP sees everything, you have needed Row-Level Security (RLS). It is one of those Tableau capabilities that looks simple in a demo and gets genuinely tricky the moment real users, real groups, and real performance requirements show up.\n\nThis guide walks through what RLS actually is, the main ways to implement it in Tableau, how to test it properly, and the architectural mistakes that most commonly break it in production.\n\n---\n\n## Overview & Architecture\n\n```mermaid\nflowchart TD\n    subgraph DB[\"Database / Data Warehouse Layer\"]\n        Fact[\"Fact Table<br/>(Sales, Claims, HR Data)\"]\n        Entitlements[\"Entitlement Mapping Table<br/>(Username / Group -> Security Key)\"]\n        Fact ---|Join on Security Key| Entitlements\n    end\n\n    subgraph Tableau[\"Tableau Calculation Engine\"]\n        Entitlements --> SecurityCalc[\"Calculated Security Filter:<br/>[Entitlement Username] = USERNAME()\"]\n        SecurityCalc --> ContextFilter[\"Data Source Context Filter:<br/>[Has Access] = True\"]\n    end\n\n    subgraph Views[\"User Role Views\"]\n        ContextFilter --> Analyst[\"Sales Rep: Sees North Region\"]\n        ContextFilter --> Manager[\"Regional Lead: Sees Multi-Region\"]\n        ContextFilter --> Executive[\"Executive: Sees Global Data\"]\n    end\n\n    style DB fill:#1e293b,stroke:#475569,color:#f8fafc\n    style Tableau fill:#0f172a,stroke:#3b82f6,color:#f8fafc\n    style Views fill:#1e293b,stroke:#475569,color:#f8fafc\n```\n\n---\n\n## What Row-Level Security Actually Means\n\nRLS restricts the *rows* a user can see in a data source: not the fields, not the dashboard layout, but the underlying data rows. Two users opening the exact same dashboard, built from the exact same data source, see completely different data based on their identity and entitlements.\n\n> [!NOTE]\n> **RLS is distinct from Permissions and Column-Level Security:**\n> * **Permissions**: Governs whether a user can open, edit, or download a workbook or data source.\n> * **Column-Level Security**: Hides specific sensitive fields (e.g., SSN, Salary) from certain roles. Tableau does not natively support column-level security in a single data source; it is typically handled via separate published data sources or secure database views.\n> * **Row-Level Security**: Dynamically filters row records based on user identity (`USERNAME()`, `FULLNAME()`, or `ISMEMBER()`).\n\n---\n\n## Why It Matters\n\nThe legacy alternative to RLS is creating separate copies of the same dashboard for different teams, or manually filtering and re-publishing every time an organization changes. That approach does not scale and introduces severe governance risk: someone eventually forgets to update a filter, leading to data leaks.\n\nIn regulated industries such as financial services, insurance, and healthcare, unauthorized data exposure is a major compliance violation. RLS allows teams to publish once while security enforcement travels with the data model itself.\n\n---\n\n## The 4 Main Approaches\n\n| Approach | Scales Well? | Maintenance Owner | Works with Extracts? |\n| :--- | :--- | :--- | :--- |\n| **1. Manual User Filters** | No | Workbook Author | Yes |\n| **2. Entitlement Table + Calc Field** | Yes | Analyst / BI Developer | Yes |\n| **3. ISMEMBER() + Server Groups** | Yes (for group-level access) | Analyst + Server Admin | Yes |\n| **4. Database-Level RLS Pushdown** | Yes (enterprise scale) | DBA / Data Platform Team | Live Connections Only |\n\n### 1. Manual User Filters\nTableau allows creators to set manual user filters via **Edit Filter \u2192 Show Filter for Selected Users**. While quick for a proof of concept, it does not scale. Every new employee requires a manual workbook edit and republication. Avoid this for production workflows.\n\n### 2. Entitlement Table + Calculated Field (Standard Enterprise Pattern)\nThis is the most flexible production pattern. You maintain a security mapping table (an entitlement table) that maps users or groups to dimension values.\n\n```text\nEntitlement Table\n----------------------------------\nusername        | region_code\n----------------------------------\npriya.k         | NORTH\npriya.k         | EAST\narjun.m         | SOUTH\nmanager.rao     | ALL\n```\n\nJoin this table to your transaction fact table, then implement an access calculation:\n\n```tableau\n// Calculated Field: [Has Access]\n[Entitlement Username] = USERNAME() OR [Entitlement Username] = 'ALL'\n```\n\nApplying `[Has Access] = True` at the Data Source Filter level ensures that every worksheet automatically inherits the restriction.\n\n### 3. ISMEMBER() with Tableau Server / Cloud Groups\nWhen access aligns cleanly with Active Directory or SAML groups, `ISMEMBER()` avoids extra table joins:\n\n```tableau\nIF ISMEMBER('North_Region_Group') THEN [Region] = \"North\"\nELSEIF ISMEMBER('South_Region_Group') THEN [Region] = \"South\"\nELSE FALSE\nEND\n```\n\n> [!TIP]\n> `ISMEMBER()` works well when access maps 1:1 to corporate roles. However, if entitlements are granular (e.g., specific account combinations across multiple territories), entitlement mapping tables are much easier to maintain than nested `IF/ELSE` statements.\n\n### 4. Database-Level Security Pushdown\nFor enterprise warehouses (Snowflake Row Access Policies, PostgreSQL RLS, AWS Redshift Security Predicates), security logic resides directly inside the database engine. Tableau passes the user identity via impersonation or session parameters, and the warehouse returns only authorized rows.\n\n> [!IMPORTANT]\n> Database-level RLS requires live queries. If data is extracted into a Hyper extract file without pre-filtering, database-level security is lost unless user-specific extracts or virtual connections are configured.\n\n---\n\n## Step-by-Step Entitlement Table Implementation\n\n1. **Build a Governed Entitlement Table**: Store one row per entitlement mapping (`username`, `dimension_key`). Keep this table in a database, not an unmanaged spreadsheet.\n2. **Join to Fact Data**: Perform an inner or left join between your fact table and entitlement mapping table on the shared business key (e.g., `Region_ID`, `Department_Code`).\n3. **Create the Calculated Security Filter**:\n   ```tableau\n   // [Security Filter]\n   [Entitlement_Username] = USERNAME()\n   ```\n4. **Apply as a Data Source Filter**: Right-click the Data Source \u2192 **Edit Data Source Filters** \u2192 Add `[Security Filter]` set to `True`.\n5. **Promote Filter to Context**: Add the security filter to context so Tableau evaluates it before fixed LOD calculations and dimension filters.\n\n---\n\n## Testing & Verification: Using \"View As\"\n\nNever test RLS by asking business users if they can see their data. Tableau Server and Cloud provide a built-in **\"View As\"** feature for Administrators:\n\n1. Open the published dashboard on Tableau Server/Cloud.\n2. Click the **View As** button in the top toolbar.\n3. Select any user or group to render the dashboard under their exact security context.\n\n> [!TIP]\n> **Verification Checklist:**\n> * **Unmapped Users**: Confirm that users omitted from the entitlement table see zero records rather than unfiltered data.\n> * **Multi-Role Users**: Ensure users mapped to multiple regions see the complete union of their entitlements.\n> * **LOD Behavior**: Verify that `{FIXED}` LOD expressions do not bypass RLS filters (ensure RLS filters are in Context).\n\n---\n\n## Performance Considerations\n\nBecause RLS filters execute on every query, unoptimized calculations can degrade dashboard load times:\n\n* **Prefer Joins over Blends**: Data blending enforces RLS post-aggregation, which can cause significant performance bottlenecks on large datasets.\n* **Avoid Complex LODs inside RLS Calcs**: Simple boolean expressions (`[User] = USERNAME()`) execute far faster than complex nested LOD expressions.\n* **Indexing Security Keys**: Ensure the join keys between fact and entitlement tables are properly indexed in live database connections.\n\n---\n\n## Common Pitfalls\n\n* **Sheet-Level Filter Omission**: Applying RLS filters to individual worksheets instead of the Data Source level creates risk if a creator adds a new sheet and forgets the filter.\n* **Secondary Data Source Leakage**: In multi-data-source workbooks, applying RLS to Data Source A while leaving Data Source B unfiltered exposes sensitive data.\n* **Extract Refresh Staleness**: If user access changes in Active Directory, ensure extract refresh schedules sync promptly to avoid stale permissions.\n\n---\n\n## Governance & Audit Readiness\n\nThe calculated field is only one piece of the security model. Complete audit readiness requires documenting:\n\n1. **Entitlement Ownership**: Who approves access updates in the mapping table.\n2. **Sync Automation**: How Active Directory / SAML identity updates propagate to database entitlement tables.\n3. **Periodic Access Reviews**: Regular automated checks against Tableau PostgreSQL Repository data to verify entitlement validity.\n\n---\n\n## Back to Insights\n[Return to Insights](#/insights)\n",
+  "athena-optimization": "---\ntitle: \"Amazon Athena Query Optimization: Sub-Second Serverless Analytics at Petabyte Scale\"\nslug: \"athena-optimization\"\nsummary: \"Optimize serverless queries over AWS S3 data lakes using partition projection, columnar Parquet formats, compaction pipelines, and cost-reduction techniques.\"\nstatus: \"Published\"\ncategory: \"SQL\"\ndifficulty: \"Advanced\"\nreadingTime: \"14 min\"\ntags: ['AWS Athena', 'SQL', 'Cloud BI', 'Presto', 'Performance Tuning', 'S3 Partitioning', 'Parquet', 'Tableau']\nfeatured: true\npublishedDate: \"2026-07-26\"\nlastUpdated: \"2026-07-26\"\nseoDescription: \"A developer guide to optimizing Amazon Athena queries: partition projection, Parquet compression, small file compaction, execution plan tuning, and cost reduction.\"\n---\n\n# Amazon Athena Query Optimization: Sub-Second Serverless Analytics at Petabyte Scale\n\n**Difficulty:** Advanced | **Read Time:** 14 min | **Status:** Published | **Category:** SQL / Cloud Analytics\n\n---\n\n## Overview\n\nAmazon Athena is an interactive, serverless query service built on open-source Trino (formerly PrestoSQL). It enables analytics engineers to query petabyte-scale data directly in Amazon S3 using standard ANSI SQL without managing database compute clusters.\n\nHowever, Athena's serverless convenience comes with a critical operational characteristic: **you pay for the volume of data scanned by each query**, priced at $5.00 per terabyte scanned. Furthermore, query latency is directly proportional to the amount of data transferred from S3 over the network into Athena's distributed worker nodes.\n\nA poorly structured query running against raw JSON or CSV logs can scan 500 GB, take 45 seconds to finish, and cost $2.50 per execution. If that query powers an executive Tableau dashboard with 30 daily users, the annual query cost can exceed $20,000 for a single dashboard while frustrating business leaders with sluggish rendering times.\n\nBy applying columnar storage formats (Apache Parquet), intelligent directory partitioning with Partition Projection, file compaction pipelines, and predicate pushdown techniques, you can reduce scanned data volume by **over 95%**, cut query execution times from 30+ seconds to **sub-second latencies**, and slash cloud analytics expenses to pennies.\n\nThis guide provides an enterprise blueprint for diagnosing, tuning, and governing Athena queries across modern data lake and BI architectures.\n\n---\n\n## Architecture Overview: The Serverless Query Pipeline\n\nUnderstanding how Athena executes queries is essential for isolating performance bottlenecks. Athena does not store data locally; it decouples distributed compute from object storage.\n\n```mermaid\nflowchart TD\n    subgraph Client[\"1. Analytics & BI Consumers\"]\n        TB[\"\ud83d\udcca Tableau Cloud / Desktop<br/><b>Athena JDBC / ODBC Driver</b>\"]\n        QS[\"\ud83d\udcc8 Amazon QuickSight / Custom Apps<br/><b>Athena REST API</b>\"]\n    end\n\n    subgraph Athena[\"2. Athena Distributed Query Engine (Trino v3)\"]\n        Coord[\"\u2699\ufe0f Coordinator Node<br/><i>Query Parsing, Optimization & Execution Plan</i>\"]\n        W1[\"\u26a1 Worker Node 1<br/><i>Predicate Pushdown & S3 Block Read</i>\"]\n        W2[\"\u26a1 Worker Node 2<br/><i>Parallel Filter & Aggregation</i>\"]\n        W3[\"\u26a1 Worker Node 3<br/><i>Hash Join & Group By</i>\"]\n    end\n\n    subgraph Catalog[\"3. Metadata Catalog\"]\n        Glue[\"\ud83d\udcda AWS Glue Data Catalog<br/><b>Schema & Partition Definitions</b>\"]\n        Proj[\"\ud83c\udfaf Partition Projection Engine<br/><b>In-Memory Metadata Evaluation</b>\"]\n    end\n\n    subgraph Storage[\"4. Amazon S3 Data Lake Storage\"]\n        Raw[\"\ud83d\udcc1 Raw Landing Zone<br/><i>(Uncompacted JSON/CSV)</i>\"]\n        Compacted[\"\ud83d\udce6 Curated Analytics Layer<br/><i>(Snappy Parquet, 128MB-512MB Files)</i>\"]\n    end\n\n    TB -->|SQL Query| Coord\n    QS -->|SQL Query| Coord\n    Coord <-->|Resolve Partitions| Glue\n    Coord <-->|Calculate Projection| Proj\n    Coord -->|Distribute Splits| W1 & W2 & W3\n    W1 & W2 & W3 <-->|Parallel S3 GET Range Requests| Compacted\n    W1 & W2 & W3 -->|Stream Results| Coord\n    Coord -->|HTTP 200 / S3 Result Bucket| TB\n    \n    style Storage fill:#1e293b,stroke:#475569,color:#f8fafc\n    style Athena fill:#0f172a,stroke:#3b82f6,color:#f8fafc\n    style Catalog fill:#1e293b,stroke:#475569,color:#f8fafc\n    style Client fill:#1e293b,stroke:#475569,color:#f8fafc\n```\n\n### The Query Execution Lifecycle\n\n1. **Submission**: The BI tool or analyst submits a SQL statement to the Athena endpoint.\n2. **Metadata Resolution**: The Coordinator node contacts the AWS Glue Data Catalog to resolve table schemas, data formats, and partition locations.\n3. **Split Generation**: The Coordinator divides the targeted S3 objects into parallel computational units called **splits**.\n4. **Distributed Execution**: Worker nodes issue parallel HTTP `GET` range requests to S3, read the required column chunks, evaluate filter predicates, and compute aggregations.\n5. **Result Aggregation**: Workers stream intermediate tuples to the coordinator, which formats the final result set, writes it to the designated S3 query output bucket, and delivers the stream to the client.\n\n---\n\n## 1. Directory Partitioning & Partition Projection\n\nPartitioning divides large datasets into column-based subdirectories within Amazon S3. When a query contains filter predicates matching the partition keys, Athena prunes irrelevant directories and reads only the matching S3 objects.\n\n### Standard Hive-Style Partitioning\n\nIn Hive format, directory paths explicitly declare key-value pairs:\n\n```text\ns3://analytics-lake-curated/fact_orders/\n    \u251c\u2500\u2500 year=2026/\n    \u2502   \u251c\u2500\u2500 month=07/\n    \u2502   \u2502   \u251c\u2500\u2500 region=NORTH/\n    \u2502   \u2502   \u2502   \u2514\u2500\u2500 data_001.parquet\n    \u2502   \u2502   \u2514\u2500\u2500 region=SOUTH/\n    \u2502   \u2502       \u2514\u2500\u2500 data_002.parquet\n```\n\nWhen you run `WHERE year = '2026' AND month = '07' AND region = 'NORTH'`, Athena scans only the files in that specific leaf directory, ignoring the rest of the petabyte-scale lake.\n\n### The Metadata Bottleneck: Why Glue API Calls Slow Down Queries\n\nFor tables with millions of partitions (e.g., multi-tenant tables partitioned by date, hour, and customer ID), querying AWS Glue via `GetPartitions` API calls introduces significant latency. The Coordinator can spend 5 to 15 seconds simply resolving partition paths before reading a single byte from S3.\n\n### Solution: AWS Athena Partition Projection\n\nPartition Projection bypasses Glue partition metadata lookups entirely. You declare the partition range rules (integers, dates, or enums) directly in the table properties. The Athena engine calculates the S3 directory paths dynamically in memory using regex patterns:\n\n```sql\nCREATE EXTERNAL TABLE analytics_lake.fact_financial_transactions (\n    transaction_id STRING,\n    account_id STRING,\n    amount DECIMAL(18, 2),\n    currency STRING,\n    merchant_category STRING,\n    transaction_timestamp TIMESTAMP\n)\nPARTITIONED BY (\n    year STRING,\n    month STRING,\n    region STRING\n)\nROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'\nSTORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'\nOUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'\nLOCATION 's3://analytics-lake-curated/fact_financial_transactions/'\nTBLPROPERTIES (\n    'projection.enabled' = 'true',\n    \n    -- Configure Year Partition Projection\n    'projection.year.type' = 'integer',\n    'projection.year.range' = '2020,2030',\n    \n    -- Configure Month Partition Projection (zero-padded)\n    'projection.month.type' = 'integer',\n    'projection.month.range' = '1,12',\n    'projection.month.digits' = '2',\n    \n    -- Configure Region Partition Projection\n    'projection.region.type' = 'enum',\n    'projection.region.values' = 'NORTH,SOUTH,EAST,WEST,EMEA,APAC',\n    \n    -- Define the S3 Directory Path Pattern\n    'storage.location.template' = 's3://analytics-lake-curated/fact_financial_transactions/year=${year}/month=${month}/region=${region}'\n);\n```\n\n> [!IMPORTANT]\n> **Partition Projection Advantages:**\n> 1. Eliminates `MSCK REPAIR TABLE` or `ALTER TABLE ADD PARTITION` maintenance jobs.\n> 2. Reduces query planning time from 8,000ms down to under 120ms on high-partition tables.\n> 3. Eliminates AWS Glue API rate-limiting errors (`ThrottlingException`) under high concurrency.\n\n---\n\n## 2. Columnar Storage Formats: Apache Parquet vs. CSV/JSON\n\nTraditional formats like CSV and JSON store records row-by-row. To calculate the sum of a single column across a billion rows, Athena must download and parse the entire file.\n\nApache Parquet organizes data by column chunks and embeds detailed metadata (min/max statistics, dictionary encodings, and row group offsets) directly inside file footers.\n\n```mermaid\nflowchart LR\n    subgraph CSV[\"Row-Based CSV Storage\"]\n        direction TB\n        R1[\"Row 1: [ID, Date, Customer, Region, Amount, Notes, PII]\"]\n        R2[\"Row 2: [ID, Date, Customer, Region, Amount, Notes, PII]\"]\n        R3[\"Row 3: [ID, Date, Customer, Region, Amount, Notes, PII]\"]\n        RAll[\"Athena must scan 100% of bytes across all columns\"]\n    end\n\n    subgraph Parquet[\"Columnar Parquet Storage\"]\n        direction TB\n        C1[\"Column 'Amount' Chunk: [142.50, 89.00, 310.20, ...]\"]\n        C2[\"Column 'Region' Chunk: ['NORTH', 'SOUTH', 'NORTH', ...]\"]\n        CMeta[\"Footer Metadata: Min/Max values per Row Group\"]\n        CScan[\"Athena scans only the 'Amount' & 'Region' byte ranges\"]\n    end\n\n    CSV -.->|90%+ Scan Reduction| Parquet\n    style CSV fill:#1e293b,stroke:#ef4444,color:#f8fafc\n    style Parquet fill:#0f172a,stroke:#10b981,color:#f8fafc\n```\n\n### Why Parquet Transforms Athena Performance:\n\n1. **Column Pruning**: Athena fetches only the byte ranges of columns explicitly referenced in the SQL statement. If a table has 40 columns and your query selects 3, you pay for only ~8% of the data volume.\n2. **Dictionary Encoding**: Repeated strings (e.g., country codes, status flags) are replaced with compact integer pointers, reducing disk footprint by up to 80%.\n3. **Pushdown Predicate Evaluation (Min/Max Stats)**: The Parquet file footer stores minimum and maximum values for each 128 MB row group. If a query filters for `amount > 50000`, Athena inspects the footer and skips entire row groups without reading their contents.\n\n### Optimal Compression Codecs\n\n* **Snappy (Default & Recommended)**: Provides an optimal balance between fast decompression CPU speeds and high compression ratios (~4:1). Best suited for interactive BI queries.\n* **ZSTD (Zstandard)**: Delivers higher compression density (~6:1) with minimal CPU overhead. Best for historical archival tables where storage savings and scan reduction are paramount.\n\n---\n\n## 3. Solving the \"Small Files Problem\" via S3 Compaction\n\nA common anti-pattern in data lake architectures is streaming real-time events (from AWS Kinesis, Kafka, or IoT sensors) directly into S3 as thousands of tiny 50 KB JSON files.\n\n### Why Small Files Cripple Athena:\n\n* **S3 Request Overhead**: Each file requires an individual HTTP `GET` metadata handshake. Querying 100,000 small files generates 100,000 S3 API calls, causing network latency and throttling.\n* **Lack of Compression Efficiency**: Small files do not contain enough rows to build effective Parquet compression dictionaries.\n* **Split Saturation**: Trino worker nodes spend more CPU cycles scheduling tasks than processing data.\n\n### S3 File Sizing Guidelines\n\n| File Size Category | Typical File Size | Query Performance Impact | Action Required |\n| :--- | :--- | :--- | :--- |\n| **Severely Fragmented** | < 1 MB | Slow (10x-50x latency penalty, high S3 GET costs) | Mandatory batch compaction |\n| **Sub-Optimal** | 1 MB to 32 MB | Moderate (acceptable for low-frequency queries) | Consolidate during scheduled ETL |\n| **Optimal Target** | **128 MB to 512 MB** | **Fast (maximizes Parquet row groups and parallel I/O)** | Maintain target in production |\n| **Too Large** | > 2 GB | Sub-optimal (limits parallel split distribution) | Partition or split objects |\n\n### Compaction Pipeline via CTAS (Create Table As Select)\n\nYou can run automated daily compaction jobs in Athena to convert fragmented files into optimal Parquet objects:\n\n```sql\n-- Step 1: Create a compacted snapshot table with Snappy Parquet\nCREATE TABLE analytics_lake.fact_orders_compacted_temp\nWITH (\n    format = 'PARQUET',\n    parquet_compression = 'SNAPPY',\n    external_location = 's3://analytics-lake-curated/fact_orders_compacted/year=2026/month=07/',\n    bucketed_by = ARRAY['customer_id'],\n    bucket_count = 8\n) AS\nSELECT \n    order_id,\n    customer_id,\n    order_status,\n    total_amount,\n    tax_amount,\n    CAST(order_date AS DATE) AS order_date,\n    created_at\nFROM analytics_lake.fact_orders_raw\nWHERE year = '2026' AND month = '07';\n```\n\n> [!TIP]\n> **Production Compaction Automation:**\n> Use AWS Glue ETL jobs or AWS Lambda scheduled via Amazon EventBridge to execute compaction weekly. This maintains average S3 file sizes between 128 MB and 512 MB automatically.\n\n---\n\n## 4. Query Tuning & Execution Plan Optimization\n\nAthena Engine Version 3 (based on Trino) provides rich cost-based query optimization. Using `EXPLAIN` and `EXPLAIN ANALYZE` allows you to inspect distributed query plans and eliminate execution bottlenecks.\n\n### Using EXPLAIN ANALYZE to Diagnose Queries\n\n```sql\nEXPLAIN ANALYZE\nSELECT \n    c.customer_segment,\n    p.category_name,\n    COUNT(o.order_id) AS total_orders,\n    SUM(o.total_amount) AS total_revenue,\n    AVG(o.total_amount) AS avg_order_value\nFROM analytics_lake.fact_orders o\nJOIN analytics_lake.dim_customers c ON o.customer_id = c.customer_id\nJOIN analytics_lake.dim_products p ON o.product_id = p.product_id\nWHERE o.year = '2026'\n  AND o.month = '07'\n  AND o.order_status = 'COMPLETED'\nGROUP BY c.customer_segment, p.category_name\nORDER BY total_revenue DESC;\n```\n\n### Key Execution Plan Indicators to Review:\n\n1. **Input Rows vs Output Rows**: A high ratio indicates that filters are successfully eliminating rows early in the worker pipeline.\n2. **ScanFilterProject Node**: Confirms that column projection and predicate pushdown are active.\n3. **Data Spilling to S3 (Spilled Bytes)**: If intermediate join states exceed worker memory, Trino spills data to temporary S3 storage, multiplying latency. This indicates that join order or cluster memory limits need attention.\n\n### Golden Rules for Query Tuning\n\n#### 1. Order Joins from Largest to Smallest (Left-to-Right)\nTrino uses distributed hash joins. The table on the **left side** of the `JOIN` is streamed across workers, while the table on the **right side** is loaded into worker memory as a hash table.\n* **Rule**: Place your massive partitioned fact table on the left (`FROM fact_orders`) and small dimension tables on the right (`JOIN dim_customers`).\n\n#### 2. Avoid Non-SARGable Function Wrappers on Filter Columns\nWrapping indexed or partitioned columns inside functions prevents Athena from pruning partitions or reading Parquet min/max statistics:\n\n```sql\n-- ANTI-PATTERN: Forces full partition scan and row-by-row string evaluation\nSELECT SUM(amount) FROM fact_transactions \nWHERE SUBSTR(transaction_date_str, 1, 7) = '2026-07';\n\n-- OPTIMIZED: SARGable range predicate enables direct partition and row-group pruning\nSELECT SUM(amount) FROM fact_transactions \nWHERE year = '2026' \n  AND month = '07' \n  AND transaction_date >= DATE '2026-07-01' \n  AND transaction_date < DATE '2026-08-01';\n```\n\n#### 3. Restrict Window Functions to Scoped Partitions\nWindow functions like `ROW_NUMBER()`, `RANK()`, and `DENSE_RANK()` require shuffling data across workers to sort partitions. Filter your dataset before applying the window calculation:\n\n```sql\n-- Efficient Top-10 Customers per Region\nWITH filtered_orders AS (\n    SELECT customer_id, region, total_amount\n    FROM analytics_lake.fact_orders\n    WHERE year = '2026' AND month = '07' -- Prunes 98% of data before windowing\n),\nranked_customers AS (\n    SELECT \n        customer_id,\n        region,\n        total_amount,\n        ROW_NUMBER() OVER (PARTITION BY region ORDER BY total_amount DESC) AS rank_pos\n    FROM filtered_orders\n)\nSELECT * FROM ranked_customers WHERE rank_pos <= 10;\n```\n\n---\n\n## 5. Tableau & BI Integration: Accelerating Live Dashboards\n\nWhen connecting Tableau Desktop, Tableau Cloud, or Amazon QuickSight to Amazon Athena via JDBC or ODBC, unoptimized driver settings can cause unnecessary queries and slow dashboard interactions.\n\n### 1. Enable Athena Query Result Reuse (Result Caching)\n\nAthena provides native query caching. If an identical query is submitted within a configurable time window (between 1 minute and 7 days) and the underlying S3 data has not changed, Athena returns the cached result from S3 in **under 300 milliseconds** with **zero scan cost ($0.00)**.\n\nTo enable query result reuse in your Tableau connection or Athena workgroup:\n\n```sql\n-- In Athena JDBC connection string parameters:\nUseResultCache=true;MaxResultCacheAgeMinutes=60;\n```\n\n### 2. Configure Tableau Data Source Context Filters\n\nTableau evaluates filters according to a strict order of operations. Adding high-level partition filters (such as `Year` or `Region`) to **Context** forces Tableau to create a temporary subquery that passes those partition restrictions directly to Athena before other calculations are computed.\n\n```mermaid\nflowchart TD\n    A[\"Tableau Dashboard Interaction\"] --> B[\"Data Source Filter (Fixed Security Filter)\"]\n    B --> C[\"Context Filter (Partition Keys: Year, Region)\"]\n    C -->|Athena Prunes S3 Partitions| D[\"Dimension Filters\"]\n    D --> E[\"Measure & Aggregation Filters\"]\n    E --> F[\"Table Calculations & Render Canvas\"]\n    \n    style C fill:#10b981,stroke:#047857,color:#fff\n```\n\n### 3. Replace Custom SQL with Materialized Athena Views\n\nWriting complex, multi-line `Custom SQL` in Tableau's connection dialog causes Tableau to wrap the query in nested subqueries (`SELECT * FROM (SELECT ... ) SUBQ WHERE ...`). This prevents Athena's optimizer from pushing down filter predicates.\n\n**Best Practice**: Define clean views inside the AWS Glue Data Catalog and connect Tableau directly to the catalog view.\n\n---\n\n## 6. Enterprise Cost Governance & Workgroup Guardrails\n\nWithout controls, an exploratory query with missing `WHERE` clauses can accidentally scan a 50 TB unpartitioned historical bucket, incurring a $250.00 bill for a single execution.\n\n### 1. Workgroup Data Usage Limits\n\nConfigure per-query and workgroup-wide data scan thresholds in the Athena Console:\n\n* **Per-Query Data Limit**: Automatically cancel any individual query that attempts to scan more than 50 GB.\n* **Workgroup 24-Hour Limit**: Set an aggregate scan threshold (e.g., 2 TB per day) that alerts on-call engineers if runaway queries occur.\n\n### 2. CloudWatch Metric Alarms\n\nSet up automated CloudWatch Alarms on the `DataScannedInBytes` metric:\n\n```json\n{\n  \"AlarmName\": \"Athena-High-Query-Scan-Alert\",\n  \"MetricName\": \"DataScannedInBytes\",\n  \"Namespace\": \"AWS/Athena\",\n  \"Statistic\": \"Sum\",\n  \"Period\": 300,\n  \"EvaluationPeriods\": 1,\n  \"Threshold\": 107374182400,\n  \"ComparisonOperator\": \"GreaterThanThreshold\",\n  \"AlarmActions\": [\"arn:aws:sns:us-east-1:123456789012:cloud-cost-alerts\"]\n}\n```\n\n---\n\n## 7. Real-World Optimization Benchmark & Case Study\n\n### The Production Scenario:\nAn enterprise financial analytics team maintained a global transaction monitoring dashboard in Tableau. The underlying data consisted of 4.2 billion rows representing 3 years of transactional logs in Amazon S3.\n\n### Before Optimization:\n* Storage Format: Raw CSV files, uncompacted (over 180,000 files averaging 700 KB).\n* Query Strategy: Live Tableau connection using Custom SQL without partition pruning.\n* Execution Metrics: **32.4 seconds average load time**, scanning **120.5 GB per dashboard refresh**.\n* Cost: **$0.60 per dashboard load**, totaling **$1,440.00 monthly**.\n\n### Optimization Steps Applied:\n1. Re-engineered data pipeline using AWS Glue to compact small files and convert to **Snappy Parquet** (target size: 256 MB).\n2. Applied **Partition Projection** on `year`, `month`, and `country_code`.\n3. Replaced Tableau Custom SQL with a clean Athena catalog view.\n4. Enabled **Query Result Reuse** with a 30-minute cache window.\n\n### Benchmark Results:\n\n| Metric | Before Optimization (Raw CSV) | After Optimization (Partitioned Parquet) | Improvement |\n| :--- | :--- | :--- | :--- |\n| **Data Scanned per Query** | 120.5 GB | **1.2 GB** | **99.0% reduction** |\n| **Average Query Latency** | 32.4 seconds | **1.3 seconds** (cached: **0.2s**) | **96.0% faster** |\n| **Cost per 1,000 Queries** | $602.50 | **$6.00** | **99.0% cost savings** |\n| **S3 GET Request Overhead** | 184,200 API calls | **12 API calls** | **99.9% reduction** |\n| **Tableau Dashboard Load Time** | 36.8 seconds | **1.8 seconds** | **Sub-2-second target achieved** |\n\n---\n\n## 8. Key Takeaways & Pre-Production Checklist\n\n* \ud83d\ude80 **Partition and Project**: Combine directory partitioning with Partition Projection to eliminate Glue API lookups and prune 95%+ of S3 data.\n* \ud83d\udce6 **Always Use Parquet or ORC**: Store data in columnar format with Snappy or ZSTD compression to benefit from column pruning and row-group skipping.\n* \u26a1 **Compact Fragmented Files**: Target file sizes between 128 MB and 512 MB to maximize S3 throughput and reduce API request overhead.\n* \ud83c\udfaf **Write SARGable Predicates**: Avoid wrapping date and ID columns in functions; keep comparisons clean to leverage file metadata.\n* \ud83d\udee1\ufe0f **Enforce Workgroup Guardrails**: Configure per-query scan limits and CloudWatch alarms to prevent accidental cloud spend.\n* \ud83d\udd04 **Leverage Query Result Caching**: Enable Athena result reuse to deliver sub-second responses for repeat dashboard views.\n\n---\n\n## Back to Insights\n\n[Return to Insights](#/insights)\n",
+  "sql-performance": "---\ntitle: \"SQL Performance Tuning & Execution Plan Mastery: Architecting Sub-Second Database Queries\"\nslug: \"sql-performance\"\nsummary: \"A senior developer guide to tuning complex SQL queries, analyzing execution plans, building advanced indexing strategies, and eliminating database concurrency bottlenecks in PostgreSQL and Oracle.\"\nstatus: \"Published\"\ncategory: \"SQL\"\ndifficulty: \"Advanced\"\nreadingTime: \"18 min\"\ntags: ['SQL', 'PostgreSQL', 'Oracle', 'Performance Tuning', 'Execution Plans', 'Indexing', 'Query Optimization', 'Stored Procedures']\nfeatured: true\npublishedDate: \"2026-07-26\"\nlastUpdated: \"2026-07-26\"\nseoDescription: \"Master SQL performance optimization: read EXPLAIN ANALYZE execution plans, design composite covering indexes, refactor non-SARGable queries, and optimize locks.\"\n---\n\n# SQL Performance Tuning & Execution Plan Mastery: Architecting Sub-Second Database Queries\n\n**Difficulty:** Advanced | **Read Time:** 18 min | **Status:** Published | **Category:** SQL / Database Architecture\n\n---\n\n## Overview\n\nIn enterprise data platforms and high-throughput transactional applications, slow database queries are the primary root cause of server resource saturation, connection pool exhaustion, and sluggish user interfaces.\n\nWhen a query takes 15 seconds to execute against a 50-million-row financial ledger table, developers often react by throwing more hardware at the problem: adding CPU cores, increasing RAM, or scaling read replicas. However, hardware scaling is an expensive bandage for architectural inefficiencies. A query that performs an unindexed full table scan or forces a disk-spilling nested loop join will eventually overwhelm any server hardware as data volumes grow.\n\nSQL optimization is not guesswork. Relational database engines (such as **PostgreSQL**, **Oracle**, **MySQL**, and **SQL Server**) operate on deterministic mathematical rules dictated by their **Cost-Based Optimizer (CBO)**.\n\nBy understanding how the query engine parses SQL, estimates cardinalities, reads buffer caches, and navigates index structures, you can refactor queries to execute **thousands of times faster** while reducing physical disk I/O to near zero.\n\nThis handbook provides an advanced, practical guide to reading execution plans, building specialized index architectures, refactoring query anti-patterns, and managing database concurrency in mission-critical environments.\n\n---\n\n## Architecture Overview: The Relational Query Engine Lifecycle\n\nBefore writing a single `CREATE INDEX` statement, it is essential to understand the journey a SQL statement takes inside the database engine.\n\n```mermaid\nflowchart TD\n    subgraph ClientLayer[\"1. Application & BI Client\"]\n        SQL[\"\ud83d\udcdd SQL Statement<br/><b>SELECT / JOIN / GROUP BY</b>\"]\n    end\n\n    subgraph ParserLayer[\"2. Parsing & Transformation\"]\n        Parser[\"\ud83d\udd0d SQL Parser<br/><i>Syntax & Semantic Validation</i>\"]\n        Rewriter[\"\u2699\ufe0f Query Rewriter<br/><i>View Expansion & Rule Application</i>\"]\n    end\n\n    subgraph OptimizerLayer[\"3. Cost-Based Optimizer (CBO)\"]\n        Stats[\"\ud83d\udcda System Catalog & Statistics<br/><b>pg_statistic / ALL_TAB_STATISTICS</b><br/><i>(Histograms, Distinct Values, Correlation)</i>\"]\n        Planner[\"\ud83e\udde0 Execution Planner<br/><i>Cost Estimation (CPU + Disk I/O)</i>\"]\n        PlanTree[\"\ud83c\udf33 Selected Execution Plan<br/><i>(Optimal Path / Cheapest Cost)</i>\"]\n    end\n\n    subgraph ExecutionLayer[\"4. Query Execution Engine\"]\n        Executor[\"\u26a1 Plan Executor<br/><i>Iterates Plan Nodes (Volcano Iterator Model)</i>\"]\n        SharedBuffers[\"\ud83d\udcbe Shared Buffer Pool / Cache<br/><b>(RAM Buffer Hits)</b>\"]\n        DiskIO[\"\ud83d\udcbd Physical Disk Storage<br/><b>(Disk Reads / Buffer Misses)</b>\"]\n    end\n\n    SQL --> Parser\n    Parser --> Rewriter\n    Rewriter --> Planner\n    Stats <--> Planner\n    Planner --> PlanTree\n    PlanTree --> Executor\n    Executor <--> SharedBuffers\n    SharedBuffers <-->|Buffer Miss| DiskIO\n    Executor -->|Tuples Returned| SQL\n\n    style OptimizerLayer fill:#0f172a,stroke:#3b82f6,color:#f8fafc\n    style ExecutionLayer fill:#1e293b,stroke:#10b981,color:#f8fafc\n    style ParserLayer fill:#1e293b,stroke:#475569,color:#f8fafc\n    style ClientLayer fill:#1e293b,stroke:#475569,color:#f8fafc\n```\n\n### The 4 Stages of Query Execution:\n\n1. **Parser**: Translates raw SQL text into an abstract syntax tree (AST), checking grammar and verifying that referenced tables and columns exist.\n2. **Rewriter**: Applies database rewrite rules, expands database views into their underlying subqueries, and simplifies constant expressions.\n3. **Cost-Based Optimizer (CBO)**: The brain of the database. It evaluates multiple execution paths (join algorithms, index options, scan types), computes estimated costs based on table statistics and histograms, and chooses the lowest-cost plan.\n4. **Executor**: Executes the chosen plan tree node-by-node. It requests data blocks from the database **Shared Buffer Cache** in memory; only if a block is missing from memory does it trigger a physical disk read.\n\n---\n\n## 1. Mastering Execution Plans: PostgreSQL & Oracle\n\nOptimizing SQL without inspecting the execution plan is like debugging code without a stack trace. The execution plan reveals exactly how the database intends to access your data.\n\n### PostgreSQL: EXPLAIN (ANALYZE, BUFFERS, VERBOSE)\n\nIn PostgreSQL, running `EXPLAIN` shows only the planner's estimates. Adding `(ANALYZE, BUFFERS)` forces the query to execute, providing real runtime metrics:\n\n```sql\nEXPLAIN (ANALYZE, BUFFERS, VERBOSE, SETTINGS)\nSELECT \n    t.transaction_id,\n    t.account_id,\n    t.amount,\n    a.account_name,\n    a.branch_code\nFROM financial_ledger.transactions t\nJOIN financial_ledger.accounts a ON t.account_id = a.account_id\nWHERE t.transaction_status = 'SETTLED'\n  AND t.created_at >= '2026-01-01 00:00:00'\nORDER BY t.created_at DESC\nLIMIT 50;\n```\n\n### Deconstructing the Output Metrics:\n\n* **Cost `(cost=0.42..18.50)`**:\n  * The first number (`0.42`) is the **Startup Cost** (time to return the first row, e.g., index traversal or sort initialization).\n  * The second number (`18.50`) is the **Total Cost** (estimated resource units to return all rows).\n* **Rows `(rows=50 width=64)` vs `actual rows=50`**:\n  * If the planner's estimated row count is drastically different from the actual rows (e.g., estimated 10 rows, actual 500,000 rows), table statistics are stale. Run `ANALYZE table_name;` to refresh column histograms.\n* **Buffers `(Buffers: shared hit=42 read=0 written=0)`**:\n  * `shared hit`: Data blocks found directly in RAM cache (microseconds).\n  * `shared read`: Data blocks read from physical disk storage (milliseconds). Your goal in optimization is maximizing `hit` and driving `read` to zero.\n\n### Oracle: DBMS_XPLAN.DISPLAY_CURSOR\n\nIn Oracle databases, retrieve the exact runtime execution plan from cache using `DBMS_XPLAN`:\n\n```sql\n-- Execute with GATHER_PLAN_STATISTICS hint\nSELECT /*+ GATHER_PLAN_STATISTICS */ \n    t.transaction_id, t.amount, a.account_name\nFROM transactions t\nJOIN accounts a ON t.account_id = a.account_id\nWHERE t.transaction_status = 'SETTLED'\n  AND t.created_at >= TO_DATE('2026-01-01', 'YYYY-MM-DD');\n\n-- Display execution statistics for the last run query\nSELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR(format => 'ALLSTATS LAST'));\n```\n\n* **CR (Consistent Reads)**: Number of logical memory block buffers retrieved.\n* **PR (Physical Reads)**: Number of physical disk block reads.\n* **Starts**: Number of times the operation node was executed (critical for detecting nested loop multiplication).\n\n---\n\n## 2. Scan Node Types Demystified\n\nUnderstanding the hierarchy of data access nodes is fundamental to performance tuning:\n\n| Access Method | Description | Cost / Speed | Optimal Use Case |\n| :--- | :--- | :--- | :--- |\n| **Index Only Scan** | Reads all requested columns directly from the index tree without visiting the table heap. | \u26a1 **Fastest** (Zero table I/O) | High-concurrency queries with covering indexes (`INCLUDE`). |\n| **Index Scan** | Traverses index B-Tree to find matching row pointers (TIDs/ROWIDs), then fetches individual table pages. | \u26a1 **Very Fast** | High-selectivity filters retrieving < 5% of table rows. |\n| **Bitmap Index Scan** | Scans index, builds a memory bitmap of matching page locations, then reads table blocks in physical disk order. | \u23f1\ufe0f **Fast / Moderate** | Medium-selectivity queries or combining multiple `OR` / `AND` conditions. |\n| **Sequential Scan / Full Table Scan** | Reads every page and row from start to finish. | \ud83d\udc22 **Slow** on large tables | Tables < 1,000 rows or analytical queries reading > 20% of data. |\n\n---\n\n## 3. Advanced Indexing Strategies Beyond Basic B-Trees\n\nA single, improperly designed index can consume gigabytes of storage while going completely unused by the query planner.\n\n### 1. The Composite Index Leading Column Rule\n\nA composite index on `(status, created_at, account_id)` is sorted primarily by `status`, then sub-sorted by `created_at`, then `account_id`.\n\n```mermaid\nflowchart TD\n    subgraph CompositeIndex[\"Composite B-Tree: (status, created_at, account_id)\"]\n        direction TB\n        N1[\"status = 'PENDING'<br/><i>Sorted by created_at</i>\"]\n        N2[\"status = 'SETTLED'<br/><i>Sorted by created_at</i>\"]\n        N3[\"status = 'VOID'<br/><i>Sorted by created_at</i>\"]\n    end\n\n    subgraph QueryMatch[\"Query Evaluation\"]\n        Q1[\"WHERE status = 'SETTLED' AND created_at >= '2026-01-01'<br/><b>\u2705 Uses Index Efficiently (Prefix Match)</b>\"]\n        Q2[\"WHERE created_at >= '2026-01-01'<br/><b>\u274c CANNOT Use Index Directly (Leading Column Missing)</b>\"]\n    end\n\n    CompositeIndex -.-> QueryMatch\n    style CompositeIndex fill:#0f172a,stroke:#3b82f6,color:#f8fafc\n    style QueryMatch fill:#1e293b,stroke:#475569,color:#f8fafc\n```\n\n> [!IMPORTANT]\n> **The Leftmost Prefix Rule:**\n> If your query filters on `created_at` without filtering on the leading column (`status`), the database cannot perform a direct B-Tree root search and may revert to a full table scan. Order your composite index columns from highest equality filtering to range filtering.\n\n### 2. Covering Indexes with the INCLUDE Clause\n\nWhen a query selects columns not present in the index, the engine must perform a **Heap Fetch** (table lookup) for every matching index entry. On wide tables, heap lookups cause heavy random disk I/O.\n\nUsing the `INCLUDE` clause adds payload columns to the leaf pages of the index without adding them to the search key:\n\n```sql\n-- Creates a covering index for high-frequency financial lookups\nCREATE INDEX idx_transactions_acct_settled\nON financial_ledger.transactions (account_id, transaction_status)\nINCLUDE (amount, currency, transaction_timestamp);\n```\n\n```sql\n-- This query executes as a pure Index-Only Scan with ZERO table heap lookups:\nSELECT amount, currency, transaction_timestamp\nFROM financial_ledger.transactions\nWHERE account_id = 'ACC-98421'\n  AND transaction_status = 'SETTLED';\n```\n\n### 3. Partial (Filtered) Indexes: Slashing Index Size by 98%\n\nIn transaction tables, 95% of rows are typically in a terminal state (`COMPLETED`, `ARCHIVED`), while queries frequently search for active or failing records (`PENDING`, `RETRY_FAILED`).\n\nCreating a partial index indexes only the relevant subset of rows:\n\n```sql\n-- Indexes ONLY active processing rows (e.g. 50,000 rows out of 20,000,000 total rows)\nCREATE INDEX idx_transactions_pending_queue\nON financial_ledger.transactions (retry_count, scheduled_at)\nWHERE transaction_status IN ('PENDING', 'RETRY_QUEUED');\n```\n\n**Benefits:**\n* Index size shrinks from 1.5 GB to 4 MB.\n* Insert/Update operations on `COMPLETED` records experience **zero index maintenance overhead**.\n* Cache locality is dramatically improved because the entire partial index fits in L3 CPU / RAM cache.\n\n### 4. Expression (Functional) Indexes\n\nIf your query filters or sorts by an expression, a standard column index cannot be used.\n\n```sql\n-- ANTI-PATTERN: Breaks index on email column\nSELECT user_id FROM users WHERE LOWER(email) = 'ankur@example.com';\n\n-- SOLUTION: Functional index matching the expression exactly\nCREATE INDEX idx_users_lower_email ON users (LOWER(email));\n```\n\n---\n\n## 4. Common SQL Anti-Patterns & How to Refactor Them\n\n### Anti-Pattern 1: Non-SARGable Date & String Predicates\n\nA **SARGable** (Search Argument Able) predicate allows the query optimizer to use B-Tree range lookups directly. Wrapping a column inside a function makes the expression non-SARGable.\n\n```sql\n-- \u274c SLOW: Non-SARGable (Forces full table scan across 10 million rows)\nSELECT SUM(amount) \nFROM sales_records \nWHERE DATE_TRUNC('month', order_date) = '2026-08-01';\n\n-- \u2705 FAST: SARGable Range Predicate (Enables Index Scan on order_date)\nSELECT SUM(amount) \nFROM sales_records \nWHERE order_date >= '2026-08-01 00:00:00' \n  AND order_date < '2026-09-01 00:00:00';\n```\n\n### Anti-Pattern 2: Implicit Type Casting\n\nWhen the data type of a comparison value does not match the column definition, the engine implicitly casts the table column to the target type, neutralizing the index:\n\n```sql\n-- Column definition: customer_code VARCHAR(20)\n\n-- \u274c SLOW: Number literal forces CAST(customer_code AS NUMERIC), causing Seq Scan\nSELECT customer_name FROM customers WHERE customer_code = 90210;\n\n-- \u2705 FAST: String literal matches data type, triggering immediate Index Scan\nSELECT customer_name FROM customers WHERE customer_code = '90210';\n```\n\n### Anti-Pattern 3: NOT IN vs. NOT EXISTS with Nullable Columns\n\nIf a subquery evaluated by `NOT IN` returns even a single `NULL` value, SQL three-valued logic causes the entire expression to evaluate to `NULL`, returning zero rows and forcing an unoptimized nested loop subplan.\n\n```sql\n-- \u274c SLOW & RISKY: Fails if department_id contains NULLs\nSELECT employee_name \nFROM employees \nWHERE department_id NOT IN (SELECT department_id FROM archived_departments);\n\n-- \u2705 FAST & SAFE: Uses Anti-Join (Hash Anti-Join or Merge Anti-Join)\nSELECT e.employee_name \nFROM employees e\nWHERE NOT EXISTS (\n    SELECT 1 \n    FROM archived_departments d \n    WHERE d.department_id = e.department_id\n);\n```\n\n---\n\n## 5. CTEs, Stored Procedures & Materialized Views\n\n### CTE Optimization Fences (PostgreSQL 12+)\n\nIn older database versions, Common Table Expressions (`WITH cte AS (...)`) acted as rigid optimization fences. The database evaluated the CTE in isolation, materialized the intermediate result to memory/disk, and prevented the optimizer from pushing outer `WHERE` filters into the CTE.\n\nIn modern PostgreSQL, CTEs are inlined by default. However, you can explicitly control this behavior:\n\n```sql\n-- Explicitly allow the query planner to inline and push predicates down:\nWITH active_orders AS NOT MATERIALIZED (\n    SELECT order_id, customer_id, total_amount, order_date\n    FROM orders\n    WHERE is_deleted = false\n)\nSELECT * FROM active_orders WHERE customer_id = 'CUST-1002';\n\n-- Explicitly materialize when caching an expensive computation used multiple times:\nWITH calculated_currency_rates AS MATERIALIZED (\n    SELECT currency_code, calculate_complex_fx_rate(currency_code) AS rate\n    FROM currency_lookup\n)\nSELECT o.order_id, o.amount * r.rate\nFROM orders o\nJOIN calculated_currency_rates r ON o.currency = r.currency_code;\n```\n\n### Stored Procedures vs. Set-Based Vectorization\n\nA common mistake when transitioning from procedural programming to SQL is writing cursor loops inside stored procedures (RBAR: **Row By Agonizing Row**).\n\n```sql\n-- \u274c SLOW PROCEDURAL PATTERN: Iterates 500,000 times with individual UPDATEs\nFOR rec IN (SELECT account_id, balance FROM accounts WHERE is_active = true) LOOP\n    UPDATE accounts SET interest = rec.balance * 0.04 WHERE account_id = rec.account_id;\nEND LOOP;\n\n-- \u2705 FAST SET-BASED PATTERN: Single vectorized database transaction (100x faster)\nUPDATE accounts \nSET interest = balance * 0.04 \nWHERE is_active = true;\n```\n\n---\n\n## 6. Concurrency, Database Locks & High-Throughput Queues\n\nIn high-concurrency systems, slow queries frequently hold locks on shared rows, causing cascading connection timeouts across the application tier.\n\n### High-Throughput Worker Queues: SELECT FOR UPDATE SKIP LOCKED\n\nWhen multiple background worker services poll a transactional task queue table, standard `SELECT FOR UPDATE` causes workers to block each other waiting on row locks.\n\nUsing `SKIP LOCKED` allows each worker to instantly acquire the next available unlocked record without waiting:\n\n```sql\n-- Worker execution loop: Atomically grabs 10 pending tasks without contention\nWITH claimed_tasks AS (\n    SELECT task_id\n    FROM system_orchestration.job_queue\n    WHERE task_status = 'QUEUED'\n      AND scheduled_at <= NOW()\n    ORDER BY priority DESC, scheduled_at ASC\n    LIMIT 10\n    FOR UPDATE SKIP LOCKED\n)\nUPDATE system_orchestration.job_queue q\nSET task_status = 'IN_PROGRESS',\n    locked_by_worker = 'worker-node-04',\n    started_at = NOW()\nFROM claimed_tasks c\nWHERE q.task_id = c.task_id\nRETURNING q.task_id, q.payload;\n```\n\n> [!TIP]\n> **Preventing Deadlocks in Multi-Row Operations:**\n> When updating or locking multiple rows in a transaction, always sort the target IDs in a deterministic order (e.g., `ORDER BY account_id ASC`) before issuing `SELECT FOR UPDATE`. This ensures concurrent transactions request locks in identical sequence, eliminating deadlocks.\n\n---\n\n## 7. Real-World Case Study: Refactoring a Financial Reconciliation Query\n\n### The Problem:\nAn overnight reconciliation query comparing 12 million ledger entries against bank settlement statements was taking **42.8 seconds** per batch run, holding shared read locks and delaying morning reporting pipelines.\n\n### Original Unoptimized Query:\n\n```sql\n-- ORIGINAL SLOW QUERY (42.8 seconds, 184,200 shared buffer reads)\nSELECT \n    l.ledger_id,\n    l.account_id,\n    l.amount,\n    l.created_at,\n    (SELECT a.account_number FROM accounts a WHERE a.account_id = l.account_id) AS acct_num,\n    (SELECT b.bank_name FROM banks b WHERE b.bank_id = (SELECT a.bank_id FROM accounts a WHERE a.account_id = l.account_id)) AS bank_name\nFROM general_ledger l\nWHERE SUBSTR(l.reconciliation_code, 1, 4) = 'FINA'\n  AND l.status = 'UNRECONCILED'\n  AND l.created_at >= '2026-07-01'\nORDER BY l.created_at DESC;\n```\n\n### Bottlenecks Identified via EXPLAIN (ANALYZE, BUFFERS):\n1. Correlated scalar subqueries executed twice per matching row, causing millions of repeated lookups.\n2. `SUBSTR(reconciliation_code, 1, 4)` was non-SARGable, forcing a Sequential Scan over 12 million rows.\n3. Heap table lookups required 184,200 shared buffer reads.\n\n### The Refactored Solution:\n\n```sql\n-- 1. Create specialized composite covering index\nCREATE INDEX idx_ledger_recon_perf\nON general_ledger (status, reconciliation_code, created_at)\nINCLUDE (ledger_id, account_id, amount)\nWHERE status = 'UNRECONCILED';\n\n-- 2. Refactored SARGable query with explicit joins\nSELECT \n    l.ledger_id,\n    l.account_id,\n    l.amount,\n    l.created_at,\n    a.account_number AS acct_num,\n    b.bank_name\nFROM general_ledger l\nJOIN accounts a ON l.account_id = a.account_id\nJOIN banks b ON a.bank_id = b.bank_id\nWHERE l.status = 'UNRECONCILED'\n  AND l.reconciliation_code LIKE 'FINA%'\n  AND l.created_at >= '2026-07-01 00:00:00'\nORDER BY l.created_at DESC;\n```\n\n### Benchmark Results:\n\n| Metric | Before Optimization | After Optimization | Improvement |\n| :--- | :--- | :--- | :--- |\n| **Execution Time** | 42.8 seconds | **18 milliseconds (0.018s)** | **99.95% faster** |\n| **Shared Buffer Hits/Reads** | 184,200 blocks (~1.4 GB) | **42 blocks (~336 KB)** | **99.97% I/O reduction** |\n| **Access Node** | Seq Scan + Nested Subplans | **Index Only Scan + Hash Join** | **Optimal Plan Tree** |\n| **CPU Utilization** | 98% (1 core saturated) | < 1% | **Negligible load** |\n\n---\n\n## 8. Key Takeaways & Pre-Production Checklist\n\n* \ud83d\udd0d **Always Run EXPLAIN (ANALYZE, BUFFERS)**: Measure real buffer hits and execution times rather than relying on unverified assumptions.\n* \ud83c\udf32 **Design Indexes Around Selectivity**: Index columns with high cardinality and use composite indexes that follow the leftmost prefix rule.\n* \ud83d\udce6 **Use Covering Indexes (`INCLUDE`)**: Eliminate table heap lookups on high-throughput queries by adding selected payload fields to the index leaf.\n* \ud83c\udfaf **Write SARGable Predicates**: Avoid wrapping filter columns in functions or performing implicit type conversions.\n* \ud83d\udeab **Eliminate Correlated Scalar Subqueries**: Replace repetitive subqueries in the `SELECT` clause with standard `LEFT JOIN` or window functions.\n* \ud83d\udd12 **Prevent Worker Lock Contention**: Use `FOR UPDATE SKIP LOCKED` for task queues and order IDs deterministically to avoid deadlocks.\n\n---\n\n## Back to Insights\n\n[Return to Insights](#/insights)\n"
 };
 
     function showArticlePage(slug) {
@@ -6645,16 +7098,16 @@ EDUCATION
       },
       {
         slug: 'sql-performance',
-        title: 'SQL Performance Optimization',
+        title: 'SQL Performance Tuning & Execution Plan Mastery: Architecting Sub-Second Database Queries',
         category: 'SQL',
         difficulty: 'Advanced',
         readingTime: '18 min',
-        status: 'In Draft',
+        status: 'Published',
         featured: true,
-        tags: ['SQL', 'Databases', 'Optimization'],
-        summary: 'Tuning stored procedures, window functions, indices, and execution plans for large scale Oracle and PostgreSQL transaction tables.',
-        overview: 'A developer handbook on identifying database bottlenecks and refactoring queries. Learn to read execution plans, build indexing strategies, write efficient stored procedures, and configure materialized views.',
-        topics: ['Execution Plan Analysis', 'Indexing Strategies (B-Tree, Bitmap, GIN)', 'Stored Procedures vs CTEs', 'Temporary Tables & Database Views', 'Database Locks and Transaction Isolations']
+        tags: ['SQL', 'PostgreSQL', 'Oracle', 'Performance Tuning', 'Execution Plans', 'Indexing', 'Query Optimization', 'Stored Procedures'],
+        summary: 'A senior developer guide to tuning complex SQL queries, analyzing execution plans, building advanced indexing strategies, and eliminating database concurrency bottlenecks in PostgreSQL and Oracle.',
+        overview: 'Master SQL performance optimization: read EXPLAIN ANALYZE execution plans, design composite covering indexes, refactor non-SARGable queries, manage CTE fences, and prevent lock contention with SKIP LOCKED.',
+        topics: ['Execution Plan Analysis (PostgreSQL EXPLAIN BUFFERS & Oracle DBMS_XPLAN)', 'Advanced Indexing (B-Tree, Composite Leading Columns, Covering INCLUDE)', 'Partial & Filtered Indexes, Functional/Expression Indexes, GIN/GiST', 'Refactoring Non-SARGable Predicates, Implicit Casts & Subqueries', 'CTE Optimization Fences, Materialized Views & High-Throughput Concurrency Locks']
       },
       {
         slug: 'enterprise-rls',
@@ -6671,16 +7124,16 @@ EDUCATION
       },
       {
         slug: 'athena-optimization',
-        title: 'Athena Query Optimization',
+        title: 'Amazon Athena Query Optimization: Sub-Second Serverless Analytics at Petabyte Scale',
         category: 'SQL',
         difficulty: 'Advanced',
-        readingTime: '12 min',
-        status: 'In Draft',
+        readingTime: '14 min',
+        status: 'Published',
         featured: true,
-        tags: ['AWS Athena', 'SQL', 'Cloud BI'],
-        summary: 'Optimize serverless queries over AWS S3 data lakes using partition pruning, columnar Parquet formats, and cost-reduction techniques.',
-        overview: 'This article demonstrates how to optimize Amazon Athena queries to achieve sub-second dashboard rendering times. It explains the mechanics of partition pruning, file merging, and query caching to save up to 90% in query costs.',
-        topics: ['Athena Serverless Mechanics', 'S3 Partitioning Strategies', 'Columnar File Formats (Parquet/ORC)', 'Query Tuning & Execution Plans', 'Cost Management and Scan Limits']
+        tags: ['AWS Athena', 'SQL', 'Cloud BI', 'Presto', 'Performance Tuning', 'S3 Partitioning', 'Parquet', 'Tableau'],
+        summary: 'Optimize serverless queries over AWS S3 data lakes using partition projection, columnar Parquet formats, compaction pipelines, and cost-reduction techniques.',
+        overview: 'A developer guide to optimizing Amazon Athena queries: partition projection, Parquet compression, small file compaction, execution plan tuning, and cost reduction.',
+        topics: ['Serverless Query Mechanics & Distributed Trino Architecture', 'S3 Partitioning & Partition Projection Rules', 'Columnar Storage Formats (Apache Parquet with Snappy/ZSTD)', 'Solving the Small Files Problem via S3 CTAS Compaction', 'Query Plan Tuning, EXPLAIN ANALYZE, Predicate Pushdown & Cost Controls']
       },
       {
         slug: 'ai-in-tableau',
@@ -8549,7 +9002,7 @@ EDUCATION
   </script>
 
   <!-- JSON-LD Structured Data for SEO -->
-  <script type="application/ld-json">
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
