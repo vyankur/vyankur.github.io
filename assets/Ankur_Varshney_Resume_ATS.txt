@@ -1,0 +1,93 @@
+ANKUR VARSHNEY
+Senior Tableau BI Developer | Data Analytics | AI-Powered BI Solutions
+Phone: +91 8452893918 | Email: vyankur@gmail.com
+Tableau Public: public.tableau.com/app/profile/vyankur
+GitHub: github.com/vyankur | LinkedIn: linkedin.com/in/vyankur
+
+================================================================================
+PROFESSIONAL SUMMARY
+================================================================================
+* 11+ years of experience delivering BI and analytics solutions across Insurance, Banking, Retail, Power, Aviation, and Financial Services.
+* Tableau specialist with expertise in dashboard design, semantic modeling, performance tuning, and enterprise reporting.
+* Known for owning end-to-end analytics initiatives and partnering with business teams to turn data into decisions.
+* Hands-on exposure to AI-enabled BI, cloud data platforms, and modern analytics workflows.
+
+================================================================================
+PROFESSIONAL EXPERIENCE
+================================================================================
+
+Senior BI Developer / Data Analyst
+Sun Life Financial, Gurugram
+Apr 2023 - Present
+Domain: Insurance | HNW, Attrition, Adoption and Product Performance Analytics
+Environment: Tableau Desktop/Server/Cloud, Tableau Prep, Amazon Athena, AWS S3, PostgreSQL, Amazon SageMaker, Python, LangChain, OpenAI API, BMAD Framework, GitHub Copilot
+
+* Administration: Managed Tableau Server and Cloud scheduling, permissions, deployment automation, and release processes across Dev, UAT, and Production.
+* Performance: Optimized dashboard performance using Tableau Performance Recording, query tuning, and a balanced live/extract strategy.
+* AI: Built Tableau dashboard extensions with LangChain and OpenAI for conversational analytics and AI-assisted decision support.
+* Platform: Developed an enterprise-wide insurance analytics platform spanning HNW, attrition, adoption, and product performance use cases. Designed a custom platform adoption dashboard suite used by VPs, Product Owners (POs), Change Managers, and BU Heads to track performance and engagement, driving a 30% increase in platform adoption across business units.
+* Customer Experience: Designed and developed a series of dashboards integrating client feedback from Qualtrics, Salesforce, and social media channels at various levels of the customer journey, contributing to a 20% increase in the customer satisfaction index.
+* Impact: Delivered advanced financial reporting with entitlement-based RLS, complex calculations, and dynamic null handling for executive reporting accuracy.
+
+Tableau & Data Viz Lead / Developer
+HCL Technologies, Pune
+May 2021 - Apr 2023
+Domain: Banking and Financial Services | Financial Planning, Budgeting & ESG Compliance
+Environment: Tableau Desktop, Tableau Prep Builder, SAP HANA, Databricks, PySpark, SQL, Python
+
+* Planning: Led a team of 2 developers to design and develop a 5-year financial planning and budgeting dashboard suite for Deutsche Bank, covering inter- and intra-department spend analysis across programs, delivered exclusively for senior leadership and CXO-level decision-makers.
+* ESG: Built compliance dashboards to track sustainability metrics, governance scores, and disclosure requirements across the bank's investment portfolio.
+* Integration: Connected Tableau live to SAP HANA for high-frequency query execution and leveraged Databricks/PySpark for ETL and data preparation workflows.
+* Governance: Applied row-level security to restrict data access by department and user roles, partnering with finance teams to translate requirements into scalable reporting solutions.
+
+IT Analyst (Senior BI Developer)
+Tata Consultancy Services, Mumbai, Abu Dhabi & Dubai
+Oct 2015 - Apr 2021
+Domains: Banking, Aviation, Retail, Supply Chain, Manufacturing
+Leadership & Delivery Scope: Led a team of 5 BI developers in delivering end-to-end data visualization and database solutions across Banking, Aviation, Retail, Manufacturing, and Supply Chain projects.
+
+HR Analytics & Risk Reporting - First Abu Dhabi Bank (TCS)
+Environment: Tableau Desktop, Oracle, SQL, PL/SQL, SQL Developer, Excel
+* Interactive Dashboards: Created interactive HR dashboards with multi-source data blending, URL actions, parameters, custom shapes, and cross-dashboard navigation using action filters.
+* RLS & LOD Calculations: Implemented entitlement-based RLS logic using dynamic entitlement tables via SQL joins, and built FIXED/INCLUDE LOD calculations to compute headcount averages while handling null values in aggregation.
+* Database & Query Preparation: Developed and maintained SQL queries, stored procedures, custom functions, and database views in Oracle to prepare and load reporting tables.
+
+Data Governance: Master Data Management - TCS / GE Power
+Environment: Tableau Desktop/Prep, Oracle SQL, Greenplum (GPDB), Aurora DB
+* Defect Visualization: Built interactive dashboards for defect tracking during legacy-to-AWS cloud migration, reducing manual reporting effort by 95%, processing time by 90%, and achieving USD 50K cost savings.
+* Data Quality Automation: Designed database views, indexing structures, and validation statements in GPDB/Aurora DB, utilizing Tableau Prep to automate quality checks.
+
+CAS Compliance Assessment Dashboards - TCS / GE Power
+Environment: Tableau Desktop/Prep, Oracle SQL, Python, Excel
+* Compliance Reporting: Built real-time compliance monitoring dashboards for production events, configured automated refreshes and subscription mailers on Tableau Server, and coordinated with Data Ops for production deployments.
+* Data Deduplication: Developed a Python fuzzy-matching deduplication script with scheduled execution to feed clean data tables directly to Tableau.
+
+Supply Chain: Lead Time Dashboards - TCS / GE Power
+Environment: Tableau Desktop, Talend, Oracle SQL
+* Supply Chain Tracking & Performance: Designed interactive lead time dashboards with item-level drill-down across delivery stages, predictive completion tracking, and severity-based alerts for delayed shipments, enabling proactive supply chain decisions. Tuned performance via Tableau Performance Recording and SQL refactoring, reducing load times by 35%.
+
+================================================================================
+TOOLS & TECHNOLOGIES
+================================================================================
+* BI & Visualization: Tableau Desktop, Tableau Prep Builder, Power BI, TabPy, Tableau APIs (REST, Metadata)
+* Databases & SQL: Oracle SQL, PL/SQL (Stored Procedures, Custom Functions), PostgreSQL, Aurora DB, SAP HANA, Greenplum (GPDB); IDEs: SQL Developer, DBeaver, pgAdmin
+* Cloud & Data Platforms: AWS S3, Amazon Athena, Amazon SageMaker, AWS Glue, Amazon Bedrock
+* AI & Modern Dev: GitHub Copilot, LLMs (Claude, GPT), RAG (Knowledge Bases), BMAD Framework, Python
+* Data Engineering & ETL: Databricks, PySpark, AWS Glue, Talend Data Integration, Tableau Prep Automation
+* Version Control & Agile: Git/GitHub, Rally Agile
+* Domain Experience: Insurance (Life & Health), Investment Banking, Retail, Power, Aviation, Financial Services, Supply Chain, Manufacturing
+
+================================================================================
+ACHIEVEMENTS & CERTIFICATIONS
+================================================================================
+* 2025 AWS Cloud Quest Winner for hands-on problem solving using AWS Skill Builder Labs
+* Sun Life: Quarterly Award for dashboard innovation and reporting automation
+* TCS: On the Spot Award, Special Achievement Award for Agile Initiative, and Best Performer of the Month Award
+* Certified Tableau Specialist and Tableau Data Scientist (Accredited Credentials)
+
+================================================================================
+EDUCATION
+================================================================================
+* BTech. (Electronics & Communications)
+  Krishna Institute of Engineering and Technology, Ghaziabad
+  UPTU, Noida | 2015

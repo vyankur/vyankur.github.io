@@ -17,7 +17,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   
   <!-- CSS Stylesheet -->
@@ -197,65 +197,41 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.45rem 0.8rem;
-      background: var(--card-bg);
+      padding: 0.4rem 0.8rem;
+      background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.78rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
       color: var(--muted);
       cursor: pointer;
-      transition: all 0.3s ease;
-      white-space: nowrap;
+      transition: border-color 0.3s;
     }
 
     .search-trigger:hover {
       border-color: var(--primary);
-      color: var(--text);
-    }
-
-    .search-icon {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
-    }
-
-    .cmd-item-shortcut {
-      font-size: 0.65rem;
-      font-family: inherit;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 0.15rem 0.35rem;
-      border-radius: 4px;
-      color: var(--muted);
-      margin-left: 0.25rem;
     }
 
     /* Theme Switcher */
     .theme-toggle {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+      background: none;
+      border: 0;
       cursor: pointer;
       color: var(--text);
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
+      padding: 0.5rem;
       border-radius: 50%;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      box-shadow: 0 1px 3px var(--shadow);
+      transition: background 0.3s;
     }
 
     .theme-toggle:hover {
       background: var(--border);
-      color: var(--primary);
-      transform: scale(1.05);
     }
 
     .theme-toggle svg {
-      width: 1.2rem;
-      height: 1.2rem;
+      width: 1.25rem;
+      height: 1.25rem;
       fill: currentColor;
     }
 
@@ -442,7 +418,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 250px;
     }
 
     .hero-avatar-circle {
@@ -453,82 +428,37 @@
       border: 6px solid var(--card-bg);
       box-shadow: 0 20px 40px var(--shadow);
       z-index: 2;
-      position: relative;
     }
 
     .hero-avatar-circle img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .hero-avatar-ring {
       position: absolute;
       width: 236px;
       height: 236px;
-      border: 1.5px dashed var(--primary);
+      border: 1px dashed var(--primary);
       border-radius: 50%;
       animation: spin 30s linear infinite;
-      pointer-events: none;
-      z-index: 1;
     }
 
-    .hero-name {
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-      font-weight: 800;
-      font-family: 'Outfit', sans-serif;
-      margin-bottom: 0.35rem;
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
       background: linear-gradient(135deg, var(--text) 30%, var(--primary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
     }
 
-    .hero-role {
-      font-size: clamp(1.15rem, 2.2vw, 1.6rem);
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.65rem;
-      line-height: 1.25;
-    }
-
-    .hero-summary {
-      font-size: clamp(0.92rem, 1.4vw, 1.1rem);
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 0.65rem;
-      line-height: 1.55;
-      max-width: 720px;
-    }
-
-    .hero-details {
-      font-size: clamp(0.84rem, 1.15vw, 0.95rem);
-      font-weight: 400;
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 1.4vw, 1.05rem);
       color: var(--muted);
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      max-width: 720px;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-badge-pill {
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 0.28rem 0.65rem;
-      border-radius: 4px;
-      background: var(--primary-light);
-      color: var(--primary);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      white-space: nowrap;
+      margin-bottom: 1.5rem;
+      line-height: 1.65;
     }
 
     .hero-actions {
@@ -946,8 +876,55 @@
       box-shadow: 0 12px 28px var(--shadow);
     }
 
+    .project-card-visual {
+      height: 160px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-card-visual svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .visual-pill-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 4px;
+      background: var(--card-bg);
+      padding: 3px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      z-index: 2;
+    }
+
+    .visual-pill-btn {
+      font-size: 0.6rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .visual-pill-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
     .project-card-header {
-      padding: 1.2rem 1.5rem;
+      padding: 1rem 1.5rem 0.6rem;
       border-bottom: 1px solid var(--border);
       background: var(--bg);
       display: flex;
@@ -2867,147 +2844,17 @@
     @media(max-width: 1024px) {
       .hero-layout, .skills-layout, .contact-layout {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 3rem;
       }
       .hero-avatar-frame {
         order: -1;
-        margin: 0.5rem auto 1.5rem auto;
-        padding: 1.25rem 0;
-        width: 100%;
-        min-height: auto;
       }
       .stats-grid, .impact-grid, .projects-grid, .gallery-grid, .cert-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 768px) {
-      .shell {
-        padding: 0 1.25rem;
-      }
-      .nav-inner {
-        height: 4rem;
-      }
-      .logo {
-        font-size: 1.3rem;
-        margin-right: 0.5rem;
-      }
-      .nav-right {
-        gap: 0.75rem;
-      }
-      .cmd-item-shortcut {
-        display: none;
-      }
-      .section {
-        padding: 3.5rem 0;
-      }
-      .section-head {
-        margin-bottom: 1.75rem;
-      }
-      .section-title {
-        font-size: clamp(1.65rem, 5.5vw, 2.25rem);
-        line-height: 1.18;
-      }
-      .section-copy {
-        font-size: 0.88rem;
-        line-height: 1.65;
-      }
-      .eyebrow {
-        font-size: 0.68rem;
-        margin-bottom: 0.6rem;
-      }
-      .client-marquee {
-        margin: 1.5rem 0 2.5rem 0;
-      }
-      .marquee-row {
-        gap: 0.75rem;
-      }
-    }
-
     @media(max-width: 640px) {
-      .shell {
-        padding: 0 1rem;
-      }
-      .nav-inner {
-        height: 3.8rem;
-      }
-      .logo {
-        font-size: 1.2rem;
-      }
-      .nav-right {
-        gap: 0.5rem;
-      }
-      .search-label {
-        display: none;
-      }
-      .search-trigger {
-        padding: 0.55rem;
-        width: 38px;
-        height: 38px;
-        justify-content: center;
-        border-radius: 50%;
-      }
-      .search-icon {
-        width: 16px;
-        height: 16px;
-      }
-      .theme-toggle {
-        width: 38px;
-        height: 38px;
-      }
-      .hero {
-        padding-top: 4.8rem;
-        padding-bottom: 2rem;
-      }
-      .hero-layout {
-        gap: 1.5rem;
-      }
-      .hero-avatar-frame {
-        order: -1;
-        margin: 0.25rem auto 1.25rem auto;
-        padding: 1rem 0;
-        width: 100%;
-      }
-      .hero-avatar-circle {
-        width: 160px;
-        height: 160px;
-        border-width: 4px;
-        box-shadow: 0 10px 25px var(--shadow);
-      }
-      .hero-avatar-ring {
-        width: 192px;
-        height: 192px;
-      }
-      .hero-name {
-        font-size: clamp(1.85rem, 7.5vw, 2.4rem);
-        line-height: 1.1;
-      }
-      .hero-role {
-        font-size: clamp(1.02rem, 4vw, 1.25rem);
-        line-height: 1.3;
-      }
-      .hero-summary {
-        font-size: 0.92rem;
-        line-height: 1.55;
-      }
-      .hero-details {
-        font-size: 0.84rem;
-        line-height: 1.6;
-      }
-      .hero-actions {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.6rem;
-        width: 100%;
-      }
-      .hero-actions .btn {
-        width: 100%;
-        padding: 0.7rem 0.75rem;
-        font-size: 0.72rem;
-        letter-spacing: 0.05em;
-        text-align: center;
-        justify-content: center;
-      }
       .stats-grid, .impact-grid, .projects-grid, .gallery-grid, .cert-grid, .timeline-achievements, .ai-portfolio-grid, .project-modal-grid {
         grid-template-columns: 1fr;
       }
@@ -3021,18 +2868,8 @@
         padding: 1.5rem;
       }
       .bot-chat-container {
-        width: calc(100% - 2rem);
-        right: 1rem;
-        bottom: 5.5rem;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .hero-actions {
-        grid-template-columns: 1fr;
-      }
-      .hero-name {
-        font-size: 1.75rem;
+        width: calc(100% - 4rem);
+        right: 2rem;
       }
     }
 
@@ -3350,9 +3187,8 @@
           <li><a href="#resume" class="nav-link">Resume</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
-        <button class="search-trigger" id="searchTriggerBtn" aria-label="Search site (Ctrl+K)">
-          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <span class="search-label">Search...</span>
+        <button class="search-trigger" id="searchTriggerBtn">
+          <span>Search...</span>
           <span class="cmd-item-shortcut">Ctrl+K</span>
         </button>
         <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Theme">
@@ -3371,15 +3207,15 @@
       <div class="shell">
         <div class="hero-layout">
           <div class="hero-content">
-            <h1 class="hero-name">Ankur Varshney</h1>
-            <h2 class="hero-role">Senior BI &amp; Data Analytics Consultant</h2>
-            <p class="hero-summary">Helping organizations unlock measurable business value through Tableau, Cloud Data Platforms and AI-assisted Analytics.</p>
-            <p class="hero-details">11+ years delivering enterprise analytics across insurance, banking, aviation, manufacturing &amp; energy, automating reporting, improving governance, and driving better decisions.</p>
-            <div class="hero-badges">
-              <span class="hero-badge-pill">11+ Years</span>
-              <span class="hero-badge-pill">6 Industries</span>
-              <span class="hero-badge-pill">Enterprise BI</span>
-              <span class="hero-badge-pill">Cloud Analytics</span>
+            <h1 class="hero-name" style="font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; font-family: 'Outfit'; margin-bottom: 0.2rem; background: linear-gradient(135deg, var(--text) 30%, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.08; letter-spacing: -0.02em;">Ankur Varshney</h1>
+            <h2 class="hero-role" style="font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; background: none; -webkit-text-fill-color: initial; line-height: 1.25;">Senior BI &amp; Data Analytics Consultant</h2>
+            <p style="font-size: clamp(0.92rem, 1.4vw, 1.1rem); font-weight: 500; color: var(--text); margin-bottom: 0.6rem; line-height: 1.5; max-width: 720px;">Helping organizations unlock measurable business value through Tableau, Cloud Data Platforms and AI-assisted Analytics.</p>
+            <p class="hero-title" style="font-size: clamp(0.82rem, 1.15vw, 0.95rem); font-weight: 400; color: var(--muted); margin-bottom: 0.85rem; line-height: 1.55; max-width: 720px;">11+ years delivering enterprise analytics across insurance, banking, aviation, manufacturing &amp; energy, automating reporting, improving governance, and driving better decisions.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem;">
+              <span style="font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 4px; background: var(--primary-light); color: var(--primary); letter-spacing: 0.05em; text-transform: uppercase;">11+ Years</span>
+              <span style="font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 4px; background: var(--primary-light); color: var(--primary); letter-spacing: 0.05em; text-transform: uppercase;">6 Industries</span>
+              <span style="font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 4px; background: var(--primary-light); color: var(--primary); letter-spacing: 0.05em; text-transform: uppercase;">Enterprise BI</span>
+              <span style="font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 4px; background: var(--primary-light); color: var(--primary); letter-spacing: 0.05em; text-transform: uppercase;">Cloud Analytics</span>
             </div>
             <div class="hero-actions">
               <a href="./assets/Ankur_Varshney_Resume.pdf" download class="btn primary">
@@ -3670,9 +3506,127 @@
         </div>
 
         <!-- 9 Projects Grid -->
-                <div class="projects-grid">
+        <div class="projects-grid">
+          <!-- Featured Flagship Data Pipeline Project -->
+          <div class="project-card" data-category="tableau sql python ai" data-project-id="prefect-dbt-tableau-mcp">
+            <div class="project-card-visual">
+              <div class="visual-pill-toggle">
+                <span class="visual-pill-btn active">📊 Dashboard</span>
+                <span class="visual-pill-btn">⚡ Data Flow</span>
+              </div>
+              <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="160" fill="var(--card-bg)"/>
+                <!-- Top Orchestration Bar -->
+                <rect x="20" y="14" width="360" height="16" rx="4" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1"/>
+                <text x="200" y="25" font-size="7" fill="var(--primary)" text-anchor="middle" font-weight="bold">Prefect: Pipeline Orchestration (Scheduled Weekly Run)</text>
+                
+                <!-- Source Box -->
+                <rect x="20" y="38" width="85" height="106" rx="5" fill="var(--bg)" stroke="var(--border)"/>
+                <text x="62" y="52" font-size="7" fill="var(--text)" text-anchor="middle" font-weight="bold">Source Data</text>
+                <rect x="28" y="58" width="69" height="20" rx="3" fill="var(--card-bg)" stroke="var(--border)"/>
+                <text x="62" y="71" font-size="6" fill="var(--text)" text-anchor="middle">League Tables</text>
+                <rect x="28" y="83" width="69" height="20" rx="3" fill="var(--card-bg)" stroke="var(--border)"/>
+                <text x="62" y="96" font-size="6" fill="var(--text)" text-anchor="middle">Fixtures &amp; Results</text>
+                <rect x="28" y="108" width="69" height="20" rx="3" fill="var(--card-bg)" stroke="var(--border)"/>
+                <text x="62" y="121" font-size="6" fill="var(--text)" text-anchor="middle">Scorers &amp; Cards</text>
+
+                <!-- Arrow 1 -->
+                <path d="M 108 90 L 132 90" stroke="var(--primary)" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <circle cx="120" cy="90" r="8" fill="var(--primary)"/>
+                <text x="120" y="93" font-size="7" fill="#ffffff" text-anchor="middle" font-weight="bold">Py</text>
+
+                <!-- Warehouse Box (BigQuery + dbt) -->
+                <rect x="140" y="38" width="135" height="106" rx="5" fill="var(--bg)" stroke="var(--border)"/>
+                <text x="207" y="52" font-size="7" fill="var(--text)" text-anchor="middle" font-weight="bold">WAREHOUSE (BigQuery)</text>
+                <rect x="148" y="58" width="119" height="40" rx="4" fill="var(--card-bg)" stroke="var(--primary)" stroke-width="1"/>
+                <text x="207" y="72" font-size="6.5" fill="var(--primary)" text-anchor="middle" font-weight="bold">dbt Transformation Layer</text>
+                <text x="207" y="86" font-size="6" fill="var(--muted)" text-anchor="middle">Raw → Staging → Marts</text>
+                <rect x="148" y="103" width="119" height="34" rx="4" fill="var(--card-bg)" stroke="var(--border)"/>
+                <text x="207" y="116" font-size="6" fill="var(--text)" text-anchor="middle" font-weight="bold">GitHub Actions CI/CD</text>
+                <text x="207" y="127" font-size="5.5" fill="var(--muted)" text-anchor="middle">SQLFluff Lint + dbt Deploy</text>
+
+                <!-- Arrow 2 -->
+                <path d="M 278 90 L 298 90" stroke="var(--accent)" stroke-width="1.5"/>
+
+                <!-- Serve Box (Tableau + Claude MCP) -->
+                <rect x="302" y="38" width="78" height="106" rx="5" fill="var(--bg)" stroke="var(--border)"/>
+                <text x="341" y="52" font-size="7" fill="var(--text)" text-anchor="middle" font-weight="bold">SERVE</text>
+                <rect x="308" y="58" width="66" height="34" rx="4" fill="var(--card-bg)" stroke="var(--primary)" stroke-width="1"/>
+                <text x="341" y="74" font-size="6.5" fill="var(--text)" text-anchor="middle" font-weight="bold">Tableau</text>
+                <text x="341" y="84" font-size="5.5" fill="var(--muted)" text-anchor="middle">Cloud</text>
+                <path d="M 341 93 L 341 100" stroke="var(--accent)" stroke-width="1.5"/>
+                <rect x="308" y="101" width="66" height="36" rx="4" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1"/>
+                <text x="341" y="114" font-size="6" fill="var(--accent)" text-anchor="middle" font-weight="bold">Claude AI</text>
+                <text x="341" y="125" font-size="5" fill="var(--muted)" text-anchor="middle">Tableau MCP</text>
+              </svg>
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-tag">Data Engineering + Semantic AI</span>
+              <span class="project-card-arrow">→</span>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">Prefect &amp; dbt Pipeline with Tableau MCP &amp; Claude AI</h3>
+              <div class="project-card-badges">
+                <span class="project-badge outcome">⚡ 100% Automated Weekly Pipeline + AI Semantic Layer</span>
+              </div>
+              <p class="project-card-desc">End-to-end automated analytics platform built with Python &amp; Prefect orchestration, BigQuery warehouse, dbt data modeling (Raw/Staging/Marts), GitHub Actions CI/CD (SQLFluff), Tableau Cloud, and Anthropic Claude via Tableau MCP.</p>
+              <div class="project-card-techs">
+                <span class="project-card-tech">Prefect</span>
+                <span class="project-card-tech">BigQuery</span>
+                <span class="project-card-tech">dbt</span>
+                <span class="project-card-tech">GitHub Actions</span>
+                <span class="project-card-tech">SQLFluff</span>
+                <span class="project-card-tech">Tableau Cloud</span>
+                <span class="project-card-tech">Tableau MCP</span>
+                <span class="project-card-tech">Claude LLM</span>
+              </div>
+            </div>
+            <div class="project-card-footer">
+              <span>View Case Study</span>
+            </div>
+          </div>
+
           <!-- Project 1 -->
           <div class="project-card" data-category="tableau ai python" data-project-id="ai-bi">
+            <div class="project-card-visual">
+              <div class="visual-pill-toggle">
+                <span class="visual-pill-btn active">📊 Dashboard</span>
+                <span class="visual-pill-btn">⚡ Data Flow</span>
+              </div>
+              <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background grid -->
+                <rect width="400" height="160" fill="var(--card-bg)"/>
+                <!-- Dashboard UI preview -->
+                <rect x="20" y="20" width="360" height="120" rx="6" stroke="var(--border)" stroke-dasharray="3 3" fill="var(--bg)"/>
+                <!-- Top Nav Bar -->
+                <rect x="30" y="30" width="340" height="18" rx="4" fill="var(--primary)" opacity="0.15"/>
+                <circle cx="45" cy="39" r="4" fill="var(--primary)"/>
+                <rect x="55" y="36" width="60" height="6" rx="3" fill="var(--text)" opacity="0.6"/>
+                <!-- Chat AI Pill -->
+                <rect x="260" y="34" width="100" height="10" rx="5" fill="var(--primary)" opacity="0.8"/>
+                <text x="270" y="42" font-size="6" fill="#ffffff" font-weight="bold">✦ Ask Bedrock AI...</text>
+                <!-- KPI Card 1 -->
+                <rect x="30" y="56" width="100" height="38" rx="4" fill="var(--card-bg)" stroke="var(--border)"/>
+                <rect x="40" y="64" width="50" height="5" rx="2" fill="var(--muted)"/>
+                <text x="40" y="84" font-size="12" fill="var(--primary)" font-weight="bold">95.4%</text>
+                <!-- KPI Card 2 -->
+                <rect x="140" y="56" width="100" height="38" rx="4" fill="var(--card-bg)" stroke="var(--border)"/>
+                <rect x="150" y="64" width="50" height="5" rx="2" fill="var(--muted)"/>
+                <text x="150" y="84" font-size="12" fill="var(--accent)" font-weight="bold">&lt; 1.2s</text>
+                <!-- Bar Chart Preview -->
+                <rect x="250" y="56" width="120" height="70" rx="4" fill="var(--card-bg)" stroke="var(--border)"/>
+                <rect x="265" y="100" width="12" height="16" rx="2" fill="var(--primary)" opacity="0.4"/>
+                <rect x="285" y="88" width="12" height="28" rx="2" fill="var(--primary)" opacity="0.7"/>
+                <rect x="305" y="76" width="12" height="40" rx="2" fill="var(--primary)"/>
+                <rect x="325" y="92" width="12" height="24" rx="2" fill="var(--primary)" opacity="0.5"/>
+                <rect x="345" y="80" width="12" height="36" rx="2" fill="var(--primary)" opacity="0.9"/>
+                <!-- Data Flow Pipeline Overlay Strip -->
+                <path d="M 30 112 L 80 112 L 120 112 L 170 112" stroke="var(--primary)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                <circle cx="30" cy="112" r="3" fill="var(--primary)"/>
+                <circle cx="100" cy="112" r="3" fill="var(--accent)"/>
+                <circle cx="170" cy="112" r="3" fill="var(--primary)"/>
+              </svg>
+            </div>
             <div class="project-card-header">
               <span class="project-card-tag">Tableau + AI</span>
               <span class="project-card-arrow">→</span>
@@ -3697,6 +3651,34 @@
 
           <!-- Project 2 -->
           <div class="project-card" data-category="tableau ai security javascript" data-project-id="workbook-sentinel">
+            <div class="project-card-visual">
+              <div class="visual-pill-toggle">
+                <span class="visual-pill-btn active">📊 Dashboard</span>
+                <span class="visual-pill-btn">⚡ Data Flow</span>
+              </div>
+              <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="160" fill="var(--card-bg)"/>
+                <rect x="20" y="20" width="360" height="120" rx="6" stroke="var(--border)" fill="var(--bg)"/>
+                <!-- Security Lineage & XML Audit Visualizer -->
+                <rect x="35" y="35" width="150" height="90" rx="4" fill="var(--card-bg)" stroke="var(--border)"/>
+                <circle cx="70" cy="80" r="22" stroke="var(--primary)" stroke-width="4" stroke-dasharray="100 30"/>
+                <text x="70" y="84" font-size="10" fill="var(--text)" text-anchor="middle" font-weight="bold">100%</text>
+                <text x="135" y="65" font-size="7" fill="var(--text)" font-weight="bold">Zero Leakage</text>
+                <text x="135" y="78" font-size="6" fill="var(--muted)">In-Memory XML</text>
+                <text x="135" y="90" font-size="6" fill="var(--primary)">Calculated Lineage</text>
+                <!-- Lineage Tree Node Connections -->
+                <rect x="210" y="35" width="155" height="90" rx="4" fill="var(--card-bg)" stroke="var(--border)"/>
+                <circle cx="235" cy="55" r="7" fill="var(--primary)" opacity="0.3"/>
+                <circle cx="235" cy="55" r="3" fill="var(--primary)"/>
+                <line x1="242" y1="55" x2="275" y2="70" stroke="var(--primary)" stroke-width="1.5"/>
+                <line x1="242" y1="55" x2="275" y2="40" stroke="var(--primary)" stroke-width="1.5"/>
+                <circle cx="280" cy="40" r="5" fill="var(--accent)"/>
+                <circle cx="280" cy="70" r="5" fill="var(--primary)"/>
+                <line x1="285" y1="70" x2="320" y2="70" stroke="var(--primary)" stroke-width="1.5"/>
+                <circle cx="325" cy="70" r="6" fill="var(--primary)"/>
+                <text x="235" y="110" font-size="6" fill="var(--muted)">Data Source → XML Calc → Sheet View</text>
+              </svg>
+            </div>
             <div class="project-card-header">
               <span class="project-card-tag">Tableau + Security</span>
               <span class="project-card-arrow">→</span>
@@ -3721,6 +3703,29 @@
 
           <!-- Project 3 -->
           <div class="project-card" data-category="tableau" data-project-id="calendar">
+            <div class="project-card-visual">
+              <div class="visual-pill-toggle">
+                <span class="visual-pill-btn active">📊 Dashboard</span>
+                <span class="visual-pill-btn">⚡ Data Flow</span>
+              </div>
+              <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="160" fill="var(--card-bg)"/>
+                <rect x="20" y="20" width="360" height="120" rx="6" stroke="var(--border)" fill="var(--bg)"/>
+                <!-- Circular Heatmap Picker Visual -->
+                <circle cx="110" cy="80" r="36" stroke="var(--border)" stroke-width="6"/>
+                <circle cx="110" cy="80" r="36" stroke="var(--primary)" stroke-width="6" stroke-dasharray="160 60"/>
+                <circle cx="110" cy="80" r="24" stroke="var(--accent)" stroke-width="4" stroke-dasharray="100 40"/>
+                <text x="110" y="83" font-size="9" fill="var(--text)" text-anchor="middle" font-weight="bold">2026</text>
+                <!-- Dashboard Filters & Heatmap Table -->
+                <rect x="175" y="38" width="185" height="84" rx="4" fill="var(--card-bg)" stroke="var(--border)"/>
+                <rect x="190" y="48" width="155" height="14" rx="3" fill="var(--bg)"/>
+                <rect x="190" y="70" width="30" height="20" rx="2" fill="var(--primary)" opacity="0.3"/>
+                <rect x="225" y="70" width="30" height="20" rx="2" fill="var(--primary)" opacity="0.8"/>
+                <rect x="260" y="70" width="30" height="20" rx="2" fill="var(--accent)"/>
+                <rect x="295" y="70" width="30" height="20" rx="2" fill="var(--primary)" opacity="0.5"/>
+                <text x="190" y="106" font-size="6" fill="var(--muted)">Two-Way Extensions Filter Trigger</text>
+              </svg>
+            </div>
             <div class="project-card-header">
               <span class="project-card-tag">Tableau Extensions</span>
               <span class="project-card-arrow">→</span>
@@ -4063,12 +4068,6 @@
         </div>
 
         <div class="timeline-container">
-          <div class="timeline-tabs">
-            <button class="timeline-tab active" data-company="sunlife">Sun Life Financial</button>
-            <button class="timeline-tab" data-company="hcl">HCL Technologies</button>
-            <button class="timeline-tab" data-company="tcs">TCS</button>
-          </div>
-
           <!-- Sun Life Panel -->
           <div class="timeline-panel active" id="panel-sunlife">
             <div class="timeline-header">
@@ -4105,10 +4104,10 @@
             </div>
             <h5 class="timeline-section-title">Key Responsibilities</h5>
             <ul class="timeline-responsibilities">
-              <li>Manage Tableau Cloud permissions, schedule automations, and release pipelines.</li>
               <li>Develop analytical models for Insurance, HNW, Attrition, and Product Performance dashboards.</li>
               <li>Integrate AWS S3 and Athena data lakes to live-connected Tableau views.</li>
               <li>Build Tableau dashboard extensions using LangChain and OpenAI models for Conversational BI.</li>
+              <li>Manage Tableau Cloud permissions, schedule automations, and release pipelines.</li>
             </ul>
             <h5 class="timeline-section-title">Achievements</h5>
             <div class="timeline-achievements">
@@ -4254,7 +4253,7 @@
                 </div>
               </div>
             </div>
-            <p style="font-size: 0.82rem; line-height: 1.55; color: var(--text); opacity: 0.85; margin: 0 0 1.25rem 0; font-style: italic; border-left: 2px solid var(--primary); padding-left: 0.75rem;">Across 6 years and 4 countries, the focus shifted from individual dashboard delivery to leading a team of 5 developers across Banking, Aviation, and Supply Chain.</p>
+            <p style="font-size: 0.82rem; line-height: 1.55; color: var(--text); opacity: 0.85; margin: 0 0 1.25rem 0; font-style: italic; border-left: 2px solid var(--primary); padding-left: 0.75rem;">Across 6 years and multi-geography engagements, the focus shifted from individual dashboard delivery to leading a team of 5 developers across Banking, Aviation, and Supply Chain.</p>
             <div class="timeline-meta-box">
               <div>
                 <span style="font-size: 0.65rem; font-weight: 700; color: var(--primary); text-transform: uppercase; display: block; margin-bottom: 0.25rem;">Key Clients</span>
@@ -5088,7 +5087,11 @@ EDUCATION
             <ul class="contact-meta-list">
               <li class="contact-meta-item">
                 <span class="contact-meta-icon">📍</span>
-                <span>Gurugram, India (Open to Global Relocation Worldwide 🌍)</span>
+                <span>India (Open to Global Relocation Worldwide 🌍)</span>
+              </li>
+              <li class="contact-meta-item">
+                <span class="contact-meta-icon">📞</span>
+                <a href="tel:+918452893918">+91 8452893918</a>
               </li>
               <li class="contact-meta-item">
                 <span class="contact-meta-icon">✉️</span>
@@ -5568,16 +5571,11 @@ EDUCATION
       htmlEl.setAttribute('data-theme', 'dark'); // Default to premium dark mode
     }
 
-    // Timeline Tab & Stepper Node Switching Logic
-    const timelineTabs = document.querySelectorAll('.timeline-tab');
+    // Timeline Stepper Node Switching Logic
     const timelinePanels = document.querySelectorAll('.timeline-panel');
     const expStepNodes = document.querySelectorAll('.exp-step-node');
 
     function selectCompanyTab(company) {
-      timelineTabs.forEach(t => {
-        if (t.getAttribute('data-company') === company) t.classList.add('active');
-        else t.classList.remove('active');
-      });
       timelinePanels.forEach(p => p.classList.remove('active'));
       const targetPanel = document.getElementById(`panel-${company}`);
       if (targetPanel) targetPanel.classList.add('active');
@@ -5587,13 +5585,6 @@ EDUCATION
         else node.classList.remove('active');
       });
     }
-
-    timelineTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const company = tab.getAttribute('data-company');
-        selectCompanyTab(company);
-      });
-    });
 
     expStepNodes.forEach(node => {
       node.addEventListener('click', () => {
@@ -5609,8 +5600,7 @@ EDUCATION
         const expSection = document.getElementById('experience');
         if (expSection) {
           expSection.scrollIntoView({ behavior: 'smooth' });
-          const sunlifeTab = document.querySelector('.timeline-tab[data-company="sunlife"]');
-          if (sunlifeTab) sunlifeTab.click();
+          selectCompanyTab('sunlife');
         }
       } else if (target === 'experience') {
         const expSection = document.getElementById('experience');
@@ -5850,6 +5840,60 @@ EDUCATION
 
     // Detailed Project Case Studies Data (Storyteller Edition)
     const projectCaseStudies = {
+      'prefect-dbt-tableau-mcp': {
+        tag: 'Data Engineering + Semantic AI',
+        title: 'Prefect & dbt Data Pipeline with Tableau MCP & Claude AI',
+        overview: 'An end-to-end automated analytics platform built with Python & Prefect orchestration, Google BigQuery warehouse, dbt data modeling, GitHub Actions CI/CD, Tableau Cloud reporting, and Anthropic Claude LLM connected via Tableau Model Context Protocol (MCP).',
+        challenge: 'League match statistics, fixtures, and player goal scorer/card facts required automated weekly ingestion from sports APIs into Google BigQuery without manual intervention. Furthermore, executive stakeholders needed conversational access to the semantic metrics via AI agents without writing custom SQL.',
+        solution: 'Built a weekly automated Prefect flow that extracts sports facts using Python, loads raw data into Google BigQuery, and triggers dbt transformation models (Raw → Staging → Marts). Integrated GitHub Actions for SQLFluff linting and automated dbt deployment. Connected Tableau Cloud to Anthropic Claude via Tableau MCP to enable conversational semantic layer exploration.',
+        archExplanation: 'Prefect schedules weekly Python extraction scripts. Data is loaded into BigQuery, where dbt executes structured Raw-Staging-Marts transformations. GitHub Actions verifies SQL quality with SQLFluff. Tableau Cloud auto-refreshes metrics weekly, and Tableau MCP interfaces with Claude AI to provide an intelligent conversational semantic layer.',
+        techs: ['Prefect', 'Python', 'Google BigQuery', 'dbt', 'GitHub Actions', 'SQLFluff', 'Tableau Cloud', 'Tableau MCP', 'Claude LLM'],
+        impact: ['100% automated weekly data pipeline execution with zero manual intervention', 'CI/CD code quality enforcement via SQLFluff and automated dbt testing', 'Conversational AI data exploration powered by Anthropic Claude via Tableau MCP'],
+        github: 'https://github.com/vyankur',
+        demo: '#',
+        relatedInsights: ['tableau-performance-tuning', 'enterprise-rls', 'modern-bi'],
+        svg: `<svg width="100%" height="100%" viewBox="0 0 440 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
+            </marker>
+          </defs>
+          <!-- Orchestration Header -->
+          <rect x="10" y="8" width="420" height="18" rx="4" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1"/>
+          <text x="220" y="20" font-size="7" fill="var(--primary)" text-anchor="middle" font-weight="bold">Prefect: Pipeline Orchestration (Scheduled Weekly Run)</text>
+          
+          <!-- Source Data Box -->
+          <rect x="10" y="34" width="80" height="76" rx="5" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="50" y="47" font-size="6.5" fill="var(--text)" text-anchor="middle" font-weight="bold">Source Data</text>
+          <rect x="16" y="52" width="68" height="15" rx="3" fill="var(--bg)"/>
+          <text x="50" y="62" font-size="5.5" fill="var(--muted)" text-anchor="middle">League Tables</text>
+          <rect x="16" y="70" width="68" height="15" rx="3" fill="var(--bg)"/>
+          <text x="50" y="80" font-size="5.5" fill="var(--muted)" text-anchor="middle">Match Fixtures</text>
+          <rect x="16" y="88" width="68" height="15" rx="3" fill="var(--bg)"/>
+          <text x="50" y="98" font-size="5.5" fill="var(--muted)" text-anchor="middle">Scorers &amp; Cards</text>
+          
+          <path d="M90 72 L115 72" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <!-- BigQuery & dbt Warehouse -->
+          <rect x="120" y="34" width="160" height="76" rx="5" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="200" y="47" font-size="6.5" fill="var(--text)" text-anchor="middle" font-weight="bold">BigQuery &amp; dbt</text>
+          <rect x="126" y="52" width="148" height="24" rx="3" fill="var(--bg)"/>
+          <text x="200" y="66" font-size="6" fill="var(--primary)" text-anchor="middle" font-weight="bold">Raw → Staging → Marts</text>
+          <rect x="126" y="80" width="148" height="24" rx="3" fill="var(--bg)"/>
+          <text x="200" y="94" font-size="5.5" fill="var(--muted)" text-anchor="middle">GitHub Actions CI/CD (SQLFluff)</text>
+          
+          <path d="M280 72 L305 72" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          
+          <!-- Serve & Claude MCP Layer -->
+          <rect x="310" y="34" width="120" height="76" rx="5" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="370" y="47" font-size="6.5" fill="var(--text)" text-anchor="middle" font-weight="bold">Serve &amp; AI</text>
+          <rect x="316" y="52" width="108" height="22" rx="3" fill="var(--primary)" opacity="0.2"/>
+          <text x="370" y="66" font-size="6" fill="var(--text)" text-anchor="middle" font-weight="bold">Tableau Cloud</text>
+          <path d="M370 74 L370 82" stroke="var(--primary)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="316" y="83" width="108" height="22" rx="3" fill="var(--accent-light)"/>
+          <text x="370" y="96" font-size="6" fill="var(--accent)" text-anchor="middle" font-weight="bold">Claude + Tableau MCP</text>
+        </svg>`
+      },
       'ai-bi': {
         tag: 'Tableau + AI Extension',
         title: 'Agentic Conversational BI Extension',
@@ -6590,16 +6634,16 @@ EDUCATION
       },
       {
         slug: 'enterprise-rls',
-        title: 'Enterprise Row Level Security',
+        title: 'Row-Level Security in Tableau: Enterprise Data Entitlements Guide',
         category: 'Architecture',
         difficulty: 'Advanced',
         readingTime: '14 min',
-        status: 'In Draft',
+        status: 'Published',
         featured: true,
-        tags: ['Security', 'Governance', 'Tableau'],
-        summary: 'Implement secure dynamic row level security (RLS) configurations using database entitlement joins and Active Directory mapping.',
-        overview: 'Learn how to enforce data entitlements at scale. This article outlines the architecture of dynamic RLS in BI, detailing how to join transaction tables to security mapping tables and apply filters using system usernames.',
-        topics: ['Dynamic USERNAME() calculated filters', 'Entitlements Mapping Tables', 'Database Join Optimization for RLS', 'Active Directory User Sync', 'Performance considerations of RLS joins']
+        tags: ['Tableau', 'Security', 'Governance', 'Architecture', 'Row-Level Security'],
+        summary: 'Master Row-Level Security (RLS) in Tableau: entitlement table joins, USERNAME() calculations, ISMEMBER() groups, database pushdown, testing with View As, and performance tuning.',
+        overview: 'A comprehensive guide on designing, implementing, and auditing Row-Level Security in Tableau. Covers entitlement mapping tables, USERNAME() calculated filters, server groups, database RLS pushdown, admin testing workflows, and common security pitfalls.',
+        topics: ['What Row-Level Security Actually Means vs Permissions', 'The 4 Primary RLS Architectural Approaches', 'Entitlement Table + USERNAME() Calculation Pattern', 'Testing Security Contexts via \'View As\'', 'Performance Considerations & Data Source Context Filters']
       },
       {
         slug: 'athena-optimization',
