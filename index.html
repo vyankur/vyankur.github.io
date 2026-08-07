@@ -5189,11 +5189,12 @@ EDUCATION
       <div class="bot-msg bot">Hi! I am Ankur's interactive resume assistant. Ask me anything about his experience, project history, or tech stack!</div>
     </div>
     <div class="bot-chips-area" id="botChipsArea">
-      <span class="bot-chip" data-query="Summary of Ankur's skills">Skills Summary</span>
-      <span class="bot-chip" data-query="Tell me about his AI extension project">AI/BI Extension</span>
-      <span class="bot-chip" data-query="Explain his AWS Athena & S3 project">AWS Data Lake</span>
-      <span class="bot-chip" data-query="How did he save $50K for GE Power?">GE Power Savings</span>
-      <span class="bot-chip" data-query="Is he open to relocate?">Relocation</span>
+      <span class="bot-chip" data-query="What are Ankur's core skills?">Skills Summary</span>
+      <span class="bot-chip" data-query="Tell me about Workbook Sentinel">Workbook Sentinel</span>
+      <span class="bot-chip" data-query="How does he use AI in Tableau?">AI in Tableau</span>
+      <span class="bot-chip" data-query="Is he open to relocate?">Relocation & Availability</span>
+      <span class="bot-chip" data-query="Summary of work experience">Work Experience</span>
+      <span class="bot-chip" data-query="How can I contact Ankur?">Contact Info</span>
     </div>
     <div class="bot-input-area">
       <input class="bot-input" type="text" id="botInput" placeholder="Ask a question about Ankur...">
@@ -7837,7 +7838,7 @@ EDUCATION
       }
     });
 
-    // AI Chatbot Logic
+    // AI Chatbot Logic (Precision Career Assistant)
     const botTriggerBtn = document.getElementById('botTriggerBtn');
     const botChatContainer = document.getElementById('botChatContainer');
     const botChatCloseBtn = document.getElementById('botChatCloseBtn');
@@ -7845,48 +7846,6 @@ EDUCATION
     const botInput = document.getElementById('botInput');
     const botSendBtn = document.getElementById('botSendBtn');
     const botChips = document.querySelectorAll('.bot-chip');
-
-    const botKnowledge = {
-      skills: 'Ankur is an expert in Tableau (Desktop, Server, Prep) and Power BI. On the database layer, he specializes in Oracle SQL/PL-SQL stored procedures, PostgreSQL, SAP HANA, and Greenplum. He also writes Python scripts for automation, uses PySpark inside Databricks, and builds Generative AI extensions using LangChain and AWS Bedrock APIs.',
-      
-      get ai() {
-        const aiBi = projectCaseStudies['ai-bi'];
-        const cal = projectCaseStudies['calendar'];
-        const aiBiTitle = aiBi ? aiBi.title : 'Agentic Conversational BI Extension';
-        const calTitle = cal ? cal.title : 'Tableau Calendar Extension';
-        return `Ankur has developed multiple advanced Tableau Extensions: (1) **${aiBiTitle}** utilizing ${aiBi ? aiBi.techs.join(', ') : 'LangChain, Bedrock, TabPy'} to run real-time natural language queries on worksheets, and (2) **${calTitle}** built with ${cal ? cal.techs.join(', ') : 'React, TypeScript, Vite, CSS Grid'} that allows direct date-picker interactions to drive worksheet filters.`;
-      },
-      
-      get aws() {
-        const pipe = projectCaseStudies['aws-pipeline'];
-        return `Ankur has engineered scalable cloud analytics pipelines using AWS. In his **${pipe ? pipe.title : 'AWS Data Lake Analytics Pipeline'}** case study, he stores transaction logs as columnar Parquet on S3, catalogs them with Glue, and connects Tableau live using Athena as a virtualized SQL engine, decreasing load times by 35% and saving USD 50K.`;
-      },
-      
-      ge: 'At GE Power (under TCS), Ankur automated defect reporting and CAS compliance dashboarding, saving 95% manual effort. He designed a Python fuzzy deduplication script to clean supplier databases and optimized lead-time dashboards, lowering latency by 35%.',
-      relocate: 'Ankur is currently based in Gurugram, India, and is fully open to global relocation opportunities worldwide 🌍.',
-      summary: 'Ankur Varshney has 11+ years of experience delivering BI architectures, cloud data pipelines, and analytics platforms. He has worked for Sun Life Financial, HCL Technologies, and Tata Consultancy Services, serving VPs and CXOs across finance and insurance.',
-      education: 'Ankur holds a B.Tech. in Electronics & Communications from Krishna Institute of Engineering and Technology (KIET), Ghaziabad (UPTU, Noida), graduated in 2015.',
-      hcl: 'At HCL Technologies (2021-2023) in Pune, Ankur served as Tableau & Data Viz Lead. He led a team of 2 developers to design a 5-year financial planning and budgeting dashboard suite for Deutsche Bank (CXO-level decision makers), integrated SAP HANA, and managed PySpark/Databricks pipelines.',
-      tcs: 'At Tata Consultancy Services (2015-2021) as an IT Analyst/Senior BI Developer, Ankur led a team of 5 developers. He built HR analytics with dynamic RLS for First Abu Dhabi Bank (FAB), and led defect tracking, data deduplication, and supply chain lead-time dashboards for GE Power.',
-      sunlife: 'At Sun Life Financial (2023-Present) in Gurugram, Ankur works as a Senior BI Developer/Data Analyst. He manages Tableau Server/Cloud administration, built LangChain/Bedrock AI conversational extensions, designed Qualtrics/Salesforce CSAT integrations, and drove a 30% increase in platform adoption.',
-      rls: 'Ankur has deep expertise in Row-Level Security (RLS) and Level of Detail (LOD) calculations. At First Abu Dhabi Bank (FAB), he implemented entitlement-based RLS logic using dynamic entitlement tables via SQL joins, securing compensation dashboards for 80+ HR managers.',
-      certifications: "Ankur's credentials include: (1) 2025 AWS Cloud Quest Winner for hands-on cloud labs, (2) Accredited Certified Tableau Desktop Specialist, and (3) Accredited Certified Tableau Data Scientist.",
-      databases: 'Ankur has 11+ years of database engineering experience, specializing in Oracle (SQL, PL/SQL stored procedures, views, custom functions), PostgreSQL, Greenplum (GPDB), SAP HANA, and Aurora DB.',
-      python: 'Ankur uses Python for data deduplication (fuzzy matching), Tableau REST API/TSC CLI automations, and LLM orchestration (LangChain, OpenAI, Bedrock API).',
-      salary: 'Ankur is open to discussing competitive compensation and salary packages depending on the relocation city, cost of living, and total benefits. Please contact him at vyankur@gmail.com to discuss specifics.',
-      start: 'Ankur is available for interviews and can join within standard notice periods. For exact timeline negotiations, please reach out to him directly at vyankur@gmail.com or +91 8452893918.',
-      contact: 'You can contact Ankur Varshney directly via: Email: vyankur@gmail.com | Phone/WhatsApp: +91 8452893918 | LinkedIn: linkedin.com/in/vyankur | Tableau Public: public.tableau.com/profile/ankur.varshney',
-      website: 'This portfolio website (vyankur.github.io) showcases Ankur\'s professional profile. It includes: **Projects** (9 enterprise case studies), **Experience** (timeline with Sun Life, HCL, TCS), **Skills** (BI, SQL, Cloud, AI), **Tableau Showcase** (live interactive dashboards), **Knowledge Hub** (16 technical insights and articles), **Recommendations** (LinkedIn testimonials), and a **Contact** form. Use Ctrl+K to open the Command Palette for quick navigation!',
-      tableau_showcase: 'The **Tableau Showcase** section lets you browse and interact with Ankur\'s live dashboards hosted on Tableau Public. You can filter by categories like Insurance, Finance, or Supply Chain, and search for specific dashboards. Each dashboard loads in an embedded viewer right on the page!',
-      
-      get articles_overview() {
-        const total = knowledgeArticles.length;
-        const categories = [...new Set(knowledgeArticles.map(a => a.category))];
-        const publishedCount = knowledgeArticles.filter(a => a.status === 'Published').length;
-        const keyArticles = knowledgeArticles.filter(a => a.featured).slice(0, 6).map(a => a.title.split(':')[0]).join(', ');
-        return `The Knowledge Hub contains **${total} technical insights** (${publishedCount} published) across categories like ${categories.join(', ')}. Published articles include guides on ${keyArticles}. Click "View Knowledge Roadmap" in the Insights section to see the full list!`;
-      }
-    };
 
     function toggleBotChat(show) {
       if (show) {
@@ -7906,12 +7865,11 @@ EDUCATION
       toggleBotChat(false);
     });
 
-    function appendMessage(text, sender) {
+    function appendMessage(text, sender, actions) {
       const div = document.createElement('div');
       div.className = `bot-msg ${sender}`;
       
       if (sender === 'bot') {
-        // Safe formatting for markdown links [Text](URL), bold text **bold**, and newlines
         let formatted = text
           .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
@@ -7919,164 +7877,239 @@ EDUCATION
           .replace(/\n/g, '<br>')
           .replace(/\[([^\]]+)\]\((#[^\)]+)\)/g, '<a href="$2" class="chat-link" style="color: var(--primary); font-weight: 700; text-decoration: underline;">$1</a>');
         
-        formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-        div.innerHTML = formatted;
-        
-        // Add click listener to close chatbot on link click
-        div.querySelectorAll('.chat-link').forEach(link => {
-          link.addEventListener('click', () => {
-            toggleBotChat(false);
+        formatted = formatted.replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>');
+        div.innerHTML = `<div>${formatted}</div>`;
+
+        if (actions && Array.isArray(actions) && actions.length > 0) {
+          const actRow = document.createElement('div');
+          actRow.className = 'bot-actions-row';
+          actions.forEach(act => {
+            const btn = document.createElement('button');
+            btn.className = 'bot-action-btn';
+            btn.innerHTML = act.label;
+            btn.addEventListener('click', () => {
+              if (act.action === 'navigate') {
+                toggleBotChat(false);
+                if (act.target.startsWith('#/')) {
+                  window.location.hash = act.target;
+                } else if (act.target.startsWith('#')) {
+                  window.location.hash = act.target;
+                  scrollToSection(act.target);
+                } else {
+                  window.open(act.target, '_blank', 'noopener');
+                }
+              } else if (act.action === 'copy') {
+                window.copyEmailAddress(null);
+              } else if (act.action === 'ask') {
+                botInput.value = act.query;
+                processUserMessage(act.query);
+              }
+            });
+            actRow.appendChild(btn);
           });
-        });
+          div.appendChild(actRow);
+        }
       } else {
         div.textContent = text;
       }
       
       botMessagesArea.appendChild(div);
-      botMessagesArea.scrollTop = botMessagesArea.scrollHeight;
+      return div;
     }
 
-    function showTypingAndRespond(responseText) {
+    function showTypingAndRespond(responseText, actions, userMsgDiv) {
       const typingDiv = document.createElement('div');
       typingDiv.className = 'bot-msg bot';
       typingDiv.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
       botMessagesArea.appendChild(typingDiv);
-      botMessagesArea.scrollTop = botMessagesArea.scrollHeight;
 
-      setTimeout(() => {
-        typingDiv.remove();
-        appendMessage(responseText, 'bot');
-      }, 700);
-    }
-
-    function processUserMessage(query) {
-      appendMessage(query, 'user');
-      const rawQ = query.trim();
-      const q = rawQ.toLowerCase();
-
-      // Clean query text for keyword searching
-      const cleanQ = q
-        .replace(/^(do you have|show me|find|search for|tell me about|what is|how to|about|can you tell me|where is|list|give me)\s+/i, '')
-        .replace(/\b(articles?|insights?|blogs?|case stud(y|ies)|projects?|experience|writeups?|posts?)\b/gi, '')
-        .trim();
-
-      const searchKeyword = cleanQ.length >= 2 ? cleanQ : q;
-      const searchTerms = searchKeyword.split(/\s+/).filter(t => t.length >= 2);
-
-      // 1. Search Technical Articles (knowledgeArticles)
-      const articleMatches = knowledgeArticles.filter(art => {
-        const textToSearch = [
-          art.title,
-          art.summary,
-          art.overview || '',
-          art.category,
-          art.difficulty,
-          art.slug,
-          ...(art.tags || []),
-          ...(art.topics || [])
-        ].join(' ').toLowerCase();
-
-        return searchTerms.some(term => textToSearch.includes(term));
-      });
-
-      // 2. Search Enterprise Case Studies (projectCaseStudies)
-      const projectMatches = [];
-      if (typeof projectCaseStudies === 'object') {
-        Object.keys(projectCaseStudies).forEach(key => {
-          const proj = projectCaseStudies[key];
-          const textToSearch = [
-            proj.title || '',
-            proj.subtitle || '',
-            proj.summary || '',
-            proj.challenge || '',
-            proj.solution || '',
-            proj.impact || '',
-            ...(proj.techs || []),
-            ...(proj.outcomes || [])
-          ].join(' ').toLowerCase();
-
-          if (searchTerms.some(term => textToSearch.includes(term))) {
-            projectMatches.push({ id: key, ...proj });
-          }
+      // Scroll so the user question is positioned at the top
+      if (userMsgDiv) {
+        botMessagesArea.scrollTo({
+          top: userMsgDiv.offsetTop - 12,
+          behavior: 'smooth'
         });
       }
 
-      // 3. Base FAQ keyword matching
-      let baseResponse = "";
-      if (q.includes('skill') || q.includes('tool') || q.includes('stack') || q.includes('power bi')) {
-        baseResponse = botKnowledge.skills;
-      } else if (q.includes('ai') || q.includes('langchain') || q.includes('bedrock') || q.includes('openai') || q.includes('conversational') || q.includes('bmad') || q.includes('extension') || q.includes('tabpy')) {
-        baseResponse = botKnowledge.ai;
-      } else if (q.includes('aws') || q.includes('athena') || q.includes('s3') || q.includes('glue') || q.includes('sagemaker') || q.includes('lake')) {
-        baseResponse = botKnowledge.aws;
-      } else if (q.includes('ge ') || q.includes('ge-') || q.includes('gepower') || q.includes('defect') || q.includes('dedup') || q.includes('fuzzy') || q.includes('50k') || q.includes('power')) {
-        baseResponse = botKnowledge.ge;
-      } else if (q.includes('reloc') || q.includes('sponsor') || q.includes('vis') || q.includes('singapore') || q.includes('germany') || q.includes('uk') || q.includes('uae') || q.includes('dubai') || q.includes('london') || q.includes('munich') || q.includes('hong kong') || q.includes('countr')) {
-        baseResponse = botKnowledge.relocate;
-      } else if (q.includes('sun life') || q.includes('sunlife') || q.includes('qualtrics') || q.includes('adoption') || q.includes('satisfaction') || q.includes('insurance')) {
-        baseResponse = botKnowledge.sunlife;
-      } else if (q.includes('hcl') || q.includes('deutsche') || q.includes('hana') || q.includes('databricks') || q.includes('pyspark') || q.includes('esg') || q.includes('db')) {
-        baseResponse = botKnowledge.hcl;
-      } else if (q.includes('tcs') || q.includes('tata')) {
-        baseResponse = botKnowledge.tcs;
-      } else if (q.includes('security') || q.includes('rls') || q.includes('entitlement') || q.includes('access') || q.includes('lod') || q.includes('fab') || q.includes('abu dhabi') || q.includes('compensation')) {
-        baseResponse = botKnowledge.rls;
-      } else if (q.includes('cert') || q.includes('credential') || q.includes('badge') || q.includes('winner') || q.includes('quest') || q.includes('award') || q.includes('specialist')) {
-        baseResponse = botKnowledge.certifications;
-      } else if (q.includes('oracle') || q.includes('postgres') || q.includes('database') || q.includes('sql') || q.includes('pl/sql') || q.includes('procedure') || q.includes('greenplum')) {
-        baseResponse = botKnowledge.databases;
-      } else if (q.includes('python') || q.includes('script') || q.includes('automation') || q.includes('cli') || q.includes('tsc')) {
-        baseResponse = botKnowledge.python;
-      } else if (q.includes('educat') || q.includes('degree') || q.includes('kiet') || q.includes('college') || q.includes('university') || q.includes('study') || q.includes('studied') || q.includes('btech') || q.includes('noida') || q.includes('ghaziabad')) {
-        baseResponse = botKnowledge.education;
-      } else if (q.includes('salary') || q.includes('expect') || q.includes('compensat') || q.includes('money')) {
-        baseResponse = botKnowledge.salary;
-      } else if (q.includes('start') || q.includes('avail') || q.includes('join') || q.includes('notice') || q.includes('interview')) {
-        baseResponse = botKnowledge.start;
-      } else if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone') || q.includes('call') || q.includes('address') || q.includes('whatsapp') || q.includes('hire') || q.includes('mail')) {
-        baseResponse = botKnowledge.contact;
-      } else if (q.includes('website') || q.includes('portfolio') || q.includes('section') || q.includes('navigate') || q.includes('page') || q.includes('site') || q.includes('command palette') || q.includes('ctrl+k')) {
-        baseResponse = botKnowledge.website;
-      } else if (q.includes('showcase') || q.includes('dashboard') || q.includes('embed') || q.includes('viz') || q.includes('tableau public') || q.includes('interactive')) {
-        baseResponse = botKnowledge.tableau_showcase;
-      } else if (q.includes('summary') || q.includes('experience') || q.includes('who is') || q.includes('ankur') || q.includes('profile')) {
-        baseResponse = botKnowledge.summary;
-      }
+      setTimeout(() => {
+        typingDiv.remove();
+        const botMsgDiv = appendMessage(responseText, 'bot', actions);
 
-      // 4. Assemble Multi-Source Response
-      let sections = [];
-
-      if (baseResponse) {
-        sections.push(baseResponse);
-      }
-
-      if (articleMatches.length > 0) {
-        let artList = "📚 **Related Insights & Technical Articles:**\n" + 
-          articleMatches.slice(0, 4).map(art => `• [${art.title}](#/insights/${art.slug})\n  *Summary: ${art.summary}*`).join('\n\n');
-        if (articleMatches.length > 4) {
-          artList += `\n\n*(+ ${articleMatches.length - 4} more matching articles in Knowledge Hub)*`;
+        // Keep the user question and the start of the response aligned in view
+        if (userMsgDiv) {
+          botMessagesArea.scrollTo({
+            top: userMsgDiv.offsetTop - 12,
+            behavior: 'smooth'
+          });
         }
-        sections.push(artList);
-      }
+        botInput.focus();
+      }, 400);
+    }
 
-      if (projectMatches.length > 0) {
-        let projList = "💼 **Related Case Studies & Projects:**\n" + 
-          projectMatches.slice(0, 3).map(p => `• [${p.title}](#/projects/${p.id}), *${p.techs ? p.techs.join(', ') : ''}*\n  *${p.summary}*`).join('\n\n');
-        sections.push(projList);
-      }
+    function processUserMessage(query) {
+      const userMsgDiv = appendMessage(query, 'user');
+      const rawQ = query.trim();
+      const q = rawQ.toLowerCase();
 
       let responseText = "";
-      if (sections.length > 0) {
-        responseText = sections.join('\n\n---\n\n');
-      } else {
-        responseText = `I couldn't find specific matches for **"${rawQ}"**. You can search for core topics like:\n\n` +
-          `• **Analytics & BI**: *Tableau, TabPy, Power BI, SQL, PostgreSQL, Oracle, RLS*\n` +
-          `• **Cloud & AI**: *AWS, Athena, PySpark, Databricks, Bedrock, LangChain, Python*\n` +
-          `• **Experience & Case Studies**: *Sun Life, HCL, TCS, GE Power, FAB Bank, Sentinel, Extensions*\n\n` +
-          `Or ask me questions like *"Tell me about Ankur's TabPy integration"* or *"Show articles on SQL optimization"*.`;
+      let actions = [];
+
+      // 1. Definite Intent: Location & Relocation & Availability
+      if (q.includes('reloc') || q.includes('locat') || q.includes('where') || q.includes('country') || q.includes('city') || q.includes('visa') || q.includes('sponsor') || q.includes('singapore') || q.includes('germany') || q.includes('uk') || q.includes('uae') || q.includes('dubai') || q.includes('london')) {
+        responseText = `**Location & Relocation:**\n• **Current Base:** India (Gurugram / NCR).\n• **Relocation:** Open to **Global Relocation Worldwide 🌍** (US, UK, Germany, UAE, Singapore, Canada, Europe) as well as remote/hybrid senior consulting roles.\n• **Role Fit:** Senior Analytics Consultant, Senior Data Analyst, Lead BI Engineer, Analytics Architect.\n• **Availability:** Open for interview conversations and standard notice transitions.`;
+        actions = [
+          { label: '📧 Copy Email (vyankur@gmail.com)', action: 'copy' },
+          { label: '📄 Download Resume (PDF)', action: 'navigate', target: './assets/Ankur_Varshney_Resume.pdf' },
+          { label: '🔗 Connect on LinkedIn', action: 'navigate', target: 'https://linkedin.com/in/vyankur' },
+          { label: '🏢 View Experience Timeline', action: 'navigate', target: '#experience' }
+        ];
       }
 
-      showTypingAndRespond(responseText);
+      // 2. Definite Intent: Skills & Technical Stack
+      else if (q.includes('skill') || q.includes('stack') || q.includes('tool') || q.includes('technolog') || q.includes('what can he do') || q.includes('expertise')) {
+        responseText = `**Ankur's Core Skills & Technical Expertise:**\n• **BI & Visualization:** Tableau Desktop/Server/Cloud, Power BI, Tableau Prep, TabPy, Extensions API, Complex LODs, Entitlement RLS.\n• **Databases & SQL:** Oracle (PL/SQL stored procedures & views), PostgreSQL, Aurora DB, SAP HANA, Greenplum (GPDB).\n• **Data Engineering & Cloud:** AWS (S3, Athena, Glue, SageMaker), Databricks, PySpark, Talend Data Integration.\n• **AI & Automation:** Python (Pandas, LangChain, Scikit-learn), Amazon Bedrock APIs, Conversational Dashboard Extensions.\n• **Architecture & Governance:** Row-Level Security (RLS), Performance Tuning, Metadata Lineage, Data Governance.`;
+        actions = [
+          { label: '📊 Tableau Public Showcase', action: 'navigate', target: '#tableau-embeds' },
+          { label: '⚡ Performance Tuning Guide', action: 'navigate', target: '#/insights/tableau-performance-tuning' },
+          { label: '🛡️ Workbook Sentinel Case Study', action: 'navigate', target: '#/projects/workbook-sentinel' }
+        ];
+      }
+
+      // 3. Definite Intent: Workbook Sentinel
+      else if (q.includes('sentinel') || q.includes('workbook sentinel') || q.includes('metadata parser') || q.includes('xml parser')) {
+        responseText = `**Workbook Sentinel (Tableau Security & Governance Extension):**\n• **Architecture:** Local-first Tableau Dashboard Extension with **zero outbound data transfer**.\n• **Engineering:** Uses HTML5 FileReader API, fflate selective ZIP decompression, and DOMParser XML traversal in browser sandbox memory.\n• **Impact:** Audits complex calculations, dependencies, and data source lineage without uploading corporate metadata to cloud servers.`;
+        actions = [
+          { label: '🛡️ View Project Details', action: 'navigate', target: '#/projects/workbook-sentinel' },
+          { label: '📖 Read Engineering Guide', action: 'navigate', target: '#/insights/workbook-sentinel' },
+          { label: '⭐ GitHub Repository', action: 'navigate', target: 'https://github.com/vyankur/Workbook-Sentinel' }
+        ];
+      }
+
+      // 4. Definite Intent: AI in Tableau / Bedrock / LangChain
+      else if (q.includes('ai') || q.includes('bedrock') || q.includes('langchain') || q.includes('agent') || q.includes('generative') || q.includes('conversational')) {
+        responseText = `**AI in Tableau & Generative BI Solutions:**\n• **Architecture:** Connects Tableau worksheets via TabPy SCRIPT calculations to LangChain agent routers and Amazon Bedrock foundation models (Claude 3.5 Sonnet).\n• **Capabilities:** Natural language question answering directly within Tableau marks, automated caching, and token cost control.\n• **Outcome:** Enables non-technical users to converse with dashboard metrics securely.`;
+        actions = [
+          { label: '🤖 View AI-BI Project', action: 'navigate', target: '#/projects/ai-bi' },
+          { label: '📖 Read AI in Tableau Guide', action: 'navigate', target: '#/insights/ai-in-tableau' },
+          { label: '🐍 Read TabPy Integration Guide', action: 'navigate', target: '#/insights/tabpy-integration-tableau-python' }
+        ];
+      }
+
+      // 5. Definite Intent: TabPy / Python
+      else if (q.includes('tabpy') || q.includes('python')) {
+        responseText = `**TabPy Integration & Python Analytics:**\n• **Capabilities:** Extends Tableau calculation engine with Python for NLP text processing, fuzzy matching, and real-time model inference.\n• **Architecture:** Uses SCRIPT_* table calculations, deployed REST endpoints, and containerized topologies for production scale.`;
+        actions = [
+          { label: '🐍 Read TabPy Guide', action: 'navigate', target: '#/insights/tabpy-integration-tableau-python' },
+          { label: '🤖 View AI-BI Project', action: 'navigate', target: '#/projects/ai-bi' }
+        ];
+      }
+
+      // 6. Definite Intent: Work Experience / Career History / Companies
+      else if (q.includes('experience') || q.includes('compan') || q.includes('work') || q.includes('sun life') || q.includes('hcl') || q.includes('tcs') || q.includes('deutsche') || q.includes('fab') || q.includes('role') || q.includes('career')) {
+        responseText = `**Work Experience & Career Progression (11+ Years):**\n• **Sun Life Financial (2023 - Present):** Senior BI Developer / Data Analyst (Insurance, HNW, Adoption Analytics, GenAI extensions).\n• **HCL Technologies (2021 - 2023):** Tableau & Data Viz Lead for Deutsche Bank (5-Year Financial Planning & Budgeting suite, SAP HANA, Databricks).\n• **Tata Consultancy Services (2015 - 2021):** IT Analyst / Senior BI Developer for First Abu Dhabi Bank (HR Analytics with RLS) and GE Power (Supply Chain & MDM).`;
+        actions = [
+          { label: '🏢 View Experience Timeline', action: 'navigate', target: '#experience' },
+          { label: '🌟 Executive Testimonials', action: 'navigate', target: '#testimonials' },
+          { label: '📄 Download Resume (PDF)', action: 'navigate', target: './assets/Ankur_Varshney_Resume.pdf' }
+        ];
+      }
+
+      // 7. Definite Intent: AWS Cloud Pipeline & Athena
+      else if (q.includes('aws') || q.includes('athena') || q.includes('s3') || q.includes('glue') || q.includes('data lake') || q.includes('cloud')) {
+        responseText = `**AWS Cloud Analytics Pipeline:**\n• **Architecture:** S3 data lake with columnar Parquet formatting, AWS Glue cataloging, and Amazon Athena serverless SQL query execution.\n• **Impact:** Connected Tableau live to Athena, cutting dashboard load times by 35% and saving USD 50K in compute infrastructure.`;
+        actions = [
+          { label: '☁️ View AWS Pipeline Case Study', action: 'navigate', target: '#/projects/aws-pipeline' },
+          { label: '🏆 View AWS Credential', action: 'navigate', target: '#certifications' }
+        ];
+      }
+
+      // 8. Definite Intent: GE Power / Fuzzy Deduplication / Supply Chain
+      else if (q.includes('ge') || q.includes('power') || q.includes('dedup') || q.includes('fuzzy') || q.includes('50k') || q.includes('lead time') || q.includes('supply chain')) {
+        responseText = `**GE Power & Data Governance Initiatives (TCS):**\n• **Defect Reporting & CAS Compliance:** Automated migration reporting, saving 95% manual effort and USD 50K.\n• **Fuzzy Deduplication:** Python Jaro-Winkler string distance script to clean 45,000+ vendor records across ERP dumps.\n• **Supply Chain:** Lead-time tracking dashboards across Oracle and PostgreSQL.`;
+        actions = [
+          { label: '⚙️ View Supply Chain Case Study', action: 'navigate', target: '#/projects/supply-chain' },
+          { label: '🔍 View Fuzzy Deduplication Project', action: 'navigate', target: '#/projects/fuzzy-deduplication' }
+        ];
+      }
+
+      // 9. Definite Intent: Row-Level Security / RLS / Governance
+      else if (q.includes('rls') || q.includes('security') || q.includes('row level') || q.includes('entitlement') || q.includes('governance')) {
+        responseText = `**Row-Level Security (RLS) & Governance:**\n• Implemented entitlement-based RLS logic using dynamic database entitlement joins for 80+ HR managers at First Abu Dhabi Bank.\n• Published a comprehensive engineering guide on RLS architecture patterns, server repository querying, and performance trade-offs.`;
+        actions = [
+          { label: '🛡️ Read Enterprise RLS Guide', action: 'navigate', target: '#/insights/enterprise-rls' },
+          { label: '⚙️ Read Server Repository Guide', action: 'navigate', target: '#/insights/tableau-server-repository' }
+        ];
+      }
+
+      // 10. Definite Intent: Education & Certifications
+      else if (q.includes('educat') || q.includes('degree') || q.includes('certif') || q.includes('credential') || q.includes('college') || q.includes('university') || q.includes('btech')) {
+        responseText = `**Education & Professional Credentials:**\n• **B.Tech. in Electronics & Communications:** KIET, Ghaziabad (UPTU, 2015).\n• **Certified Tableau Desktop Specialist** (Tableau Software).\n• **Accredited Tableau Data Scientist** (Tableau Software).\n• **2025 AWS Cloud Quest Winner** (AWS Skill Builder Labs).`;
+        actions = [
+          { label: '🎓 View Credentials Section', action: 'navigate', target: '#certifications' }
+        ];
+      }
+
+      // 11. Definite Intent: Contact & Email
+      else if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('reach') || q.includes('hire') || q.includes('message') || q.includes('linkedin')) {
+        responseText = `**Get in Touch with Ankur:**\n• **Email:** vyankur@gmail.com\n• **Phone / WhatsApp:** +91 8452893918\n• **LinkedIn:** linkedin.com/in/vyankur\n• **Tableau Public:** public.tableau.com/app/profile/vyankur`;
+        actions = [
+          { label: '📧 Copy Email (vyankur@gmail.com)', action: 'copy' },
+          { label: '📄 Download Resume (PDF)', action: 'navigate', target: './assets/Ankur_Varshney_Resume.pdf' },
+          { label: '🔗 Connect on LinkedIn', action: 'navigate', target: 'https://linkedin.com/in/vyankur' },
+          { label: '📝 Go to Contact Form', action: 'navigate', target: '#contact' }
+        ];
+      }
+
+      // 12. Probabilistic / Search Questions: Explicitly asking to search or browse
+      else if (q.includes('article') || q.includes('insight') || q.includes('blog') || q.includes('case stud') || q.includes('project list') || q.includes('search') || q.includes('find')) {
+        const searchKeyword = q.replace(/^(articles?|insights?|blogs?|case stud(y|ies)|projects?|search for|find|list|show me)\s+/i, '').trim();
+        const terms = searchKeyword.split(/\s+/).filter(t => t.length >= 2);
+
+        const matchedArts = knowledgeArticles.filter(a => {
+          const hay = (a.title + ' ' + a.summary + ' ' + (a.tags || []).join(' ')).toLowerCase();
+          return terms.some(t => hay.includes(t));
+        }).slice(0, 3);
+
+        const matchedProjs = Object.keys(projectCaseStudies).map(k => ({ id: k, ...projectCaseStudies[k] })).filter(p => {
+          const hay = (p.title + ' ' + (p.overview || '') + ' ' + (p.techs || []).join(' ')).toLowerCase();
+          return terms.some(t => hay.includes(t));
+        }).slice(0, 2);
+
+        if (matchedArts.length > 0 || matchedProjs.length > 0) {
+          responseText = `**Relevant Engineering Guides & Projects:**`;
+          if (matchedArts.length > 0) {
+            responseText += `\n\n📚 **Articles:**\n` + matchedArts.map(a => `• [${a.title}](#/insights/${a.slug})`).join('\n');
+          }
+          if (matchedProjs.length > 0) {
+            responseText += `\n\n💼 **Projects:**\n` + matchedProjs.map(p => `• [${p.title}](#/projects/${p.id})`).join('\n');
+          }
+          actions = [
+            { label: '📖 Explore Knowledge Hub', action: 'navigate', target: '#insights' },
+            { label: '💼 View All Projects', action: 'navigate', target: '#projects' }
+          ];
+        } else {
+          responseText = `You can browse all **18 engineering guides** in the Knowledge Hub or explore our **10 project case studies**.`;
+          actions = [
+            { label: '📖 Go to Knowledge Hub', action: 'navigate', target: '#insights' },
+            { label: '💼 View All Projects', action: 'navigate', target: '#projects' }
+          ];
+        }
+      }
+
+      // 13. Fallback for Out-of-Scope / Personal Questions (e.g., age, personal trivia)
+      else {
+        responseText = `I am Ankur's AI Career Assistant. I specialize in his **11+ years of enterprise BI experience**, technical architecture, and case studies.\n\nHere are key topics you can explore:`;
+        actions = [
+          { label: '🛠️ Core Skills', action: 'ask', query: 'What are Ankur\'s core skills?' },
+          { label: '🏢 Work Experience', action: 'ask', query: 'Summary of his work experience' },
+          { label: '🛡️ Workbook Sentinel', action: 'ask', query: 'Tell me about Workbook Sentinel' },
+          { label: '🤖 AI in Tableau', action: 'ask', query: 'How does he use AI in Tableau?' },
+          { label: '🌍 Relocation & Availability', action: 'ask', query: 'Is he open to relocate?' },
+          { label: '📄 Download Resume', action: 'navigate', target: './assets/Ankur_Varshney_Resume.pdf' }
+        ];
+      }
+
+      showTypingAndRespond(responseText, actions, userMsgDiv);
     }
 
     botSendBtn.addEventListener('click', () => {
@@ -8099,8 +8132,10 @@ EDUCATION
 
     botChips.forEach(chip => {
       chip.addEventListener('click', () => {
-        const query = chip.getAttribute('data-query');
-        processUserMessage(query);
+        const q = chip.getAttribute('data-query');
+        if (q) {
+          processUserMessage(q);
+        }
       });
     });
 
