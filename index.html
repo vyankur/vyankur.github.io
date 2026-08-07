@@ -5530,6 +5530,80 @@ EDUCATION
 
   <!-- Vanilla JS Logic -->
   <script>
+    // Global Toast Notification Helper
+    window.showToast = function(msg) {
+      let toast = document.getElementById('toastContainer');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toastContainer';
+        toast.style.cssText = 'position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: #1e293b; color: #ffffff; padding: 0.65rem 1.4rem; border-radius: 99px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.35); z-index: 10000; opacity: 0; pointer-events: none; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.15);';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(10px)';
+      }, 2600);
+    };
+
+    // Global 1-Click Copy Email Helper (Dual Clipboard + Direct ExecCommand Fallback)
+    window.copyEmailAddress = function(btn) {
+      const email = 'vyankur@gmail.com';
+
+      function onCopySuccess() {
+        window.showToast('✓ Copied vyankur@gmail.com to clipboard!');
+        
+        const targetBtns = btn ? [btn] : document.querySelectorAll('#copyEmailBtn, .copy-email-btn');
+        targetBtns.forEach(b => {
+          if (!b) return;
+          const origHTML = b.dataset.origHtml || b.innerHTML;
+          b.dataset.origHtml = origHTML;
+          b.innerHTML = '<span style="color: #22c55e; font-weight: 700;">✓ Copied!</span>';
+          b.style.borderColor = '#22c55e';
+          b.style.background = 'rgba(34, 197, 94, 0.12)';
+          setTimeout(() => {
+            b.innerHTML = origHTML;
+            b.style.borderColor = '';
+            b.style.background = '';
+          }, 2400);
+        });
+      }
+
+      function execFallback() {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = email;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.top = '-9999px';
+          ta.style.left = '-9999px';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          const ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          if (ok) {
+            onCopySuccess();
+          } else {
+            prompt('Copy email address manually:', email);
+          }
+        } catch (e) {
+          prompt('Copy email address manually:', email);
+        }
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email)
+          .then(onCopySuccess)
+          .catch(() => execFallback());
+      } else {
+        execFallback();
+      }
+    };
+
     // Theme Toggle Logic
     const htmlEl = document.documentElement;
     const themeToggleBtn = document.getElementById('themeToggleBtn');
