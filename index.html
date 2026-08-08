@@ -1097,9 +1097,14 @@
     /* Technical Architecture Gallery */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
       margin-top: 2rem;
+    }
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .gallery-card {
@@ -4775,6 +4780,96 @@
               <div><strong style="color: var(--text);">Design Considerations:</strong> Joining security views on large datasets increases query execution times by 10-15%, requiring indexed keys.</div>
             </div>
           </div>
+
+          <!-- Architecture Card 4: Cloud Lakehouse & DW Migration -->
+          <div class="gallery-card">
+            <div class="gallery-svg-container">
+              <svg width="100%" height="100%" viewBox="0 0 430 110" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="lakehouse-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="var(--border)" stroke-width="0.5" opacity="0.25"/>
+                  </pattern>
+                  <marker id="arrowhead-lh" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--muted)" />
+                  </marker>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#lakehouse-grid)" />
+
+                <!-- Node 1: Legacy RDBMS Sources -->
+                <g transform="translate(10, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <ellipse cx="24" cy="18" rx="12" ry="4" stroke="#f43f5e" stroke-width="1.5" fill="none" />
+                  <path d="M12 18 L12 28 C12 32, 36 32, 36 28 L36 18" stroke="#f43f5e" stroke-width="1.5" fill="none" />
+                  <path d="M12 24 C12 28, 36 28, 36 24" stroke="#f43f5e" stroke-width="1.5" fill="none" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">Legacy RDBMS</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">Oracle / DB2</text>
+                  <text x="24" y="78" font-size="6" fill="var(--muted)" text-anchor="middle">Greenplum</text>
+                </g>
+
+                <!-- Arrow 1 -> 2 -->
+                <line x1="63" y1="39" x2="94" y2="39" stroke="var(--muted)" stroke-width="1" marker-end="url(#arrowhead-lh)" />
+                <text x="78" y="33" font-size="5" font-weight="600" fill="var(--muted)" text-anchor="middle">S3 Ingest</text>
+
+                <!-- Node 2: S3 Parquet Bronze/Silver -->
+                <g transform="translate(100, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <path d="M14 20 L24 15 L34 20 L24 25 Z" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+                  <path d="M14 20 L14 28 L24 33 L24 25 Z" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+                  <path d="M24 25 L24 33 L34 28 L34 20 Z" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">AWS S3</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">Bronze / Silver</text>
+                  <text x="24" y="78" font-size="6" font-weight="700" fill="var(--primary)" text-anchor="middle">PARQUET</text>
+                </g>
+
+                <!-- Arrow 2 -> 3 -->
+                <line x1="153" y1="39" x2="184" y2="39" stroke="var(--muted)" stroke-width="1" marker-end="url(#arrowhead-lh)" />
+
+                <!-- Node 3: Databricks PySpark & Delta Lake -->
+                <g transform="translate(190, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <path d="M16 22 L24 14 L32 22 L24 30 Z" stroke="#f97316" stroke-width="1.5" fill="none" />
+                  <circle cx="24" cy="22" r="3" fill="#f97316" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">Databricks</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">Delta Lake ACID</text>
+                  <text x="24" y="78" font-size="6" fill="var(--muted)" text-anchor="middle">PySpark ETL</text>
+                </g>
+
+                <!-- Arrow 3 -> 4 -->
+                <line x1="243" y1="39" x2="274" y2="39" stroke="var(--muted)" stroke-width="1" marker-end="url(#arrowhead-lh)" />
+                <text x="258" y="33" font-size="5" font-weight="600" fill="var(--muted)" text-anchor="middle">Gold Marts</text>
+
+                <!-- Node 4: Athena Serverless SQL -->
+                <g transform="translate(280, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <ellipse cx="24" cy="18" rx="8" ry="3" stroke="#22c55e" stroke-width="1.5" fill="none" />
+                  <path d="M16 18 L16 26 C16 29, 32 29, 32 26 L32 18" stroke="#22c55e" stroke-width="1.5" fill="none" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">Athena / Presto</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">Dynamic RLS</text>
+                  <text x="24" y="78" font-size="6" fill="var(--muted)" text-anchor="middle">Semantic Views</text>
+                </g>
+
+                <!-- Arrow 4 -> 5 -->
+                <line x1="333" y1="39" x2="364" y2="39" stroke="var(--muted)" stroke-width="1" marker-end="url(#arrowhead-lh)" />
+
+                <!-- Node 5: Tableau Cloud & Hyper -->
+                <g transform="translate(370, 15)">
+                  <rect x="0" y="0" width="48" height="48" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                  <rect x="16" y="16" width="16" height="16" rx="2" stroke="#6366f1" stroke-width="1.5" fill="none" />
+                  <path d="M20 28 V22 M24 28 V18 M28 28 V24" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" />
+                  <text x="24" y="62" font-size="7" font-weight="600" fill="var(--text)" text-anchor="middle">Tableau Cloud</text>
+                  <text x="24" y="70" font-size="6" fill="var(--muted)" text-anchor="middle">Hyper Extracts</text>
+                  <text x="24" y="78" font-size="6" font-weight="700" fill="var(--primary)" text-anchor="middle">&amp; Live SQL</text>
+                </g>
+              </svg>
+            </div>
+            <h3 class="gallery-title">Cloud Lakehouse &amp; Enterprise DW Migration</h3>
+            <p class="gallery-desc">Migrating legacy monolithic RDBMS (Oracle, Greenplum, DB2) to AWS S3 &amp; Databricks Lakehouse with Delta ACID tables, serverless Athena queries, and Tableau Cloud.</p>
+            <div style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.75rem; font-size: 0.72rem; color: var(--muted); display: flex; flex-direction: column; gap: 0.3rem; line-height: 1.45;">
+              <div><strong style="color: var(--text);">Design Approach:</strong> Decouples compute from storage, eliminating expensive vertical database hardware upgrades.</div>
+              <div><strong style="color: var(--text);">Implementation Highlights:</strong> Built PySpark Auto Loader ingestion streams, Delta Lake ACID upserts, and Athena Presto analytical views.</div>
+              <div><strong style="color: var(--text);">Design Considerations:</strong> Requires file compaction pipelines and partition pruning to keep Athena query scan costs predictable.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -7062,7 +7157,7 @@ EDUCATION
         title: 'Querying the Tableau Server Repository: A Practical Guide to PostgreSQL Metadata',
         category: 'Tableau',
         difficulty: 'Advanced',
-        readingTime: '12 min',
+        readingTime: '15 min',
         status: 'Published',
         featured: true,
         tags: ['Tableau Server', 'PostgreSQL', 'SQL', 'Governance', 'Row-Level Security'],
@@ -7075,7 +7170,7 @@ EDUCATION
         title: 'Tableau Performance Tuning: Building Dashboards That Load in Under 2 Seconds',
         category: 'Tableau',
         difficulty: 'Advanced',
-        readingTime: '15 min',
+        readingTime: '22 min',
         status: 'Published',
         featured: true,
         tags: ['Tableau', 'Performance', 'Optimization', 'Dashboard Design', 'Business Intelligence', 'Tableau Server', 'Hyper', 'SQL'],
@@ -7114,7 +7209,7 @@ EDUCATION
         title: 'Row-Level Security in Tableau: Enterprise Data Entitlements Guide',
         category: 'Architecture',
         difficulty: 'Advanced',
-        readingTime: '14 min',
+        readingTime: '15 min',
         status: 'Published',
         featured: true,
         tags: ['Tableau', 'Security', 'Governance', 'Architecture', 'Row-Level Security'],
@@ -7140,7 +7235,7 @@ EDUCATION
         title: 'AI in Tableau: Connecting Amazon Bedrock and LangChain Agents via TabPy',
         category: 'AI',
         difficulty: 'Advanced',
-        readingTime: '12 min',
+        readingTime: '14 min',
         status: 'Published',
         featured: true,
         tags: ['Tableau', 'Generative AI', 'TabPy', 'Amazon Bedrock', 'LangChain'],
@@ -7153,7 +7248,7 @@ EDUCATION
         title: 'Bringing Python Into Tableau: A Practical Guide to TabPy Integration',
         category: 'Tableau',
         difficulty: 'Advanced',
-        readingTime: '14 min',
+        readingTime: '18 min',
         status: 'Published',
         featured: true,
         tags: ['Tableau', 'Python', 'TabPy', 'Analytics Extension', 'Machine Learning', 'Fuzzy Matching'],
@@ -7162,134 +7257,69 @@ EDUCATION
         topics: ['TabPy Local Server Configuration & HTTP API', 'Tableau SCRIPT_STR, SCRIPT_INT, SCRIPT_REAL, SCRIPT_BOOL Functions', 'Fuzzy Entity Matching & Keyword Extraction', 'Deployed TabPy Functions via tabpy_client.deploy()', 'Production Container Topology, Caching & Timeouts']
       },
       {
-        slug: 'tableau-extensions',
-        title: 'Building Tableau Extensions',
-        category: 'Visualization',
+        slug: 'databricks-etl',
+        title: 'Databricks ETL Pipelines: Building Resilient Lakehouse Architectures with PySpark and Delta Lake',
+        category: 'Databricks',
+        difficulty: 'Advanced',
+        readingTime: '16 min',
+        status: 'Published',
+        featured: true,
+        tags: ['Databricks', 'PySpark', 'Delta Lake', 'ETL', 'Data Lakehouse', 'Data Engineering', 'SQL', 'Cloud Analytics'],
+        summary: 'A practical guide to building resilient batch and streaming ETL pipelines on Databricks using Auto Loader, Delta Lake ACID transactions, PySpark transformations, and Databricks Workflows.',
+        overview: 'Learn how to write scalable ETL workflows in PySpark and Delta Lake. We cover reading files with Auto Loader, applying schema validation, writing to Delta tables with ACID guarantees, broadcasting joins, and scheduling workflows.',
+        topics: ['Medallion Architecture (Bronze, Silver, Gold Lakehouse)', 'Auto Loader cloudFiles Stream Ingestion with Schema Evolution', 'Delta Lake ACID MERGE INTO Upserts & History', 'PySpark Optimization (Broadcast Joins & Z-Order Clustering)', 'Databricks Workflows Multi-Task DAG Orchestration']
+      },
+      {
+        slug: 'aws-architecture',
+        title: 'Architecting Enterprise Cloud Analytics on AWS: S3, Glue, Athena, and Tableau Server Topology',
+        category: 'AWS',
         difficulty: 'Advanced',
         readingTime: '15 min',
-        status: 'Planned',
-        featured: false,
-        tags: ['JavaScript', 'Extensions API', 'Tableau'],
-        summary: 'Create custom interactive dashboard components, date selectors, and write-back forms using HTML5 and the Tableau Extensions API.',
-        overview: 'Learn how to write custom dashboard widgets. This tutorial walks through setting up the manifest (.trex) file, listening to workbook filter events, and writing back parameter adjustments to Tableau via JavaScript.',
-        topics: ['Tableau Extensions API SDK', 'Manifest (.trex) configuration', 'Event listeners for filter changes', 'Parameter write-back methods', 'UI styling with CSS and grid alignment']
+        status: 'Published',
+        featured: true,
+        tags: ['AWS', 'Amazon S3', 'AWS Glue', 'Amazon Athena', 'Cloud Analytics', 'Data Architecture', 'Tableau', 'Security'],
+        summary: 'A blueprint for enterprise cloud data platforms on AWS: configuring S3 multi-tier data lakes, Glue Catalog metadata governance, Athena serverless query engine, and secure Tableau Server connectivity.',
+        overview: 'A blueprint for building a secure and cost-efficient cloud analytics platform. We explore ingestion patterns, ETL automation with Glue and Step Functions, security settings, Athena workgroup cost caps, and live BI querying.',
+        topics: ['Multi-Tier S3 Data Lake Organization (Landing, Cleansed, Curated)', 'Metadata Governance with AWS Glue Data Catalog & Partition Indexes', 'Amazon Athena Query Engine Topology & Workgroup Guardrails', 'Secure Tableau Server & VPC Peering Architecture', 'Serverless Lakehouse vs Traditional Enterprise RDBMS']
       },
       {
-        slug: 'dashboard-design',
-        title: 'Dashboard Design Best Practices',
-        category: 'Visualization',
-        difficulty: 'Intermediate',
-        readingTime: '10 min',
-        status: 'In Draft',
-        featured: false,
-        tags: ['Visualization', 'UX', 'Tableau'],
-        summary: 'Master visual hierarchy, color theory, spacing, and cognitive load reduction principles for enterprise business dashboards.',
-        overview: 'This guide outlines the UX principles required to build business dashboards that CXOs can read in under 5 seconds. We cover grid layouts, layout container hierarchy, and intentional color mapping for actionable reporting.',
-        topics: ['Grid layouts and layout containers', 'Visual hierarchy and reading patterns', 'Cognitive load reduction', 'Color theory and theme harmonization', 'Typography and chart formatting spacing']
-      },
-      {
-        slug: 'tableau-admin',
-        title: 'Tableau Server Administration',
-        category: 'Tableau',
+        slug: 'prompt-engineering',
+        title: 'Prompt Engineering for BI: Context Injection, Few-Shot SQL Generation, and Self-Correction Loops',
+        category: 'AI',
         difficulty: 'Advanced',
-        readingTime: '20 min',
-        status: 'Under Review',
-        featured: false,
-        tags: ['Tableau Server', 'Governance', 'Systems'],
-        summary: 'Configure, secure, monitor, and scale enterprise Tableau Server environments, workgroup databases, and backgrounder schedules.',
-        overview: 'An in-depth manual on configuring and scaling a multi-node Tableau Server topology. We cover permission mapping, licensing optimizations, backup procedures, and backgrounder process scheduling to ensure high uptime.',
-        topics: ['Multi-node Server Topology', 'Postgres Workgroup DB Access', 'Permission mapping and user security profiles', 'Backgrounder process optimization', 'Backup, recovery, and server upgrades']
+        readingTime: '14 min',
+        status: 'Published',
+        featured: true,
+        tags: ['Generative AI', 'LLMs', 'Prompt Engineering', 'SQL', 'Tableau', 'LangChain', 'Conversational BI'],
+        summary: 'A practical guide to designing reliable LLM-assisted analytics agents: structuring few-shot SQL prompts, injecting schema context without token bloat, and implementing self-correction execution loops.',
+        overview: 'A guide on formatting prompts to generate clean database queries and analytics. We explore few-shot learning templates, dynamic schema pruning, formatting constraints, automated database execution, and self-correction loops.',
+        topics: ['Text-to-SQL Autonomous Agent Workflow Architecture', 'Dynamic Schema Pruning & Production System Prompt Design', 'Few-Shot Demonstration Anchoring & Dialect Formatting', 'Automated Traceback Interception & Self-Correction Loops', 'Enterprise Guardrails & SQL Injection Prevention']
+      },
+      {
+        slug: 'dashboard-governance',
+        title: 'Enterprise Dashboard Governance: Lifecycle Management, Automated Audits, and Certification at Scale',
+        category: 'Governance',
+        difficulty: 'Advanced',
+        readingTime: '15 min',
+        status: 'Published',
+        featured: true,
+        tags: ['Tableau', 'Data Governance', 'Tableau Server', 'REST API', 'DevOps', 'Metadata', 'Compliance'],
+        summary: 'A blueprint for enterprise BI governance: implementing 4-stage lifecycle workflows, automated Tableau Server metadata audits via REST & GraphQL APIs, and eliminating orphan workbook sprawl.',
+        overview: 'This article outlines a framework for dashboard governance in enterprise business units. We cover 4-stage lifecycle workflows, automated Python metadata audits via REST & GraphQL APIs, pre-publication certification checklists, and orphan workbook clean-up procedures.',
+        topics: ['4-Stage Dashboard Lifecycle (Sandbox, QA, Certified, Sunset)', 'Automated Tableau Server Governance Audit via Python & GraphQL', 'Pre-Publication 5-Gate Certification Checklist', 'Automated Orphan Extraction & Cold S3 Storage Clean-Up', 'Quantifiable Business Outcomes (35% Server Load Reduction)']
       },
       {
         slug: 'window-functions',
         title: 'Window Functions Deep Dive: The SQL Superpower Every Data Professional Needs',
         category: 'SQL',
         difficulty: 'Intermediate',
-        readingTime: '8 min',
+        readingTime: '12 min',
         status: 'Published',
         featured: true,
-        tags: ['SQL', 'Analytics Engineering', 'Data Analytics', 'Performance'],
+        tags: ['SQL', 'Analytics Engineering', 'Data Analytics', 'Performance', 'PostgreSQL', 'Oracle'],
         summary: 'Master complex analytical SQL window functions for cohort analysis, running totals, rankings, lead/lag offsets, and moving averages.',
         overview: 'An in-depth guide to mastering SQL window functions. Learn how OVER(), PARTITION BY, ORDER BY, frame clauses, ROW_NUMBER, RANK, DENSE_RANK, NTILE, LAG, and LEAD eliminate complex self-joins and speed up analytical queries.',
         topics: ['OVER(), PARTITION BY and ORDER BY Mechanics', 'ROW_NUMBER vs. RANK vs. DENSE_RANK & NTILE', 'Period-over-Period Analytics with LAG and LEAD', 'Window Frames (ROWS/RANGE BETWEEN)', 'Real Business Scenarios & Performance Tuning Tips']
-      },
-      {
-        slug: 'aws-architecture',
-        title: 'AWS Analytics Architecture',
-        category: 'AWS',
-        difficulty: 'Advanced',
-        readingTime: '16 min',
-        status: 'Under Review',
-        featured: false,
-        tags: ['AWS', 'Architecture', 'Data Lake'],
-        summary: 'Architect modern data lake solutions using S3, Glue, Athena, Bedrock, and Tableau Cloud to process and visualize petabyte scale data.',
-        overview: 'A blueprint for building a secure and cost-efficient cloud analytics platform. We explore ingestion patterns, ETL automation with Glue and Step Functions, security settings, and live BI querying.',
-        topics: ['Cloud Ingestion Patterns', 'ETL Orchestration with AWS Glue', 'S3 Data Lake Landing, Raw, and Curated layers', 'Data Cataloging & Permissions (Lake Formation)', 'Athena Serverless BI connectivity']
-      },
-      {
-        slug: 'prompt-engineering',
-        title: 'Prompt Engineering for BI',
-        category: 'AI',
-        difficulty: 'Intermediate',
-        readingTime: '10 min',
-        status: 'In Draft',
-        featured: false,
-        tags: ['Prompt Engineering', 'AI', 'BI'],
-        summary: 'Master prompt engineering templates and context injection styles to build AI-assisted SQL query generators and BI chatbots.',
-        overview: 'A guide on formatting prompts to generate clean database queries and analytics. We explore few-shot learning templates, schema injection, formatting constraints, and self-correction loops.',
-        topics: ['Few-shot learning prompt structures', 'Schema metadata context injection', 'SQL generation safety and formatting constraints', 'Self-correction prompt feedback loops', 'Prompt templates for conversational analytics']
-      },
-      {
-        slug: 'dashboard-governance',
-        title: 'Enterprise Dashboard Governance',
-        category: 'Architecture',
-        difficulty: 'Intermediate',
-        readingTime: '12 min',
-        status: 'Under Review',
-        featured: false,
-        tags: ['Governance', 'BI Management', 'Standardization'],
-        summary: 'Implement dashboard lifecycle management, automated QA checks, certification badges, and metadata audits at scale.',
-        overview: 'This article outlines a framework for dashboard governance in enterprise business units. We cover QA check-lists, peer-review cycles, certification indicators, and catalog indexing.',
-        topics: ['Dashboard Lifecycle Management (Dev -> Prod)', 'Automated QA and data validation check-lists', 'Certification indicators and branding standards', 'Metadata Auditing using Tableau REST API', 'Orphaned workbook clean-up procedures']
-      },
-      {
-        slug: 'analytics-engineering',
-        title: 'Analytics Engineering Best Practices',
-        category: 'Analytics Engineering',
-        difficulty: 'Intermediate',
-        readingTime: '14 min',
-        status: 'Planned',
-        featured: false,
-        tags: ['dbt', 'Analytics Engineering', 'SQL'],
-        summary: 'Implement software engineering practices in analytics: version control, dbt modeling, testing, documentation, and CI/CD.',
-        overview: 'A look into analytics engineering best practices. We explore how to manage SQL transformations using version control, build structured staging and core models in dbt, write automated tests, and run deployment pipelines.',
-        topics: ['dbt modeling layouts (Staging, Marts)', 'Version Control strategies (Git branches)', 'Automated testing for nulls and uniques', 'SQL coding style and guidelines', 'CI/CD deployment for data models']
-      },
-      {
-        slug: 'modern-bi',
-        title: 'Modern BI Architecture',
-        category: 'Architecture',
-        difficulty: 'Advanced',
-        readingTime: '16 min',
-        status: 'Planned',
-        featured: false,
-        tags: ['Architecture', 'Modern Data Stack', 'BI'],
-        summary: 'Design scalable BI stacks combining cloud warehouses, semantic layers, semantic models, and visual engines for self-service.',
-        overview: 'This article details how to architect a modern self-service BI system. We analyze the roles of cloud warehouses (BigQuery/Snowflake), semantic definition layers, data transformation tools, and Tableau/Power BI.',
-        topics: ['Cloud Data Warehouse configurations', 'Semantic layers and metric definitions', 'Data orchestration and pipeline flows', 'Self-service reporting access roles', 'Semantic modeling structures for rapid queries']
-      },
-      {
-        slug: 'databricks-etl',
-        title: 'Databricks ETL Pipelines',
-        category: 'Databricks',
-        difficulty: 'Advanced',
-        readingTime: '15 min',
-        status: 'In Draft',
-        featured: false,
-        tags: ['Databricks', 'PySpark', 'ETL'],
-        summary: 'Build high performance batch and streaming ETL pipelines inside Databricks using PySpark, Delta Lake, and Auto Loader.',
-        overview: 'Learn how to write scalable ETL workflows in PySpark. We cover reading files with Auto Loader, applying schema validation, writing to Delta tables with ACID guarantees, and scheduling workflows.',
-        topics: ['PySpark Dataframe API transformation', 'Delta Lake ACID transaction logs', 'Auto Loader directory file stream', 'Databricks Workflows orchestration', 'Performance tuning (Shuffling and Partitioning)']
       }
     ];
 
@@ -8531,6 +8561,24 @@ EDUCATION
         ];
       }
 
+      // 5B. Definite Intent: Databricks & PySpark ETL
+      else if (q.includes('databricks') || q.includes('pyspark') || q.includes('delta lake') || q.includes('lakehouse') || q.includes('autoloader')) {
+        responseText = `**Databricks Lakehouse & PySpark ETL:**\n• **Medallion Architecture:** Ingesting streaming files via Auto Loader (cloudFiles) into Bronze, conformed Silver via Delta Lake ACID MERGE INTO upserts, and Z-Ordered Gold marts.\n• **Optimization:** Eliminating shuffle bottlenecks with broadcast joins and Delta table compaction.`;
+        actions = [
+          { label: '🔥 Read Databricks ETL Guide', action: 'navigate', target: '#/insights/databricks-etl' },
+          { label: '📐 View Lakehouse Architecture', action: 'navigate', target: '#architecture' }
+        ];
+      }
+
+      // 5C. Definite Intent: SQL Performance Tuning & Execution Plans
+      else if (q.includes('sql') || q.includes('execution plan') || q.includes('explain') || q.includes('indexing') || q.includes('tuning') || q.includes('pl/sql') || q.includes('postgres') || q.includes('oracle')) {
+        responseText = `**SQL Performance Tuning & Database Optimization:**\n• **Plan Mastery:** Diagnosing sequential scans with PostgreSQL EXPLAIN ANALYZE and Oracle DBMS_XPLAN.\n• **Advanced Indexing:** Designing composite covering indexes with INCLUDE clauses, partial filtered indexes, and refactoring non-SARGable subqueries.`;
+        actions = [
+          { label: '⚡ Read SQL Performance Guide', action: 'navigate', target: '#/insights/sql-performance' },
+          { label: '🪟 Read Window Functions Guide', action: 'navigate', target: '#/insights/window-functions' }
+        ];
+      }
+
       // 6. Definite Intent: Work Experience / Career History / Companies
       else if (q.includes('experience') || q.includes('compan') || q.includes('work') || q.includes('sun life') || q.includes('hcl') || q.includes('tcs') || q.includes('deutsche') || q.includes('fab') || q.includes('role') || q.includes('career')) {
         responseText = `**Work Experience & Career Progression (11+ Years):**\n• **Sun Life Financial (2023 - Present):** Senior BI Developer / Data Analyst (Insurance, HNW, Adoption Analytics, GenAI extensions).\n• **HCL Technologies (2021 - 2023):** Tableau & Data Viz Lead for Deutsche Bank (5-Year Financial Planning & Budgeting suite, SAP HANA, Databricks).\n• **Tata Consultancy Services (2015 - 2021):** IT Analyst / Senior BI Developer for First Abu Dhabi Bank (HR Analytics with RLS) and GE Power (Supply Chain & MDM).`;
@@ -8546,7 +8594,8 @@ EDUCATION
         responseText = `**AWS Cloud Analytics Pipeline:**\n• **Architecture:** S3 data lake with columnar Parquet formatting, AWS Glue cataloging, and Amazon Athena serverless SQL query execution.\n• **Impact:** Connected Tableau live to Athena, cutting dashboard load times by 35% and saving USD 50K in compute infrastructure.`;
         actions = [
           { label: '☁️ View AWS Pipeline Case Study', action: 'navigate', target: '#/projects/aws-pipeline' },
-          { label: '🏆 View AWS Credential', action: 'navigate', target: '#certifications' }
+          { label: '📖 Read Athena Optimization Guide', action: 'navigate', target: '#/insights/athena-optimization' },
+          { label: '📐 View AWS Architecture Guide', action: 'navigate', target: '#/insights/aws-architecture' }
         ];
       }
 
@@ -8561,10 +8610,11 @@ EDUCATION
 
       // 9. Definite Intent: Row-Level Security / RLS / Governance
       else if (q.includes('rls') || q.includes('security') || q.includes('row level') || q.includes('entitlement') || q.includes('governance')) {
-        responseText = `**Row-Level Security (RLS) & Governance:**\n• Implemented entitlement-based RLS logic using dynamic database entitlement joins for 80+ HR managers at First Abu Dhabi Bank.\n• Published a comprehensive engineering guide on RLS architecture patterns, server repository querying, and performance trade-offs.`;
+        responseText = `**Row-Level Security (RLS) & Governance:**\n• Implemented entitlement-based RLS logic using dynamic database entitlement joins for 80+ HR managers at First Abu Dhabi Bank.\n• Published comprehensive engineering guides on RLS architecture patterns, server repository querying, and automated dashboard governance.`;
         actions = [
           { label: '🛡️ Read Enterprise RLS Guide', action: 'navigate', target: '#/insights/enterprise-rls' },
-          { label: '⚙️ Read Server Repository Guide', action: 'navigate', target: '#/insights/tableau-server-repository' }
+          { label: '⚙️ Read Server Repository Guide', action: 'navigate', target: '#/insights/tableau-server-repository' },
+          { label: '📋 Read Dashboard Governance Guide', action: 'navigate', target: '#/insights/dashboard-governance' }
         ];
       }
 
